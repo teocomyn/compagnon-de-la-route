@@ -97,7 +97,7 @@ export const seoLandingPages: Record<string, SeoLandingPageData> = {
       {
         heading: "Notre rôle chez Compagnon de la Route",
         paragraphs: [
-          "Nous ne remplaçons pas l’administration : nous clarifions les étapes, préparons les pièces utiles et vous aidons à présenter un projet professionnel cohérent. La formation reste exigeante : sécurité, réglementation, relation voyageurs — le financement doit servir un projet réaliste.",
+          "Nous ne remplaçons pas l’administration : nous clarifions les étapes, préparons les pièces utiles et vous aidons à présenter un projet professionnel cohérent. La formation reste exigeante : sécurité, réglementation, relation voyageurs, le financement doit servir un projet réaliste.",
           "Pour aller plus loin, découvrez le parcours certifiant et les modalités sur la page formation conducteur de voyageurs, ou contactez-nous pour un premier échange.",
         ],
       },
@@ -142,7 +142,7 @@ export const seoLandingPages: Record<string, SeoLandingPageData> = {
         heading: "Pourquoi ces étapes comptent pour les voyageurs",
         paragraphs: [
           "Le transport de personnes combine sécurité, réglementation et service. Le FIMO et le passage à la route s’inscrivent dans une logique de maîtrise progressive : on ne « conduit » pas seulement un véhicule, on garantit la chaîne de confiance voyageurs / employeur / autorités.",
-          "Chez Compagnon de la Route, nous plaçons la préparation pratique et la culture de la sécurité au centre : relation client, gestes professionnels, anticipation — autant de sujets travaillés en formation.",
+          "Chez Compagnon de la Route, nous plaçons la préparation pratique et la culture de la sécurité au centre : relation client, gestes professionnels, anticipation, autant de sujets travaillés en formation.",
         ],
       },
       {
@@ -168,7 +168,7 @@ export const seoLandingPages: Record<string, SeoLandingPageData> = {
     eyebrow: "Carrière & terrain",
     h1: "Conducteur de car : un métier d’avenir et de responsabilité",
     intro:
-      "Tourisme, scolaire, réseaux urbains : les besoins restent forts. Le métier combine autonomie, sécurité et relation voyageurs — une voie accessible après une formation certifiante et un accompagnement sérieux.",
+      "Tourisme, scolaire, réseaux urbains : les besoins restent forts. Le métier combine autonomie, sécurité et relation voyageurs, une voie accessible après une formation certifiante et un accompagnement sérieux.",
     breadcrumbs: baseCrumbs("metier-conducteur-de-car-debouches", "Métier & débouchés"),
     stats: [
       { value: "Fort", label: "Besoin recrutement transport voyageurs (France)" },
@@ -184,7 +184,7 @@ export const seoLandingPages: Record<string, SeoLandingPageData> = {
       {
         icon: "TrendingUp",
         title: "Perspectives",
-        text: "Le secteur investit : modernisation des flottes, sobriété, digital — des compétences à jour.",
+        text: "Le secteur investit : modernisation des flottes, sobriété, digital, des compétences à jour.",
       },
       {
         icon: "Users",
@@ -247,7 +247,7 @@ export const seoLandingPages: Record<string, SeoLandingPageData> = {
         heading: "Pourquoi une formation dédiée au contexte scolaire",
         paragraphs: [
           "Le transport scolaire n’est pas seulement une ligne sur un itinéraire : c’est une responsabilité collective. Les procédures, la vigilance et la bienveillance sont indissociables.",
-          "Notre parcours conducteur de voyageurs intègre ces réalités : relation voyageurs, cadre réglementaire, culture de la sécurité — des compétences directement transférables au scolaire.",
+          "Notre parcours conducteur de voyageurs intègre ces réalités : relation voyageurs, cadre réglementaire, culture de la sécurité, des compétences directement transférables au scolaire.",
         ],
       },
       {

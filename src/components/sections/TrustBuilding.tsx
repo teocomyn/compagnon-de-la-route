@@ -1,12 +1,13 @@
 import { Check } from "lucide-react";
 import Image from "next/image";
 import { ScrollReveal } from "@/components/magicui/ScrollReveal";
+import { siteName } from "@/lib/constants";
 
 const points = [
-  "Accompagnement par des experts du transport",
-  "Méthodes actives et innovantes, 100% terrain",
-  "Programme reconnu et financé (France Travail, OPCO)",
-  "Parcours personnalisé et suivi individualisé",
+  "Parcours co-construits avec les entreprises et les GEIQ Transport & Mobilité",
+  "Méthodes actives et innovantes, ancrées dans la réalité opérationnelle",
+  "Programme reconnu et financé (France Travail, OPCO, branches professionnelles)",
+  "Accompagnement individualisé et suivi après la formation pour sécuriser l'intégration",
 ];
 
 export function TrustBuilding() {
@@ -16,13 +17,14 @@ export function TrustBuilding() {
         <ScrollReveal>
           <div className="space-y-6">
             <h2 className="text-[clamp(1.75rem,3.5vw,2.625rem)] font-bold leading-[1.1] tracking-[-0.025em] text-white-90">
-              Bâtir la confiance par l&apos;excellence et la pédagogie
+              Exigence, excellence et engagement
             </h2>
             <p className="text-lg leading-relaxed text-white-60">
-              Nous construisons la confiance comme on conduit : avec précision,
-              anticipation, et une priorité absolue à la sécurité. Chaque étape du
-              parcours est pensée pour vous rendre autonome et crédible face aux
-              recruteurs.
+              Le cabinet BOAZ et{" "}
+              <span className="text-white-90">{siteName}</span> refusent la
+              complaisance : nous formons des professionnels fiables pour les passagers,
+              les entreprises et les territoires. Chaque étape du parcours vous rend
+              autonome et crédible face aux recruteurs.
             </p>
             <ul className="space-y-4">
               {points.map((p) => (

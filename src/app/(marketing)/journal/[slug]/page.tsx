@@ -36,20 +36,40 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description: article.meta.description,
       type: "article",
       url: `/journal/${slug}`,
-      images: [{ url: article.meta.thumbnail, alt: article.meta.title }],
+      images: [
+        {
+          url: article.meta.thumbnail.startsWith("http")
+            ? article.meta.thumbnail
+            : `${siteUrl.replace(/\/$/, "")}${article.meta.thumbnail}`,
+          alt: article.meta.title,
+        },
+      ],
     },
   };
 }
 
 function ArticleJsonLd({ slug, meta }: { slug: string; meta: ArticleFrontmatter }) {
+  const thumb = meta.thumbnail.startsWith("http")
+    ? meta.thumbnail
+    : `${siteUrl.replace(/\/$/, "")}${meta.thumbnail}`;
   const json = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: meta.title,
+    description: meta.description,
     datePublished: meta.date,
-    author: { "@type": "Person", name: meta.author },
-    image: `${siteUrl}${meta.thumbnail}`,
-    publisher: { "@type": "Organization", name: siteName, url: siteUrl },
+    dateModified: meta.updated ?? meta.date,
+    author: { "@type": "Organization", name: siteName, url: siteUrl },
+    image: thumb,
+    publisher: {
+      "@type": "Organization",
+      name: siteName,
+      url: siteUrl,
+      logo: {
+        "@type": "ImageObject",
+        url: `${siteUrl.replace(/\/$/, "")}/brand-logo-car.png`,
+      },
+    },
     mainEntityOfPage: `${siteUrl}/journal/${slug}`,
   };
   return (

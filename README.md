@@ -22,4 +22,4 @@ Compagnon de la Route, c’est le pari que la formation peut être à la fois **
 
 ---
 
-*Compagnon de la Route — Le label métier et mission pour conducteurs de voyageurs.*
+*Compagnon de la Route, Le label métier et mission pour conducteurs de voyageurs.*

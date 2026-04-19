@@ -17,7 +17,9 @@ export function Statement() {
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          Chez{" "}
+          Former un conducteur de voyageurs, ce n&apos;est pas seulement transmettre un
+          métier, c&apos;est accompagner une personne dans un{" "}
+          <span className="text-orange-300">projet de vie</span>. Chez{" "}
           <motion.span
             className="text-orange-300"
             initial={reduce ? false : { opacity: 0.2 }}
@@ -27,11 +29,10 @@ export function Statement() {
           >
             Compagnon de la Route
           </motion.span>
-          , nous créons un impact concret grâce à des{" "}
-          <span className="text-orange-300">parcours humains</span>, conçus pour
-          faciliter la mobilité, connecter les territoires et offrir{" "}
-          <span className="text-orange-300">un vrai tremplin professionnel</span>{" "}
-          à chacun.
+          , porté par le cabinet BOAZ, nous créons des{" "}
+          <span className="text-orange-300">parcours exigeants et humains</span>, avec les
+          GEIQ et les entreprises du terrain, pour la mobilité et{" "}
+          <span className="text-orange-300">un emploi durable</span>.
         </motion.p>
       </div>
     </section>

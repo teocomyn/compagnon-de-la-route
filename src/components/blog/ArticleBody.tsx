@@ -1,26 +1,15 @@
-import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { slugifyHeading } from "@/lib/utils";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import { getMdxComponents } from "@/components/mdx/mdx-components";
 
-export function ArticleBody({ content }: { content: string }) {
+export async function ArticleBody({ content }: { content: string }) {
   return (
     <div className="article-prose">
-      <ReactMarkdown
-        remarkPlugins={[remarkGfm]}
-        components={{
-          h2: ({ children }) => {
-            const text = String(children);
-            const id = slugifyHeading(text);
-            return (
-              <h2 id={id} className="scroll-mt-28">
-                {children}
-              </h2>
-            );
-          },
-        }}
-      >
-        {content}
-      </ReactMarkdown>
+      <MDXRemote
+        source={content}
+        components={getMdxComponents()}
+        options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
+      />
     </div>
   );
 }

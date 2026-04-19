@@ -48,7 +48,9 @@ export function ArticleHeader({ meta, slug }: ArticleHeaderProps) {
             </ol>
           </nav>
           <div className="mb-4">
-            <Badge variant="orange">{meta.category}</Badge>
+            <Badge variant={meta.categoryColor === "mint" ? "success" : "orange"}>
+              {meta.category}
+            </Badge>
           </div>
           <h1 className="max-w-4xl text-[clamp(2rem,5vw,3.25rem)] font-bold leading-[1.05] tracking-[-0.03em]">
             {meta.title}

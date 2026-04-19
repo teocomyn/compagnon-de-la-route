@@ -39,10 +39,12 @@ export function Footer() {
               <span className="text-[16px] font-medium">{siteName}</span>
             </div>
             <p className="text-[15px] leading-relaxed text-white-60">
-              Le label métier + mission pour conducteurs de voyageurs
+              Porté par BOAZ · Formation artisanale, exigeante et humaine · Label
+              Compagnon de la Route
             </p>
             <div className="flex flex-wrap gap-2">
               <Badge variant="success">Qualiopi</Badge>
+              <Badge variant="neutral">GEIQ Mobilité</Badge>
               <Badge variant="neutral">OPCO</Badge>
               <Badge variant="neutral">France Travail</Badge>
             </div>

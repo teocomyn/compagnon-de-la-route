@@ -76,10 +76,11 @@ export function Hero() {
             variants={reduce ? undefined : item}
             className="text-lg leading-relaxed text-white-60 md:text-[18px]"
           >
-            Compagnon de la Route propose une formation certifiante et financée
-            pour devenir conducteur de voyageurs. En 30 jours, accédez à un emploi
-            stable dans un secteur qui recrute. Pratique, accompagnement
-            personnalisé, débouchés garantis.
+            Une formation certifiante et financée pour devenir conducteur de
+            voyageurs, portée par le cabinet BOAZ et co-construite avec les GEIQ
+            Transport &amp; Mobilité et les entreprises du terrain. En 30 jours,
+            accédez à un emploi stable dans un secteur qui recrute. Pratique,
+            accompagnement personnalisé, débouchés garantis.
           </motion.p>
 
           <motion.div

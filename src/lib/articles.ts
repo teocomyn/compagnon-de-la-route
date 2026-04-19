@@ -10,6 +10,11 @@ export type ArticleFrontmatter = {
   date: string;
   readingTime: string;
   thumbnail: string;
+  /** Variante badge Journal : orange (défaut) ou mint */
+  categoryColor?: "orange" | "mint";
+  updated?: string;
+  keywords?: string[];
+  featured?: boolean;
 };
 
 const articlesDir = path.join(process.cwd(), "content/articles");

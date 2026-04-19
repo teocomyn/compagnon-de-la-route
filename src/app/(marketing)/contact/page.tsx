@@ -72,7 +72,7 @@ export default function ContactPage() {
 
       <div className="section-shell mx-auto mt-16 max-w-[1200px] overflow-hidden rounded-xl border border-white/10">
         <iframe
-          title="Carte — zone d’intervention"
+          title="Carte, zone d’intervention"
           src={contactInfo.mapsEmbedUrl}
           className="h-[360px] w-full"
           loading="lazy"

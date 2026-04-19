@@ -20,7 +20,7 @@ export function BrandLogo({
   return (
     <Image
       src={LOGO_SRC}
-      alt="Logo Compagnon de la Route — lettres CAR, le A stylisé en route"
+      alt="Logo Compagnon de la Route, lettres CAR, le A stylisé en route"
       width={INTRINSIC.width}
       height={INTRINSIC.height}
       sizes={size === "header" ? "40px" : "48px"}

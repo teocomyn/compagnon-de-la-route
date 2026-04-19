@@ -1,16 +1,16 @@
 # Compagnon de la Route
 
-> Organisme de formation certifiant pour conducteurs de voyageurs (bus, cars scolaires, tourisme). Site en français, 100 % dark mode, priorité à la sécurité, l’humain et l’insertion professionnelle.
+> Organisme de formation certifiant pour conducteurs de voyageurs (bus, cars scolaires, tourisme). Porté par le cabinet BOAZ, en partenariat avec les GEIQ Transport & Mobilité et les entreprises du secteur. Approche artisanale (hors « usine à diplômes ») : exigence, excellence, engagement. Former un conducteur, c’est accompagner un projet de vie. Label « Compagnon de la Route » pour les apprenants à haut niveau de maîtrise. Plus de 85 % de CDIsation sur le programme d’intégration co-construit avec le terrain. Site en français, dark mode, priorité sécurité, humain et insertion.
 
 ## Pages principales
 
-- / — Accueil, formation conducteur de voyageurs, preuve sociale, FAQ
-- /formations — Catalogue des parcours
-- /formations/conducteur-voyageurs — Programme détaillé (210h, 30 jours), financement, sessions
-- /qui-sommes-nous — Histoire, piliers, équipe, méthode
-- /temoignages — Témoignages stagiaires
-- /journal — Articles (financement, métier, entretien)
-- /contact — Formulaire et coordonnées
+- / : Accueil, formation conducteur de voyageurs, preuve sociale, FAQ
+- /formations : Catalogue des parcours
+- /formations/conducteur-voyageurs : Programme détaillé (210h, 30 jours), financement, sessions
+- /qui-sommes-nous : BOAZ, conviction (projet de vie), partenariat GEIQ, histoire terrain, label Compagnon de la Route, double compétence, valeurs, actions, équipe, méthode
+- /temoignages : Témoignages stagiaires
+- /journal : Articles (financement, métier, entretien)
+- /contact : Formulaire et coordonnées
 
 ## Sitemap machine
 
