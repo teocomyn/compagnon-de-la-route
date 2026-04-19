@@ -130,12 +130,6 @@ export function Hero() {
             />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-night/40 via-transparent to-night/20" />
 
-            <div className="absolute top-4 right-4 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/10 backdrop-blur-md">
-              <span className="text-sm font-semibold text-mint-300" aria-hidden>
-                :)
-              </span>
-            </div>
-
             <div className="absolute bottom-6 left-4 right-4 space-y-3 md:left-6">
               {glassItems.map((g, i) => (
                 <motion.div

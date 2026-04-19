@@ -1,0 +1,21 @@
+Visuels du journal et du blog : photographies téléchargées depuis Unsplash
+(https://unsplash.com), licence Unsplash (usage commercial autorisé).
+Reproduction des visuels : relancer scripts/fetch-article-images.sh (IDs ci-dessous).
+
+Référence photo Unsplash (extrait du nom de fichier CDN) :
+- devenir-conducteur-bus-guide-complet : 1544620347, 1570125909232, 1449965408869
+- permis-d-fimo-fco-differences : 1450101499163, 1460925895917, 1551288049
+- salaire-conducteur-bus-2026 : 1554224155, 1454165804606, 1503387762
+- reconversion-conducteur-bus : 1521737711867, 1522071820081, 1552664730
+- financer-formation-conducteur-bus : 1519389950473, 1563986768609, 1504384308090
+- conducteur-bus-scolaire-metier : 1558618666, 1529156069898, 1531482615713
+- conducteur-car-tourisme-metier : 1565610222536, 1516738901171, 1497366216548
+- evolutions-carriere-conducteur-bus : 1507679799987, 1521791136064, 1522202176988
+- formation-conducteur-bus-hauts-de-france : 1586528116311, 1502602898657, 1517248135467
+- journee-type-conducteur-bus : 1511632765486, 1514933651103, 1486406146926
+- images/blog/bus-30.jpg : 1556761175
+- images/blog/avenir.jpg : 1560472354
+- images/blog/entretien.jpg : 1560250097
+- images/blog/finance.jpg : 1553877522
+
+Crédit recommandé (facultatif selon la licence) : « Photo Unsplash » + lien vers la fiche de la photo.
