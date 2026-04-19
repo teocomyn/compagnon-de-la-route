@@ -1,36 +1,25 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Compagnon de la Route
 
-## Getting Started
+**Compagnon de la Route** est un organisme de formation qui certifie les futurs **conducteurs de voyageurs** : bus urbains et interurbains, cars scolaires, autocars de tourisme. Le nom dit l’essentiel : être au volant, ce n’est pas seulement conduire un véhicule, c’est **accompagner des personnes**, **relier des territoires** et **rendre la mobilité possible** pour celles et ceux qui en dépendent.
 
-First, run the development server:
+## Une mission, pas un simple métier
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Derrière le permis et le titre professionnel, il y a une responsabilité : la sécurité des passagers, la qualité du service, le respect des horaires et des règles. Compagnon de la Route place cette exigence au centre : former des professionnels **fiables**, **calmes sous pression** et **à l’aise avec la diversité des publics**.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+L’ambition n’est pas de « faire du volume » comme une chaîne de formation anonyme, mais de proposer une approche **couverte main** : des parcours **humains**, du temps sur le terrain, un suivi qui ne s’arrête pas au jour de l’examen.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Pour qui ?
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Pour toutes les personnes qui veulent **donner du sens** à leur travail tout en construisant un **projet d’emploi durable** : reconversion, retour à l’emploi, montée en compétence ou première embauche dans les transports de personnes. Le secteur recrute ; la question est de former des profils **prêts à l’emploi** et **alignés avec la réalité du métier**.
 
-## Learn More
+## Ce que nous portons
 
-To learn more about Next.js, take a look at the following resources:
+- **L’exigence** : sécurité, réglementation, conduite encadrée, mise en situation réelle.
+- **L’excellence** : pédagogie exigeante, experts du transport, méthodes actives.
+- **L’engagement** : territoires, inclusion, service aux voyageurs, communauté de professionnels qui se reconnaissent dans un métier utile.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Compagnon de la Route, c’est le pari que la formation peut être à la fois **technique et profondément humaine** : un **tremplin professionnel** pour celles et ceux qui choisissent la route.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+*Compagnon de la Route — Le label métier et mission pour conducteurs de voyageurs.*
