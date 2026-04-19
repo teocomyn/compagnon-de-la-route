@@ -108,7 +108,22 @@ export function Footer() {
             <p>
               © {new Date().getFullYear()} {siteName}. Tous droits réservés.
             </p>
-            <p>Créé avec soin par Teo Comyn</p>
+            <p className="text-white-60">
+              Créé par{" "}
+              <a
+                href="https://teocomyn.com/"
+                className="text-white-75 underline decoration-white/25 underline-offset-2 transition-colors hover:text-orange-300 hover:decoration-orange-300/50"
+              >
+                teocomyn.com
+              </a>
+              {" & "}
+              <a
+                href="https://experaise.com/"
+                className="text-white-75 underline decoration-white/25 underline-offset-2 transition-colors hover:text-orange-300 hover:decoration-orange-300/50"
+              >
+                experaise.com
+              </a>
+            </p>
           </div>
         </div>
       </div>
