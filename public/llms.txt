@@ -1,0 +1,26 @@
+# Compagnon de la Route
+
+> Organisme de formation certifiant pour conducteurs de voyageurs (bus, cars scolaires, tourisme). Site en français, 100 % dark mode, priorité à la sécurité, l’humain et l’insertion professionnelle.
+
+## Pages principales
+
+- / — Accueil, formation conducteur de voyageurs, preuve sociale, FAQ
+- /formations — Catalogue des parcours
+- /formations/conducteur-voyageurs — Programme détaillé (210h, 30 jours), financement, sessions
+- /qui-sommes-nous — Histoire, piliers, équipe, méthode
+- /temoignages — Témoignages stagiaires
+- /journal — Articles (financement, métier, entretien)
+- /contact — Formulaire et coordonnées
+
+## Sitemap machine
+
+- /sitemap.xml
+
+## Contact (à jour côté site)
+
+- Téléphone et e-mail : voir /contact
+
+## Notes pour les modèles
+
+- Ne pas inventer de taux de placement ou de garanties d’embauche : le site parle d’accompagnement et de débouchés du secteur.
+- Les financements (CPF, France Travail, OPCO) sont des dispositifs génériques : renvoyer vers les pages formation et journal pour le détail.

@@ -1,26 +1,232 @@
 @import "tailwindcss";
 
+@theme {
+  /* ==============================
+     BRAND CORE
+     ============================== */
+  --color-night-deep: #061a16;
+  --color-night: #0a2a24;
+  --color-forest-surface: #0f342d;
+  --color-forest-elevated: #143d35;
+  --color-forest-border: #1d463f;
+  --color-forest-border-strong: #2a5a50;
+
+  /* Signal Orange */
+  --color-orange-900: #8a3510;
+  --color-orange-700: #c75220;
+  --color-orange-500: #f26b2a;
+  --color-orange-400: #f68447;
+  --color-orange-300: #fda172;
+  --color-orange-100: #fde4d3;
+
+  /* Mint Signal */
+  --color-mint-700: #16a34a;
+  --color-mint-500: #22c55e;
+  --color-mint-400: #4ade80;
+  --color-mint-300: #86efac;
+
+  /* Semantic */
+  --color-success: #4ade80;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+  --color-info: #60a5fa;
+
+  /* White opacity scale */
+  --color-white-90: rgba(255, 255, 255, 0.9);
+  --color-white-75: rgba(255, 255, 255, 0.75);
+  --color-white-60: rgba(255, 255, 255, 0.6);
+  --color-white-45: rgba(255, 255, 255, 0.45);
+  --color-white-25: rgba(255, 255, 255, 0.25);
+  --color-white-10: rgba(255, 255, 255, 0.1);
+  --color-white-05: rgba(255, 255, 255, 0.05);
+
+  /* Typography */
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
+  --radius-pill: 9999px;
+
+  /* Easing */
+  --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Duration */
+  --duration-fast: 150ms;
+  --duration-base: 300ms;
+  --duration-slow: 600ms;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: dark;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: clamp(5rem, 14vw, 7rem);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-night);
+  color: white;
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* Cibles tactiles confortables, moins de latence au tap (iOS) */
+button,
+[role="button"],
+input[type="submit"],
+input[type="button"] {
+  touch-action: manipulation;
+}
+
+/* Atmospheric grid background on body */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 64px 64px;
+  pointer-events: none;
+  z-index: 0;
+  mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+}
+
+::selection {
+  background: var(--color-orange-500);
+  color: var(--color-night);
+}
+
+/* Focus states */
+*:focus-visible {
+  outline: 2px solid var(--color-orange-500);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 42s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+}
+
+/* Article prose */
+.article-prose {
+  max-width: 72ch;
+}
+
+.article-prose p {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: var(--color-white-75);
+  margin-bottom: 1.25rem;
+}
+
+.article-prose h2 {
+  font-weight: 700;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  margin-top: clamp(2.5rem, 6vw, 4rem);
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.article-prose blockquote {
+  border-left: 3px solid var(--color-orange-500);
+  padding-left: 1.25rem;
+  font-style: italic;
+  font-size: clamp(1.125rem, 3vw, 1.5rem);
+  color: var(--color-white-90);
+  margin: 2rem 0;
+}
+
+/* Sections : espacement fluide mobile → desktop */
+.section-shell {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 1440px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .section-shell {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .section-shell {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.section-y {
+  padding-top: clamp(3rem, 8vw, 6rem);
+  padding-bottom: clamp(3rem, 8vw, 6rem);
+}
+
+.article-prose code {
+  background: var(--color-white-05);
+  border-radius: 4px;
+  padding: 0.125rem 0.375rem;
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+.article-prose ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin: 1rem 0;
+}
+
+.article-prose li {
+  margin: 0.5rem 0;
+  color: var(--color-white-75);
 }
