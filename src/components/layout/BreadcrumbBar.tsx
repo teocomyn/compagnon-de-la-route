@@ -1,9 +1,8 @@
 import type { ReactNode } from "react";
 
+/** Bandeau minimal : le fil d’Ariane se fond dans la page, sans encadré visible. */
 export function BreadcrumbBar({ children }: { children: ReactNode }) {
   return (
-    <div className="border-b border-white/5 bg-night-deep/50 backdrop-blur-sm supports-[backdrop-filter]:bg-night-deep/35">
-      <div className="section-shell py-3 sm:py-4">{children}</div>
-    </div>
+    <div className="section-shell py-1.5 pb-2 sm:py-2 sm:pb-2.5">{children}</div>
   );
 }

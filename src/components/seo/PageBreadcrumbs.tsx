@@ -21,20 +21,28 @@ export function PageBreadcrumbs({ items, className }: PageBreadcrumbsProps) {
       <nav
         aria-label="Fil d’Ariane"
         className={cn(
-          "text-sm text-white-60 [&_a]:min-h-[44px] [&_a]:inline-flex [&_a]:items-center [&_a]:rounded-sm [&_a]:text-orange-200/90 [&_a]:underline-offset-4 [&_a]:hover:text-orange-300 [&_a]:focus-visible:outline [&_a]:focus-visible:outline-2 [&_a]:focus-visible:outline-offset-2 [&_a]:focus-visible:outline-orange-500",
+          "font-mono text-[10px] font-medium uppercase tracking-[0.14em]",
+          "text-white/[0.16]",
+          "[&_a]:text-white/[0.22] [&_a]:no-underline [&_a]:transition-colors [&_a]:duration-200",
+          "[&_a]:min-h-[40px] [&_a]:items-center [&_a]:inline-flex [&_a]:-translate-y-px [&_a]:rounded-sm",
+          "[&_a]:hover:text-white/[0.35]",
+          "[&_a]:focus-visible:outline [&_a]:focus-visible:outline-2 [&_a]:focus-visible:outline-offset-2 [&_a]:focus-visible:outline-orange-500/80",
           className,
         )}
       >
-        <ol className="flex flex-wrap items-center gap-x-2 gap-y-1">
+        <ol className="flex flex-wrap items-baseline gap-x-1.5 gap-y-0.5">
           {items.map((crumb, i) => (
-            <li key={`${crumb.href}-${crumb.label}`} className="flex items-center gap-2">
+            <li
+              key={`${crumb.href}-${crumb.label}`}
+              className="flex items-baseline gap-1.5"
+            >
               {i > 0 ? (
-                <span className="text-white-25" aria-hidden>
+                <span className="select-none text-white/[0.06]" aria-hidden>
                   /
                 </span>
               ) : null}
               {i === last ? (
-                <span className="font-medium text-white-90">{crumb.label}</span>
+                <span className="text-white/[0.26]">{crumb.label}</span>
               ) : (
                 <Link href={crumb.href}>{crumb.label}</Link>
               )}

@@ -28,7 +28,7 @@ export default function FormationsPage() {
           />
         </BreadcrumbBar>
       </div>
-      <section className="section-shell pb-16 pt-8 md:pb-24 md:pt-12">
+      <section className="section-shell pb-16 pt-3 md:pb-24 md:pt-8">
         <div className="mx-auto max-w-[980px]">
           <Eyebrow>Catalogue</Eyebrow>
           <h1 className="mt-4 text-[clamp(2.25rem,5vw,3.5rem)] font-bold leading-[1.05] tracking-[-0.03em]">

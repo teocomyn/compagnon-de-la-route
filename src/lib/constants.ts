@@ -30,6 +30,15 @@ export const footerLegal = [
   { href: "/rgpd", label: "RGPD" },
 ] as const;
 
+/** Guides SEO (pages piliers) */
+export const footerGuides = [
+  { href: "/financement-formation-conducteur-voyageurs", label: "Financement formation" },
+  { href: "/faq-conducteur-de-voyageurs", label: "FAQ conducteur de voyageurs" },
+  { href: "/metier-conducteur-de-car-debouches", label: "Métier & débouchés" },
+  { href: "/formation-conducteur-voyageurs-hauts-de-france", label: "Formation Hauts-de-France" },
+  { href: "/certification-formation-conducteur-voyageurs", label: "Certification" },
+] as const;
+
 export const contactInfo = {
   phone: "+33 3 20 00 00 00",
   email: "contact@compagnon-de-la-route.fr",

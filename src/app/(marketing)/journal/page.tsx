@@ -29,7 +29,7 @@ export default function JournalPage() {
           />
         </BreadcrumbBar>
       </div>
-      <div className="section-shell pt-8 pb-20 md:pt-12">
+      <div className="section-shell pt-3 pb-20 md:pt-8">
         <div className="mx-auto max-w-[1100px]">
         <Eyebrow>Notre journal</Eyebrow>
         <h1 className="mt-4 text-[clamp(2.25rem,5vw,3.5rem)] font-bold leading-[1.05] tracking-[-0.03em]">

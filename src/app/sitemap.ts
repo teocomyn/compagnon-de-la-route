@@ -1,11 +1,17 @@
 import type { MetadataRoute } from "next";
 import { getArticleSlugs } from "@/lib/articles";
 import { siteUrl } from "@/lib/constants";
+import { seoLandingSlugs } from "@/lib/seo-landings";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
   const articles = getArticleSlugs().map((slug) => ({
     url: `${siteUrl}/journal/${slug}`,
+    lastModified,
+  }));
+
+  const seoRoutes = seoLandingSlugs.map((slug) => ({
+    url: `${siteUrl}/${slug}`,
     lastModified,
   }));
 
@@ -26,5 +32,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified,
   }));
 
-  return [...routes, ...articles];
+  return [...routes, ...seoRoutes, ...articles];
 }

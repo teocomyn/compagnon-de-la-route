@@ -22,17 +22,29 @@ export function ArticleHeader({ meta, slug }: ArticleHeaderProps) {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-night via-night/70 to-night/20" />
         <div className="absolute inset-x-0 bottom-0 mx-auto max-w-[1100px] px-6 pb-12 md:px-8">
-          <nav aria-label="Fil d’Ariane" className="mb-6 text-sm text-white-60">
-            <ol className="flex flex-wrap gap-2">
+          <nav
+            aria-label="Fil d’Ariane"
+            className="mb-3 font-mono text-[10px] font-medium uppercase tracking-[0.14em] text-white/[0.18] sm:mb-4"
+          >
+            <ol className="flex flex-wrap items-baseline gap-x-1.5 gap-y-0.5">
               <li>
-                <Link href="/journal" className="hover:text-orange-300">
+                <Link
+                  href="/journal"
+                  className="text-white/[0.22] no-underline transition-colors duration-200 hover:text-white/[0.35] focus-visible:rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500/80"
+                >
                   Journal
                 </Link>
               </li>
-              <li aria-hidden>/</li>
-              <li className="text-white-45">{meta.category}</li>
-              <li aria-hidden>/</li>
-              <li className="text-white-90">{meta.title}</li>
+              <li className="select-none text-white/[0.06]" aria-hidden>
+                /
+              </li>
+              <li className="text-white/[0.22]">{meta.category}</li>
+              <li className="select-none text-white/[0.06]" aria-hidden>
+                /
+              </li>
+              <li className="max-w-[min(100%,52ch)] truncate text-white/[0.26]">
+                {meta.title}
+              </li>
             </ol>
           </nav>
           <div className="mb-4">

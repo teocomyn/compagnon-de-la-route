@@ -3,9 +3,11 @@ import Link from "next/link";
 import {
   footerAbout,
   footerFormations,
+  footerGuides,
   footerLegal,
   siteName,
 } from "@/lib/constants";
+import { BrandLogo } from "@/components/brand/BrandLogo";
 import { Badge } from "@/components/ui/Badge";
 
 function FooterLink({
@@ -30,12 +32,10 @@ export function Footer() {
   return (
     <footer className="border-t border-white/10 bg-night-deep/60">
       <div className="mx-auto max-w-[1440px] px-6 py-16 md:px-8">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           <div className="space-y-6">
-            <div className="flex items-center gap-3">
-              <span className="flex h-9 w-9 items-center justify-center rounded-[8px] bg-orange-500 font-extrabold tracking-[-0.04em] text-night-deep">
-                C·R
-              </span>
+            <div className="flex flex-wrap items-center gap-3">
+              <BrandLogo size="footer" />
               <span className="text-[16px] font-medium">{siteName}</span>
             </div>
             <p className="text-[15px] leading-relaxed text-white-60">
@@ -54,6 +54,19 @@ export function Footer() {
             </p>
             <ul className="flex flex-col gap-3">
               {footerFormations.map((l) => (
+                <li key={l.href}>
+                  <FooterLink href={l.href}>{l.label}</FooterLink>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <p className="mb-4 font-mono text-[11px] font-medium uppercase tracking-[0.15em] text-orange-300">
+              Guides
+            </p>
+            <ul className="flex flex-col gap-3">
+              {footerGuides.map((l) => (
                 <li key={l.href}>
                   <FooterLink href={l.href}>{l.label}</FooterLink>
                 </li>

@@ -20,7 +20,7 @@ export default function CgvPage() {
           />
         </BreadcrumbBar>
       </div>
-      <div className="section-shell mx-auto max-w-[900px] py-12 md:py-16">
+      <div className="section-shell mx-auto max-w-[900px] pt-3 pb-12 md:pt-5 md:pb-16">
       <h1 className="text-4xl font-bold tracking-tight">Conditions générales de vente</h1>
       <p className="mt-6 text-white-60">
         Document disponible sur demande et lors de l&apos;inscription.

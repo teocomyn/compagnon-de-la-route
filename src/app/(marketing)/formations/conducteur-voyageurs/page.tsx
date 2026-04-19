@@ -93,7 +93,7 @@ export default function FormationConducteurPage() {
           />
         </BreadcrumbBar>
       </div>
-      <section className="section-shell pb-16 pt-8 md:pb-20 md:pt-12">
+      <section className="section-shell pb-16 pt-3 md:pb-20 md:pt-8">
         <div className="mx-auto max-w-[1100px]">
           <Eyebrow>Programme phare</Eyebrow>
           <h1 className="mt-4 text-[clamp(2.25rem,5vw,3.75rem)] font-extrabold leading-[0.95] tracking-[-0.04em]">

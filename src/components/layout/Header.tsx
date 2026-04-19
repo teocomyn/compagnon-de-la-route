@@ -3,6 +3,7 @@
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { BrandLogo } from "@/components/brand/BrandLogo";
 import { buttonVariants } from "@/components/ui/Button";
 import { MobileMenu } from "@/components/layout/MobileMenu";
 import { navLinks } from "@/lib/constants";
@@ -47,9 +48,7 @@ export function Header() {
             className="group flex items-center gap-3"
             aria-label="Compagnon de la Route, accueil"
           >
-            <span className="flex h-9 w-9 items-center justify-center rounded-[8px] bg-orange-500 font-extrabold tracking-[-0.04em] text-night-deep">
-              C·R
-            </span>
+            <BrandLogo priority size="header" />
             <span className="hidden text-[16px] font-medium tracking-tight text-white-90 sm:inline">
               Compagnon de la Route
             </span>

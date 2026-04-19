@@ -25,7 +25,7 @@ export default function ContactPage() {
           />
         </BreadcrumbBar>
       </div>
-      <div className="section-shell grid max-w-[1200px] gap-12 pt-8 lg:grid-cols-2 lg:items-start">
+      <div className="section-shell grid max-w-[1200px] gap-12 pt-3 lg:grid-cols-2 lg:items-start lg:pt-6">
         <div className="space-y-6">
           <Eyebrow>Prenons la route ensemble</Eyebrow>
           <h1 className="text-[clamp(2rem,4.5vw,3.25rem)] font-bold leading-[1.05] tracking-[-0.03em]">
