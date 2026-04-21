@@ -8,8 +8,10 @@ import { Pedagogy } from "@/components/sections/Pedagogy";
 import { PrereqImmersive } from "@/components/sections/PrereqImmersive";
 import { Statement } from "@/components/sections/Statement";
 import { Stats } from "@/components/sections/Stats";
-import { Testimonials } from "@/components/sections/Testimonials";
+import CdrTestimonials from "@/components/ui/cdr-testimonials-columns";
 import { TrustBuilding } from "@/components/sections/TrustBuilding";
+import CompagnonBentoSection from "@/components/ui/cdr-bento-section";
+import { ParcoursOrbitalSection } from "@/components/sections/ParcoursOrbitalSection";
 import { WhyBecome } from "@/components/sections/WhyBecome";
 import { faqItems } from "@/lib/faq";
 import { siteName, siteUrl } from "@/lib/constants";
@@ -80,7 +82,9 @@ export default function HomePage() {
       <Pedagogy />
       <ComparisonTable />
       <Distinctions />
-      <Testimonials />
+      <CompagnonBentoSection />
+      <ParcoursOrbitalSection />
+      <CdrTestimonials />
       <FAQ />
       <FinalCTA />
     </>

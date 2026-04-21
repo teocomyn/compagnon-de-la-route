@@ -135,6 +135,30 @@ body::before {
   }
 }
 
+@keyframes cdr-pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 16px rgba(242, 107, 42, 0.6);
+  }
+  50% {
+    opacity: 0.4;
+    box-shadow: 0 0 4px rgba(242, 107, 42, 0.3);
+  }
+}
+
+.cdr-pulse-dot {
+  animation: cdr-pulse-dot 2.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cdr-pulse-dot {
+    animation: none;
+    opacity: 1;
+    box-shadow: none;
+  }
+}
+
 @keyframes marquee {
   from {
     transform: translateX(0);
