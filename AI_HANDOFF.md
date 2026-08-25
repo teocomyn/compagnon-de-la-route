@@ -79,9 +79,16 @@ Préférence de livraison du client : après validation, committer et pousser ch
 - Quatre photographies métier fournies par le client intégrées dans `public/images/journal`, avec textes alternatifs descriptifs et chargement prioritaire limité aux visuels visibles au-dessus de la ligne de flottaison.
 - SEO du Journal renforcé : mots-clés ciblés, métadonnées Open Graph/Twitter, schémas `Article` et `CollectionPage`/`ItemList`, sources officielles, FAQ éditoriales, maillage interne et sitemap dynamique limité aux articles vérifiés.
 - Promesses fragiles écartées des articles : aucune durée universelle de 30 jours, aucun financement automatique, aucun « zéro chômage » ni emploi garanti.
+- Formulaire de contact qualifié livré dans le commit `814832f` : segmentation par profil (candidat, entreprise, partenaire, autre), projet (conducteur, exploitant-régulateur, recrutement, partenariat, autre) et organisation lorsque nécessaire.
+- Les liens de parcours peuvent préremplir le projet via `/contact?projet=...` ; la validation serveur contrôle les valeurs autorisées et le message Resend expose des champs structurés prêts pour un futur routage CRM, sans envoyer de données à un service supplémentaire.
+- Politique de confidentialité alignée sur ces nouvelles données de qualification et garde-fou Playwright ajouté pour le préremplissage Exploitant-régulateur.
 
 ## Vérifications passées
 
+- Contact qualifié inspecté à 1440 × 1100 et 390 × 844 avec le projet Exploitant-régulateur prérempli ; formulaire, consentement et footer lisibles sans débordement horizontal.
+- Revue UI 21st du formulaire et de la page contact — 0 finding.
+- `npm run test:e2e` — 15 tests passés sur le port 3101 ; le port 3000 était occupé par un autre projet local et n'a pas été interrompu.
+- `npm run lint`, `npm run build` et `npm audit --omit=dev` — passés, 0 vulnérabilité de production.
 - Accueil réaligné inspecté à 1440 × 1000 et 390 × 844 : hero, premier viewport mobile, ligne de réseau et sélecteur des deux métiers lisibles sans débordement horizontal.
 - Revue UI 21st de `Hero`, `Pathways`, `TrustBuilding` et de la page d'accueil — 0 finding.
 - Catalogue et page Exploitant-régulateur inspectés à 1440 × 1000 et 390 × 844 : statuts, appels à l'action, sources et réserves lisibles sans débordement horizontal.
