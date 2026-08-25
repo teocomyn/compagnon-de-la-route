@@ -2,12 +2,15 @@
 
 ## État
 
-La refonte éditoriale anti-slop, le triptyque Bento, le footer en arche, les bordures orbitales sélectives, le titre de marque, la ligne de réseau, le slider photographique, la section pédagogique et la nouvelle hero mobile de l'accueil sont poussés sur `main`, dernière livraison fonctionnelle `19a17a4`. Le déploiement de production n’a pas été vérifié dans ce dépôt.
+La refonte éditoriale anti-slop, les composants majeurs de l'accueil et la clarification de l'architecture de marque sont poussés sur `main`, dernière livraison fonctionnelle `155772d`. Compagnon de la Route est désormais présenté comme le label transport porté par BOAZ. Le déploiement de production n’a pas été vérifié dans ce dépôt.
 
 Préférence de livraison du client : après validation, committer et pousser chaque intervention sur `origin/main`, sans inclure de secret.
 
 ## Changements principaux
 
+- Architecture de marque corrigée dans les contenus et le SEO : BOAZ est l'organisme de formation et Compagnon de la Route son label transport. Le schéma racine expose un `EducationalOrganization` BOAZ relié à une `Brand` Compagnon de la Route ; les schémas `Course`, `Article` et `AboutPage` réutilisent la même identité.
+- Nouvelle page `/le-label` en composition éditoriale plate : articulation visuelle label → organisme, socle de responsabilité, photographie métier et distinction explicite entre Compagnon de la Route, BOAZ et Qualiopi. La page ne présente ni le label comme une certification, ni Qualiopi comme une garantie de financement, de diplôme ou d'emploi.
+- Navigation desktop et mobile enrichie avec « Le label » et « BOAZ » ; footer, README, `llms.txt`, sitemap et page organisme alignés sur la même architecture.
 - Hero de l'accueil reconstruit avec un slider plein cadre des quatre photographies fournies par le client : route nocturne, autocar en montagne, conducteur au poste et bus urbain en mouvement. Le contact-sheet initial a été retiré à la demande du client. Sur mobile, le slider devient l'arrière-plan d'un écran unique : titre, bénéfice, CTA principal et preuves apparaissent immédiatement, avec des commandes compactes ancrées en bas. Les petits écrans conservent prioritairement le CTA de parcours ; la composition desktop reste en deux colonnes. Le slider accepte autoplay, pause, survol, focus, flèches, clavier et swipe ; il devient manuel avec `prefers-reduced-motion` et ne produit aucun écart d'hydratation.
 - Ligne de réseau ajoutée immédiatement sous le hero avec les logos fournis de la Fédération Française des Geiq, BPV Objectifs et Geiq Mobilité. Le défilement CSS continu se suspend au survol et devient une grille statique sous `prefers-reduced-motion`, sans ajouter de JavaScript client.
 - Système visuel global nettoyé : Archivo et IBM Plex Mono remplacent Geist, fond quadrillé supprimé, halos et verre retirés, ombres et mouvements décoratifs supprimés, rayons réduits et hiérarchie portée par les bordures et l'espace.
@@ -73,6 +76,9 @@ Préférence de livraison du client : après validation, committer et pousser ch
 
 ## Vérifications passées
 
+- Page `/le-label` inspectée à 1440 × 1100, 1280 × 900 et 390 × 844 : hiérarchie, navigation, schéma label → BOAZ et footer lisibles sans débordement horizontal.
+- Revue UI 21st de la page label, du header, du menu mobile et du footer — 0 finding.
+- `npm run test:e2e` — 14 tests passés, dont le garde-fou d'architecture de marque et la présence de `/le-label` dans le sitemap.
 - Audit visuel anti-slop de l'ensemble des routes publiques et de la page SEO suspendue.
 - Revue UI 21st sur 62 fichiers : 0 erreur, 0 avertissement, 0 suggestion.
 - Inspection Playwright à 1440 px et 390 px : hero, reveal, menu mobile, formation, contact et article ; aucun débordement horizontal.
@@ -106,9 +112,10 @@ Préférence de livraison du client : après validation, committer et pousser ch
 
 ## Prochaines décisions métier
 
-1. Valider la fiche programme réelle et les prochaines sessions.
-2. Fournir les coordonnées publiques et les variables Resend.
-3. Compléter directeur de publication, hébergeur et médiateur.
-4. Relire individuellement les dix brouillons restants ; ne passer un fichier à `status: verified` qu’après suppression des promesses fragiles et ajout de sources officielles. Conserver la page Hauts-de-France en 404 tant qu’un lieu et des sessions locales ne sont pas confirmés.
-5. Recueillir des témoignages avec consentement avant de réindexer la page dédiée.
-6. Revalider les liens et références réglementaires des neuf guides lors de toute évolution du programme, et au plus tard avant le 7 juin 2028 pour RNCP37878.
+1. Documenter puis publier le parcours Exploitant-régulateur sans reprendre les durées, financements, volumes d'emploi ou dates évoqués oralement tant qu'une fiche programme officielle n'est pas disponible.
+2. Valider la fiche programme réelle et les prochaines sessions du parcours conducteur.
+3. Fournir les coordonnées publiques et les variables Resend.
+4. Compléter directeur de publication, hébergeur et médiateur.
+5. Relire individuellement les dix brouillons restants ; ne passer un fichier à `status: verified` qu’après suppression des promesses fragiles et ajout de sources officielles. Conserver la page Hauts-de-France en 404 tant qu’un lieu et des sessions locales ne sont pas confirmés.
+6. Recueillir des témoignages avec consentement avant de réindexer la page dédiée.
+7. Revalider les liens et références réglementaires des neuf guides lors de toute évolution du programme, et au plus tard avant le 7 juin 2028 pour RNCP37878.
