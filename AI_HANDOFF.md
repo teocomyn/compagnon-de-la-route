@@ -2,13 +2,13 @@
 
 ## État
 
-La refonte éditoriale anti-slop, le triptyque Bento, le footer en arche, les bordures orbitales sélectives, le nouveau titre de marque et la ligne de réseau de l'accueil sont poussés sur `main`, dernière livraison fonctionnelle `8bf3360`. Le déploiement de production n’a pas été vérifié dans ce dépôt.
+La refonte éditoriale anti-slop, le triptyque Bento, le footer en arche, les bordures orbitales sélectives, le titre de marque, la ligne de réseau et le hero photographique de l'accueil sont poussés sur `main`, dernière livraison fonctionnelle `49c3963`. Le déploiement de production n’a pas été vérifié dans ce dépôt.
 
 Préférence de livraison du client : après validation, committer et pousser chaque intervention sur `origin/main`, sans inclure de secret.
 
 ## Changements principaux
 
-- Hero de l'accueil entièrement reconstruit autour d'une photographie métier réelle : composition éditoriale en deux colonnes, titre « Compagnon de la route, plus qu'un métier, une mission », CTA distincts et preuves réglementaires factuelles.
+- Hero de l'accueil entièrement reconstruit en composition éditoriale à deux colonnes avec un contact-sheet des quatre photographies fournies par le client : route nocturne, autocar en montagne, conducteur au poste et bus urbain en mouvement. Sur mobile, la mosaïque précède le titre « Compagnon de la route, plus qu'un métier, une mission » ; les CTA et preuves réglementaires restent factuels.
 - Ligne de réseau ajoutée immédiatement sous le hero avec les logos fournis de la Fédération Française des Geiq, BPV Objectifs et Geiq Mobilité. Le défilement CSS continu se suspend au survol et devient une grille statique sous `prefers-reduced-motion`, sans ajouter de JavaScript client.
 - Système visuel global nettoyé : Archivo et IBM Plex Mono remplacent Geist, fond quadrillé supprimé, halos et verre retirés, ombres et mouvements décoratifs supprimés, rayons réduits et hiérarchie portée par les bordures et l'espace.
 - Seul le reveal narratif de la déclaration d'accueil est conservé. Le menu, le poids variable de la navigation et les accordéons ne bougent que pour signaler un état ou une action.
@@ -88,6 +88,7 @@ Préférence de livraison du client : après validation, committer et pousser ch
 - Revue UI 21st sur les trois fichiers de la home — 0 finding après correction.
 - Inspection visuelle complète de la page formation à 1440 px et 390 px ; aucun débordement horizontal, hero et sections photographiques validés.
 - Inspection visuelle de la ligne de réseau à 1440 px et 390 px, avec mouvement normal et réduit ; trois logos lisibles, pause au survol et aucun débordement horizontal.
+- Inspection visuelle du nouveau hero photographique à 2048 px, 1440 px et 390 px ; quatre images lisibles, cadrages adaptés aux formats natifs et aucun débordement horizontal.
 - Revue UI 21st de la page formation, de l'accordéon et de la timeline — 0 finding après correction.
 - Inspection visuelle du header en haut de page, après scroll, au survol et avec le menu mobile ouvert ; axe `wght` vérifié de 430 à 720 et aucun débordement à 390 px.
 - Revue UI 21st du header, du menu mobile et des composants VariableFontHover — 0 finding après correction.
