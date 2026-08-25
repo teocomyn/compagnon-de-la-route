@@ -2,7 +2,7 @@
 
 ## État
 
-La refonte éditoriale anti-slop, le triptyque Bento, le footer en arche, les bordures orbitales sélectives, le titre de marque, la ligne de réseau, le slider photographique, la section pédagogique et la nouvelle hero mobile de l'accueil sont poussés sur `main`, dernière livraison fonctionnelle `385fa7d`. Le déploiement de production n’a pas été vérifié dans ce dépôt.
+La refonte éditoriale anti-slop, le triptyque Bento, le footer en arche, les bordures orbitales sélectives, le titre de marque, la ligne de réseau, le slider photographique, la section pédagogique et la nouvelle hero mobile de l'accueil sont poussés sur `main`, dernière livraison fonctionnelle `19a17a4`. Le déploiement de production n’a pas été vérifié dans ce dépôt.
 
 Préférence de livraison du client : après validation, committer et pousser chaque intervention sur `origin/main`, sans inclure de secret.
 
@@ -92,6 +92,7 @@ Préférence de livraison du client : après validation, committer et pousser ch
 - Inspection visuelle de la ligne de réseau à 1440 px et 390 px, avec mouvement normal et réduit ; trois logos lisibles, pause au survol et aucun débordement horizontal.
 - Inspection visuelle du slider hero à 1440 px et 390 px sur les deux premières images ; autoplay, pause au survol, boutons, clavier et réduction des animations vérifiés, sans débordement horizontal ni erreur d'hydratation.
 - Inspection visuelle de la hero mobile à 375 × 667, 390 × 844 et 430 × 932 sur les quatre photographies ; message et CTA principal visibles dans le premier viewport, contraste lisible, commandes accessibles et aucun débordement horizontal.
+- Calibre typographique mobile du hero réduit après retour client : titre mesuré entre 129 et 158 px de hauteur sur les viewports contrôlés, photographie davantage visible et CTA toujours présent dans le premier écran.
 - Inspection visuelle de la section pédagogique à 1440 px et 390 px ; photographie, progression numérotée et raccord avec la section suivante validés sans débordement horizontal.
 - Revue UI 21st de `Hero` et `HeroSlider` — 0 finding.
 - `npm run test:e2e` — 13 tests passés après ajout du garde-fou mobile sur le premier viewport.
