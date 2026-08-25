@@ -111,6 +111,7 @@ test.describe("Parcours critiques", () => {
     expect(headingBox).not.toBeNull();
     expect(actionBox).not.toBeNull();
     expect(sliderBox).not.toBeNull();
+    expect(headingBox!.height).toBeLessThan(170);
     expect(headingBox!.y).toBeGreaterThanOrEqual(sliderBox!.y);
     expect(actionBox!.y + actionBox!.height).toBeLessThanOrEqual(844);
     expect(sliderBox!.y + sliderBox!.height).toBeGreaterThan(headingBox!.y + headingBox!.height);

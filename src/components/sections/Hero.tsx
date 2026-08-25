@@ -10,13 +10,13 @@ export function Hero() {
       <div className="relative mx-auto grid min-h-[calc(100svh-4rem)] max-w-screen-2xl md:min-h-[740px] md:grid-cols-12">
         <div className="relative z-20 flex items-end px-5 pb-24 pt-10 [@media(max-height:720px)]:pb-20 [@media(max-height:720px)]:pt-6 md:order-1 md:col-span-7 md:items-center md:px-10 md:py-16 lg:px-16 xl:px-20">
           <div className="w-full max-w-4xl">
-            <p className="font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-orange-300">
+            <p className="font-mono text-[10px] font-medium uppercase tracking-[0.16em] text-orange-300 md:text-[11px] md:tracking-[0.18em]">
               Formation conducteur de voyageurs
             </p>
 
             <h1
               aria-label="Compagnon de la route, plus qu'un métier, une mission"
-              className="mt-5 max-w-[12ch] text-balance text-[clamp(2.6rem,11.8vw,4rem)] font-extrabold leading-[0.9] tracking-[-0.055em] text-white [@media(max-height:720px)]:mt-4 [@media(max-height:720px)]:text-[2.35rem] md:mt-7 md:max-w-none md:text-[clamp(2.8rem,4.8vw,5.25rem)] md:text-white-90"
+              className="mt-4 max-w-[14ch] text-balance text-[clamp(2.05rem,8.8vw,2.75rem)] font-extrabold leading-[0.92] tracking-[-0.05em] text-white [@media(max-height:720px)]:text-[2.05rem] md:mt-7 md:max-w-none md:text-[clamp(2.8rem,4.8vw,5.25rem)] md:leading-[0.9] md:tracking-[-0.055em] md:text-white-90"
             >
               <span aria-hidden="true" className="block">
                 Compagnon de la route,
@@ -29,7 +29,7 @@ export function Hero() {
               </span>
             </h1>
 
-            <p className="mt-6 max-w-[34rem] text-[15px] leading-6 text-white-75 [@media(max-height:720px)]:mt-4 md:hidden">
+            <p className="mt-5 max-w-[34rem] text-sm leading-[1.55] text-white-75 [@media(max-height:720px)]:mt-4 md:hidden">
               Un parcours cadré selon votre situation, avec les modalités confirmées
               avant l&apos;inscription.
             </p>

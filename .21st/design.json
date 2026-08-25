@@ -275,7 +275,7 @@
     {
       "id": "homepage-cinematic-photo-slider",
       "decision": "Présenter les quatre photographies fournies par le client dans un slider plein cadre : en colonne face au contenu sur desktop, puis comme arrière-plan du message et des actions dans un hero mobile plein écran.",
-      "rationale": "Le contact-sheet initial a été refusé par le client le 25 août 2026 au profit d'une image forte à la fois. Sur mobile, la fusion du visuel et du contenu place la proposition de valeur et l'action principale dans le premier écran. Un assombrissement fonctionnel garantit le contraste sans ajouter d'effet décoratif. Le slider reste contrôlable au toucher, au clavier et avec des boutons, se met en pause sur demande, au survol et au focus, et devient manuel avec prefers-reduced-motion."
+      "rationale": "Le contact-sheet initial a été refusé par le client le 25 août 2026 au profit d'une image forte à la fois. Sur mobile, la fusion du visuel et du contenu place la proposition de valeur et l'action principale dans le premier écran. L'échelle du titre reste volontairement compacte afin de préserver la lecture de la photographie et d'éviter une sensation d'affiche surdimensionnée. Un assombrissement fonctionnel garantit le contraste sans ajouter d'effet décoratif. Le slider reste contrôlable au toucher, au clavier et avec des boutons, se met en pause sur demande, au survol et au focus, et devient manuel avec prefers-reduced-motion."
     },
     {
       "id": "homepage-pedagogy-photo-sequence",
