@@ -286,6 +286,11 @@
       "id": "brand-architecture-boaz-cdr-label",
       "decision": "Présenter systématiquement Compagnon de la Route comme le label transport et BOAZ comme l'organisme de formation qui le porte, dans les contenus, la navigation et les données structurées.",
       "rationale": "Architecture confirmée par le fondateur le 25 août 2026. La page Le label utilise une composition éditoriale plate, un schéma visuel label vers organisme et des définitions distinctes pour Compagnon de la Route, BOAZ et Qualiopi, sans créer de certification ou de promesse supplémentaire."
+    },
+    {
+      "id": "two-path-training-catalog",
+      "decision": "Organiser le catalogue autour de deux panneaux métier complémentaires : conduite à bord et exploitation-régulation du service, avec un statut de publication visible pour chaque parcours.",
+      "rationale": "Périmètre métier confirmé par le fondateur le 25 août 2026. Le parcours conducteur reste présenté avec ses réserves actuelles ; la page exploitant-régulateur documente le métier depuis les sources officielles mais indique que le programme BOAZ, la certification, la durée, le calendrier et le financement ne sont pas encore confirmés."
     }
   ],
   "evidence": [

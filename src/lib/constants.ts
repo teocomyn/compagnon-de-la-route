@@ -23,6 +23,7 @@ export const navLinks = [
 
 export const footerFormations = [
   { href: "/formations/conducteur-voyageurs", label: "Conducteur de voyageurs" },
+  { href: "/formations/exploitant-regulateur", label: "Exploitant-régulateur" },
   { href: "/formations", label: "Toutes les formations" },
 ] as const;
 
@@ -84,4 +85,15 @@ export const programmeInfo = {
     "Les possibilités de financement sont étudiées au cas par cas et confirmées par écrit avant toute inscription.",
   employment:
     "L’accompagnement prépare l’accès à l’emploi, sans garantir une embauche ni un type de contrat.",
+} as const;
+
+export const exploitantProgrammeInfo = {
+  title: "Parcours exploitant-régulateur en transport routier de voyageurs",
+  status: "Fiche programme en préparation",
+  duration: "À confirmer dans la fiche programme",
+  schedule: "Aucune session publiée à ce jour",
+  certification:
+    "La certification éventuellement préparée par BOAZ sera confirmée avant toute candidature.",
+  financing:
+    "Aucune prise en charge n’est présentée comme acquise avant l’accord écrit du financeur.",
 } as const;

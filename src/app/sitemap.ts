@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/qui-sommes-nous",
     "/formations",
     "/formations/conducteur-voyageurs",
+    "/formations/exploitant-regulateur",
     "/guides",
     "/journal",
     ...articleRoutes,

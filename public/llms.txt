@@ -8,6 +8,7 @@
 - /le-label : Rôle du label Compagnon de la Route et articulation avec BOAZ
 - /formations : Catalogue des parcours
 - /formations/conducteur-voyageurs : Objectifs généraux et demande de fiche programme à jour
+- /formations/exploitant-regulateur : Métier, référentiel public et liste des modalités BOAZ encore à confirmer
 - /guides : Index des ressources réglementaires et métier vérifiées
 - /journal : Notes pratiques publiées après relecture et vérification des sources
 - /journal/devenir-conducteur-bus-guide-complet : Permis D, qualification, parcours et étapes pour exercer

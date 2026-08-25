@@ -268,6 +268,27 @@ test.describe("Parcours critiques", () => {
     expect(hasHorizontalOverflow).toBe(false);
   });
 
+  test("exploitant-régulateur : métier documenté sans fausse ouverture", async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto("/formations/exploitant-regulateur");
+
+    await expect(
+      page.getByRole("heading", { level: 1, name: /Garder le service en mouvement/i }),
+    ).toBeVisible();
+    await expect(page.getByText("Programme BOAZ en préparation", { exact: true })).toBeVisible();
+    await expect(page.getByText(/aucune inscription n’est ouverte/i)).toBeVisible();
+    await expect(page.getByText(/ne signifie pas, à ce stade, que le parcours BOAZ/i)).toBeVisible();
+    await expect(page.getByRole("link", { name: /France Compétences/i })).toHaveAttribute(
+      "href",
+      "https://www.francecompetences.fr/recherche/rncp/39792/",
+    );
+
+    const hasHorizontalOverflow = await page.evaluate(
+      () => document.documentElement.scrollWidth > window.innerWidth,
+    );
+    expect(hasHorizontalOverflow).toBe(false);
+  });
+
   test("sécurité : les en-têtes de production sont présents", async ({ request }) => {
     const response = await request.get("/");
     const headers = response.headers();
@@ -354,6 +375,7 @@ test.describe("Parcours critiques", () => {
     expect(sitemap).toContain("/journal/financer-formation-conducteur-bus");
     expect(sitemap).toContain("/journal/metier-avenir-recrute");
     expect(sitemap).toContain("/le-label");
+    expect(sitemap).toContain("/formations/exploitant-regulateur");
     expect(sitemap).not.toContain("/journal/devenir-conducteur-30-jours");
     expect(sitemap).not.toContain("/temoignages");
     expect(sitemap).toContain("/financement-formation-conducteur-voyageurs");
