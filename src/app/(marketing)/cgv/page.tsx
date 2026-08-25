@@ -1,12 +1,16 @@
 import { BreadcrumbBar } from "@/components/layout/BreadcrumbBar";
 import { PageBreadcrumbs } from "@/components/seo/PageBreadcrumbs";
 import { organizationInfo } from "@/lib/constants";
+import { legalInfo, legalReadiness } from "@/lib/legal";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "CGV",
-  alternates: { canonical: "/cgv" },
-};
+export function generateMetadata(): Metadata {
+  return {
+    title: "CGV",
+    alternates: { canonical: "/cgv" },
+    robots: legalReadiness.consumerTerms ? undefined : { index: false, follow: true },
+  };
+}
 
 export default function CgvPage() {
   return (
@@ -23,13 +27,14 @@ export default function CgvPage() {
       </div>
       <div className="section-shell mx-auto max-w-4xl pb-16 pt-3 md:pt-5">
         <h1 className="text-4xl font-bold tracking-tight">Conditions générales de vente</h1>
-        <p className="mt-4 text-sm text-white-45">Version de travail · 25 août 2026</p>
+        <p className="mt-4 text-sm text-white-45">Dernière mise à jour : 25 août 2026</p>
 
-        <div className="mt-8 border-l-2 border-orange-400 py-1 pl-5 text-[15px] leading-relaxed text-white-75">
-          Ce socle doit être rapproché des conventions et contrats réellement utilisés
-          par BOAZ. Les coordonnées du médiateur de la consommation doivent être ajoutées
-          avant toute vente à un particulier.
-        </div>
+        {!legalReadiness.consumerTerms ? (
+          <div className="mt-8 border-l-2 border-orange-400 py-1 pl-5 text-[15px] leading-relaxed text-white-75">
+            Ces conditions restent à valider avec les documents contractuels de BOAZ avant
+            toute vente en ligne à un particulier.
+          </div>
+        ) : null}
 
         <div className="article-prose mt-10">
           <h2>1. Objet et prestataire</h2>
@@ -85,6 +90,20 @@ export default function CgvPage() {
             Les règles de médiation et de compétence juridictionnelle impératives restent
             applicables.
           </p>
+
+          <h2>8. Médiation de la consommation</h2>
+          {legalInfo.mediatorName && legalInfo.mediatorUrl ? (
+            <p>
+              Après réclamation écrite préalable restée sans solution, le consommateur peut
+              saisir {legalInfo.mediatorName} :{" "}
+              <a href={legalInfo.mediatorUrl}>{legalInfo.mediatorUrl}</a>.
+            </p>
+          ) : (
+            <p>
+              Le dispositif de médiation applicable sera indiqué dans la version
+              contractuelle remise avant toute vente à un particulier.
+            </p>
+          )}
         </div>
       </div>
     </div>

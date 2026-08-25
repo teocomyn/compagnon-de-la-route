@@ -1,12 +1,16 @@
 import { BreadcrumbBar } from "@/components/layout/BreadcrumbBar";
 import { PageBreadcrumbs } from "@/components/seo/PageBreadcrumbs";
 import { contactInfo, organizationInfo, siteName } from "@/lib/constants";
+import { legalInfo, legalReadiness } from "@/lib/legal";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Mentions légales",
-  alternates: { canonical: "/mentions-legales" },
-};
+export function generateMetadata(): Metadata {
+  return {
+    title: "Mentions légales",
+    alternates: { canonical: "/mentions-legales" },
+    robots: legalReadiness.mentions ? undefined : { index: false, follow: true },
+  };
+}
 
 export default function MentionsLegalesPage() {
   return (
@@ -48,12 +52,26 @@ export default function MentionsLegalesPage() {
             {organizationInfo.qualiopiScope.toLowerCase()}.
           </p>
 
-          <h2>Directeur de la publication et hébergement</h2>
-          <div className="border-l-2 border-orange-400 py-1 pl-5 text-[15px] leading-relaxed text-white-75">
-            Avant la mise en production, renseigner le nom du directeur de la
-            publication et les coordonnées exactes de l&apos;hébergeur effectivement retenu.
-            Ces informations ne sont pas déduites automatiquement du code du site.
-          </div>
+          <h2>Directeur de la publication</h2>
+          {legalInfo.publicationDirector ? (
+            <p>{legalInfo.publicationDirector}.</p>
+          ) : (
+            <p className="border-l-2 border-orange-400 py-1 pl-5 text-white-75">
+              Information en cours de validation avant la mise en ligne définitive.
+            </p>
+          )}
+
+          <h2>Hébergement</h2>
+          {legalInfo.hostName && legalInfo.hostAddress ? (
+            <p>
+              {legalInfo.hostName}, {legalInfo.hostAddress}.
+            </p>
+          ) : (
+            <p className="border-l-2 border-orange-400 py-1 pl-5 text-white-75">
+              Prestataire et adresse d&apos;hébergement en cours de validation avant la mise
+              en ligne définitive.
+            </p>
+          )}
 
           <h2>Propriété intellectuelle</h2>
           <p>

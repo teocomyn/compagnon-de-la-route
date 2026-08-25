@@ -1,38 +1,72 @@
 import type { MetadataRoute } from "next";
-import { getArticleSlugs } from "@/lib/articles";
+import { getAllArticlesMeta } from "@/lib/articles";
 import { siteUrl } from "@/lib/constants";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date();
-  const articleRoutes = getArticleSlugs().map((slug) => `/journal/${slug}`);
-  const routes = [
-    "",
-    "/le-label",
-    "/qui-sommes-nous",
-    "/formations",
-    "/formations/conducteur-voyageurs",
-    "/formations/exploitant-regulateur",
-    "/guides",
-    "/journal",
-    ...articleRoutes,
-    "/financement-formation-conducteur-voyageurs",
-    "/metier-conducteur-de-car-debouches",
-    "/certification-formation-conducteur-voyageurs",
-    "/permis-d-conducteur-professionnel",
-    "/fimo-passage-a-la-route",
-    "/faq-conducteur-de-voyageurs",
-    "/formation-conducteur-autocar-tourisme",
-    "/formation-transport-scolaire-conducteur",
-    "/reussir-embauche-conducteur-car",
-    "/contact",
-    "/mentions-legales",
-    "/cgv",
-    "/confidentialite",
-    "/rgpd",
-  ].map((path) => ({
+  const coreRoutes = [
+    { path: "", changeFrequency: "weekly", priority: 1 },
+    { path: "/le-label", changeFrequency: "monthly", priority: 0.8 },
+    { path: "/qui-sommes-nous", changeFrequency: "monthly", priority: 0.8 },
+    { path: "/formations", changeFrequency: "weekly", priority: 0.9 },
+    {
+      path: "/formations/conducteur-voyageurs",
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      path: "/formations/exploitant-regulateur",
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    { path: "/guides", changeFrequency: "monthly", priority: 0.8 },
+    { path: "/journal", changeFrequency: "weekly", priority: 0.8 },
+    {
+      path: "/financement-formation-conducteur-voyageurs",
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      path: "/metier-conducteur-de-car-debouches",
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      path: "/certification-formation-conducteur-voyageurs",
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    { path: "/permis-d-conducteur-professionnel", changeFrequency: "monthly", priority: 0.7 },
+    { path: "/fimo-passage-a-la-route", changeFrequency: "monthly", priority: 0.7 },
+    { path: "/faq-conducteur-de-voyageurs", changeFrequency: "monthly", priority: 0.7 },
+    {
+      path: "/formation-conducteur-autocar-tourisme",
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      path: "/formation-transport-scolaire-conducteur",
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    { path: "/reussir-embauche-conducteur-car", changeFrequency: "monthly", priority: 0.7 },
+    { path: "/contact", changeFrequency: "yearly", priority: 0.8 },
+  ] satisfies Array<{
+    path: string;
+    changeFrequency: NonNullable<MetadataRoute.Sitemap[number]["changeFrequency"]>;
+    priority: number;
+  }>;
+
+  const publishedRoutes: MetadataRoute.Sitemap = coreRoutes.map(({ path, ...entry }) => ({
     url: `${siteUrl}${path}`,
-    lastModified,
+    ...entry,
   }));
 
-  return routes;
+  const articleRoutes: MetadataRoute.Sitemap = getAllArticlesMeta().map((article) => ({
+    url: `${siteUrl}/journal/${article.slug}`,
+    lastModified: article.updated ?? article.reviewedAt ?? article.date,
+    changeFrequency: "monthly",
+    priority: article.featured ? 0.75 : 0.65,
+  }));
+
+  return [...publishedRoutes, ...articleRoutes];
 }

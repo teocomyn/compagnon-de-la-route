@@ -406,8 +406,22 @@ test.describe("Parcours critiques", () => {
     expect(sitemap).toContain("/formation-conducteur-autocar-tourisme");
     expect(sitemap).toContain("/formation-transport-scolaire-conducteur");
     expect(sitemap).toContain("/reussir-embauche-conducteur-car");
+    expect(sitemap).not.toContain("/mentions-legales");
+    expect(sitemap).not.toContain("/cgv");
+    expect(sitemap).toContain("<changefreq>weekly</changefreq>");
+    expect(sitemap).not.toMatch(/<lastmod>\d{4}-\d{2}-\d{2}T/);
     expect(llms).not.toMatch(/210h|30 jours|85 % de CDIsation/i);
     expect(llms).toContain("BOAZ (LES COMPAGNONS DE LA ROUTE)");
+  });
+
+  test("lancement : les pages légales incomplètes restent hors index", async ({ request }) => {
+    const mentions = await (await request.get("/mentions-legales")).text();
+    const cgv = await (await request.get("/cgv")).text();
+
+    expect(mentions).toContain('name="robots" content="noindex, follow"');
+    expect(cgv).toContain('name="robots" content="noindex, follow"');
+    expect(mentions).not.toContain("Avant la mise en production, renseigner");
+    expect(cgv).not.toContain("Version de travail");
   });
 
   test("navigation : toutes les routes publiées dans le sitemap répondent", async ({ request }) => {

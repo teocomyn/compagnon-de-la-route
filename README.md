@@ -24,3 +24,17 @@ Le site s’adresse aux personnes qui envisagent une reconversion, un retour à 
 ---
 
 *Compagnon de la Route, le label transport porté par BOAZ.*
+
+## Contrôle avant mise en ligne
+
+Le site reste volontairement prudent tant que les coordonnées publiques, l’envoi Resend
+et les mentions contractuelles ne sont pas confirmés. Après avoir renseigné les variables
+décrites dans `.env.example`, exécuter :
+
+```bash
+npm run check:launch
+```
+
+Le contrôle signale les éléments bloquants sans exposer la valeur des secrets. Les pages
+Mentions légales et CGV restent accessibles mais ne sont pas indexées tant que leurs
+informations obligatoires ne sont pas complètes.

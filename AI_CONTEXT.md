@@ -53,6 +53,9 @@ Les chiffres de réussite, d'insertion, de satisfaction, de durée ou de finance
 - Le Journal forme un cluster SEO de six dossiers couvrant tout le parcours de décision. Les quatre photographies métier fournies par le client sont intégrées aux cartes et aux contenus ; l’index expose une `CollectionPage`/`ItemList`, chaque article un schéma `Article`, et le sitemap est dérivé dynamiquement des seuls contenus vérifiés.
 - Le formulaire utilise une Server Action et Resend uniquement si `CONTACT_FORM_MODE=resend` et toutes les variables serveur sont configurées.
 - Le formulaire qualifie chaque demande par profil (`candidat`, `entreprise`, `partenaire`, `autre`), projet (`conducteur`, `exploitant-regulateur`, `recrutement`, `partenariat`, `autre`) et organisation éventuelle. Les liens métiers utilisent `?projet=` pour préremplir le sujet ; l'e-mail Resend reprend ces champs dans l'objet, le texte et le HTML afin de faciliter une future reprise CRM sans transmettre de données à un service supplémentaire.
+- Le sitemap ne simule plus une modification à chaque build : les routes éditoriales ont une fréquence explicite et les articles reprennent leur date de mise à jour ou de relecture. Les pages légales ne sont pas dans le sitemap.
+- Les Mentions légales et CGV utilisent les valeurs serveur centralisées dans `src/lib/legal.ts` et restent en `noindex` tant que leurs champs obligatoires ne sont pas complets. Ne jamais remplacer ces champs par une supposition.
+- `npm run check:launch` est le contrôle manuel obligatoire avant ouverture définitive : domaine HTTPS, coordonnées, Resend, directeur de publication, hébergeur et médiateur doivent tous être configurés.
 - Les pages reçoivent une CSP et des en-têtes de sécurité depuis `next.config.ts` ; le formulaire est limité à 32 Ko.
 - Les profils d'équipe, partenaires et distinctions ne sont pas publiés sans éléments vérifiables et droits d'utilisation.
 

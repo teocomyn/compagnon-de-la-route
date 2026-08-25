@@ -24,8 +24,10 @@ const ibmPlexMono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  applicationName: siteName,
+  manifest: "/manifest.webmanifest",
   title: {
-    default: `${siteName} · Formation conducteur de voyageurs`,
+    default: `${siteName} · Formations transport de voyageurs`,
     template: `%s · ${siteName}`,
   },
   description:
