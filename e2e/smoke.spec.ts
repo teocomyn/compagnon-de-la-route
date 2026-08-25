@@ -10,7 +10,7 @@ test.describe("Parcours critiques", () => {
       }),
     ).toBeVisible();
     await expect(
-      page.getByRole("link", { name: /Voir la formation/i }).first(),
+      page.getByRole("link", { name: /Découvrir le parcours/i }).first(),
     ).toBeVisible();
     const heroSlider = page.getByTestId("hero-slider");
     await expect(heroSlider).toBeVisible();
@@ -76,6 +76,44 @@ test.describe("Parcours critiques", () => {
     await page
       .getByRole("heading", { level: 3, name: /Un parcours visible dès le premier échange/i })
       .scrollIntoViewIfNeeded();
+
+    const hasHorizontalOverflow = await page.evaluate(
+      () => document.documentElement.scrollWidth > window.innerWidth,
+    );
+    expect(hasHorizontalOverflow).toBe(false);
+  });
+
+  test("accueil : le hero mobile présente le message et l'action dès le premier écran", async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto("/");
+
+    const heading = page.getByRole("heading", {
+      level: 1,
+      name: /Compagnon de la route, plus qu'un métier, une mission/i,
+    });
+    const primaryAction = page.getByRole("link", {
+      name: /Découvrir le parcours/i,
+    }).first();
+    const heroSlider = page.getByTestId("hero-slider");
+
+    await expect(heading).toBeVisible();
+    await expect(primaryAction).toBeVisible();
+    await expect(heroSlider).toBeVisible();
+
+    const [headingBox, actionBox, sliderBox] = await Promise.all([
+      heading.boundingBox(),
+      primaryAction.boundingBox(),
+      heroSlider.boundingBox(),
+    ]);
+
+    expect(headingBox).not.toBeNull();
+    expect(actionBox).not.toBeNull();
+    expect(sliderBox).not.toBeNull();
+    expect(headingBox!.y).toBeGreaterThanOrEqual(sliderBox!.y);
+    expect(actionBox!.y + actionBox!.height).toBeLessThanOrEqual(844);
+    expect(sliderBox!.y + sliderBox!.height).toBeGreaterThan(headingBox!.y + headingBox!.height);
 
     const hasHorizontalOverflow = await page.evaluate(
       () => document.documentElement.scrollWidth > window.innerWidth,

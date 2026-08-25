@@ -123,10 +123,10 @@ export function HeroSlider() {
       onBlurCapture={(event) => {
         if (!event.currentTarget.contains(event.relatedTarget)) setInteracting(false);
       }}
-      className="relative order-1 min-h-[500px] overflow-hidden border-t border-white/10 bg-night-deep md:order-2 md:col-span-5 md:min-h-full md:border-l md:border-t-0"
+      className="absolute inset-0 min-h-full overflow-hidden bg-night-deep md:relative md:inset-auto md:order-2 md:col-span-5 md:min-h-full md:border-l md:border-white/10"
       data-testid="hero-slider"
     >
-      <div className="relative h-full min-h-[500px] md:min-h-[740px]">
+      <div className="relative h-full min-h-[calc(100svh-4rem)] md:min-h-[740px]">
         <AnimatePresence initial={false} custom={direction} mode="popLayout">
           <motion.div
             key={activeSlide.src}
@@ -167,19 +167,24 @@ export function HeroSlider() {
               fill
               loading={activeIndex === 0 ? "eager" : "lazy"}
               sizes="(max-width: 768px) 100vw, 42vw"
-              className="pointer-events-none select-none object-cover"
+              className="pointer-events-none select-none object-cover brightness-[0.58] saturate-90 md:brightness-100 md:saturate-100"
               style={{ objectPosition: activeSlide.objectPosition }}
             />
           </motion.div>
         </AnimatePresence>
 
         <div
+          className="pointer-events-none absolute inset-0 z-[1] bg-night-deep/20 md:hidden"
+          aria-hidden="true"
+        />
+
+        <div
           className="absolute left-0 top-0 hidden h-32 w-2 bg-orange-500 md:block"
           aria-hidden="true"
         />
 
-        <figcaption className="absolute inset-x-0 bottom-0 z-10 grid min-h-20 grid-cols-[minmax(0,1fr)_auto] border-t border-white/15 bg-night-deep/95">
-          <div className="flex min-w-0 items-center gap-5 px-5 py-4 md:px-7">
+        <figcaption className="absolute inset-x-0 bottom-0 z-30 grid min-h-16 grid-cols-[minmax(0,1fr)_auto] border-t border-white/15 bg-night-deep/95 md:min-h-20">
+          <div className="flex min-w-0 items-center gap-3 px-5 py-3 md:gap-5 md:px-7 md:py-4">
             <span className="shrink-0 font-mono text-[10px] font-semibold tracking-[0.16em] text-orange-300">
               {String(activeIndex + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}
             </span>
@@ -212,7 +217,7 @@ export function HeroSlider() {
               type="button"
               onClick={previousSlide}
               aria-label="Photographie précédente"
-              className="flex min-h-20 w-14 items-center justify-center border-r border-white/15 text-white-75 transition-colors hover:bg-white/5 hover:text-orange-300"
+              className="flex min-h-16 w-12 items-center justify-center border-r border-white/15 text-white-75 transition-colors hover:bg-white/5 hover:text-orange-300 md:min-h-20 md:w-14"
             >
               <ArrowLeft className="h-4 w-4" aria-hidden="true" />
             </button>
@@ -220,7 +225,7 @@ export function HeroSlider() {
               type="button"
               onClick={() => setAutoplay((current) => !current)}
               aria-label={autoplay ? "Mettre le diaporama en pause" : "Reprendre le diaporama"}
-              className="flex min-h-20 w-14 items-center justify-center border-r border-white/15 text-white-75 transition-colors hover:bg-white/5 hover:text-orange-300"
+              className="flex min-h-16 w-12 items-center justify-center border-r border-white/15 text-white-75 transition-colors hover:bg-white/5 hover:text-orange-300 md:min-h-20 md:w-14"
             >
               {autoplay ? (
                 <Pause className="h-4 w-4" aria-hidden="true" />
@@ -232,7 +237,7 @@ export function HeroSlider() {
               type="button"
               onClick={nextSlide}
               aria-label="Photographie suivante"
-              className="flex min-h-20 w-14 items-center justify-center text-white-75 transition-colors hover:bg-white/5 hover:text-orange-300"
+              className="flex min-h-16 w-12 items-center justify-center text-white-75 transition-colors hover:bg-white/5 hover:text-orange-300 md:min-h-20 md:w-14"
             >
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </button>
