@@ -2,7 +2,6 @@
 
 import type { ReactNode } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { OrangeGlow } from "@/components/magicui/OrangeGlow";
 
 type RevealLineProps = {
   children: ReactNode;
@@ -37,43 +36,41 @@ export function Statement() {
   const reducedMotion = Boolean(useReducedMotion());
 
   return (
-    <section className="relative overflow-hidden border-y border-white/[0.06] py-16 md:py-24">
-      <OrangeGlow className="left-1/2 top-1/2 h-[360px] w-[min(620px,100vw)] -translate-x-1/2 -translate-y-1/2 opacity-25" />
-
-      <div className="container-shell relative z-10">
+    <section className="border-b border-white/10 bg-night py-20 md:py-32">
+      <div className="container-shell">
         <motion.div
-          className="mx-auto max-w-5xl text-center"
+          className="max-w-6xl"
           initial={reducedMotion ? false : { opacity: 0 }}
           whileInView={reducedMotion ? undefined : { opacity: 1 }}
           viewport={{ once: true, amount: 0.55 }}
           transition={{ duration: 0.45 }}
         >
-          <p className="mb-5 text-xs font-semibold uppercase tracking-[0.24em] text-mint/70">
-            Notre conviction
+          <p className="mb-8 font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-orange-300">
+            La responsabilité avant le départ
           </p>
 
-          <h2 className="text-balance text-[clamp(2rem,5vw,4.5rem)] font-semibold leading-[1.04] tracking-[-0.045em] text-cream">
+          <h2 className="text-balance text-[clamp(2.7rem,6vw,6.25rem)] font-semibold leading-[0.95] tracking-[-0.055em] text-cream">
             <RevealLine delay={0.02} reducedMotion={reducedMotion}>
-              Former un conducteur, c’est préparer bien plus qu’un examen.
+              Chaque personne à bord
             </RevealLine>
             <RevealLine
-              className="mt-2 text-orange-300 md:mt-3"
+              className="text-orange-300"
               delay={0.14}
               reducedMotion={reducedMotion}
             >
-              Un métier. Une responsabilité. Un projet de vie.
+              compte sur le conducteur.
             </RevealLine>
           </h2>
 
           <motion.div
-            className="mx-auto mt-8 flex w-fit items-center gap-3 text-sm text-cream/60"
+            className="mt-10 flex max-w-xl items-start gap-4 border-l-2 border-orange-400 pl-5 text-base leading-7 text-cream/60"
             initial={reducedMotion ? false : { opacity: 0, y: 10 }}
             whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.8 }}
             transition={{ duration: 0.5, delay: 0.28 }}
           >
-            <span className="h-px w-8 bg-orange-400" aria-hidden="true" />
-            Compagnon de la Route, porté par BOAZ
+            La formation prépare des gestes, des décisions et une posture de service.
+            L&apos;examen vient valider une partie du chemin.
           </motion.div>
         </motion.div>
       </div>

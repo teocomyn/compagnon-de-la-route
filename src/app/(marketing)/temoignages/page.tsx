@@ -26,10 +26,10 @@ export default function TemoignagesPage() {
         </BreadcrumbBar>
       </div>
       <section className="section-shell pb-16 pt-3 md:pb-20 md:pt-8">
-        <div className="mx-auto max-w-[980px]">
-          <Eyebrow>Ils ont choisi la route</Eyebrow>
+        <div className="mx-auto max-w-5xl">
+          <Eyebrow>Témoignages vérifiés</Eyebrow>
           <h1 className="mt-4 text-[clamp(2.25rem,5vw,3.5rem)] font-bold leading-[1.05] tracking-[-0.03em]">
-            Nos témoignages formation
+            Des retours publiés avec leur contexte.
           </h1>
           <p className="mt-6 text-lg leading-relaxed text-white-60">
             Cette page accueillera uniquement des retours recueillis auprès de personnes
@@ -39,7 +39,7 @@ export default function TemoignagesPage() {
       </section>
 
       <section className="section-shell section-y">
-        <div className="mx-auto max-w-[980px] rounded-2xl border border-orange-500/25 bg-orange-500/10 p-6 sm:p-10">
+        <div className="mx-auto max-w-5xl border-l-2 border-orange-400 py-2 pl-6 sm:pl-8">
           <h2 className="text-[clamp(1.5rem,3vw,2.25rem)] font-bold tracking-[-0.02em]">
             Publication en cours de constitution
           </h2>

@@ -43,18 +43,18 @@ export function Header() {
 
   return (
     <>
-      <header className="pointer-events-none fixed inset-x-0 top-0 z-50 px-2 pt-2 sm:px-3 lg:px-5">
+      <header className="pointer-events-none fixed inset-x-0 top-0 z-50">
         <div
           className={cn(
-            "pointer-events-auto relative mx-auto flex h-14 max-w-screen-2xl items-center rounded-2xl border px-2.5 transition-[background-color,border-color,box-shadow,backdrop-filter] duration-300 md:h-16 md:px-3",
+            "pointer-events-auto relative mx-auto flex h-16 max-w-screen-2xl items-center border-b px-4 transition-[background-color,border-color] duration-200 md:h-[72px] md:px-6",
             scrolled
-              ? "border-white/10 bg-night-deep/90 shadow-2xl backdrop-blur-2xl"
-              : "border-white/[0.065] bg-night-deep/55 backdrop-blur-xl",
+              ? "border-white/15 bg-night-deep/95"
+              : "border-white/10 bg-night-deep/90",
           )}
         >
           <Link
             href="/"
-            className="group flex shrink-0 items-center gap-2.5 rounded-xl pr-2 focus-visible:outline-offset-4 md:gap-3"
+            className="group flex shrink-0 items-center gap-2.5 rounded-md pr-2 focus-visible:outline-offset-4 md:gap-3"
             aria-label="Compagnon de la Route, accueil"
           >
             <BrandLogo priority size="header" className="h-9 w-9 md:h-10 md:w-10" />
@@ -83,7 +83,7 @@ export function Header() {
                   href={link.href}
                   aria-current={active ? "page" : undefined}
                   className={cn(
-                    "group relative flex min-h-11 items-center rounded-lg px-1 text-[14px] transition-colors focus-visible:outline-offset-4",
+                    "group relative flex min-h-11 items-center px-1 text-[14px] transition-colors focus-visible:outline-offset-4",
                     active ? "text-orange-300" : "text-white-60 hover:text-white-90",
                   )}
                 >
@@ -96,7 +96,7 @@ export function Header() {
                   />
                   <span
                     className={cn(
-                      "absolute -bottom-0.5 left-1/2 h-1 -translate-x-1/2 rounded-full bg-orange-400 transition-[width,opacity] duration-300",
+                      "absolute -bottom-0.5 left-1/2 h-0.5 -translate-x-1/2 bg-orange-400 transition-[width,opacity] duration-300",
                       active
                         ? "w-4 opacity-100"
                         : "w-0 opacity-0 group-hover:w-2 group-hover:opacity-70",
@@ -113,25 +113,23 @@ export function Header() {
               href="/formations/conducteur-voyageurs"
               className={cn(
                 buttonVariants({ variant: "primary", size: "sm" }),
-                "hidden min-h-11 pl-5 pr-2 lg:inline-flex",
+                "hidden min-h-11 lg:inline-flex",
               )}
             >
               Voir le parcours
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-night-deep text-orange-300">
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </span>
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
 
             <Link
               href="/formations/conducteur-voyageurs"
-              className="inline-flex min-h-11 items-center justify-center rounded-full border border-orange-400/35 bg-orange-500/10 px-4 text-[13px] font-semibold text-orange-200 transition-colors hover:border-orange-300/55 hover:bg-orange-500/15 lg:hidden"
+              className="inline-flex min-h-11 items-center justify-center rounded-md border border-orange-400/40 px-4 text-[13px] font-semibold text-orange-200 transition-colors hover:border-orange-300 hover:text-orange-100 lg:hidden"
             >
               Parcours
             </Link>
 
             <button
               type="button"
-              className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.045] text-white-90 transition-colors hover:border-white/20 hover:bg-white/[0.08] lg:hidden"
+              className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-md border border-white/15 text-white-90 transition-colors hover:border-white/30 lg:hidden"
               aria-label={mobileOpen ? "Fermer le menu" : "Ouvrir le menu"}
               aria-expanded={mobileOpen}
               aria-controls="mobile-navigation"

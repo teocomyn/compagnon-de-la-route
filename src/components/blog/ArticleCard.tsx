@@ -17,9 +17,9 @@ export function ArticleCard({
   return (
     <Link
       href={`/journal/${article.slug}`}
-      className="group block overflow-hidden rounded-xl border border-white/10 bg-white/[0.02] transition-[border-color,transform] duration-300 hover:-translate-y-1 hover:border-orange-500/35"
+      className="group block border-t border-white/15 pt-4 transition-colors duration-200 hover:border-orange-400"
     >
-      <div className="relative aspect-video overflow-hidden">
+      <div className="relative aspect-[3/2] overflow-hidden">
         <Image
           src={article.thumbnail}
           alt={article.thumbnailAlt ?? `Illustration : ${article.title}`}
@@ -34,7 +34,7 @@ export function ArticleCard({
           </Badge>
         </div>
       </div>
-      <div className="space-y-3 p-6">
+      <div className="space-y-3 py-5">
         <Heading className="text-[22px] font-bold leading-snug tracking-[-0.02em] transition-colors group-hover:text-orange-300">
           {article.title}
         </Heading>

@@ -1,90 +1,33 @@
-import Link from "next/link";
-import { Check } from "lucide-react";
+import Image from "next/image";
 import { BreadcrumbBar } from "@/components/layout/BreadcrumbBar";
-import { PageBreadcrumbs } from "@/components/seo/PageBreadcrumbs";
 import { FinalCTA } from "@/components/sections/FinalCTA";
-import { MethodTimeline } from "@/components/sections/MethodTimeline";
-import { Eyebrow } from "@/components/ui/Eyebrow";
-import { Card } from "@/components/ui/Card";
-import { ScrollReveal } from "@/components/magicui/ScrollReveal";
-import { SectionHeader } from "@/components/ui/SectionHeader";
-import { siteName, siteUrl } from "@/lib/constants";
+import { PageBreadcrumbs } from "@/components/seo/PageBreadcrumbs";
+import { organizationInfo, siteName, siteUrl } from "@/lib/constants";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Qui sommes-nous ?",
   description:
-    "Compagnon de la Route : une approche exigeante et humaine portée par BOAZ, organisme de formation certifié Qualiopi pour les actions de formation.",
+    "Compagnon de la Route est porté par BOAZ, organisme de formation déclaré en Corse et certifié Qualiopi pour les actions de formation.",
   alternates: { canonical: "/qui-sommes-nous" },
 };
 
-const approachPillars = [
+const workingPrinciples = [
   {
-    title: "L'exigence",
-    body:
-      "Parce que conduire des voyageurs, c'est porter une responsabilité humaine, nous refusons la complaisance. Nos parcours sont exigeants, structurés, et alignés sur les réalités opérationnelles des entreprises.",
+    title: "Partir de votre situation",
+    text: "Les prérequis, l’expérience et le projet professionnel sont examinés avant de définir le parcours.",
   },
   {
-    title: "L'excellence",
-    body:
-      "L'excellence, pour nous, ce n'est pas la perfection théorique. C'est la capacité à bien faire, régulièrement, en sécurité, à respecter les procédures, les horaires, les personnes. C'est ce niveau d'excellence opérationnelle que nous construisons avec chaque apprenant.",
+    title: "Formaliser les modalités",
+    text: "Le programme, la durée, le calendrier, les évaluations et le prix sont transmis avant l’inscription.",
   },
   {
-    title: "L'engagement",
-    body:
-      "Nous croyons à la force de l'engagement individuel et collectif. Un Compagnon de la Route s'engage envers ses passagers, son entreprise, son territoire, et lui-même.",
-  },
-] as const;
-
-const labelCriteria = [
-  "Maîtriser les fondamentaux du métier de conducteur sur le plan technique et sécuritaire",
-  "Développer des compétences relationnelles et comportementales de haut niveau",
-  "Adopter un état d'esprit tourné vers le progrès, pour soi, pour les usagers et pour la profession",
-] as const;
-
-const values = [
-  {
-    title: "Humilité",
-    text: "Rester conscient de sa responsabilité, apprendre en continu.",
+    title: "Préparer les responsabilités du poste",
+    text: "La conduite, la sécurité et le service aux voyageurs structurent le travail pédagogique.",
   },
   {
-    title: "Bienveillance",
-    text: "Considérer chaque passager, chaque collègue, chaque apprenant avec respect.",
-  },
-  {
-    title: "Civisme",
-    text: "Agir en professionnel exemplaire, au service du collectif.",
-  },
-  {
-    title: "Tolérance",
-    text: "Accueillir la diversité des publics, des histoires, des parcours de vie.",
-  },
-] as const;
-
-const concreteActions = [
-  "Construire des parcours de formation et d'intégration sur mesure",
-  "Accompagner les demandeurs d'emploi vers un métier stable et porteur de sens",
-  "Co-animer nos parcours avec les entreprises de transport",
-  "Mobiliser, pour chaque action, les interlocuteurs précisés dans les documents du parcours",
-  "Suivre nos apprenants après la formation pour sécuriser leurs intégrations",
-] as const;
-
-const audiences = [
-  {
-    title: "Demandeur d'emploi",
-    text: "En quête de reconversion et d'un métier stable.",
-  },
-  {
-    title: "Salarié",
-    text: "En recherche de sens et de nouvelles perspectives.",
-  },
-  {
-    title: "Entreprise de transport",
-    text: "Confrontée à des besoins de recrutement et à la fidélisation de talents.",
-  },
-  {
-    title: "Acteur institutionnel",
-    text: "Engagé sur les sujets mobilité et insertion.",
+    title: "Rester précis sur la suite",
+    text: "Les pistes de financement et d’emploi sont étudiées sans être présentées comme acquises.",
   },
 ] as const;
 
@@ -94,15 +37,14 @@ function AboutJsonLd() {
     "@type": "AboutPage",
     name: `Qui sommes-nous · ${siteName}`,
     url: `${siteUrl}/qui-sommes-nous`,
-    description:
-      "Compagnon de la Route, porté par BOAZ : formation conducteur de voyageurs et démarche d’exigence.",
     mainEntity: {
-      "@type": "Organization",
+      "@type": "EducationalOrganization",
       name: siteName,
-      description:
-        "Former un conducteur de voyageurs, c'est accompagner une personne dans un projet de vie. Approche artisanale, exigeante et humaine.",
+      legalName: organizationInfo.legalName,
+      identifier: organizationInfo.siren,
     },
   };
+
   return (
     <script
       type="application/ld+json"
@@ -126,330 +68,114 @@ export default function AboutPage() {
         </BreadcrumbBar>
       </div>
 
-      <section className="section-shell pb-16 pt-3 md:pb-20 md:pt-8">
-        <div className="mx-auto max-w-[980px]">
-          <Eyebrow>Qui sommes-nous ?</Eyebrow>
-          <h1 className="mt-4 text-[clamp(2.25rem,5vw,3.5rem)] font-bold leading-[1.05] tracking-[-0.03em]">
-            Compagnon de la Route, une autre façon de voir la formation
+      <section className="section-shell pb-20 pt-8 md:pb-28 md:pt-14">
+        <div className="mx-auto max-w-6xl">
+          <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-orange-300">
+            Compagnon de la Route / BOAZ
+          </p>
+          <h1 className="mt-6 max-w-5xl text-balance text-[clamp(3.25rem,7vw,7.5rem)] font-semibold leading-[0.88] tracking-[-0.06em] text-white-90">
+            Derrière le parcours, un organisme identifiable.
           </h1>
-          <p className="mt-6 text-lg leading-relaxed text-white-60">
-            {siteName} est né d&apos;une conviction simple : former un conducteur de
-            voyageurs, ce n&apos;est pas seulement transmettre un métier, c&apos;est
-            accompagner une personne dans un{" "}
-            <span className="text-white-90">projet de vie</span>.
-          </p>
-          <p className="mt-4 text-lg leading-relaxed text-white-60">
-            Porté à l&apos;origine par le cabinet <strong className="text-white-90">BOAZ</strong>, le
-            projet s&apos;est construit volontairement en marge du marché traditionnel de la
-            formation, avec une approche plus artisanale, exigeante et profondément
-            humaine.
-          </p>
-          <p className="mt-4 text-lg leading-relaxed text-white-60">
-            Notre approche cherche à rapprocher les apprentissages des réalités du
-            transport : sécurité, régularité, service aux voyageurs et posture
-            professionnelle. Les partenaires mobilisés pour une session sont précisés
-            dans les documents transmis avant l&apos;inscription.
+          <p className="mt-8 max-w-3xl text-xl leading-9 text-white-60">
+            {siteName} présente les parcours de BOAZ consacrés au transport de
+            voyageurs. Notre rôle consiste à cadrer le projet, transmettre les
+            informations utiles et préparer les responsabilités du métier.
           </p>
         </div>
       </section>
 
-      <section className="section-shell section-y border-t border-white/5">
-        <div className="mx-auto max-w-[980px]">
-          <Eyebrow>Notre histoire</Eyebrow>
-          <h2 className="mt-4 text-[clamp(1.75rem,3.5vw,2.625rem)] font-bold tracking-[-0.025em]">
-            Une histoire construite sur le terrain
-          </h2>
-          <p className="mt-6 text-lg leading-relaxed text-white-60">
-            Le projet s&apos;est développé à partir d&apos;expériences de formation et
-            d&apos;intégration professionnelle dans le transport. L&apos;objectif est de proposer
-            un cadre lisible aux personnes qui souhaitent construire un nouvel avenir
-            professionnel dans ce secteur.
-          </p>
-          <p className="mt-4 text-lg font-medium text-white-90">
-            Année après année, ce parcours a été :
-          </p>
-          <ul className="mt-6 space-y-3 text-white-75">
-            <li className="flex gap-3">
-              <span className="mt-1.5 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-orange-400" />
-              testé et approuvé sur le terrain ;
-            </li>
-            <li className="flex gap-3">
-              <span className="mt-1.5 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-orange-400" />
-              ajusté avec les équipes RH et les managers des entreprises partenaires ;
-            </li>
-            <li className="flex gap-3">
-              <span className="mt-1.5 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-orange-400" />
-              enrichi par les retours des apprenants ;
-            </li>
-            <li className="flex gap-3">
-              <span className="mt-1.5 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-orange-400" />
-              revisité régulièrement pour satisfaire notre exigence constante de qualité.
-            </li>
-          </ul>
+      <section className="border-y border-white/10 bg-orange-100 text-night-deep">
+        <div className="mx-auto grid max-w-screen-2xl lg:grid-cols-2">
+          <figure className="relative min-h-[420px] border-b border-night-deep/20 lg:min-h-[680px] lg:border-b-0 lg:border-r">
+            <Image
+              src="/images/journal/conductrice-autocar.webp"
+              alt="Conductrice à son poste dans un autocar"
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover"
+            />
+          </figure>
 
-          <div className="mt-10 rounded-2xl border border-orange-500/25 bg-orange-500/10 p-8 sm:p-10">
-            <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-orange-300">
-              Résultat
+          <div className="px-6 py-14 md:px-10 md:py-20 lg:px-16">
+            <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-orange-700">
+              Identité publique
             </p>
-            <p className="mt-4 text-[clamp(1.75rem,3vw,2.25rem)] font-bold leading-tight text-white-90">
-              Des résultats publiés avec leur source et leur période
+            <h2 className="mt-5 text-[clamp(2.3rem,4vw,4.25rem)] font-semibold leading-none tracking-[-0.045em]">
+              Les informations qui nous engagent
+            </h2>
+
+            <dl className="mt-10 border-t border-night-deep/25">
+              <IdentityRow label="Raison sociale" value={organizationInfo.legalName} />
+              <IdentityRow label="SIRET" value={organizationInfo.siret} />
+              <IdentityRow
+                label="Déclaration d’activité"
+                value={`${organizationInfo.trainingDeclarationNumber}, région ${organizationInfo.trainingDeclarationRegion}`}
+              />
+              <IdentityRow
+                label="Certification qualité"
+                value={`Qualiopi, ${organizationInfo.qualiopiScope.toLowerCase()}`}
+              />
+              <IdentityRow
+                label="Adresse déclarée"
+                value={`${organizationInfo.address}, ${organizationInfo.postalCode} ${organizationInfo.city}`}
+              />
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <section className="section-shell section-y">
+        <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-[0.7fr_1.3fr] md:gap-16">
+          <div>
+            <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-orange-300">
+              Notre façon de travailler
             </p>
-            <p className="mt-3 text-lg text-white-60">
-              Les futurs taux de réussite, d&apos;abandon, de satisfaction et d&apos;insertion
-              seront affichés uniquement après consolidation, avec le périmètre et la
-              méthode de calcul. Les données d&apos;activité ne seront pas présentées comme
-              des résultats.
-            </p>
+            <h2 className="mt-5 text-[clamp(2.2rem,4vw,4rem)] font-semibold leading-none tracking-[-0.045em] text-white-90">
+              La clarté avant la promesse.
+            </h2>
           </div>
-        </div>
-      </section>
 
-      <section className="section-shell section-y">
-        <div className="mx-auto max-w-[980px] rounded-2xl border border-white/10 bg-forest-surface/60 p-6 sm:p-10 md:p-14">
-          <p className="text-[clamp(1.35rem,2.8vw,1.85rem)] font-medium leading-[1.4] text-white-90">
-            <span className="text-orange-300">“</span>
-            Nous croyons que la formation ne doit pas être une usine, mais un atelier où
-            l&apos;on façonne des compétences solides et durables, et des parcours de vie.
-            <span className="text-orange-300">”</span>
-          </p>
-        </div>
-      </section>
-
-      <section className="section-shell section-y">
-        <div className="mx-auto max-w-[1200px]">
-          <SectionHeader
-            eyebrow="Le label"
-            title="De la formation au label : devenir un Compagnon de la Route"
-            lead="Aujourd'hui, le cabinet BOAZ valorise ce parcours en permettant aux apprenants ayant atteint un haut niveau de maîtrise de leur métier de devenir Compagnon de la Route."
-          />
-          <p className="mx-auto mt-6 max-w-[720px] text-center text-lg leading-relaxed text-white-60">
-            Plus qu&apos;un logo ou une mention sur un CV, {siteName} est un véritable{" "}
-            <span className="text-white-90">label d&apos;exigence et de confiance</span>,
-            utilisé comme une grille d&apos;exigence interne. Il ne remplace ni une
-            certification professionnelle ni un titre enregistré au RNCP.
-          </p>
-          <p className="mx-auto mt-6 max-w-[720px] text-center font-medium text-white-90">
-            Être Compagnon de la Route, c&apos;est :
-          </p>
-          <div className="mt-10 grid gap-4 md:grid-cols-1">
-            {labelCriteria.map((line) => (
-              <ScrollReveal key={line}>
-                <div className="flex gap-4 rounded-xl border border-white/10 bg-white/[0.02] p-5 md:p-6">
-                  <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-orange-500/15 text-orange-400">
-                    <Check className="h-4 w-4" aria-hidden />
-                  </span>
-                  <p className="text-[15px] leading-relaxed text-white-75 md:text-[16px]">{line}</p>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section-shell section-y">
-        <div className="mx-auto max-w-[1200px]">
-          <SectionHeader
-            eyebrow="Notre ADN"
-            title="Notre approche : l'exigence, l'excellence, l'engagement"
-            lead="Nous résumons notre approche en trois mots-clés."
-          />
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {approachPillars.map((pillar) => (
-              <ScrollReveal key={pillar.title}>
-                <Card className="h-full">
-                  <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.15em] text-orange-300">
-                    {pillar.title}
-                  </p>
-                  <p className="mt-4 text-[15px] leading-relaxed text-white-70">{pillar.body}</p>
-                </Card>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section-shell section-y">
-        <div className="mx-auto max-w-[1200px]">
-          <SectionHeader
-            eyebrow="Double compétence"
-            title="La double compétence du Compagnon de la Route"
-            lead="Un Compagnon de la Route, c'est bien plus qu'un « simple conducteur »."
-          />
-          <div className="mt-10 grid gap-8 lg:grid-cols-2">
-            <ScrollReveal>
-              <Card className="h-full">
-                <h3 className="text-xl font-semibold text-white-90">
-                  1. La maîtrise technique et sécuritaire
-                </h3>
-                <ul className="mt-6 space-y-3 text-[15px] leading-relaxed text-white-75">
-                  <li className="flex gap-3">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-orange-400" aria-hidden />
-                    Conduite maîtrisée en toutes circonstances
-                  </li>
-                  <li className="flex gap-3">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-orange-400" aria-hidden />
-                    Connaissance et respect des réglementations transport
-                  </li>
-                  <li className="flex gap-3">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-orange-400" aria-hidden />
-                    Gestion des aléas, de la sécurité et des procédures
-                  </li>
-                  <li className="flex gap-3">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-orange-400" aria-hidden />
-                    Rigueur, vigilance, réflexes professionnels
-                  </li>
-                </ul>
-              </Card>
-            </ScrollReveal>
-            <ScrollReveal>
-              <Card className="h-full">
-                <h3 className="text-xl font-semibold text-white-90">
-                  2. La compétence relationnelle et comportementale
-                </h3>
-                <ul className="mt-6 space-y-3 text-[15px] leading-relaxed text-white-75">
-                  <li className="flex gap-3">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-orange-400" aria-hidden />
-                    Sens du service et de l&apos;accueil
-                  </li>
-                  <li className="flex gap-3">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-orange-400" aria-hidden />
-                    Gestion des situations difficiles et des conflits
-                  </li>
-                  <li className="flex gap-3">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-orange-400" aria-hidden />
-                    Posture professionnelle avec les clients, collègues, encadrement
-                  </li>
-                  <li className="flex gap-3">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-orange-400" aria-hidden />
-                    Capacité à rassurer, écouter, expliquer
-                  </li>
-                </ul>
-              </Card>
-            </ScrollReveal>
-          </div>
-        </div>
-      </section>
-
-      <section className="section-shell section-y">
-        <div className="mx-auto max-w-[1200px]">
-          <SectionHeader
-            eyebrow="Valeurs"
-            title="Un état d'esprit avant tout"
-            lead="Au-delà des compétences, être Compagnon de la Route, c'est porter un état d'esprit. Les valeurs qui nous guident au quotidien :"
-          />
-          <div className="mt-10 grid gap-6 sm:grid-cols-2">
-            {values.map((v) => (
-              <ScrollReveal key={v.title}>
-                <Card className="h-full">
-                  <h3 className="text-lg font-semibold text-orange-300">{v.title}</h3>
-                  <p className="mt-3 text-[15px] leading-relaxed text-white-75">{v.text}</p>
-                </Card>
-              </ScrollReveal>
-            ))}
-          </div>
-          <p className="mx-auto mt-10 max-w-[720px] text-center text-[15px] leading-relaxed text-white-50">
-            Ces valeurs ne sont pas des slogans. Elles se vivent dans le bus, au dépôt, en
-            formation, sur le terrain. Elles sont au cœur du quotidien d&apos;un Compagnon
-            de la Route.
-          </p>
-        </div>
-      </section>
-
-      <section className="section-shell section-y">
-        <div className="mx-auto max-w-[980px]">
-          <Eyebrow>Concrètement</Eyebrow>
-          <h2 className="mt-4 text-[clamp(1.75rem,3.5vw,2.625rem)] font-bold tracking-[-0.025em]">
-            Ce que nous faisons au sein du cabinet BOAZ
-          </h2>
-          <ul className="mt-8 space-y-4">
-            {concreteActions.map((action) => (
-              <li key={action} className="flex gap-3 text-[15px] leading-relaxed text-white-75 md:text-[16px]">
-                <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-orange-500/15 text-orange-400">
-                  <Check className="h-4 w-4" aria-hidden />
+          <ol className="border-t border-white/15">
+            {workingPrinciples.map((principle, index) => (
+              <li
+                key={principle.title}
+                className="grid grid-cols-[2.75rem_1fr] gap-4 border-b border-white/15 py-6 sm:grid-cols-[3rem_minmax(12rem,0.8fr)_minmax(0,1fr)] sm:gap-6"
+              >
+                <span className="font-mono text-xs text-orange-300">
+                  {String(index + 1).padStart(2, "0")}
                 </span>
-                {action}
+                <h3 className="font-semibold text-white-90">{principle.title}</h3>
+                <p className="col-start-2 text-sm leading-6 text-white-60 sm:col-start-3">
+                  {principle.text}
+                </p>
               </li>
             ))}
-          </ul>
-          <p className="mt-10 text-lg leading-relaxed text-white-60">
-            Notre ambition est simple :{" "}
-            <span className="text-white-90">
-              faire de chaque Compagnon de la Route un professionnel fiable, reconnu et
-              fier de son métier.
-            </span>
-          </p>
+          </ol>
         </div>
       </section>
 
-      <section className="section-shell section-y">
-        <div className="mx-auto max-w-[1200px]">
-          <SectionHeader
-            eyebrow="Pourquoi pas vous ?"
-            title="Un partenaire qui ne se contente pas de former"
-            lead="Que vous soyez :"
-          />
-          <div className="mt-10 grid gap-6 sm:grid-cols-2">
-            {audiences.map((a) => (
-              <ScrollReveal key={a.title}>
-                <Card className="h-full">
-                  <h3 className="font-semibold text-white-90">{a.title}</h3>
-                  <p className="mt-2 text-[15px] leading-relaxed text-white-60">{a.text}</p>
-                </Card>
-              </ScrollReveal>
-            ))}
-          </div>
-          <p className="mx-auto mt-10 max-w-[720px] text-center text-lg leading-relaxed text-white-60">
-            {siteName} est un partenaire qui ne se contente pas de « former ». Nous
-            co-construisons des solutions d&apos;avenir, au service des personnes et des
-            territoires.
-          </p>
-          <p className="mx-auto mt-6 max-w-[720px] text-center">
-            <Link
-              href="/contact"
-              className="font-semibold text-orange-300 hover:text-orange-200"
-            >
-              Parlons de votre projet
-            </Link>
-            {" · "}
-            <Link
-              href="/formations/conducteur-voyageurs"
-              className="font-semibold text-orange-300 hover:text-orange-200"
-            >
-              Découvrir la formation
-            </Link>
-          </p>
-        </div>
-      </section>
-
-      <section className="section-shell section-y">
-        <div className="mx-auto max-w-[1200px]">
-          <div className="mb-10 flex flex-col gap-4">
-            <Eyebrow>Méthode</Eyebrow>
-            <h2 className="text-[clamp(1.75rem,3.5vw,2.625rem)] font-bold tracking-[-0.025em]">
-              Notre méthode
-            </h2>
-            <p className="max-w-2xl text-lg text-white-60">
-              Quatre étapes pour transformer un projet en compétences et préparer la
-              suite professionnelle.
-            </p>
-          </div>
-          <MethodTimeline />
-        </div>
-      </section>
-
-      <section className="section-shell section-y">
-        <div className="mx-auto max-w-[980px] rounded-2xl border border-white/10 bg-forest-surface/40 p-6 text-center sm:p-10">
-          <p className="text-[15px] text-white-60">
-            Envie d&apos;échanger avec {siteName} ?{" "}
-            <Link href="/contact" className="font-semibold text-orange-300 hover:text-orange-200">
-              Écrivez-nous
-            </Link>
-            .
+      <section className="border-t border-white/10 bg-night-deep">
+        <div className="section-shell mx-auto max-w-6xl py-16 md:py-24">
+          <p className="max-w-5xl text-balance text-[clamp(2rem,4.6vw,4.75rem)] font-semibold leading-[1.02] tracking-[-0.045em] text-white-90">
+            Financement, certification et embauche restent soumis à des décisions
+            extérieures. Nous vous indiquons ce qui est confirmé, ce qui dépend encore
+            d’un accord et ce qui doit être vérifié.
           </p>
         </div>
       </section>
 
       <FinalCTA />
     </>
+  );
+}
+
+function IdentityRow({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="grid gap-2 border-b border-night-deep/25 py-5 sm:grid-cols-[11rem_1fr] sm:gap-6">
+      <dt className="font-mono text-[11px] uppercase tracking-[0.12em] text-night-deep/55">
+        {label}
+      </dt>
+      <dd className="font-semibold">{value}</dd>
+    </div>
   );
 }

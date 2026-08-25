@@ -1,10 +1,9 @@
 import Link from "next/link";
-import { ArrowRight, Check, ExternalLink, ShieldCheck } from "lucide-react";
+import { ArrowRight, ExternalLink, ShieldCheck } from "lucide-react";
 import { BreadcrumbBar } from "@/components/layout/BreadcrumbBar";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { PageBreadcrumbs } from "@/components/seo/PageBreadcrumbs";
 import { buttonVariants } from "@/components/ui/Button";
-import { Card } from "@/components/ui/Card";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import type { VerifiedGuide } from "@/lib/verified-guides";
 import { cn } from "@/lib/utils";
@@ -26,7 +25,7 @@ export function VerifiedGuidePage({ guide }: { guide: VerifiedGuide }) {
 
       <main>
         <section className="section-shell pb-14 pt-5 md:pb-20 md:pt-10">
-          <div className="mx-auto max-w-[1040px]">
+          <div className="mx-auto max-w-5xl">
             <Eyebrow>{guide.eyebrow}</Eyebrow>
             <h1 className="mt-4 max-w-4xl text-[clamp(2.35rem,6vw,4.75rem)] font-bold leading-[0.98] tracking-[-0.045em] text-white-90">
               {guide.title}
@@ -42,25 +41,25 @@ export function VerifiedGuidePage({ guide }: { guide: VerifiedGuide }) {
         </section>
 
         <section className="section-shell pb-16" aria-labelledby="guide-summary">
-          <div className="mx-auto max-w-[1040px]">
+          <div className="mx-auto max-w-5xl">
             <h2 id="guide-summary" className="sr-only">
               À retenir
             </h2>
-            <div className="grid gap-4 md:grid-cols-3">
-              {guide.summary.map((item) => (
-                <Card key={item} className="flex gap-4 p-6 hover:translate-y-0">
-                  <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-orange-500/15 text-orange-300">
-                    <Check className="h-4 w-4" aria-hidden />
+            <div className="grid border-l border-t border-white/15 md:grid-cols-3">
+              {guide.summary.map((item, index) => (
+                <div key={item} className="border-b border-r border-white/15 p-6">
+                  <span className="font-mono text-xs text-orange-300">
+                    {String(index + 1).padStart(2, "0")}
                   </span>
-                  <p className="text-[15px] leading-relaxed text-white-75">{item}</p>
-                </Card>
+                  <p className="mt-4 text-[15px] leading-7 text-white-75">{item}</p>
+                </div>
               ))}
             </div>
           </div>
         </section>
 
         <section className="section-shell pb-16 md:pb-24">
-          <div className="mx-auto grid max-w-[1040px] gap-12 lg:grid-cols-[minmax(0,1fr)_300px] lg:items-start">
+          <div className="mx-auto grid max-w-5xl gap-12 lg:grid-cols-[minmax(0,1fr)_18rem] lg:items-start">
             <article className="article-prose max-w-none">
               {guide.sections.map((section) => (
                 <section key={section.title}>
@@ -78,14 +77,14 @@ export function VerifiedGuidePage({ guide }: { guide: VerifiedGuide }) {
                 </section>
               ))}
 
-              <aside className="mt-12 rounded-2xl border border-orange-500/25 bg-orange-500/[0.07] p-6 md:p-8">
+              <aside className="mt-12 border-l-2 border-orange-400 bg-white/[0.025] p-6 md:p-8">
                 <p className="!mb-0 text-base font-medium leading-relaxed text-white-90">
                   {guide.notice}
                 </p>
               </aside>
             </article>
 
-            <aside className="rounded-2xl border border-white/10 bg-white/[0.025] p-6 lg:sticky lg:top-28">
+            <aside className="border-t border-white/15 py-6 lg:sticky lg:top-28">
               <Eyebrow>Sources officielles</Eyebrow>
               <ul className="mt-5 space-y-5">
                 {guide.sources.map((source) => (

@@ -21,7 +21,7 @@ export default function ConfidentialitePage() {
           />
         </BreadcrumbBar>
       </div>
-      <div className="section-shell mx-auto max-w-[900px] pb-16 pt-3 md:pt-5">
+      <div className="section-shell mx-auto max-w-4xl pb-16 pt-3 md:pt-5">
         <h1 className="text-4xl font-bold tracking-tight">Politique de confidentialité</h1>
         <p className="mt-4 text-sm text-white-45">Dernière mise à jour : 25 août 2026</p>
 

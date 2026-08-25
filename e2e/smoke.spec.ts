@@ -4,30 +4,34 @@ test.describe("Parcours critiques", () => {
   test("accueil : titre principal et lien formation", async ({ page }) => {
     await page.goto("/");
     await expect(
-      page.getByRole("heading", { level: 1, name: /Conducteur de voyageurs/i }),
+      page.getByRole("heading", { level: 1, name: /Conduire des voyageurs/i }),
     ).toBeVisible();
     await expect(
-      page.getByRole("link", { name: /Découvrir le parcours/i }).first(),
+      page.getByRole("link", { name: /Voir la formation/i }).first(),
     ).toBeVisible();
+    await expect(
+      page.getByRole("img", { name: /Conductrice de bus installée à son poste/i }),
+    ).toBeVisible();
+    await expect(page.getByText("L'exigence", { exact: true })).toHaveCount(0);
 
     const statement = page.getByRole("heading", {
       level: 2,
-      name: /bien plus qu’un examen/i,
+      name: /Chaque personne à bord/i,
     });
     await statement.scrollIntoViewIfNeeded();
-    await expect(statement).toContainText("Un métier. Une responsabilité. Un projet de vie.");
+    await expect(statement).toContainText("compte sur le conducteur");
     await expect(
-      page.getByText("Former un conducteur, c’est préparer bien plus qu’un examen.", {
+      page.getByText("Chaque personne à bord", {
         exact: true,
       }),
     ).toHaveCSS("opacity", "1");
     await expect(
-      page.getByText("Un métier. Une responsabilité. Un projet de vie.", { exact: true }),
+      page.getByText("compte sur le conducteur.", { exact: true }),
     ).toHaveCSS("opacity", "1");
 
     const bentoHeading = page.getByRole("heading", {
       level: 2,
-      name: /Un cadre clair pour avancer avec confiance/i,
+      name: /Décider avec des faits/i,
     });
     await bentoHeading.scrollIntoViewIfNeeded();
     await expect(bentoHeading).toBeVisible();
@@ -38,7 +42,7 @@ test.describe("Parcours critiques", () => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto("/");
     await page
-      .getByRole("heading", { level: 2, name: /Un cadre clair pour avancer avec confiance/i })
+      .getByRole("heading", { level: 2, name: /Décider avec des faits/i })
       .scrollIntoViewIfNeeded();
 
     const hasHorizontalOverflow = await page.evaluate(
@@ -91,14 +95,9 @@ test.describe("Parcours critiques", () => {
 
     const footer = page.getByRole("contentinfo");
     await footer.scrollIntoViewIfNeeded();
+    await expect(footer.getByText(/Un projet de formation à vérifier/i)).toBeVisible();
     await expect(
-      footer.getByRole("heading", {
-        level: 2,
-        name: /prochaine étape commençait ici/i,
-      }),
-    ).toBeVisible();
-    await expect(
-      footer.getByRole("link", { name: /Parler de mon projet/i }),
+      footer.getByRole("link", { name: /Parler à l.?équipe/i }),
     ).toHaveAttribute("href", "/contact");
     await expect(
       footer.getByRole("navigation", { name: "Navigation de pied de page" }),
@@ -120,7 +119,7 @@ test.describe("Parcours critiques", () => {
   test("contact : formulaire accessible", async ({ page }) => {
     await page.goto("/contact");
     await expect(
-      page.getByRole("heading", { level: 1, name: /Restons en contact/i }),
+      page.getByRole("heading", { level: 1, name: /Parlez-nous de votre projet/i }),
     ).toBeVisible();
     await expect(page.getByLabel(/Nom complet/i)).toBeVisible();
     await expect(page.getByRole("button", { name: /Envoyer ma demande/i })).toBeVisible();
@@ -147,10 +146,10 @@ test.describe("Parcours critiques", () => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto("/formations/conducteur-voyageurs");
     await expect(
-      page.getByRole("heading", { level: 1, name: /Conduire les voyageurs/i }),
+      page.getByRole("heading", { level: 1, name: /Devenir conducteur/i }),
     ).toBeVisible();
     await expect(
-      page.getByRole("img", { name: /Conductrice de voyageurs devant un bus/i }),
+      page.getByRole("img", { name: /Conductrice de voyageurs installée au poste/i }),
     ).toBeVisible();
     await expect(
       page.getByRole("img", { name: /poste de conduite d’un bus/i }),

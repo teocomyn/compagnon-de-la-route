@@ -1,11 +1,10 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArticleBody } from "@/components/blog/ArticleBody";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { ArticleCard } from "@/components/blog/ArticleCard";
 import { ArticleHeader } from "@/components/blog/ArticleHeader";
 import { ArticleToc } from "@/components/blog/ArticleToc";
-import { buttonVariants } from "@/components/ui/Button";
+import { FinalCTA } from "@/components/sections/FinalCTA";
 import {
   getAllArticlesMeta,
   getArticleBySlug,
@@ -148,24 +147,7 @@ export default async function ArticlePage({ params }: PageProps) {
         </section>
       ) : null}
 
-      <section className="section-shell section-y">
-        <div className="mx-auto max-w-5xl rounded-2xl border border-white/10 bg-gradient-to-b from-orange-500/[0.08] to-transparent p-6 text-center sm:p-10">
-          <h2 className="text-[clamp(1.5rem,3vw,2.25rem)] font-bold tracking-[-0.02em]">
-            Besoin de vérifier le parcours proposé ?
-          </h2>
-          <p className="mt-4 text-[15px] leading-relaxed text-white-60">
-            Consultez les objectifs généraux, puis demandez la fiche programme à jour.
-          </p>
-          <div className="mt-8 flex justify-center">
-            <Link
-              href="/formations/conducteur-voyageurs"
-              className={buttonVariants({ variant: "primary", size: "lg" })}
-            >
-              Voir la formation
-            </Link>
-          </div>
-        </div>
-      </section>
+      <FinalCTA />
     </article>
   );
 }

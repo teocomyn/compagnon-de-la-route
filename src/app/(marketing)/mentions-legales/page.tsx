@@ -21,7 +21,7 @@ export default function MentionsLegalesPage() {
           />
         </BreadcrumbBar>
       </div>
-      <div className="section-shell mx-auto max-w-[900px] pb-16 pt-3 md:pt-5">
+      <div className="section-shell mx-auto max-w-4xl pb-16 pt-3 md:pt-5">
         <h1 className="text-4xl font-bold tracking-tight">Mentions légales</h1>
         <p className="mt-4 text-sm text-white-45">Dernière mise à jour : 25 août 2026</p>
 
@@ -49,7 +49,7 @@ export default function MentionsLegalesPage() {
           </p>
 
           <h2>Directeur de la publication et hébergement</h2>
-          <div className="rounded-xl border border-orange-500/30 bg-orange-500/10 p-5 text-[15px] leading-relaxed text-white-75">
+          <div className="border-l-2 border-orange-400 py-1 pl-5 text-[15px] leading-relaxed text-white-75">
             Avant la mise en production, renseigner le nom du directeur de la
             publication et les coordonnées exactes de l&apos;hébergeur effectivement retenu.
             Ces informations ne sont pas déduites automatiquement du code du site.

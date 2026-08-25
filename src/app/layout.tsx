@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Archivo, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import {
   organizationInfo,
@@ -8,14 +8,14 @@ import {
   siteUrl,
 } from "@/lib/constants";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const archivo = Archivo({
+  variable: "--font-cdr-sans",
   subsets: ["latin"],
   display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const ibmPlexMono = IBM_Plex_Mono({
+  variable: "--font-cdr-mono",
   subsets: ["latin"],
   weight: ["400", "500", "600"],
   display: "swap",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     template: `%s · ${siteName}`,
   },
   description:
-    "Organisme de formation pour les métiers du transport de voyageurs : parcours humains, exigence terrain et accompagnement professionnel.",
+    "BOAZ accompagne les projets de formation aux métiers du transport de voyageurs, de l’étude des prérequis à la préparation de la prise de poste.",
   openGraph: {
     type: "website",
     locale: "fr_FR",
@@ -93,7 +93,7 @@ export default function RootLayout({
   return (
     <html
       lang="fr"
-      className={`${geistSans.variable} ${geistMono.variable} relative h-full scroll-smooth`}
+      className={`${archivo.variable} ${ibmPlexMono.variable} relative h-full scroll-smooth`}
     >
       <body className="relative min-h-full overflow-x-clip font-sans text-white antialiased pb-[env(safe-area-inset-bottom)]">
         <EducationalOrganizationJsonLd />

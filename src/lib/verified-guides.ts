@@ -79,12 +79,12 @@ export const verifiedGuides = {
       "Compagnon de la Route étudie les possibilités avec le candidat, sans garantir l’acceptation d’un financement ni l’absence de reste à charge.",
     sources: [
       {
-        label: "Service Public — Compte personnel de formation",
+        label: "Service Public : Compte personnel de formation",
         url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F10705",
         detail: "Règles du CPF, formations accessibles et cas des permis du groupe lourd.",
       },
       {
-        label: "France Travail — Aide individuelle à la formation",
+        label: "France Travail : Aide individuelle à la formation",
         url: "https://www.francetravail.fr/candidat/en-formation/mes-aides-financieres/laide-individuelle-a-la-formatio.html",
         detail: "Bénéficiaires, cohérence avec le projet professionnel et traitement du devis.",
       },
@@ -156,17 +156,17 @@ export const verifiedGuides = {
       "Les débouchés présentés décrivent le métier au niveau national. Ils ne constituent ni une offre d’emploi ni une garantie de recrutement à l’issue d’un parcours.",
     sources: [
       {
-        label: "France Compétences — RNCP37878",
+        label: "France Compétences : RNCP37878",
         url: "https://www.francecompetences.fr/recherche/rncp/37878/",
         detail: "Activités, compétences, conditions d’exercice et types d’emplois accessibles.",
       },
       {
-        label: "Onisep — Conducteur de bus ou d’autocar",
+        label: "Onisep : Conducteur de bus ou d’autocar",
         url: "https://www.onisep.fr/ressources/univers-metier/metiers/conducteur-conductrice-de-bus-ou-d-autocar",
         detail: "Présentation du métier, compétences attendues et conditions de travail.",
       },
       {
-        label: "France Travail — Besoins en main-d’œuvre",
+        label: "France Travail : Besoins en main-d’œuvre",
         url: "https://statistiques.francetravail.org/bmo",
         detail: "Exploration des projets de recrutement par métier et par territoire.",
       },
@@ -228,17 +228,17 @@ export const verifiedGuides = {
       "Le parcours exact proposé par Compagnon de la Route, les catégories de permis préparées et la qualification visée sont précisés dans la fiche programme contractuelle avant inscription.",
     sources: [
       {
-        label: "Service Public — Permis D",
+        label: "Service Public : Permis D",
         url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F2844",
         detail: "Véhicules autorisés, conditions, examen et durée de validité.",
       },
       {
-        label: "Service Public — Contrôle médical professionnel",
+        label: "Service Public : Contrôle médical professionnel",
         url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F1255",
         detail: "Périodicité du contrôle médical selon l’âge et la catégorie.",
       },
       {
-        label: "Ministère chargé des Transports — Formation des conducteurs",
+        label: "Ministère chargé des Transports : Formation des conducteurs",
         url: "https://www.ecologie.gouv.fr/politiques-publiques/formation-conducteurs-du-transport-routier",
         detail: "Articulation entre permis, qualification initiale, FIMO et FCO.",
       },
@@ -308,22 +308,22 @@ export const verifiedGuides = {
       "Cette page explique le cadre national. Elle ne confirme pas que la FIMO constitue le parcours adapté à votre situation ni qu’elle est incluse dans une offre Compagnon de la Route.",
     sources: [
       {
-        label: "Ministère chargé des Transports — FIMO, FCO et passerelles",
+        label: "Ministère chargé des Transports : FIMO, FCO et passerelles",
         url: "https://www.ecologie.gouv.fr/politiques-publiques/formation-conducteurs-du-transport-routier",
         detail: "Présentation du dispositif de qualification initiale et continue.",
       },
       {
-        label: "Légifrance — Programme FIMO voyageurs",
+        label: "Légifrance : Programme FIMO voyageurs",
         url: "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000051763804",
         detail: "Annexe réglementaire détaillant le programme et les 140 heures.",
       },
       {
-        label: "Légifrance — Formation continue obligatoire",
+        label: "Légifrance : Formation continue obligatoire",
         url: "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000023086525/LEGISCTA000033450447/",
         detail: "Règles de renouvellement de la qualification professionnelle.",
       },
       {
-        label: "Service Public — Plan de développement des compétences",
+        label: "Service Public : Plan de développement des compétences",
         url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F11267",
         detail: "FIMO et FCO comme formations obligatoires pour les conducteurs routiers.",
       },
@@ -405,22 +405,22 @@ export const verifiedGuides = {
       "Ces réponses présentent le cadre général vérifié au 25 août 2026. La fiche programme et le contrat transmis au candidat restent les références pour une session précise.",
     sources: [
       {
-        label: "Service Public — Permis D",
+        label: "Service Public : Permis D",
         url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F2844",
         detail: "Conditions, examen, contrôle médical et validité.",
       },
       {
-        label: "Ministère chargé des Transports — FIMO et FCO",
+        label: "Ministère chargé des Transports : FIMO et FCO",
         url: "https://www.ecologie.gouv.fr/politiques-publiques/formation-conducteurs-du-transport-routier",
         detail: "Qualification initiale et renouvellement professionnel.",
       },
       {
-        label: "France Compétences — RNCP37878",
+        label: "France Compétences : RNCP37878",
         url: "https://www.francecompetences.fr/recherche/rncp/37878/",
         detail: "Certification Conducteur de transport en commun sur route.",
       },
       {
-        label: "France Travail — Aide individuelle à la formation",
+        label: "France Travail : Aide individuelle à la formation",
         url: "https://www.francetravail.fr/candidat/en-formation/mes-aides-financieres/laide-individuelle-a-la-formatio.html",
         detail: "Conditions d’étude d’une demande AIF.",
       },
@@ -488,17 +488,17 @@ export const verifiedGuides = {
       "Cette page décrit un type d’emploi. Elle ne signifie pas qu’une spécialisation tourisme ou une session correspondante est proposée par Compagnon de la Route.",
     sources: [
       {
-        label: "France Compétences — RNCP37878",
+        label: "France Compétences : RNCP37878",
         url: "https://www.francecompetences.fr/recherche/rncp/37878/",
         detail: "Missions, évaluations et évolutions vers le tourisme ou le grand tourisme.",
       },
       {
-        label: "Onisep — Conducteur de bus ou d’autocar",
+        label: "Onisep : Conducteur de bus ou d’autocar",
         url: "https://www.onisep.fr/ressources/univers-metier/metiers/conducteur-conductrice-de-bus-ou-d-autocar",
         detail: "Conditions d’exercice et compétences attendues dans le transport de voyageurs.",
       },
       {
-        label: "Ministère chargé des Transports — Transport routier de personnes",
+        label: "Ministère chargé des Transports : Transport routier de personnes",
         url: "https://www.ecologie.gouv.fr/politiques-publiques/organisation-transports-routiers-nationaux-personnes",
         detail: "Cadre général des services réguliers et occasionnels de transport de personnes.",
       },
@@ -563,22 +563,22 @@ export const verifiedGuides = {
       "Cette page décrit le cadre général du transport scolaire. Elle ne confirme ni une spécialisation, ni une affectation, ni un contrat de travail proposé par Compagnon de la Route.",
     sources: [
       {
-        label: "Ministère chargé des Transports — Sécurité des transports scolaires",
+        label: "Ministère chargé des Transports : Sécurité des transports scolaires",
         url: "https://www.ecologie.gouv.fr/politiques-publiques/organisation-transports-routiers-nationaux-personnes",
         detail: "Guide interministériel et organisation générale du transport scolaire.",
       },
       {
-        label: "Sécurité routière — Ceinture de sécurité",
+        label: "Sécurité routière : Ceinture de sécurité",
         url: "https://www.securite-routiere.gouv.fr/sites/default/files/2023-01/03-09-20_guide_ts_version_finale_validee.pdf",
         detail: "Règles et recommandations de sécurité pour les passagers d’autocars scolaires.",
       },
       {
-        label: "Ministère chargé des Transports — Équipements de sécurité",
+        label: "Ministère chargé des Transports : Équipements de sécurité",
         url: "https://www.ecologie.gouv.fr/politiques-publiques/securite-transport-routier-ethylotests-pesage-arrimage-controle-technique",
         detail: "Éthylotest anti-démarrage et sécurité du transport routier de personnes.",
       },
       {
-        label: "France Compétences — RNCP37878",
+        label: "France Compétences : RNCP37878",
         url: "https://www.francecompetences.fr/recherche/rncp/37878/",
         detail: "Emploi de conducteur en période scolaire et compétences professionnelles.",
       },
@@ -642,7 +642,7 @@ export const verifiedGuides = {
         ],
       },
       {
-        title: "Vérifier le marché sans transformer un besoin en garantie",
+        title: "Vérifier le marché sans confondre besoin et garantie",
         paragraphs: [
           "Le portail Transports et mobilités de France Travail, les offres associées au code N4103 et l’enquête Besoins en main-d’œuvre permettent d’observer les recrutements. Les résultats varient par territoire et dans le temps.",
           "Une offre publiée, un entretien ou une mise en relation ne garantissent pas une embauche. Seule une proposition contractuelle écrite précise le poste, la rémunération, le temps de travail et la date d’entrée.",
@@ -653,22 +653,22 @@ export const verifiedGuides = {
       "Compagnon de la Route peut préparer et accompagner une candidature, mais ne décide pas du recrutement et ne garantit aucun contrat de travail.",
     sources: [
       {
-        label: "France Compétences — RNCP37878",
+        label: "France Compétences : RNCP37878",
         url: "https://www.francecompetences.fr/recherche/rncp/37878/",
         detail: "Compétences, activités et types d’emplois du conducteur de voyageurs.",
       },
       {
-        label: "France Travail — Transports et mobilités",
+        label: "France Travail : Transports et mobilités",
         url: "https://transports-mobilites.francetravail.fr/je-postule",
         detail: "Offres et événements de recrutement du secteur des transports.",
       },
       {
-        label: "France Travail — Valoriser ses compétences",
+        label: "France Travail : Valoriser ses compétences",
         url: "https://www.francetravail.fr/candidat/vos-recherches/preparer-votre-candidature/accompagne-dans-sa-recherche/positionnez-vous-comme-un-offreu.html",
         detail: "Identifier et présenter savoir-faire, savoirs et savoir-être.",
       },
       {
-        label: "France Travail — Préparer ses questions d’entretien",
+        label: "France Travail : Préparer ses questions d’entretien",
         url: "https://www.francetravail.fr/candidat/vos-recherches/preparer-votre-candidature/entretien/entretien-embauche-pose-question.html",
         detail: "Préparation de l’entretien et clarification des conditions du poste.",
       },
@@ -730,17 +730,17 @@ export const verifiedGuides = {
       "La certification effectivement visée par un parcours Compagnon de la Route est confirmée dans la fiche programme et les documents contractuels à jour, avant inscription.",
     sources: [
       {
-        label: "France Compétences — RNCP37878",
+        label: "France Compétences : RNCP37878",
         url: "https://www.francecompetences.fr/recherche/rncp/37878/",
         detail: "Fiche officielle du titre professionnel et période d’enregistrement.",
       },
       {
-        label: "Ministère du Travail — Référentiel Qualiopi",
+        label: "Ministère du Travail : Référentiel Qualiopi",
         url: "https://travail-emploi.gouv.fr/referentiel-national-qualite-guide-de-lecture-qualiopi",
         detail: "Périmètre de la certification qualité et financeurs concernés.",
       },
       {
-        label: "Service Public Entreprendre — Déclaration d’activité",
+        label: "Service Public Entreprendre : Déclaration d’activité",
         url: "https://entreprendre.service-public.gouv.fr/vosdroits/F19087",
         detail: "Portée du numéro de déclaration d’activité d’un organisme de formation.",
       },

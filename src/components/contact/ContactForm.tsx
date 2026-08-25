@@ -1,7 +1,6 @@
 "use client";
 
 import { useActionState } from "react";
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { submitContact, type ContactState } from "@/actions/contact";
 import { Button } from "@/components/ui/Button";
@@ -14,42 +13,17 @@ export function ContactForm() {
 
   if (state.ok) {
     return (
-      <motion.div
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-        className="relative overflow-hidden rounded-xl border border-mint-400/25 bg-mint-500/10 p-10"
+      <div
+        className="border-l-2 border-mint-400 bg-mint-500/[0.07] p-8"
         role="status"
       >
-        <div className="pointer-events-none absolute inset-0">
-          {Array.from({ length: 18 }).map((_, i) => (
-            <motion.span
-              key={i}
-              className="absolute h-1.5 w-1.5 rounded-full bg-mint-300/70"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{
-                opacity: [0, 1, 0],
-                y: [-6, -26],
-                x: [0, (i % 5) * 6 - 12],
-              }}
-              transition={{
-                duration: 1.8,
-                delay: i * 0.05,
-                repeat: Infinity,
-                repeatDelay: 2.2,
-                ease: "easeOut",
-              }}
-              style={{ left: `${(i * 17) % 100}%`, bottom: "10%" }}
-            />
-          ))}
-        </div>
-        <p className="relative text-lg font-semibold text-white-90">
+        <p className="text-lg font-semibold text-white-90">
           Merci : votre demande est bien envoyée. Nous revenons vers vous très vite.
         </p>
-        <p className="relative mt-3 text-[15px] leading-relaxed text-white-60">
+        <p className="mt-3 text-[15px] leading-relaxed text-white-60">
           Une copie n&apos;est pas envoyée automatiquement : conservez cette confirmation.
         </p>
-      </motion.div>
+      </div>
     );
   }
 

@@ -41,8 +41,8 @@
   --color-white-05: rgba(255, 255, 255, 0.05);
 
   /* Typography */
-  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), monospace;
+  --font-sans: var(--font-cdr-sans), Arial, sans-serif;
+  --font-mono: var(--font-cdr-mono), monospace;
 
   /* Radius */
   --radius-sm: 8px;
@@ -95,20 +95,6 @@ input[type="button"] {
   touch-action: manipulation;
 }
 
-/* Atmospheric grid background on body */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
-  background-size: 64px 64px;
-  pointer-events: none;
-  z-index: 0;
-  mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
-}
-
 ::selection {
   background: var(--color-orange-500);
   color: var(--color-night);
@@ -132,30 +118,6 @@ body::before {
   *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
-  }
-}
-
-@keyframes cdr-pulse-dot {
-  0%,
-  100% {
-    opacity: 1;
-    box-shadow: 0 0 16px rgba(242, 107, 42, 0.6);
-  }
-  50% {
-    opacity: 0.4;
-    box-shadow: 0 0 4px rgba(242, 107, 42, 0.3);
-  }
-}
-
-.cdr-pulse-dot {
-  animation: cdr-pulse-dot 2.4s ease-in-out infinite;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .cdr-pulse-dot {
-    animation: none;
-    opacity: 1;
-    box-shadow: none;
   }
 }
 

@@ -18,7 +18,7 @@ const stats = [
 export function Stats() {
   return (
     <section className="border-y border-white/5 bg-forest-surface/35 py-16 md:py-24">
-      <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-10 px-6 md:grid-cols-3 md:gap-0 md:px-8">
+      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 px-6 md:grid-cols-3 md:gap-0 md:px-8">
         {stats.map((s, idx) => (
           <div
             key={s.label}

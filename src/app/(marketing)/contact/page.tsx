@@ -1,7 +1,6 @@
 import { ContactForm } from "@/components/contact/ContactForm";
 import { BreadcrumbBar } from "@/components/layout/BreadcrumbBar";
 import { PageBreadcrumbs } from "@/components/seo/PageBreadcrumbs";
-import { GlassCard } from "@/components/ui/GlassCard";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { contactInfo, organizationInfo, siteName } from "@/lib/constants";
 import type { Metadata } from "next";
@@ -25,16 +24,17 @@ export default function ContactPage() {
           />
         </BreadcrumbBar>
       </div>
-      <div className="section-shell grid max-w-[1200px] gap-12 pt-3 lg:grid-cols-2 lg:items-start lg:pt-6">
+      <div className="section-shell pt-3 lg:pt-10">
+        <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
         <div className="space-y-6">
-          <Eyebrow>Prenons la route ensemble</Eyebrow>
-          <h1 className="text-[clamp(2rem,4.5vw,3.25rem)] font-bold leading-[1.05] tracking-[-0.03em]">
-            Restons en contact et construisons votre avenir
+          <Eyebrow>Votre situation</Eyebrow>
+          <h1 className="text-[clamp(2.8rem,5.5vw,5.5rem)] font-semibold leading-[0.94] tracking-[-0.05em]">
+            Parlez-nous de votre projet.
           </h1>
           <p className="text-lg leading-relaxed text-white-60">
-            Une question sur le financement, le rythme, ou votre éligibilité ? Nous
-            préférons l&apos;échange direct à la promesse floue : écrivez-nous, nous
-            revenons vers vous avec des réponses actionnables.
+            Indiquez votre situation, vos disponibilités et la question la plus urgente.
+            Nous pourrons alors vérifier les prérequis, les modalités et les pistes de
+            financement pertinentes.
           </p>
           <div className="space-y-3 text-[15px] text-white-75">
             {contactInfo.phone ? (
@@ -69,12 +69,13 @@ export default function ContactPage() {
           </div>
         </div>
 
-        <GlassCard className="p-8 md:p-10">
+        <div className="border border-white/15 border-t-orange-400 bg-night-deep p-6 md:p-10">
           <ContactForm />
-        </GlassCard>
+        </div>
+        </div>
       </div>
 
-      <div className="section-shell mx-auto mt-16 max-w-[1200px] rounded-xl border border-white/10 bg-white/[0.02] p-6 md:p-8">
+      <div className="section-shell mx-auto mt-16 max-w-6xl border-t border-white/15 py-6 md:py-8">
         <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-orange-300">
           Organisme de formation déclaré
         </p>

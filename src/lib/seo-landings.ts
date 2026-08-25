@@ -272,7 +272,7 @@ export const seoLandingPages: Record<string, SeoLandingPageData> = {
       "Autocar de tourisme : compétences, service voyageurs, sécurité et encadrement. Préparez-vous au métier avec une formation conducteur de voyageurs exigeante.",
     keywords: ["formation autocar tourisme", "conducteur voyageurs tourisme", "car de tourisme"],
     eyebrow: "Tourisme & service",
-    h1: "Autocar de tourisme : l’excellence du service sur la route",
+    h1: "Autocar de tourisme : accueillir et conduire sur de longues distances",
     intro:
       "Circuits, séjours, événements : le tourisme en car demande rigueur, élégance relationnelle et maîtrise technique. Une formation complète vous prépare à ce standard.",
     breadcrumbs: baseCrumbs("formation-conducteur-autocar-tourisme", "Tourisme"),
@@ -504,7 +504,7 @@ export const seoLandingPages: Record<string, SeoLandingPageData> = {
       },
       {
         icon: "Sparkles",
-        title: "Parcours premium",
+        title: "Parcours documenté",
         text: "Pédagogie exigeante, accompagnement humain, culture de la sécurité.",
       },
     ],

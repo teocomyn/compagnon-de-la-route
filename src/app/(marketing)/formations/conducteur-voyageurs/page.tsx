@@ -4,23 +4,17 @@ import Link from "next/link";
 import {
   ArrowDown,
   ArrowRight,
-  BookOpen,
-  Briefcase,
-  Bus,
-  Check,
   Clock,
   Compass,
   FileText,
   MapPin,
   ShieldCheck,
   Users,
-  Wallet,
 } from "lucide-react";
-import driverPortrait from "@/assets/formation-conductrice-portrait.jpeg";
-import driverCabin from "@/assets/formation-conductrice-poste-conduite.jpeg";
 import { ProgramAccordion } from "@/components/formations/ProgramAccordion";
 import { BreadcrumbBar } from "@/components/layout/BreadcrumbBar";
 import { ScrollReveal } from "@/components/magicui/ScrollReveal";
+import { FinalCTA } from "@/components/sections/FinalCTA";
 import { MethodTimeline } from "@/components/sections/MethodTimeline";
 import { PageBreadcrumbs } from "@/components/seo/PageBreadcrumbs";
 import { Badge } from "@/components/ui/Badge";
@@ -163,23 +157,20 @@ export default function FormationConducteurPage() {
 
       <main>
         <section className="relative overflow-hidden pb-20 pt-8 md:pb-28 md:pt-14">
-          <div
-            className="pointer-events-none absolute -right-48 top-0 h-[min(35rem,100vw)] w-[min(35rem,100vw)] rounded-full bg-orange-500/10 blur-[130px]"
-            aria-hidden="true"
-          />
           <div className="section-shell relative z-10">
             <div className="mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-12 lg:gap-10">
               <div className="lg:col-span-7">
                 <Eyebrow>Formation · Conducteur de voyageurs</Eyebrow>
                 <h1 className="mt-6 max-w-5xl text-balance text-[clamp(3rem,6vw,5.75rem)] font-semibold leading-[0.93] tracking-[-0.055em] text-white-90">
-                  Conduire les voyageurs.
+                  Devenir conducteur.
                   <span className="mt-2 block text-orange-300">
-                    Faire avancer un territoire.
+                    Être prêt au premier départ.
                   </span>
                 </h1>
                 <p className="mt-8 max-w-2xl text-lg leading-8 text-white-60 md:text-xl">
-                  Un parcours pour comprendre le métier, développer les compétences attendues et
-                  construire une suite professionnelle cohérente avec votre situation.
+                  Préparez les compétences attendues au poste, de la sécurité à l’accueil des
+                  voyageurs. Les prérequis, la durée et le financement sont confirmés avant toute
+                  inscription.
                 </p>
 
                 <div className="mt-8 flex flex-wrap gap-2">
@@ -206,36 +197,25 @@ export default function FormationConducteurPage() {
               </div>
 
               <div className="relative mx-auto w-full max-w-xl lg:col-span-5 lg:ml-auto">
-                <div
-                  className="absolute -left-5 -top-5 h-24 w-24 rounded-tl-[2rem] border-l border-t border-orange-300/45"
-                  aria-hidden="true"
-                />
-                <figure className="relative aspect-[3/2] overflow-hidden rounded-[2rem] border border-white/10 bg-forest-surface shadow-2xl">
+                <figure className="border border-white/15 bg-forest-surface">
+                  <div className="relative aspect-[3/2] overflow-hidden">
                   <Image
-                    src={driverPortrait}
-                    alt="Conductrice de voyageurs devant un bus"
+                    src="/images/journal/conductrice-bus-poste.jpg"
+                    alt="Conductrice de voyageurs installée au poste de conduite"
                     fill
-                    priority
-                    placeholder="blur"
+                    loading="eager"
                     sizes="(max-width: 1023px) 100vw, 42vw"
                     className="object-cover"
                   />
-                  <div
-                    className="absolute inset-0 bg-gradient-to-t from-night-deep/70 via-transparent to-transparent"
-                    aria-hidden="true"
-                  />
-                  <figcaption className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-4 text-sm text-white-90">
-                    <span className="max-w-44 leading-5">Un métier de sécurité, de service et de présence.</span>
-                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-orange-400 text-night-deep">
-                      <Bus className="h-5 w-5" aria-hidden="true" />
-                    </span>
+                  </div>
+                  <figcaption className="border-t border-white/15 px-5 py-4 font-mono text-[10px] uppercase tracking-[0.14em] text-white-60">
+                    Au poste / transport de voyageurs
                   </figcaption>
                 </figure>
 
-                <div className="relative -mt-4 ml-auto mr-5 flex w-fit items-center gap-3 rounded-full border border-white/10 bg-night-deep px-5 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-white-75 shadow-xl">
-                  <span className="cdr-pulse-dot h-2 w-2 rounded-full bg-orange-400" aria-hidden="true" />
+                <p className="mt-4 border-l-2 border-orange-400 pl-4 text-xs font-semibold uppercase tracking-[0.14em] text-white-75">
                   Information claire avant inscription
-                </div>
+                </p>
               </div>
             </div>
           </div>
@@ -314,21 +294,16 @@ export default function FormationConducteurPage() {
         </section>
 
         <section className="section-shell pb-12 pt-6 md:pb-20">
-          <div className="mx-auto grid max-w-6xl overflow-hidden rounded-[2rem] border border-orange-100/15 bg-orange-100 text-night-deep lg:grid-cols-12">
+          <div className="mx-auto grid max-w-6xl overflow-hidden border border-orange-100/15 bg-orange-100 text-night-deep lg:grid-cols-12">
             <div className="relative min-h-[310px] lg:col-span-7 lg:min-h-[520px]">
               <Image
-                src={driverCabin}
+                src="/images/journal/conductrice-autocar.webp"
                 alt="Conductrice installée au poste de conduite d’un bus"
                 fill
-                placeholder="blur"
                 sizes="(max-width: 1023px) 100vw, 58vw"
                 className="object-cover"
               />
-              <div
-                className="absolute inset-0 bg-gradient-to-t from-night-deep/45 via-transparent to-transparent lg:bg-gradient-to-r"
-                aria-hidden="true"
-              />
-              <p className="absolute bottom-6 left-6 rounded-full bg-night-deep px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-orange-300">
+              <p className="absolute bottom-0 left-0 bg-night-deep px-4 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-orange-300">
                 Au poste de conduite
               </p>
             </div>
@@ -344,12 +319,9 @@ export default function FormationConducteurPage() {
                 La fiche programme précise les exercices, mises en situation et évaluations du
                 parcours proposé.
               </p>
-              <ul className="mt-7 space-y-3">
+              <ul className="mt-7 border-t border-night-deep/20">
                 {practicalSkills.map((skill) => (
-                  <li key={skill} className="flex items-start gap-3 text-sm leading-6">
-                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-orange-500 text-night-deep">
-                      <Check className="h-3 w-3" aria-hidden="true" />
-                    </span>
+                  <li key={skill} className="border-b border-night-deep/20 py-3 text-sm leading-6">
                     {skill}
                   </li>
                 ))}
@@ -408,7 +380,7 @@ export default function FormationConducteurPage() {
                 </h2>
               </div>
 
-              <div className="mt-14 grid overflow-hidden rounded-[1.75rem] border border-white/10 md:grid-cols-2">
+              <div className="mt-14 grid overflow-hidden border border-white/10 md:grid-cols-2">
                 {keyInformation.map((item, index) => {
                   const Icon = item.icon;
 
@@ -421,10 +393,8 @@ export default function FormationConducteurPage() {
                         index > 1 && "border-t border-white/10",
                       )}
                     >
-                      <div className="flex items-center justify-between gap-5">
-                        <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-orange-500/10 text-orange-300">
-                          <Icon className="h-5 w-5" aria-hidden="true" />
-                        </span>
+                      <div className="flex items-center justify-between gap-5 text-orange-300">
+                        <Icon className="h-5 w-5" aria-hidden="true" />
                         <span className="font-mono text-xs text-white-25">
                           {String(index + 1).padStart(2, "0")}
                         </span>
@@ -446,10 +416,7 @@ export default function FormationConducteurPage() {
         <section id="financement" className="section-shell section-y scroll-mt-28">
           <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-12 lg:gap-20">
             <div className="lg:col-span-5">
-              <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-mint-500/10 text-mint-300">
-                <Wallet className="h-5 w-5" aria-hidden="true" />
-              </span>
-              <h2 className="mt-6 text-balance text-[clamp(2.25rem,4vw,3.75rem)] font-semibold leading-[1.03] tracking-[-0.04em] text-white-90">
+              <h2 className="text-balance text-[clamp(2.25rem,4vw,3.75rem)] font-semibold leading-[1.03] tracking-[-0.04em] text-white-90">
                 Étudier le financement, sans fausse promesse.
               </h2>
               <p className="mt-6 text-base leading-7 text-white-60">
@@ -493,11 +460,10 @@ export default function FormationConducteurPage() {
         </section>
 
         <section className="section-shell pb-8 pt-4 md:pb-14">
-          <div className="mx-auto max-w-6xl rounded-[1.75rem] border border-white/10 bg-night-deep p-7 md:p-10">
+          <div className="mx-auto max-w-6xl border-y border-white/15 py-8 md:py-10">
             <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
               <div className="max-w-2xl">
-                <div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-orange-300">
-                  <Briefcase className="h-4 w-4" aria-hidden="true" />
+                <div className="text-xs font-semibold uppercase tracking-[0.18em] text-orange-300">
                   Perspectives métier
                 </div>
                 <h2 className="mt-5 text-3xl font-semibold tracking-[-0.035em] text-white-90 md:text-4xl">
@@ -510,10 +476,7 @@ export default function FormationConducteurPage() {
               </div>
               <div className="flex flex-wrap gap-2 lg:max-w-md lg:justify-end">
                 {jobs.map((job) => (
-                  <span
-                    key={job}
-                    className="rounded-full border border-white/10 bg-white/[0.035] px-4 py-2 text-sm text-white-75"
-                  >
+                  <span key={job} className="border-b border-white/20 py-2 text-sm text-white-75">
                     {job}
                   </span>
                 ))}
@@ -522,43 +485,11 @@ export default function FormationConducteurPage() {
           </div>
         </section>
 
-        <section className="section-shell py-16 md:py-24">
-          <div className="relative mx-auto max-w-6xl overflow-hidden rounded-[2rem] bg-orange-400 px-7 py-12 text-night-deep md:px-12 md:py-16">
-            <div
-              className="pointer-events-none absolute -right-20 -top-24 h-72 w-72 rounded-full border-[52px] border-night-deep/5"
-              aria-hidden="true"
-            />
-            <div className="relative z-10 flex flex-col gap-9 lg:flex-row lg:items-end lg:justify-between">
-              <div className="max-w-3xl">
-                <div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.18em]">
-                  <BookOpen className="h-4 w-4" aria-hidden="true" />
-                  Prochaine étape
-                </div>
-                <h2 className="mt-5 text-balance text-[clamp(2.5rem,5vw,5rem)] font-semibold leading-[0.98] tracking-[-0.05em]">
-                  Obtenir des réponses précises pour votre projet.
-                </h2>
-                <p className="mt-5 max-w-2xl text-base leading-7 text-night-deep/70">
-                  Demandez la fiche à jour et échangez avec l’équipe sur les prérequis, le calendrier,
-                  le prix et les possibilités de financement.
-                </p>
-              </div>
-              <Link
-                href="/contact"
-                className={cn(
-                  buttonVariants({ size: "xl" }),
-                  "shrink-0 bg-night-deep text-white-90 hover:bg-night-deep/90",
-                )}
-              >
-                Parler de mon projet
-                <ArrowRight className="h-5 w-5" aria-hidden="true" />
-              </Link>
-            </div>
-          </div>
-        </section>
+        <FinalCTA />
 
         <section className="section-shell pb-20 text-center text-xs leading-6 text-white-45">
           <p>
-            Organisme : {organizationInfo.legalName} · Qualiopi — {organizationInfo.qualiopiScope.toLowerCase()}.
+            Organisme : {organizationInfo.legalName} / Qualiopi, {organizationInfo.qualiopiScope.toLowerCase()}.
           </p>
         </section>
       </main>

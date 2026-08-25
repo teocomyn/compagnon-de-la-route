@@ -92,7 +92,7 @@ export async function submitContact(
         from,
         to: [to],
         reply_to: email,
-        subject: `Nouvelle demande — ${name}`,
+        subject: `Nouvelle demande : ${name}`,
         text: `Nom : ${name}\nE-mail : ${email}\nTéléphone : ${phone || "Non communiqué"}\n\n${message}`,
         html: `<h1>Nouvelle demande de contact</h1><p><strong>Nom :</strong> ${safeName}</p><p><strong>E-mail :</strong> ${safeEmail}</p><p><strong>Téléphone :</strong> ${safePhone}</p><p><strong>Message :</strong><br />${safeMessage}</p>`,
       }),

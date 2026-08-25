@@ -12,14 +12,14 @@ import { siteName, siteUrl } from "@/lib/constants";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: `Formation Conducteur de voyageurs · ${siteName}`,
+  title: "Formation conducteur de voyageurs",
   description:
-    "Construisez votre projet de conducteur de voyageurs avec un positionnement, un parcours formalisé et un accompagnement vers l’emploi.",
+    "Formation conducteur de voyageurs : vérifiez les prérequis, le programme, le calendrier et les possibilités de financement avec BOAZ.",
   alternates: { canonical: "/" },
   openGraph: {
     title: `Formation Conducteur de voyageurs · ${siteName}`,
     description:
-      "Un parcours exigeant et humain pour préparer le métier de conducteur de voyageurs.",
+      "Préparer le métier de conducteur de voyageurs avec des modalités confirmées avant l’inscription.",
     url: "/",
     type: "website",
   },

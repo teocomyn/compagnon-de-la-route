@@ -1,52 +1,52 @@
-import { Check } from "lucide-react";
 import Image from "next/image";
-import { siteName } from "@/lib/constants";
 
-const points = [
-  "Un positionnement pour vérifier les prérequis et définir le parcours adapté",
-  "Des objectifs, une durée, un calendrier et des évaluations formalisés avant l’inscription",
-  "Une étude individualisée des financements, sans promesse de prise en charge automatique",
-  "Une préparation à l’emploi qui n’est pas présentée comme une garantie d’embauche",
-];
+const commitments = [
+  ["01", "Vérifier les prérequis", "Votre situation est examinée avant de définir le parcours."],
+  ["02", "Écrire les conditions", "Objectifs, durée, calendrier, évaluations et prix sont formalisés."],
+  ["03", "Étudier le financement", "Chaque piste dépend de votre profil et de la décision du financeur."],
+  ["04", "Préparer la suite", "La candidature se travaille sans présenter l’embauche comme acquise."],
+] as const;
 
 export function TrustBuilding() {
   return (
-    <section className="py-16 md:py-24">
-      <div className="mx-auto grid max-w-[1440px] items-center gap-12 px-6 md:grid-cols-2 md:gap-16 md:px-8">
-        <div className="space-y-6">
-            <h2 className="text-[clamp(1.75rem,3.5vw,2.625rem)] font-bold leading-[1.1] tracking-[-0.025em] text-white-90">
-              Exigence, excellence et engagement
-            </h2>
-            <p className="text-lg leading-relaxed text-white-60">
-              Le cabinet BOAZ et{" "}
-              <span className="text-white-90">{siteName}</span> refusent la
-              complaisance : nous formons des professionnels fiables pour les passagers,
-              les entreprises et les territoires. La priorité est de vous donner une
-              information vérifiable et un cadre adapté à votre situation.
-            </p>
-            <ul className="space-y-4">
-              {points.map((p) => (
-                <li key={p} className="flex gap-3 text-[15px] leading-relaxed text-white-75">
-                  <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-orange-500/15 text-orange-400">
-                    <Check className="h-4 w-4" aria-hidden />
-                  </span>
-                  {p}
-                </li>
-              ))}
-            </ul>
-        </div>
+    <section className="border-y border-white/10 bg-night-deep">
+      <div className="mx-auto grid max-w-screen-2xl lg:grid-cols-2">
+        <figure className="relative min-h-[440px] border-b border-white/10 lg:min-h-[720px] lg:border-b-0 lg:border-r">
+          <Image
+            src="/images/journal/voyageurs-autocar.webp"
+            alt="Voyageurs installés dans un autocar"
+            fill
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            className="object-cover"
+          />
+          <figcaption className="absolute inset-x-0 bottom-0 border-t border-white/20 bg-night-deep/90 px-6 py-4 font-mono text-[10px] uppercase tracking-[0.16em] text-white-60">
+            La responsabilité commence avant le départ
+          </figcaption>
+        </figure>
 
-        <div className="relative">
-          <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-white/10">
-            <Image
-              src="/images/trust-formateur.jpg"
-              alt="Intérieur d’un véhicule et route, ambiance conduite professionnelle"
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-tr from-night/40 via-transparent to-night/30" />
-          </div>
+        <div className="px-6 py-16 md:px-10 md:py-24 lg:px-16">
+          <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-orange-300">
+            Avant l&apos;inscription
+          </p>
+          <h2 className="mt-5 max-w-xl text-balance text-[clamp(2.35rem,4.6vw,4.75rem)] font-semibold leading-[0.98] tracking-[-0.045em] text-white-90">
+            Vous devez savoir où vous allez.
+          </h2>
+          <p className="mt-6 max-w-xl text-lg leading-8 text-white-60">
+            Un projet de formation engage du temps et souvent un financement. Les
+            réponses importantes doivent être précises avant toute décision.
+          </p>
+
+          <ol className="mt-10 border-t border-white/15">
+            {commitments.map(([number, title, text]) => (
+              <li key={number} className="grid grid-cols-[2.75rem_1fr] gap-4 border-b border-white/15 py-5">
+                <span className="font-mono text-xs text-orange-300">{number}</span>
+                <div>
+                  <h3 className="font-semibold text-white-90">{title}</h3>
+                  <p className="mt-1 text-sm leading-6 text-white-60">{text}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
         </div>
       </div>
     </section>

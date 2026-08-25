@@ -1,47 +1,54 @@
-import { BookOpen, Rocket, UserRound } from "lucide-react";
-import { Card } from "@/components/ui/Card";
-import { SectionHeader } from "@/components/ui/SectionHeader";
-
 const items = [
   {
-    title: "Apprentissage pratique",
-    text: "Des mises en situation et exercices reliés aux réalités du métier",
-    icon: BookOpen,
+    number: "01",
+    title: "Comprendre avant d’exécuter",
+    text: "Chaque geste est relié à une règle de sécurité, une situation de circulation ou un besoin voyageur.",
   },
   {
-    title: "Préparation à l’insertion",
-    text: "Compréhension du métier, posture professionnelle et préparation au recrutement",
-    icon: Rocket,
+    number: "02",
+    title: "Répéter en situation",
+    text: "Les exercices servent à installer des repères utilisables au volant et pendant le service.",
   },
   {
-    title: "Accompagnement individuel",
-    text: "Un suivi ajusté au positionnement et aux besoins identifiés",
-    icon: UserRound,
+    number: "03",
+    title: "Corriger avec précision",
+    text: "Le suivi porte sur les points observés, les progrès réalisés et le travail encore nécessaire.",
   },
-];
+  {
+    number: "04",
+    title: "Préparer la prise de poste",
+    text: "La posture professionnelle et la candidature sont travaillées à partir des réalités du métier.",
+  },
+] as const;
 
 export function Pedagogy() {
   return (
-    <section className="py-16 md:py-24">
-      <div className="mx-auto max-w-[1440px] px-6 md:px-8">
-        <SectionHeader
-          eyebrow="Méthode"
-          title="Pédagogie axée résultats"
-          lead="Une progression claire : technique, relation, responsabilité."
-        />
+    <section className="section-shell section-y">
+      <div className="mx-auto max-w-6xl">
+        <div className="grid gap-8 md:grid-cols-[minmax(0,0.75fr)_minmax(0,1.25fr)] md:gap-16">
+          <div>
+            <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-orange-300">
+              La méthode
+            </p>
+            <h2 className="mt-5 text-balance text-[clamp(2.35rem,4.5vw,4.5rem)] font-semibold leading-[0.98] tracking-[-0.045em] text-white-90">
+              Faire, observer, recommencer.
+            </h2>
+          </div>
 
-        <div className="grid gap-6 md:grid-cols-3">
-          {items.map((it) => (
-            <Card key={it.title} className="h-full">
-                <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-md border border-orange-500/25 bg-orange-500/10">
-                  <it.icon className="h-5 w-5 text-orange-300" aria-hidden />
-                </div>
-                <h3 className="mb-2 text-[20px] font-semibold tracking-[-0.01em]">
-                  {it.title}
-                </h3>
-                <p className="text-[15px] leading-relaxed text-white-60">{it.text}</p>
-            </Card>
-          ))}
+          <ol className="border-t border-white/15">
+            {items.map((item) => (
+              <li
+                key={item.number}
+                className="grid grid-cols-[2.75rem_1fr] gap-4 border-b border-white/15 py-6 sm:grid-cols-[3rem_minmax(12rem,0.75fr)_minmax(0,1fr)] sm:gap-6"
+              >
+                <span className="font-mono text-xs text-orange-300">{item.number}</span>
+                <h3 className="font-semibold text-white-90">{item.title}</h3>
+                <p className="col-start-2 text-sm leading-6 text-white-60 sm:col-start-3">
+                  {item.text}
+                </p>
+              </li>
+            ))}
+          </ol>
         </div>
       </div>
     </section>

@@ -12,7 +12,7 @@ export function ArticleToc({ content }: { content: string }) {
 
   return (
     <aside className="hidden lg:block">
-      <div className="sticky top-28 max-h-[calc(100vh-8rem)] overflow-y-auto rounded-xl border border-white/10 bg-white/[0.02] p-6">
+      <div className="sticky top-28 max-h-[calc(100vh-8rem)] overflow-y-auto border-t border-white/15 pt-6">
         <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.15em] text-orange-300">
           Sommaire
         </p>

@@ -93,7 +93,7 @@ export default function JournalPage() {
             Des dossiers détaillés pour comprendre le métier, choisir et financer une
             formation, préparer une candidature et sécuriser sa prise de service.
           </p>
-          <p className="mt-6 rounded-xl border border-mint-400/25 bg-mint-500/10 p-5 text-sm leading-relaxed text-white-75">
+          <p className="mt-7 max-w-3xl border-l-2 border-mint-400 pl-5 text-sm leading-7 text-white-60">
             Publication sélective : seuls les contenus relus et reliés à leurs sources sont
             accessibles. Les anciens brouillons restent hors ligne.
           </p>
@@ -110,7 +110,7 @@ export default function JournalPage() {
               ))}
             </div>
           ) : (
-            <div className="mt-14 rounded-xl border border-white/10 bg-white/[0.02] p-6 text-white-60">
+            <div className="mt-14 border-y border-white/10 py-6 text-white-60">
               Aucun article vérifié n&apos;est publié pour le moment.
             </div>
           )}

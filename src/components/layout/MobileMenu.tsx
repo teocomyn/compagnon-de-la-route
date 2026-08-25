@@ -77,7 +77,7 @@ export function MobileMenu({ open, pathname, onClose }: MobileMenuProps) {
         >
           <button
             type="button"
-            className="absolute inset-0 bg-night-deep/88 backdrop-blur-xl"
+            className="absolute inset-0 bg-night-deep/95"
             aria-label="Fermer le menu"
             tabIndex={-1}
             onClick={onClose}
@@ -86,10 +86,10 @@ export function MobileMenu({ open, pathname, onClose }: MobileMenuProps) {
           <motion.nav
             ref={panelRef}
             id="mobile-navigation"
-            className="absolute bottom-3 left-3 right-3 top-[4.5rem] flex flex-col overflow-y-auto rounded-[1.75rem] border border-white/10 bg-night-deep px-6 pb-6 pt-8 shadow-2xl sm:left-auto sm:w-[min(30rem,calc(100vw-1.5rem))] sm:px-8"
-            initial={reducedMotion ? false : { y: -12, opacity: 0, scale: 0.985 }}
-            animate={{ y: 0, opacity: 1, scale: 1 }}
-            exit={reducedMotion ? undefined : { y: -8, opacity: 0, scale: 0.99 }}
+            className="absolute inset-x-0 bottom-0 top-16 flex flex-col overflow-y-auto border-t border-white/10 bg-night-deep px-6 pb-6 pt-8 sm:left-auto sm:w-[min(30rem,100vw)] sm:border-l sm:px-8 md:top-[72px]"
+            initial={reducedMotion ? false : { x: 24, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={reducedMotion ? undefined : { x: 16, opacity: 0 }}
             transition={{
               duration: reducedMotion ? 0 : 0.4,
               ease: [0.16, 1, 0.3, 1],
@@ -105,15 +105,8 @@ export function MobileMenu({ open, pathname, onClose }: MobileMenuProps) {
                 const active = isActiveRoute(pathname, link.href);
 
                 return (
-                  <motion.li
+                  <li
                     key={link.href}
-                    initial={reducedMotion ? false : { opacity: 0, x: 12 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{
-                      duration: reducedMotion ? 0 : 0.35,
-                      delay: reducedMotion ? 0 : 0.08 + index * 0.045,
-                      ease: [0.16, 1, 0.3, 1],
-                    }}
                     className="border-b border-white/10"
                   >
                     <Link
@@ -121,7 +114,7 @@ export function MobileMenu({ open, pathname, onClose }: MobileMenuProps) {
                       href={link.href}
                       onClick={onClose}
                       aria-current={active ? "page" : undefined}
-                      className="group flex min-h-16 items-center justify-between gap-5 rounded-lg py-3 focus-visible:outline-offset-4"
+                      className="group flex min-h-16 items-center justify-between gap-5 py-3 focus-visible:outline-offset-4"
                     >
                       <span
                         className={cn(
@@ -143,7 +136,7 @@ export function MobileMenu({ open, pathname, onClose }: MobileMenuProps) {
                         />
                       </span>
                     </Link>
-                  </motion.li>
+                  </li>
                 );
               })}
             </ul>
@@ -154,18 +147,16 @@ export function MobileMenu({ open, pathname, onClose }: MobileMenuProps) {
                 onClick={onClose}
                 className={cn(
                   buttonVariants({ variant: "primary", size: "lg" }),
-                  "w-full justify-between pl-6 pr-2",
+                  "w-full justify-between",
                 )}
               >
                 Découvrir la formation
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-night-deep text-orange-300">
-                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                </span>
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
 
               <div className="mt-5 flex items-center gap-2 text-xs text-white-45">
                 <BadgeCheck className="h-4 w-4 text-mint-400" aria-hidden="true" />
-                BOAZ · Qualiopi — actions de formation
+                BOAZ / Qualiopi, actions de formation
               </div>
             </div>
           </motion.nav>

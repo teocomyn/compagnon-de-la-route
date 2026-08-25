@@ -20,7 +20,7 @@ Generated from project sources at 2026-08-25T07:24:08.795Z.
 
 ## Components
 
-- Installed: AnimatedNumber, Badge, Button, Card, Eyebrow, FooterReveal, GlassCard, Input, SectionHeader, Textarea, VariableFontHover
+- Installed: AnimatedNumber, Badge, Button, Card, Eyebrow, Input, SectionHeader, Textarea, VariableFontHover
 - Preferred primitives: None detected
 
 ## Tokens
@@ -57,8 +57,8 @@ Generated from project sources at 2026-08-25T07:24:08.795Z.
 
 ### Typography
 
-- `--font-sans`: `var(--font-geist-sans), system-ui, sans-serif` (src/app/globals.css)
-- `--font-mono`: `var(--font-geist-mono), monospace` (src/app/globals.css)
+- `--font-sans`: `var(--font-cdr-sans), system-ui, sans-serif` (src/app/globals.css)
+- `--font-mono`: `var(--font-cdr-mono), monospace` (src/app/globals.css)
 
 ### Radius
 
@@ -82,16 +82,22 @@ Generated from project sources at 2026-08-25T07:24:08.795Z.
 
 ### Must
 
-- None recorded
+- Utiliser des photographies métier réelles dont les droits ont été fournis ou vérifiés.
+- Fonder chaque promesse sur une information écrite et vérifiable.
+- Construire la hiérarchie avec la typographie, les bordures et l'espace.
 
 ### Avoid
 
-- None recorded
+- Halos décoratifs, fonds quadrillés, verre dépoli et accumulation de cartes interchangeables.
+- Animations de scroll répétées, translations au survol et mouvement sans fonction.
+- Triades forcées, slogans génériques, superlatifs et garanties non documentées.
+- Coins très arrondis appliqués à tous les conteneurs.
 
 ## Decisions
 
 - Accueil : déclaration courte révélée ligne par ligne, suivie d'une grille Bento asymétrique fondée uniquement sur des informations vérifiables.
 - Page formation : récit éditorial premium porté par les photographies métier, un hero asymétrique, un parcours linéaire et un programme en accordéon.
-- Header global : barre flottante compacte, graisse variable au survol, état actif orange et navigation mobile accessible.
-- Footer global : conclusion de marque immersive avec CTA éditorial, navigation vérifiée, repères réglementaires et signature typographique surdimensionnée ; contenu serveur et reveal respectueux de `prefers-reduced-motion`.
+- Header global : barre fixe et plate, graisse variable au survol, état actif orange et navigation mobile accessible.
+- Footer global : conclusion éditoriale pleine largeur avec CTA orange, navigation vérifiée, repères réglementaires et signature typographique statique.
 - Journal : cluster de six dossiers SEO longs et vérifiés, grille éditoriale en deux colonnes, photographies métier du client et couverture du parcours complet de l’orientation à la prise de service.
+- Système anti-slop : Archivo et IBM Plex Mono, aplats vert nuit et orange, bordures franches, photographies réelles, aucune grille de fond, aucun halo, aucun verre, aucune animation décorative répétée.

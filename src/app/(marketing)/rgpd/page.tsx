@@ -21,7 +21,7 @@ export default function RgpdPage() {
           />
         </BreadcrumbBar>
       </div>
-      <div className="section-shell mx-auto max-w-[900px] pb-16 pt-3 md:pt-5">
+      <div className="section-shell mx-auto max-w-4xl pb-16 pt-3 md:pt-5">
         <h1 className="text-4xl font-bold tracking-tight">Vos droits RGPD</h1>
         <p className="mt-6 leading-relaxed text-white-60">
           La politique de confidentialité détaille les données collectées, leur usage,

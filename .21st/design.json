@@ -138,11 +138,11 @@
     },
     "typography": {
       "--font-sans": {
-        "value": "var(--font-geist-sans), system-ui, sans-serif",
+        "value": "var(--font-cdr-sans), system-ui, sans-serif",
         "source": "src/app/globals.css"
       },
       "--font-mono": {
-        "value": "var(--font-geist-mono), monospace",
+        "value": "var(--font-cdr-mono), monospace",
         "source": "src/app/globals.css"
       }
     },
@@ -209,19 +209,26 @@
         "Button",
         "Card",
         "Eyebrow",
-        "GlassCard",
         "Input",
         "SectionHeader",
         "Textarea",
-        "VariableFontHover",
-        "FooterReveal"
+        "VariableFontHover"
     ],
     "preferredPrimitives": [],
     "patterns": []
   },
   "constraints": {
-    "must": [],
-    "avoid": []
+    "must": [
+      "Utiliser des photographies métier réelles dont les droits ont été fournis ou vérifiés.",
+      "Fonder chaque promesse sur une information écrite et vérifiable.",
+      "Construire la hiérarchie avec la typographie, les bordures et l'espace."
+    ],
+    "avoid": [
+      "Halos décoratifs, fonds quadrillés, verre dépoli et accumulation de cartes interchangeables.",
+      "Animations de scroll répétées, translations au survol et mouvement sans fonction.",
+      "Triades forcées, slogans génériques, superlatifs et garanties non documentées.",
+      "Coins très arrondis appliqués à tous les conteneurs."
+    ]
   },
   "decisions": [
     {
@@ -236,18 +243,23 @@
     },
     {
       "id": "global-header-variable-font",
-      "decision": "Utiliser un header flottant compact avec navigation typographique à graisse variable, état actif orange, CTA direct vers le parcours et menu mobile plein écran accessible.",
-      "rationale": "Direction explicitement demandée le 25 août 2026. Geist Sans est chargé comme fonte variable pour rendre l'effet réel ; les animations respectent la préférence de réduction des mouvements."
+      "decision": "Utiliser un header fixe, plat et compact avec navigation typographique à graisse variable, état actif orange, CTA direct vers le parcours et menu mobile plein écran accessible.",
+      "rationale": "La barre solide et ses séparateurs renforcent la lisibilité sans verre, ombre ni effet flottant. Archivo porte l'axe variable de la navigation."
     },
     {
       "id": "global-footer-brand-finale",
-      "decision": "Conclure toutes les pages par un footer de marque immersif : CTA éditorial, navigation réelle, preuves réglementaires vérifiées et signature typographique surdimensionnée, dans un conteneur vert nuit à sommet arrondi.",
-      "rationale": "Direction explicitement demandée le 25 août 2026. Le contenu reste rendu côté serveur ; seule l'apparition progressive est hydratée et elle est neutralisée par la préférence de réduction des mouvements."
+      "decision": "Conclure toutes les pages par un footer éditorial pleine largeur : CTA orange, navigation réelle, preuves réglementaires vérifiées et signature typographique statique.",
+      "rationale": "La conclusion de marque reste forte tout en supprimant le halo, les grands arrondis et l'animation décorative."
     },
     {
       "id": "journal-six-article-seo-cluster",
       "decision": "Structurer le Journal comme un cluster de six dossiers SEO longs et vérifiés, illustrés par les photographies métier du client et couvrant orientation, financement, métier, formation, recrutement et prise de service.",
       "rationale": "Direction explicitement demandée le 25 août 2026. La grille éditoriale prolonge la DA vert nuit, orange et crème ; chaque publication doit rester sourcée et éviter toute promesse de durée, de financement ou d'emploi non démontrée."
+    },
+    {
+      "id": "anti-slop-editorial-transport-system",
+      "decision": "Adopter une direction éditoriale transport fondée sur Archivo, IBM Plex Mono, des aplats vert nuit et orange, des bordures franches, une numérotation fonctionnelle et les photographies métier réelles fournies.",
+      "rationale": "Audit global demandé le 25 août 2026. Le système retire la grille de fond, les halos, le verre, les ombres, les cartes génériques et les animations décoratives. Un seul reveal narratif subsiste sur l'accueil ; les autres mouvements servent le menu, les accordéons ou le retour d'état."
     }
   ],
   "evidence": [

@@ -2,11 +2,20 @@
 
 ## État
 
-Les améliorations visuelles de l'accueil, de la page formation, du header, du footer et le cluster de six articles du Journal sont poussés sur `main` au commit `8c5af8f`. Le déploiement de production n’a pas été vérifié dans ce dépôt.
+La refonte éditoriale anti-slop de l'ensemble du site public est terminée localement et attend son commit de livraison. Le déploiement de production n’a pas été vérifié dans ce dépôt.
 
 Préférence de livraison du client : après validation, committer et pousser chaque intervention sur `origin/main`, sans inclure de secret.
 
 ## Changements principaux
+
+- Hero de l'accueil entièrement reconstruit autour d'une photographie métier réelle : composition éditoriale en deux colonnes, titre court, CTA distincts et preuves réglementaires factuelles.
+- Système visuel global nettoyé : Archivo et IBM Plex Mono remplacent Geist, fond quadrillé supprimé, halos et verre retirés, ombres et mouvements décoratifs supprimés, rayons réduits et hiérarchie portée par les bordures et l'espace.
+- Seul le reveal narratif de la déclaration d'accueil est conservé. Le menu, le poids variable de la navigation et les accordéons ne bougent que pour signaler un état ou une action.
+- Grille Bento conservée à la demande du client, mais reconstruite en composition plate et asymétrique, sans cartes flottantes ni promesse non vérifiée.
+- Header et footer reconstruits en surfaces pleines largeur, sans conteneur flottant, verre, halo ou animation d'apparition.
+- Pages formation, à propos, contact, formations, guides, journal, témoignages, articles et pages légales harmonisées avec la direction éditoriale.
+- Ancienne page SEO générique refondue avec les mêmes primitives plates, même si sa publication reste suspendue par le garde-fou éditorial.
+- Anciens composants visuels inutilisés `GridBackground`, `OrangeGlow`, `GlassCard`, `FooterReveal` et `PrereqImmersive` supprimés pour éviter leur réintroduction.
 
 - Accueil raccourci et allégé ; suppression des blocs lourds et des promesses non sourcées.
 - Parcours conducteur réécrit sans durée, calendrier, places ou financement fictifs.
@@ -58,6 +67,10 @@ Préférence de livraison du client : après validation, committer et pousser ch
 
 ## Vérifications passées
 
+- Audit visuel anti-slop de l'ensemble des routes publiques et de la page SEO suspendue.
+- Revue UI 21st sur 62 fichiers : 0 erreur, 0 avertissement, 0 suggestion.
+- Inspection Playwright à 1440 px et 390 px : hero, reveal, menu mobile, formation, contact et article ; aucun débordement horizontal.
+- Reveal de l'accueil vérifié après scroll avec une opacité finale de 1 ; menu mobile visible, piégeage du focus couvert par les tests.
 - `npm run lint`
 - `npm run build`
 - `npm run test:e2e` — 12 tests passés

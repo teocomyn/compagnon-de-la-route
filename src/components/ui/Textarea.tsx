@@ -24,8 +24,8 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           aria-describedby={error ? `${inputId}-error` : undefined}
           className={cn(
             "min-h-[120px] w-full resize-y rounded-md border border-white/10 bg-white/[0.05] px-[18px] py-[14px] text-[15px] text-white-90 placeholder:text-white-45",
-            "transition-colors duration-200 focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500/20",
-            error && "border-danger focus:border-danger focus:ring-danger/20",
+            "transition-colors duration-200 focus-visible:border-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500",
+            error && "border-danger focus-visible:border-danger focus-visible:outline-danger",
             className,
           )}
           {...props}

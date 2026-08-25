@@ -4,7 +4,6 @@ import type { Metadata } from "next";
 import { BreadcrumbBar } from "@/components/layout/BreadcrumbBar";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { PageBreadcrumbs } from "@/components/seo/PageBreadcrumbs";
-import { Card } from "@/components/ui/Card";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { verifiedGuideList } from "@/lib/verified-guides";
 
@@ -31,7 +30,7 @@ export default function GuidesPage() {
 
       <main>
         <section className="section-shell pb-14 pt-5 md:pb-20 md:pt-10">
-          <div className="mx-auto max-w-[1040px]">
+          <div className="mx-auto max-w-5xl">
             <Eyebrow>Ressources vérifiées</Eyebrow>
             <h1 className="mt-4 max-w-4xl text-[clamp(2.5rem,6vw,4.75rem)] font-bold leading-[0.98] tracking-[-0.045em] text-white-90">
               Comprendre le parcours avant de s’engager
@@ -49,14 +48,14 @@ export default function GuidesPage() {
         </section>
 
         <section className="section-shell pb-20 md:pb-28" aria-label="Tous les guides">
-          <div className="mx-auto grid max-w-[1040px] gap-5 md:grid-cols-2">
+          <div className="mx-auto grid max-w-5xl gap-x-8 gap-y-10 md:grid-cols-2">
             {verifiedGuideList.map((guide) => (
               <Link
                 key={guide.slug}
                 href={`/${guide.slug}`}
-                className="group rounded-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-500"
+                className="group border-t border-white/15 pt-5 transition-colors hover:border-orange-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-500"
               >
-                <Card className="flex h-full flex-col p-6 md:p-8">
+                <div className="flex h-full flex-col">
                   <div className="flex items-start justify-between gap-5">
                     <Eyebrow>{guide.eyebrow}</Eyebrow>
                     <ArrowUpRight
@@ -73,7 +72,7 @@ export default function GuidesPage() {
                   <span className="mt-7 text-sm font-semibold text-orange-300">
                     Lire le guide
                   </span>
-                </Card>
+                </div>
               </Link>
             ))}
           </div>

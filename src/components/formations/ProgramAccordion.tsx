@@ -63,7 +63,7 @@ export function ProgramAccordion() {
               <span className="text-base font-semibold leading-snug text-white-90 transition-colors group-hover:text-orange-200 sm:text-lg">
                 {module.title}
               </span>
-              <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.035]">
+              <span className="flex h-10 w-10 items-center justify-center border-l border-white/10">
                 <ChevronDown
                   className={cn(
                     "h-4 w-4 text-white-60 transition-transform duration-300",

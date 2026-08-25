@@ -21,11 +21,11 @@ export default function CgvPage() {
           />
         </BreadcrumbBar>
       </div>
-      <div className="section-shell mx-auto max-w-[900px] pb-16 pt-3 md:pt-5">
+      <div className="section-shell mx-auto max-w-4xl pb-16 pt-3 md:pt-5">
         <h1 className="text-4xl font-bold tracking-tight">Conditions générales de vente</h1>
         <p className="mt-4 text-sm text-white-45">Version de travail · 25 août 2026</p>
 
-        <div className="mt-8 rounded-xl border border-orange-500/30 bg-orange-500/10 p-5 text-[15px] leading-relaxed text-white-75">
+        <div className="mt-8 border-l-2 border-orange-400 py-1 pl-5 text-[15px] leading-relaxed text-white-75">
           Ce socle doit être rapproché des conventions et contrats réellement utilisés
           par BOAZ. Les coordonnées du médiateur de la consommation doivent être ajoutées
           avant toute vente à un particulier.

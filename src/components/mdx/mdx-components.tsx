@@ -64,7 +64,7 @@ export function getMdxComponents(): MDXComponents {
       const { src, alt } = props as { src?: string; alt?: string };
       if (!src) return null;
       return (
-        <span className="relative my-8 block aspect-video w-full overflow-hidden rounded-xl border border-white/10">
+        <span className="relative my-8 block aspect-video w-full overflow-hidden border border-white/10">
           <Image
             src={src}
             alt={alt ?? ""}

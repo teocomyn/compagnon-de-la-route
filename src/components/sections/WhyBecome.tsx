@@ -1,69 +1,60 @@
-import {
-  Compass,
-  MapPin,
-  Shield,
-  Sparkles,
-  TrendingUp,
-  Users,
-} from "lucide-react";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { cn } from "@/lib/utils";
 
-const features = [
+const reasons = [
   {
-    title: "Une utilité sociale reconnue",
-    icon: Users,
+    title: "Rendre la mobilité possible",
+    text: "Le conducteur relie les habitants à leur travail, à leurs études et aux services du quotidien.",
   },
   {
-    title: "Acteur de votre territoire",
-    icon: MapPin,
+    title: "Exercer un métier de contact",
+    text: "Accueil, information et gestion des imprévus font partie du service autant que la conduite.",
   },
   {
-    title: "Un secteur qui recrute",
-    icon: TrendingUp,
+    title: "Travailler près de son territoire",
+    text: "Urbain, scolaire, interurbain ou tourisme : les environnements varient selon les opérateurs locaux.",
   },
   {
-    title: "Un véritable projet de vie",
-    icon: Sparkles,
+    title: "Construire une compétence reconnue",
+    text: "Le métier demande une qualification, de la rigueur et une pratique entretenue tout au long de la carrière.",
   },
   {
-    title: "Mobilité et liberté d'action",
-    icon: Compass,
+    title: "Gagner en autonomie",
+    text: "À bord, le conducteur applique les procédures et prend les premières décisions face aux aléas.",
   },
   {
-    title: "Stabilité et sécurité de l'emploi",
-    icon: Shield,
+    title: "Faire évoluer son parcours",
+    text: "Les suites possibles dépendent de l’expérience, des qualifications et des besoins de l’entreprise.",
   },
-];
+] as const;
 
 export function WhyBecome() {
   return (
-    <section className="py-16 md:py-24">
-      <div className="mx-auto max-w-[1440px] px-6 md:px-8">
+    <section className="section-shell section-y">
+      <div className="mx-auto max-w-6xl">
         <SectionHeader
-          eyebrow="Raisons d'y croire"
-          title="Pourquoi devenir compagnon de la route ?"
+          eyebrow="Le métier"
+          title="Pourquoi regarder cette voie de près"
+          lead="Le transport de voyageurs réunit conduite professionnelle et service public au quotidien. Voici ce que cela change concrètement."
         />
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {features.map((f) => (
-            <div
-              key={f.title}
-              className={cn(
-                "group rounded-xl border border-white/10 bg-gradient-to-b from-white/[0.03] to-white/[0.01] p-8",
-                "transition-all duration-300 ease-out",
-                "hover:-translate-y-1 hover:border-orange-500/50 hover:shadow-[0_24px_70px_-30px_rgba(242,107,42,0.22)]",
-              )}
+        <ol className="grid border-t border-white/15 md:grid-cols-2">
+          {reasons.map((reason, index) => (
+            <li
+              key={reason.title}
+              className="grid grid-cols-[2.5rem_1fr] gap-4 border-b border-white/15 py-7 md:px-6 md:odd:border-r md:odd:pl-0"
             >
-              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-md border border-mint-400/25 bg-mint-500/10">
-                <f.icon className="h-6 w-6 text-mint-400" aria-hidden />
+              <span className="font-mono text-xs text-orange-300">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <div>
+                <h3 className="text-xl font-semibold text-white-90">{reason.title}</h3>
+                <p className="mt-2 max-w-lg text-[15px] leading-7 text-white-60">
+                  {reason.text}
+                </p>
               </div>
-              <h3 className="text-[20px] font-semibold leading-snug tracking-[-0.01em] text-white-90">
-                {f.title}
-              </h3>
-            </div>
+            </li>
           ))}
-        </div>
+        </ol>
       </div>
     </section>
   );

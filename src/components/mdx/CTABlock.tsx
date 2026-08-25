@@ -13,14 +13,16 @@ export function CTABlock({ title, description, href, ctaLabel }: CTABlockProps) 
   return (
     <div
       className={cn(
-        "my-10 rounded-2xl border border-orange-500/25 bg-gradient-to-b from-orange-500/[0.1] to-transparent px-6 py-8 text-center sm:px-10",
+        "my-10 border-y border-orange-400/40 py-8 sm:flex sm:items-end sm:justify-between sm:gap-10",
       )}
     >
-      <h3 className="text-xl font-bold tracking-[-0.02em] text-white-90 sm:text-2xl">
-        {title}
-      </h3>
-      <p className="mt-3 text-[15px] leading-relaxed text-white-60">{description}</p>
-      <div className="mt-6 flex justify-center">
+      <div className="max-w-2xl">
+        <h3 className="text-xl font-bold tracking-[-0.02em] text-white-90 sm:text-2xl">
+          {title}
+        </h3>
+        <p className="mt-3 text-[15px] leading-relaxed text-white-60">{description}</p>
+      </div>
+      <div className="mt-6 shrink-0 sm:mt-0">
         <Link href={href} className={cn(buttonVariants({ variant: "primary", size: "lg" }))}>
           {ctaLabel}
         </Link>
