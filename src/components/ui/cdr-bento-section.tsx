@@ -1,110 +1,167 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, BusFront, FileText, Route } from "lucide-react";
 import Link from "next/link";
 
-const routeSteps = ["Positionnement", "Parcours écrit", "Évaluation", "Candidature"];
-const trainingTopics = [
-  "Sécurité et réglementation",
-  "Conduite et contrôles",
-  "Accueil des voyageurs",
-  "Gestion des incidents",
-];
+const routeSteps = ["Situation", "Cadre écrit", "Évaluation", "Candidature"];
+const trainingTopics = ["Sécurité", "Conduite", "Voyageurs"];
+const writtenConditions = ["Durée et calendrier", "Objectifs et évaluations", "Prix et financement"];
 
 export function CdrBentoSection() {
   return (
-    <section className="border-y border-white/10 bg-night-deep py-20 md:py-28">
-      <div className="container-shell">
-        <div className="mb-12 grid gap-6 md:grid-cols-[0.8fr_1.2fr] md:items-end">
-          <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-orange-300">
-            Le parcours en clair
-          </p>
-          <div>
-            <h2 className="text-balance text-[clamp(2.5rem,5vw,5.25rem)] font-semibold leading-[0.95] tracking-[-0.05em] text-cream">
-              Décider avec des faits.
-            </h2>
-            <p className="mt-5 max-w-2xl text-lg leading-8 text-cream/60">
-              Votre situation, les conditions de la formation et les étapes suivantes
-              doivent tenir dans un cadre lisible.
-            </p>
-          </div>
-        </div>
+    <section
+      className="border-b border-white/10 bg-night pb-20 md:pb-28"
+      aria-labelledby="bento-title"
+    >
+      <div className="section-shell">
+        <h2 id="bento-title" className="sr-only">
+          Le parcours conducteur en trois repères
+        </h2>
 
-        <div className="grid border-l border-t border-white/15 lg:grid-cols-12">
-          <article className="border-b border-r border-white/15 p-7 md:p-10 lg:col-span-7 lg:row-span-2">
-            <p className="font-mono text-xs text-orange-300">01 / PARCOURS</p>
-            <h3 className="mt-7 max-w-xl text-[clamp(2rem,3.7vw,3.75rem)] font-semibold leading-[1.02] tracking-[-0.04em] text-cream">
-              De l&apos;idée de reconversion à un plan vérifiable.
-            </h3>
-            <ol className="mt-12 border-t border-white/15 sm:grid sm:grid-cols-4">
-              {routeSteps.map((step, index) => (
-                <li
-                  key={step}
-                  className="border-b border-white/15 py-5 sm:border-b-0 sm:border-r sm:px-4 sm:first:pl-0 sm:last:border-r-0"
-                >
-                  <span className="font-mono text-[10px] text-orange-300">
-                    {String(index + 1).padStart(2, "0")}
+        <div className="grid gap-5 lg:grid-cols-3 lg:items-start">
+          <article className="overflow-hidden rounded-2xl border border-orange-100/40 bg-orange-100 text-night-deep">
+            <div className="m-3 mb-0 min-h-80 rounded-xl border border-orange-900/10 bg-white/55 p-6 md:min-h-96 md:p-8">
+              <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.14em] text-orange-700">
+                <span>Votre trajectoire</span>
+                <span>01</span>
+              </div>
+
+              <div className="mt-14">
+                <div className="relative">
+                  <div
+                    className="absolute left-3 right-3 top-3 h-px bg-orange-700/25"
+                    aria-hidden="true"
+                  />
+                  <ol className="relative grid grid-cols-4 gap-2">
+                    {routeSteps.map((step, index) => (
+                      <li key={step} className="min-w-0">
+                        <span className="flex h-6 w-6 items-center justify-center rounded-full border border-orange-700/30 bg-orange-100 font-mono text-[9px] font-semibold text-orange-900">
+                          {index + 1}
+                        </span>
+                        <span className="mt-4 block text-[10px] font-semibold leading-4 text-night-deep/70 sm:text-[11px]">
+                          {step}
+                        </span>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              </div>
+
+              <div className="mt-12 border-t border-orange-900/15 pt-5">
+                <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-orange-700">
+                  Point de départ
+                </p>
+                <p className="mt-2 text-sm font-semibold leading-6">
+                  Votre situation détermine la suite du parcours.
+                </p>
+              </div>
+            </div>
+
+            <div className="relative min-h-48 p-7 pr-20 md:p-8 md:pr-24">
+              <h3 className="text-[clamp(1.65rem,2.4vw,2.35rem)] font-semibold leading-[1.02] tracking-[-0.04em]">
+                Un parcours visible dès le premier échange.
+              </h3>
+              <p className="mt-4 text-sm leading-6 text-night-deep/65">
+                Chaque étape est nommée avant de vous engager.
+              </p>
+              <span className="absolute bottom-7 right-7 flex h-12 w-12 items-center justify-center rounded-full bg-orange-500 text-night-deep md:bottom-8 md:right-8">
+                <Route className="h-5 w-5" aria-hidden="true" />
+              </span>
+            </div>
+          </article>
+
+          <article className="overflow-hidden rounded-2xl border border-orange-500 bg-orange-500 text-night-deep lg:-translate-y-5">
+            <div className="m-3 mb-0 min-h-80 rounded-xl border border-white/15 bg-night-deep p-6 text-white-90 md:min-h-96 md:p-8">
+              <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.14em] text-orange-300">
+                <span>Au poste</span>
+                <span>02</span>
+              </div>
+
+              <div className="mt-10 flex justify-center">
+                <div className="relative flex h-40 w-40 items-center justify-center rounded-full border border-orange-300/50">
+                  <div className="absolute inset-4 rounded-full border border-white/15" />
+                  <div className="flex h-20 w-20 items-center justify-center rounded-full bg-orange-500 text-night-deep">
+                    <BusFront className="h-9 w-9" aria-hidden="true" />
+                  </div>
+                  <span className="absolute -bottom-3 bg-night-deep px-3 font-mono text-[10px] uppercase tracking-[0.12em] text-orange-300">
+                    Mise en situation
                   </span>
-                  <p className="mt-2 text-sm font-medium text-cream">{step}</p>
-                </li>
-              ))}
-            </ol>
+                </div>
+              </div>
+
+              <ul className="mt-12 grid grid-cols-3 border-y border-white/15">
+                {trainingTopics.map((topic, index) => (
+                  <li
+                    key={topic}
+                    className={`py-4 text-center ${index > 0 ? "border-l border-white/15" : ""}`}
+                  >
+                    <span className="font-mono text-[9px] text-orange-300">0{index + 1}</span>
+                    <span className="mt-1 block text-[11px] font-semibold sm:text-xs">{topic}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="relative min-h-48 p-7 pr-20 md:p-8 md:pr-24">
+              <h3 className="text-[clamp(1.65rem,2.4vw,2.35rem)] font-semibold leading-[1.02] tracking-[-0.04em]">
+                Le métier s&apos;entraîne avant le premier service.
+              </h3>
+              <p className="mt-4 text-sm leading-6 text-night-deep/70">
+                Les gestes et décisions se travaillent en situation.
+              </p>
+              <span className="absolute bottom-7 right-7 flex h-12 w-12 items-center justify-center rounded-full bg-night-deep text-orange-300 md:bottom-8 md:right-8">
+                <BusFront className="h-5 w-5" aria-hidden="true" />
+              </span>
+            </div>
           </article>
 
-          <article className="border-b border-r border-white/15 p-7 md:p-10 lg:col-span-5">
-            <p className="font-mono text-xs text-orange-300">02 / ÉCRIT</p>
-            <h3 className="mt-5 text-2xl font-semibold text-cream">
-              Les éléments à obtenir avant de commencer
-            </h3>
-            <p className="mt-4 text-sm leading-7 text-cream/60">
-              Objectifs, durée, calendrier, évaluations et prix figurent dans les
-              documents transmis avant l&apos;inscription.
-            </p>
-          </article>
+          <article className="overflow-hidden rounded-2xl border border-orange-100/40 bg-orange-100 text-night-deep">
+            <div className="m-3 mb-0 min-h-80 rounded-xl border border-orange-900/10 bg-white/55 p-6 md:min-h-96 md:p-8">
+              <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.14em] text-orange-700">
+                <span>Avant inscription</span>
+                <span>03</span>
+              </div>
 
-          <article className="border-b border-r border-white/15 bg-orange-100 p-7 text-night-deep md:p-10 lg:col-span-5">
-            <p className="font-mono text-xs text-orange-700">03 / MÉTIER</p>
-            <h3 className="mt-5 text-2xl font-semibold">
-              La conduite ne résume pas le poste.
-            </h3>
-            <ul className="mt-6 grid gap-x-6 gap-y-3 sm:grid-cols-2">
-              {trainingTopics.map((topic) => (
-                <li key={topic} className="border-t border-night-deep/20 pt-3 text-sm">
-                  {topic}
-                </li>
-              ))}
-            </ul>
-          </article>
+              <div className="mt-10 border border-orange-900/15 bg-white/45 p-5">
+                <div className="flex items-center justify-between border-b border-orange-900/15 pb-4">
+                  <div>
+                    <p className="font-mono text-[9px] uppercase tracking-[0.12em] text-orange-700">
+                      Fiche programme
+                    </p>
+                    <p className="mt-1 text-sm font-semibold">Éléments à confirmer</p>
+                  </div>
+                  <FileText className="h-6 w-6 text-orange-700" aria-hidden="true" />
+                </div>
 
-          <article className="border-b border-r border-white/15 p-7 md:p-10 lg:col-span-4">
-            <p className="font-mono text-xs text-orange-300">04 / FINANCEMENT</p>
-            <h3 className="mt-5 text-xl font-semibold text-cream">Une décision au cas par cas</h3>
-            <p className="mt-3 text-sm leading-7 text-cream/60">
-              CPF, France Travail, employeur ou OPCO peuvent être étudiés. Le financeur
-              reste seul décisionnaire.
-            </p>
-          </article>
+                <ul>
+                  {writtenConditions.map((condition, index) => (
+                    <li
+                      key={condition}
+                      className="flex items-center justify-between gap-4 border-b border-orange-900/10 py-4 text-xs font-semibold last:border-b-0"
+                    >
+                      <span>{condition}</span>
+                      <span className="font-mono text-[9px] uppercase text-orange-700">
+                        À vérifier {String(index + 1).padStart(2, "0")}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
 
-          <article className="border-b border-r border-white/15 p-7 md:p-10 lg:col-span-4">
-            <p className="font-mono text-xs text-orange-300">05 / REPÈRES</p>
-            <h3 className="mt-5 text-xl font-semibold text-cream">Une identité vérifiable</h3>
-            <p className="mt-3 text-sm leading-7 text-cream/60">
-              BOAZ est certifié Qualiopi pour les actions de formation.
-              <br />
-              SIRET 929 379 758 00022
-              <br />
-              NDA 94 20 21469 20
-            </p>
-          </article>
-
-          <article className="border-b border-r border-white/15 bg-orange-500 p-7 text-night-deep md:p-10 lg:col-span-4">
-            <p className="font-mono text-xs">06 / VOTRE PROJET</p>
-            <h3 className="mt-5 text-2xl font-semibold">Demandez des réponses précises.</h3>
-            <Link
-              href="/formations/conducteur-voyageurs"
-              className="mt-8 inline-flex items-center gap-2 border-b border-night-deep pb-1 font-semibold"
-            >
-              Voir le parcours
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
+            <div className="relative min-h-48 p-7 pr-20 md:p-8 md:pr-24">
+              <h3 className="text-[clamp(1.65rem,2.4vw,2.35rem)] font-semibold leading-[1.02] tracking-[-0.04em]">
+                Les conditions sont écrites avant l&apos;inscription.
+              </h3>
+              <p className="mt-4 text-sm leading-6 text-night-deep/65">
+                Le financeur reste seul décisionnaire de la prise en charge.
+              </p>
+              <Link
+                href="/formations/conducteur-voyageurs"
+                aria-label="Voir la formation conducteur de voyageurs"
+                className="absolute bottom-7 right-7 flex h-12 w-12 items-center justify-center rounded-full bg-orange-500 text-night-deep transition-colors hover:bg-orange-700 hover:text-white md:bottom-8 md:right-8"
+              >
+                <ArrowRight className="h-5 w-5" aria-hidden="true" />
+              </Link>
+            </div>
           </article>
         </div>
       </div>

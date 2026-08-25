@@ -68,9 +68,9 @@ export default function HomePage() {
       <FaqJsonLd />
       <Hero />
       <Statement />
+      <CdrBentoSection />
       <WhyBecome />
       <Stats />
-      <CdrBentoSection />
       <TrustBuilding />
       <Pedagogy />
       <FAQ />

@@ -30,19 +30,19 @@ test.describe("Parcours critiques", () => {
     ).toHaveCSS("opacity", "1");
 
     const bentoHeading = page.getByRole("heading", {
-      level: 2,
-      name: /Décider avec des faits/i,
+      level: 3,
+      name: /Un parcours visible dès le premier échange/i,
     });
     await bentoHeading.scrollIntoViewIfNeeded();
     await expect(bentoHeading).toBeVisible();
-    await expect(page.getByText(/BOAZ est certifié Qualiopi/i)).toBeVisible();
+    await expect(page.getByText(/Les conditions sont écrites avant l'inscription/i)).toBeVisible();
   });
 
   test("accueil : le Bento reste contenu sur mobile", async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto("/");
     await page
-      .getByRole("heading", { level: 2, name: /Décider avec des faits/i })
+      .getByRole("heading", { level: 3, name: /Un parcours visible dès le premier échange/i })
       .scrollIntoViewIfNeeded();
 
     const hasHorizontalOverflow = await page.evaluate(

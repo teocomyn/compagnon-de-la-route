@@ -95,7 +95,7 @@ Generated from project sources at 2026-08-25T07:24:08.795Z.
 
 ## Decisions
 
-- Accueil : déclaration courte révélée ligne par ligne, suivie d'une grille Bento asymétrique fondée uniquement sur des informations vérifiables.
+- Accueil : déclaration courte révélée ligne par ligne, suivie sans rupture d'un triptyque Bento métier avec panneaux visuels dédiés à la trajectoire, à la mise en situation et aux conditions écrites.
 - Page formation : récit éditorial premium porté par les photographies métier, un hero asymétrique, un parcours linéaire et un programme en accordéon.
 - Header global : barre fixe et plate, graisse variable au survol, état actif orange et navigation mobile accessible.
 - Footer global : conclusion éditoriale pleine largeur avec CTA orange, navigation vérifiée, repères réglementaires et signature typographique statique.

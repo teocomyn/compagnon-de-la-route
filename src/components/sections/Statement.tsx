@@ -36,42 +36,40 @@ export function Statement() {
   const reducedMotion = Boolean(useReducedMotion());
 
   return (
-    <section className="border-b border-white/10 bg-night py-20 md:py-32">
-      <div className="container-shell">
+    <section className="bg-night pb-12 pt-20 md:pb-16 md:pt-28">
+      <div className="section-shell">
         <motion.div
-          className="max-w-6xl"
+          className="grid gap-8 lg:grid-cols-12 lg:gap-10"
           initial={reducedMotion ? false : { opacity: 0 }}
           whileInView={reducedMotion ? undefined : { opacity: 1 }}
           viewport={{ once: true, amount: 0.55 }}
           transition={{ duration: 0.45 }}
         >
-          <p className="mb-8 font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-orange-300">
+          <p className="font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-orange-300 lg:col-span-3 lg:pt-3">
             La responsabilité avant le départ
           </p>
 
-          <h2 className="text-balance text-[clamp(2.7rem,6vw,6.25rem)] font-semibold leading-[0.95] tracking-[-0.055em] text-cream">
-            <RevealLine delay={0.02} reducedMotion={reducedMotion}>
-              Chaque personne à bord
-            </RevealLine>
-            <RevealLine
-              className="text-orange-300"
-              delay={0.14}
-              reducedMotion={reducedMotion}
-            >
-              compte sur le conducteur.
-            </RevealLine>
-          </h2>
+          <div className="lg:col-span-9">
+            <h2 className="max-w-5xl text-balance text-[clamp(2.65rem,5vw,5.25rem)] font-semibold leading-[0.96] tracking-[-0.05em] text-cream">
+              <RevealLine delay={0.02} reducedMotion={reducedMotion}>
+                Chaque personne à bord
+              </RevealLine>
+              <RevealLine
+                className="text-orange-300"
+                delay={0.14}
+                reducedMotion={reducedMotion}
+              >
+                compte sur le conducteur.
+              </RevealLine>
+            </h2>
 
-          <motion.div
-            className="mt-10 flex max-w-xl items-start gap-4 border-l-2 border-orange-400 pl-5 text-base leading-7 text-cream/60"
-            initial={reducedMotion ? false : { opacity: 0, y: 10 }}
-            whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.8 }}
-            transition={{ duration: 0.5, delay: 0.28 }}
-          >
-            La formation prépare des gestes, des décisions et une posture de service.
-            L&apos;examen vient valider une partie du chemin.
-          </motion.div>
+            <p
+              className="mt-8 max-w-2xl border-l-2 border-orange-400 pl-5 text-base leading-7 text-cream/60"
+            >
+              La formation prépare des gestes, des décisions et une posture de service.
+              L&apos;examen vient valider une partie du chemin.
+            </p>
+          </div>
         </motion.div>
       </div>
     </section>

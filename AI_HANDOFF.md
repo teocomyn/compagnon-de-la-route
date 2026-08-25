@@ -12,6 +12,7 @@ Préférence de livraison du client : après validation, committer et pousser ch
 - Système visuel global nettoyé : Archivo et IBM Plex Mono remplacent Geist, fond quadrillé supprimé, halos et verre retirés, ombres et mouvements décoratifs supprimés, rayons réduits et hiérarchie portée par les bordures et l'espace.
 - Seul le reveal narratif de la déclaration d'accueil est conservé. Le menu, le poids variable de la navigation et les accordéons ne bougent que pour signaler un état ou une action.
 - Grille Bento conservée à la demande du client, mais reconstruite en composition plate et asymétrique, sans cartes flottantes ni promesse non vérifiée.
+- Transition d'accueil resserrée : titre en grille éditoriale correctement contenu par `section-shell`, texte toujours visible et nouveau triptyque Bento placé directement sous la déclaration. Les panneaux représentent le parcours, l'entraînement au poste et les informations à confirmer avant inscription.
 - Header et footer reconstruits en surfaces pleines largeur, sans conteneur flottant, verre, halo ou animation d'apparition.
 - Pages formation, à propos, contact, formations, guides, journal, témoignages, articles et pages légales harmonisées avec la direction éditoriale.
 - Ancienne page SEO générique refondue avec les mêmes primitives plates, même si sa publication reste suspendue par le garde-fou éditorial.

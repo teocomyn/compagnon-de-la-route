@@ -233,8 +233,8 @@
   "decisions": [
     {
       "id": "homepage-statement-reveal-bento",
-      "decision": "Conserver sur la page d'accueil une déclaration courte révélée ligne par ligne, suivie d'une grille Bento asymétrique fondée uniquement sur des informations vérifiables.",
-      "rationale": "Direction explicitement choisie par le client le 25 août 2026 ; elle renforce le rythme éditorial sans réintroduire de chiffres ou de promesses non sourcés."
+      "decision": "Conserver sur la page d'accueil une déclaration courte révélée ligne par ligne, immédiatement suivie d'un triptyque Bento : trajectoire, mise en situation et conditions écrites.",
+      "rationale": "Direction explicitement choisie par le client le 25 août 2026. Les trois cartes reprennent une structure panneau visuel plus contenu, avec une carte centrale orange, mais chaque visualisation reste propre au métier et ne contient aucune métrique inventée."
     },
     {
       "id": "training-page-editorial-photo-led",
