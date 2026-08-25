@@ -231,6 +231,8 @@ test.describe("Parcours critiques", () => {
       page.getByRole("heading", { level: 1, name: /Parlez-nous de votre projet/i }),
     ).toBeVisible();
     await expect(page.getByLabel(/Nom complet/i)).toBeVisible();
+    await expect(page.getByLabel("Vous êtes")).toBeVisible();
+    await expect(page.getByLabel("Votre projet", { exact: true })).toBeVisible();
     await expect(page.getByRole("button", { name: /Envoyer ma demande/i })).toBeVisible();
   });
 
@@ -239,7 +241,11 @@ test.describe("Parcours critiques", () => {
     await page.getByRole("button", { name: /Envoyer ma demande/i }).click();
     await expect(page.getByText(/Le nom est requis/i)).toBeVisible();
     await expect(page.getByText(/L’e-mail est requis/i)).toBeVisible();
+    await expect(page.getByText(/Précisez votre situation/i)).toBeVisible();
+    await expect(page.getByText(/Choisissez le sujet/i)).toBeVisible();
 
+    await page.getByLabel("Vous êtes").selectOption("candidat");
+    await page.getByLabel("Votre projet", { exact: true }).selectOption("conducteur");
     await page.getByLabel(/Nom complet/i).fill("Camille Test");
     await page.getByLabel(/Adresse e-mail/i).fill("camille@example.com");
     await page.getByLabel(/Quel est votre projet/i).fill("Je souhaite recevoir la fiche programme à jour.");
@@ -295,6 +301,11 @@ test.describe("Parcours critiques", () => {
       () => document.documentElement.scrollWidth > window.innerWidth,
     );
     expect(hasHorizontalOverflow).toBe(false);
+
+    await page.goto("/contact?projet=exploitant-regulateur");
+    await expect(page.getByLabel("Votre projet", { exact: true })).toHaveValue(
+      "exploitant-regulateur",
+    );
   });
 
   test("sécurité : les en-têtes de production sont présents", async ({ request }) => {

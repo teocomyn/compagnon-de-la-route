@@ -34,10 +34,11 @@ export default function ConfidentialitePage() {
 
           <h2>Données collectées</h2>
           <p>
-            Le formulaire collecte votre nom, votre adresse e-mail, votre numéro de
-            téléphone si vous choisissez de le fournir, le contenu de votre message et
-            la preuve de votre consentement. Ne transmettez pas de données de santé, de
-            pièce d&apos;identité ou d&apos;information sensible dans le champ libre.
+            Le formulaire collecte votre situation, le type de projet, le nom de votre
+            organisation si elle est concernée, votre nom, votre adresse e-mail, votre
+            numéro de téléphone si vous choisissez de le fournir, le contenu de votre
+            message et la preuve de votre consentement. Ne transmettez pas de données de
+            santé, de pièce d&apos;identité ou d&apos;information sensible dans le champ libre.
           </p>
 
           <h2>Finalités et base légale</h2>

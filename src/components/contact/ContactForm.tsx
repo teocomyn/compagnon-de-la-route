@@ -8,7 +8,10 @@ import { Input } from "@/components/ui/Input";
 import { Textarea } from "@/components/ui/Textarea";
 const initial: ContactState = {};
 
-export function ContactForm() {
+const selectClassName =
+  "w-full rounded-md border border-white/10 bg-forest-surface px-[18px] py-[14px] text-[15px] text-white-90 transition-colors duration-200 focus-visible:border-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500";
+
+export function ContactForm({ initialProject = "" }: { initialProject?: string }) {
   const [state, action, pending] = useActionState(submitContact, initial);
 
   if (state.ok) {
@@ -34,6 +37,41 @@ export function ContactForm() {
         <label htmlFor="website">Site internet</label>
         <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
       </div>
+      <div className="grid gap-6 md:grid-cols-2">
+        <SelectField
+          name="profile"
+          label="Vous êtes"
+          error={state.fieldErrors?.profile}
+          options={[
+            ["", "Choisir une situation"],
+            ["candidat", "Candidat ou candidate"],
+            ["entreprise", "Entreprise / recruteur"],
+            ["partenaire", "Partenaire / prescripteur"],
+            ["autre", "Autre demande"],
+          ]}
+        />
+        <SelectField
+          name="project"
+          label="Votre projet"
+          defaultValue={initialProject}
+          error={state.fieldErrors?.project}
+          options={[
+            ["", "Choisir un projet"],
+            ["conducteur", "Conducteur de voyageurs"],
+            ["exploitant-regulateur", "Exploitant-régulateur"],
+            ["recrutement", "Besoin de recrutement"],
+            ["partenariat", "Partenariat"],
+            ["autre", "Autre projet"],
+          ]}
+        />
+      </div>
+      <Input
+        name="organization"
+        label="Entreprise ou organisation (si concerné)"
+        autoComplete="organization"
+        maxLength={150}
+        error={state.fieldErrors?.organization}
+      />
       <Input
         name="name"
         label="Nom complet"
@@ -110,5 +148,47 @@ export function ContactForm() {
         {pending ? "Envoi en cours…" : "Envoyer ma demande"}
       </Button>
     </form>
+  );
+}
+
+function SelectField({
+  name,
+  label,
+  options,
+  defaultValue,
+  error,
+}: {
+  name: string;
+  label: string;
+  options: readonly (readonly [string, string])[];
+  defaultValue?: string;
+  error?: string;
+}) {
+  const id = `contact-${name}`;
+  return (
+    <div>
+      <label htmlFor={id} className="mb-2 block text-[13px] font-semibold text-white-90">
+        {label}
+      </label>
+      <select
+        id={id}
+        name={name}
+        defaultValue={defaultValue}
+        className={selectClassName}
+        aria-invalid={error ? "true" : undefined}
+        aria-describedby={error ? `${id}-error` : undefined}
+      >
+        {options.map(([value, optionLabel]) => (
+          <option key={value} value={value}>
+            {optionLabel}
+          </option>
+        ))}
+      </select>
+      {error ? (
+        <p id={`${id}-error`} className="mt-2 text-sm text-danger">
+          {error}
+        </p>
+      ) : null}
+    </div>
   );
 }

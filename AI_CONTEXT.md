@@ -52,6 +52,7 @@ Les chiffres de réussite, d'insertion, de satisfaction, de durée ou de finance
 - `BorderBeamPanel` fournit une bordure orbitale aux couleurs orange et crème. Son usage est limité au Bento central de l'accueil, au panneau des données d'activité et au formulaire de contact ; elle ralentit au repos, accélère au survol, se suspend hors écran et se fige avec `prefers-reduced-motion`.
 - Le Journal forme un cluster SEO de six dossiers couvrant tout le parcours de décision. Les quatre photographies métier fournies par le client sont intégrées aux cartes et aux contenus ; l’index expose une `CollectionPage`/`ItemList`, chaque article un schéma `Article`, et le sitemap est dérivé dynamiquement des seuls contenus vérifiés.
 - Le formulaire utilise une Server Action et Resend uniquement si `CONTACT_FORM_MODE=resend` et toutes les variables serveur sont configurées.
+- Le formulaire qualifie chaque demande par profil (`candidat`, `entreprise`, `partenaire`, `autre`), projet (`conducteur`, `exploitant-regulateur`, `recrutement`, `partenariat`, `autre`) et organisation éventuelle. Les liens métiers utilisent `?projet=` pour préremplir le sujet ; l'e-mail Resend reprend ces champs dans l'objet, le texte et le HTML afin de faciliter une future reprise CRM sans transmettre de données à un service supplémentaire.
 - Les pages reçoivent une CSP et des en-têtes de sécurité depuis `next.config.ts` ; le formulaire est limité à 32 Ko.
 - Les profils d'équipe, partenaires et distinctions ne sont pas publiés sans éléments vérifiables et droits d'utilisation.
 

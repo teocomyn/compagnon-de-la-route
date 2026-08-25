@@ -8,11 +8,21 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: `Contactez ${siteName} pour construire votre projet de formation conducteur de voyageurs.`,
+  description: `Contactez ${siteName} pour un projet candidat, un besoin de recrutement ou un partenariat dans le transport de voyageurs.`,
   alternates: { canonical: "/contact" },
 };
 
-export default function ContactPage() {
+export default async function ContactPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ projet?: string }>;
+}) {
+  const { projet } = await searchParams;
+  const initialProject = ["conducteur", "exploitant-regulateur", "recrutement", "partenariat", "autre"].includes(
+    projet ?? "",
+  )
+    ? projet
+    : "";
   return (
     <div className="pb-20 md:pb-28">
       <div className="pt-16 md:pt-[72px]">
@@ -33,9 +43,9 @@ export default function ContactPage() {
             Parlez-nous de votre projet.
           </h1>
           <p className="text-lg leading-relaxed text-white-60">
-            Indiquez votre situation, vos disponibilités et la question la plus urgente.
-            Nous pourrons alors vérifier les prérequis, les modalités et les pistes de
-            financement pertinentes.
+            Candidat, entreprise ou partenaire : choisissez votre situation et le sujet
+            de votre demande. BOAZ pourra orienter la réponse vers le bon parcours ou le
+            bon interlocuteur.
           </p>
           <div className="space-y-3 text-[15px] text-white-75">
             {contactInfo.phone ? (
@@ -80,7 +90,7 @@ export default function ContactPage() {
           seed={3}
           className="border-white/15 bg-night-deep p-6 md:p-10"
         >
-          <ContactForm />
+          <ContactForm initialProject={initialProject} />
         </BorderBeamPanel>
         </div>
       </div>

@@ -296,6 +296,11 @@
       "id": "homepage-two-pathways-boaz-method",
       "decision": "Conserver le hero photographique validé tout en le rendant transversal au label, puis placer immédiatement après le réseau un sélecteur éditorial entre conduite et exploitation-régulation. Présenter ensuite la méthode BOAZ comme l'articulation entre candidat, métier, entreprise et organisme.",
       "rationale": "Réalignement demandé à partir de la vision du fondateur le 25 août 2026. La hiérarchie rend les deux métiers visibles tôt sans ajouter un second hero ni une nouvelle animation, et retire une section générique centrée uniquement sur les bénéfices du métier de conducteur."
+    },
+    {
+      "id": "qualified-contact-entry",
+      "decision": "Faire commencer le formulaire par deux sélecteurs compacts — profil et projet — puis demander l'organisation seulement si elle est concernée, avant les coordonnées et le message.",
+      "rationale": "La segmentation permet de distinguer candidat, entreprise et partenaire, puis conduite, exploitation-régulation, recrutement et partenariat. Le lien depuis une page métier préremplit le projet sans masquer le champ et sans connecter un CRM externe."
     }
   ],
   "evidence": [

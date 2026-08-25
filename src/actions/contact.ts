@@ -4,9 +4,27 @@ export type ContactState = {
   ok?: boolean;
   formError?: string;
   fieldErrors?: Partial<
-    Record<"name" | "email" | "phone" | "message" | "rgpd", string>
+    Record<
+      "profile" | "project" | "organization" | "name" | "email" | "phone" | "message" | "rgpd",
+      string
+    >
   >;
 };
+
+const profiles = {
+  candidat: "Candidat ou candidate",
+  entreprise: "Entreprise / recruteur",
+  partenaire: "Partenaire / prescripteur",
+  autre: "Autre demande",
+} as const;
+
+const projects = {
+  conducteur: "Conducteur de voyageurs",
+  "exploitant-regulateur": "Exploitant-régulateur",
+  recrutement: "Besoin de recrutement",
+  partenariat: "Partenariat",
+  autre: "Autre projet",
+} as const;
 
 function normalizePhone(input: string) {
   return input.replace(/\s/g, "");
@@ -35,6 +53,9 @@ export async function submitContact(
   formData: FormData,
 ): Promise<ContactState> {
   const name = String(formData.get("name") ?? "").trim();
+  const profile = String(formData.get("profile") ?? "").trim();
+  const project = String(formData.get("project") ?? "").trim();
+  const organization = String(formData.get("organization") ?? "").trim();
   const email = String(formData.get("email") ?? "").trim();
   const phone = String(formData.get("phone") ?? "").trim();
   const message = String(formData.get("message") ?? "").trim();
@@ -46,6 +67,13 @@ export async function submitContact(
 
   const fieldErrors: NonNullable<ContactState["fieldErrors"]> = {};
 
+  if (!(profile in profiles)) fieldErrors.profile = "Précisez votre situation.";
+  if (!(project in projects)) fieldErrors.project = "Choisissez le sujet de votre demande.";
+  if ((profile === "entreprise" || profile === "partenaire") && !organization) {
+    fieldErrors.organization = "Indiquez le nom de votre organisation.";
+  } else if (organization.length > 150) {
+    fieldErrors.organization = "Le nom de l’organisation est trop long.";
+  }
   if (!name) fieldErrors.name = "Le nom est requis.";
   else if (name.length > 100) fieldErrors.name = "Le nom est trop long.";
   if (!email) fieldErrors.email = "L’e-mail est requis.";
@@ -77,6 +105,11 @@ export async function submitContact(
   }
 
   const safeName = escapeHtml(name);
+  const profileLabel = profiles[profile as keyof typeof profiles];
+  const projectLabel = projects[project as keyof typeof projects];
+  const safeProfile = escapeHtml(profileLabel);
+  const safeProject = escapeHtml(projectLabel);
+  const safeOrganization = escapeHtml(organization || "Non communiquée");
   const safeEmail = escapeHtml(email);
   const safePhone = escapeHtml(phone || "Non communiqué");
   const safeMessage = escapeHtml(message).replaceAll("\n", "<br />");
@@ -92,9 +125,9 @@ export async function submitContact(
         from,
         to: [to],
         reply_to: email,
-        subject: `Nouvelle demande : ${name}`,
-        text: `Nom : ${name}\nE-mail : ${email}\nTéléphone : ${phone || "Non communiqué"}\n\n${message}`,
-        html: `<h1>Nouvelle demande de contact</h1><p><strong>Nom :</strong> ${safeName}</p><p><strong>E-mail :</strong> ${safeEmail}</p><p><strong>Téléphone :</strong> ${safePhone}</p><p><strong>Message :</strong><br />${safeMessage}</p>`,
+        subject: `[${projectLabel}] ${profileLabel} — ${name}`,
+        text: `Profil : ${profileLabel}\nProjet : ${projectLabel}\nOrganisation : ${organization || "Non communiquée"}\nNom : ${name}\nE-mail : ${email}\nTéléphone : ${phone || "Non communiqué"}\n\n${message}`,
+        html: `<h1>Nouvelle demande qualifiée</h1><p><strong>Profil :</strong> ${safeProfile}</p><p><strong>Projet :</strong> ${safeProject}</p><p><strong>Organisation :</strong> ${safeOrganization}</p><p><strong>Nom :</strong> ${safeName}</p><p><strong>E-mail :</strong> ${safeEmail}</p><p><strong>Téléphone :</strong> ${safePhone}</p><p><strong>Message :</strong><br />${safeMessage}</p>`,
       }),
       signal: AbortSignal.timeout(10_000),
     });
