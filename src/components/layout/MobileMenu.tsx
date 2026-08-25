@@ -5,7 +5,7 @@ import { ArrowRight, BadgeCheck } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { buttonVariants } from "@/components/ui/Button";
-import { navLinks } from "@/lib/constants";
+import { brandInfo, navLinks } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 type MobileMenuProps = {
@@ -156,7 +156,7 @@ export function MobileMenu({ open, pathname, onClose }: MobileMenuProps) {
 
               <div className="mt-5 flex items-center gap-2 text-xs text-white-45">
                 <BadgeCheck className="h-4 w-4 text-mint-400" aria-hidden="true" />
-                BOAZ / Qualiopi, actions de formation
+                {brandInfo.relationship} · Qualiopi, actions de formation
               </div>
             </div>
           </motion.nav>

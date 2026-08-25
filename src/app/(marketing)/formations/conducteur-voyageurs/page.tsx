@@ -20,7 +20,13 @@ import { PageBreadcrumbs } from "@/components/seo/PageBreadcrumbs";
 import { Badge } from "@/components/ui/Badge";
 import { buttonVariants } from "@/components/ui/Button";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import { organizationInfo, programmeInfo, siteName, siteUrl } from "@/lib/constants";
+import {
+  brandInfo,
+  organizationInfo,
+  programmeInfo,
+  siteName,
+  siteUrl,
+} from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 export const revalidate = 3600;
@@ -124,7 +130,13 @@ function CourseJsonLd() {
     name: programmeInfo.title,
     description:
       "Parcours de préparation au métier de conducteur de voyageurs. Les modalités exactes sont confirmées après positionnement et avant inscription.",
-    provider: { "@type": "Organization", name: siteName, url: siteUrl },
+    provider: {
+      "@type": "EducationalOrganization",
+      "@id": `${siteUrl}/#organization`,
+      name: brandInfo.ownerName,
+      legalName: organizationInfo.legalName,
+      url: siteUrl,
+    },
   };
 
   return (

@@ -281,6 +281,11 @@
       "id": "homepage-pedagogy-photo-sequence",
       "decision": "Structurer la méthode pédagogique autour d'un grand titre, d'une photographie réelle au poste de conduite et de quatre temps numérotés avec pictogrammes.",
       "rationale": "Direction explicitement demandée le 25 août 2026. La photographie fournie est traitée comme un document de mise en situation ; les étapes restent statiques et factuelles afin de distinguer cette section des interactions du hero et des bordures prioritaires."
+    },
+    {
+      "id": "brand-architecture-boaz-cdr-label",
+      "decision": "Présenter systématiquement Compagnon de la Route comme le label transport et BOAZ comme l'organisme de formation qui le porte, dans les contenus, la navigation et les données structurées.",
+      "rationale": "Architecture confirmée par le fondateur le 25 août 2026. La page Le label utilise une composition éditoriale plate, un schéma visuel label vers organisme et des définitions distinctes pour Compagnon de la Route, BOAZ et Qualiopi, sans créer de certification ou de promesse supplémentaire."
     }
   ],
   "evidence": [

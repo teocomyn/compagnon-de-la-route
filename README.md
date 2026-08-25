@@ -1,25 +1,26 @@
 # Compagnon de la Route
 
-**Compagnon de la Route** est un organisme de formation qui certifie les futurs **conducteurs de voyageurs** : bus urbains et interurbains, cars scolaires, autocars de tourisme. Le nom dit l’essentiel : être au volant, ce n’est pas seulement conduire un véhicule, c’est **accompagner des personnes**, **relier des territoires** et **rendre la mobilité possible** pour celles et ceux qui en dépendent.
+**Compagnon de la Route** est le label transport porté par **BOAZ**, l’organisme de formation identifié dans les mentions légales du site. Il donne un cadre commun aux parcours consacrés aux métiers du transport de voyageurs.
+
+Le nom exprime une responsabilité : travailler dans ce secteur, c’est accompagner des personnes, relier des territoires et contribuer à un service sûr et fiable.
 
 ## Une mission, pas un simple métier
 
-Derrière le permis et le titre professionnel, il y a une responsabilité : la sécurité des passagers, la qualité du service, le respect des horaires et des règles. Compagnon de la Route place cette exigence au centre : former des professionnels **fiables**, **calmes sous pression** et **à l’aise avec la diversité des publics**.
+Derrière la conduite et l’organisation du service, il y a la sécurité des passagers, la qualité de l’accueil, le respect du cadre professionnel et la coordination des équipes. Le label place ces exigences au centre des parcours présentés.
 
-L’ambition n’est pas de « faire du volume » comme une chaîne de formation anonyme, mais de proposer une approche **couverte main** : des parcours **humains**, du temps sur le terrain, un suivi qui ne s’arrête pas au jour de l’examen.
+Les modalités précises de chaque parcours — programme, durée, calendrier, prérequis, certification, prix et financement — sont confirmées par BOAZ dans les documents transmis avant l’inscription.
 
 ## Pour qui ?
 
-Pour toutes les personnes qui veulent **donner du sens** à leur travail tout en construisant un **projet d’emploi durable** : reconversion, retour à l’emploi, montée en compétence ou première embauche dans les transports de personnes. Le secteur recrute ; la question est de former des profils **prêts à l’emploi** et **alignés avec la réalité du métier**.
+Le site s’adresse aux personnes qui envisagent une reconversion, un retour à l’emploi, une montée en compétence ou une première expérience dans le transport de voyageurs. Aucun financement, aucune certification et aucune embauche ne sont présentés comme acquis avant vérification du dossier.
 
-## Ce que nous portons
+## Ce que le label porte
 
-- **L’exigence** : sécurité, réglementation, conduite encadrée, mise en situation réelle.
-- **L’excellence** : pédagogie exigeante, experts du transport, méthodes actives.
-- **L’engagement** : territoires, inclusion, service aux voyageurs, communauté de professionnels qui se reconnaissent dans un métier utile.
-
-Compagnon de la Route, c’est le pari que la formation peut être à la fois **technique et profondément humaine** : un **tremplin professionnel** pour celles et ceux qui choisissent la route.
+- **La sécurité** : relier les gestes et les décisions aux responsabilités du service.
+- **La maîtrise** : apprendre par la mise en situation, l’observation et la correction.
+- **Le service** : comprendre les besoins des voyageurs, des équipes et des territoires.
+- **La clarté** : distinguer ce qui est confirmé de ce qui dépend encore d’un tiers.
 
 ---
 
-*Compagnon de la Route, Le label métier et mission pour conducteurs de voyageurs.*
+*Compagnon de la Route, le label transport porté par BOAZ.*

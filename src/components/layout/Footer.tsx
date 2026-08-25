@@ -6,6 +6,7 @@ import {
   footerFormations,
   footerGuides,
   footerLegal,
+  brandInfo,
   organizationInfo,
   siteName,
 } from "@/lib/constants";
@@ -88,8 +89,9 @@ export function Footer() {
             </Link>
 
             <p className="mt-7 max-w-md text-sm leading-7 text-white-60">
-              BOAZ accompagne les projets de formation aux métiers du transport de
-              voyageurs. Les modalités sont confirmées avant l&apos;inscription.
+              {siteName} est le label transport porté par {brandInfo.ownerName}. BOAZ
+              accompagne les projets de formation et confirme les modalités avant
+              l&apos;inscription.
             </p>
 
             <dl className="mt-8 grid gap-2 text-xs leading-6 text-white-45">
@@ -117,7 +119,7 @@ export function Footer() {
           >
             <FooterColumn title="Formations" links={footerFormations} />
             <FooterColumn title="Guides" links={footerGuides} />
-            <FooterColumn title="Compagnon" links={footerAbout} />
+            <FooterColumn title="Repères" links={footerAbout} />
             <FooterColumn title="Informations" links={footerLegal} />
           </nav>
         </div>
@@ -132,7 +134,7 @@ export function Footer() {
                 DE LA ROUTE
               </p>
               <p className="max-w-56 border-l border-orange-400 pl-4 font-mono text-[9px] uppercase leading-5 tracking-[0.14em] text-white-45">
-                Former des conducteurs prêts à prendre leur service
+                Préparer les métiers du transport de voyageurs
               </p>
             </div>
           </div>
@@ -142,7 +144,7 @@ export function Footer() {
           <p>
             © {new Date().getFullYear()} {siteName}. Tous droits réservés.
           </p>
-          <p>Organisme de formation déclaré en région Corse</p>
+          <p>{brandInfo.relationship} · organisme déclaré en région Corse</p>
         </div>
       </div>
     </footer>

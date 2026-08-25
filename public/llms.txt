@@ -1,10 +1,11 @@
 # Compagnon de la Route
 
-> Site de BOAZ (LES COMPAGNONS DE LA ROUTE), organisme de formation certifié Qualiopi pour les actions de formation. Le site présente un parcours de préparation aux métiers du transport de voyageurs. La durée, les prérequis, la certification visée, le calendrier, le prix et le financement sont confirmés dans les documents transmis avant inscription.
+> Compagnon de la Route est le label transport porté par BOAZ (LES COMPAGNONS DE LA ROUTE), organisme de formation certifié Qualiopi pour les actions de formation. Le site présente les parcours associés au label. La durée, les prérequis, la certification visée, le calendrier, le prix et le financement sont confirmés dans les documents transmis avant inscription.
 
 ## Pages principales
 
 - / : Accueil, présentation du parcours et FAQ
+- /le-label : Rôle du label Compagnon de la Route et articulation avec BOAZ
 - /formations : Catalogue des parcours
 - /formations/conducteur-voyageurs : Objectifs généraux et demande de fiche programme à jour
 - /guides : Index des ressources réglementaires et métier vérifiées
@@ -24,7 +25,7 @@
 - /formation-conducteur-autocar-tourisme : Spécificités des services occasionnels et du tourisme en autocar
 - /formation-transport-scolaire-conducteur : Sécurité, organisation et conditions du transport scolaire
 - /reussir-embauche-conducteur-car : Préparer une candidature et vérifier les conditions d’un poste
-- /qui-sommes-nous : BOAZ, valeurs et méthode d’accompagnement
+- /qui-sommes-nous : BOAZ, organisme porteur, identité et méthode d’accompagnement
 - /contact : Formulaire et coordonnées
 - /mentions-legales : Identification de l’éditeur et de l’organisme de formation
 - /confidentialite : Politique de protection des données

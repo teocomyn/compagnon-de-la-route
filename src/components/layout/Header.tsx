@@ -8,7 +8,7 @@ import { BrandLogo } from "@/components/brand/BrandLogo";
 import { MobileMenu } from "@/components/layout/MobileMenu";
 import { buttonVariants } from "@/components/ui/Button";
 import { VariableFontHover } from "@/components/ui/variable-font-hover";
-import { navLinks } from "@/lib/constants";
+import { brandInfo, navLinks } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 function isActiveRoute(pathname: string, href: string) {
@@ -62,16 +62,16 @@ export function Header() {
               Compagnon de la Route
             </span>
             <span
-              className="hidden h-5 w-px bg-white/10 xl:block"
+              className="hidden h-5 w-px bg-white/10 2xl:block"
               aria-hidden="true"
             />
-            <span className="hidden text-[10px] font-semibold uppercase tracking-[0.18em] text-white-45 xl:inline">
-              Formation mobilité
+            <span className="hidden text-[10px] font-semibold uppercase tracking-[0.18em] text-white-45 2xl:inline">
+              {brandInfo.type} · par {brandInfo.ownerName}
             </span>
           </Link>
 
           <nav
-            className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-5 lg:flex xl:gap-7"
+            className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-4 lg:flex xl:gap-5"
             aria-label="Navigation principale"
           >
             {navLinks.map((link) => {

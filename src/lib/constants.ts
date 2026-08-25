@@ -1,14 +1,24 @@
 export const siteName = "Compagnon de la Route";
 
+export const brandInfo = {
+  name: siteName,
+  type: "Label transport",
+  ownerName: "BOAZ",
+  relationship: "Label transport porté par BOAZ",
+  description:
+    "Un repère commun pour préparer les responsabilités des métiers du transport de voyageurs.",
+} as const;
+
 export const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://compagnon-de-la-route.fr";
 
 export const navLinks = [
   { href: "/formations", label: "Formations" },
+  { href: "/le-label", label: "Le label" },
   { href: "/guides", label: "Guides" },
   { href: "/journal", label: "Journal" },
-  { href: "/qui-sommes-nous", label: "Qui sommes-nous ?" },
-  { href: "/contact", label: "Nous contacter" },
+  { href: "/qui-sommes-nous", label: "BOAZ" },
+  { href: "/contact", label: "Contact" },
 ] as const;
 
 export const footerFormations = [
@@ -17,7 +27,8 @@ export const footerFormations = [
 ] as const;
 
 export const footerAbout = [
-  { href: "/qui-sommes-nous", label: "Qui sommes-nous" },
+  { href: "/le-label", label: "Le label" },
+  { href: "/qui-sommes-nous", label: "BOAZ, organisme porteur" },
   { href: "/journal", label: "Journal" },
   { href: "/contact", label: "Contact" },
 ] as const;

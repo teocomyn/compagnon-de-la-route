@@ -160,6 +160,31 @@ test.describe("Parcours critiques", () => {
     await expect(page.getByRole("button", { name: "Ouvrir le menu" })).toBeVisible();
   });
 
+  test("marque : le label et l’organisme BOAZ sont distingués", async ({ page }) => {
+    await page.goto("/le-label");
+
+    await expect(
+      page.getByRole("heading", {
+        level: 1,
+        name: /Un label transport. Un organisme qui le porte/i,
+      }),
+    ).toBeVisible();
+    await expect(
+      page.getByText(/Il réunit une même exigence de préparation autour des métiers/i),
+    ).toBeVisible();
+    await expect(page.getByText(/Elle ne garantit à elle seule ni financement, ni diplôme, ni emploi/i)).toBeVisible();
+
+    const navigation = page.getByRole("navigation", { name: "Navigation principale" });
+    await expect(navigation.getByRole("link", { name: "Le label" })).toHaveAttribute(
+      "aria-current",
+      "page",
+    );
+
+    const schemas = await page.locator('script[type="application/ld+json"]').allTextContents();
+    expect(schemas.join(" ")).toContain('"@type":"Brand"');
+    expect(schemas.join(" ")).toContain('"name":"BOAZ"');
+  });
+
   test("footer : CTA, navigation réelle et mise en page mobile", async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto("/");
@@ -328,6 +353,7 @@ test.describe("Parcours critiques", () => {
     expect(sitemap).toContain("/journal/devenir-conducteur-bus-guide-complet");
     expect(sitemap).toContain("/journal/financer-formation-conducteur-bus");
     expect(sitemap).toContain("/journal/metier-avenir-recrute");
+    expect(sitemap).toContain("/le-label");
     expect(sitemap).not.toContain("/journal/devenir-conducteur-30-jours");
     expect(sitemap).not.toContain("/temoignages");
     expect(sitemap).toContain("/financement-formation-conducteur-voyageurs");

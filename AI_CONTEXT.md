@@ -2,7 +2,7 @@
 
 ## Objectif
 
-Site public de BOAZ pour présenter un parcours de préparation aux métiers du transport de voyageurs et générer des demandes de contact qualifiées.
+Site public du label transport Compagnon de la Route, porté par BOAZ, pour présenter des parcours de préparation aux métiers du transport de voyageurs et générer des demandes de contact qualifiées.
 
 ## Stack
 
@@ -26,6 +26,8 @@ Les chiffres de réussite, d'insertion, de satisfaction, de durée ou de finance
 
 ## Règles produit actuelles
 
+- Compagnon de la Route est un label transport, pas une entité juridique ni l'organisme de formation. BOAZ est l'organisme porteur, l'éditeur identifié et le fournisseur des actions de formation. Qualiopi qualifie le processus de BOAZ pour les actions de formation ; elle ne constitue ni un diplôme, ni une garantie de financement ou d'emploi.
+- La route `/le-label` explique cette architecture et la navigation distingue désormais « Le label » de « BOAZ ». Les données structurées racine modélisent BOAZ comme `EducationalOrganization` et Compagnon de la Route comme `Brand`.
 - La durée, le calendrier, les prérequis, la certification visée et le financement sont confirmés avant inscription.
 - Le site ne garantit ni financement, ni certification, ni emploi.
 - Le journal applique une publication sélective dans `src/lib/articles.ts` : seuls les fichiers portant `status: verified`, une date de relecture et au moins une source sont générés. Une variable d’environnement ne peut pas ouvrir tous les brouillons.

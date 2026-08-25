@@ -2,13 +2,13 @@ import Image from "next/image";
 import { BreadcrumbBar } from "@/components/layout/BreadcrumbBar";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { PageBreadcrumbs } from "@/components/seo/PageBreadcrumbs";
-import { organizationInfo, siteName, siteUrl } from "@/lib/constants";
+import { brandInfo, organizationInfo, siteName, siteUrl } from "@/lib/constants";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Qui sommes-nous ?",
+  title: "BOAZ, organisme porteur",
   description:
-    "Compagnon de la Route est porté par BOAZ, organisme de formation déclaré en Corse et certifié Qualiopi pour les actions de formation.",
+    "BOAZ porte le label Compagnon de la Route. Consultez l’identité de l’organisme de formation, son rôle et sa méthode de travail.",
   alternates: { canonical: "/qui-sommes-nous" },
 };
 
@@ -35,13 +35,15 @@ function AboutJsonLd() {
   const json = {
     "@context": "https://schema.org",
     "@type": "AboutPage",
-    name: `Qui sommes-nous · ${siteName}`,
+    name: `BOAZ, organisme porteur de ${siteName}`,
     url: `${siteUrl}/qui-sommes-nous`,
     mainEntity: {
       "@type": "EducationalOrganization",
-      name: siteName,
+      "@id": `${siteUrl}/#organization`,
+      name: brandInfo.ownerName,
       legalName: organizationInfo.legalName,
       identifier: organizationInfo.siren,
+      brand: { "@id": `${siteUrl}/#brand` },
     },
   };
 
@@ -62,7 +64,7 @@ export default function AboutPage() {
           <PageBreadcrumbs
             items={[
               { label: "Accueil", href: "/" },
-              { label: "Qui sommes-nous", href: "/qui-sommes-nous" },
+              { label: "BOAZ", href: "/qui-sommes-nous" },
             ]}
           />
         </BreadcrumbBar>
@@ -71,15 +73,15 @@ export default function AboutPage() {
       <section className="section-shell pb-20 pt-8 md:pb-28 md:pt-14">
         <div className="mx-auto max-w-6xl">
           <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-orange-300">
-            Compagnon de la Route / BOAZ
+            BOAZ / organisme porteur
           </p>
           <h1 className="mt-6 max-w-5xl text-balance text-[clamp(3.25rem,7vw,7.5rem)] font-semibold leading-[0.88] tracking-[-0.06em] text-white-90">
-            Derrière le parcours, un organisme identifiable.
+            Le label a un nom. L’organisme a des responsabilités.
           </h1>
           <p className="mt-8 max-w-3xl text-xl leading-9 text-white-60">
-            {siteName} présente les parcours de BOAZ consacrés au transport de
-            voyageurs. Notre rôle consiste à cadrer le projet, transmettre les
-            informations utiles et préparer les responsabilités du métier.
+            {brandInfo.ownerName} est l’organisme de formation qui porte {siteName}.
+            BOAZ conçoit les actions, contractualise le parcours et répond des
+            informations administratives publiées sur ce site.
           </p>
         </div>
       </section>
@@ -101,7 +103,7 @@ export default function AboutPage() {
               Identité publique
             </p>
             <h2 className="mt-5 text-[clamp(2.3rem,4vw,4.25rem)] font-semibold leading-none tracking-[-0.045em]">
-              Les informations qui nous engagent
+              Les informations qui engagent BOAZ
             </h2>
 
             <dl className="mt-10 border-t border-night-deep/25">
@@ -128,7 +130,7 @@ export default function AboutPage() {
         <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-[0.7fr_1.3fr] md:gap-16">
           <div>
             <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-orange-300">
-              Notre façon de travailler
+              La méthode BOAZ
             </p>
             <h2 className="mt-5 text-[clamp(2.2rem,4vw,4rem)] font-semibold leading-none tracking-[-0.045em] text-white-90">
               La clarté avant la promesse.

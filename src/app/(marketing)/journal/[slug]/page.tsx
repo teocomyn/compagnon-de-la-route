@@ -11,7 +11,7 @@ import {
   getArticleSlugs,
   type ArticleFrontmatter,
 } from "@/lib/articles";
-import { siteName, siteUrl } from "@/lib/constants";
+import { brandInfo, organizationInfo, siteName, siteUrl } from "@/lib/constants";
 import type { Metadata } from "next";
 
 type PageProps = { params: Promise<{ slug: string }> };
@@ -78,11 +78,19 @@ function ArticleJsonLd({ slug, meta }: { slug: string; meta: ArticleFrontmatter 
     isAccessibleForFree: true,
     datePublished: meta.date,
     dateModified: meta.updated ?? meta.date,
-    author: { "@type": "Organization", name: siteName, url: siteUrl },
+    author: {
+      "@type": "EducationalOrganization",
+      "@id": `${baseUrl}/#organization`,
+      name: brandInfo.ownerName,
+      legalName: organizationInfo.legalName,
+      url: siteUrl,
+    },
     image: thumb,
     publisher: {
       "@type": "Organization",
-      name: siteName,
+      "@id": `${baseUrl}/#organization`,
+      name: brandInfo.ownerName,
+      legalName: organizationInfo.legalName,
       url: siteUrl,
       logo: {
         "@type": "ImageObject",

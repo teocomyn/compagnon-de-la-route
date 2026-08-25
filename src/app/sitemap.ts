@@ -7,6 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const articleRoutes = getArticleSlugs().map((slug) => `/journal/${slug}`);
   const routes = [
     "",
+    "/le-label",
     "/qui-sommes-nous",
     "/formations",
     "/formations/conducteur-voyageurs",

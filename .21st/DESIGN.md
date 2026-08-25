@@ -102,3 +102,4 @@ Generated from project sources at 2026-08-25T07:24:08.795Z.
 - Journal : cluster de six dossiers SEO longs et vérifiés, grille éditoriale en deux colonnes, photographies métier du client et couverture du parcours complet de l’orientation à la prise de service.
 - Système anti-slop : Archivo et IBM Plex Mono, aplats vert nuit et orange, bordures franches, photographies réelles, aucune grille de fond, aucun halo, aucun verre, aucune animation décorative répétée.
 - Bordure de marque : faisceau orbital orange et crème réservé au Bento central et au formulaire de contact, lent au repos, accéléré au survol, suspendu hors écran et statique avec `prefers-reduced-motion`.
+- Architecture de marque : Compagnon de la Route est présenté comme le label transport et BOAZ comme l'organisme qui le porte. La page `/le-label` sépare visuellement le label, l'entité juridique et Qualiopi dans une composition éditoriale plate.
