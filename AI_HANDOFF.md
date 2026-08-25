@@ -2,13 +2,13 @@
 
 ## État
 
-La refonte éditoriale anti-slop, le triptyque Bento, le footer en arche et les bordures orbitales sélectives sont poussés sur `main`, dernière livraison fonctionnelle `6ee5faa`. Le déploiement de production n’a pas été vérifié dans ce dépôt.
+La refonte éditoriale anti-slop, le triptyque Bento, le footer en arche, les bordures orbitales sélectives et le nouveau titre de marque de l'accueil sont poussés sur `main`, dernière livraison fonctionnelle `1765ef3`. Le déploiement de production n’a pas été vérifié dans ce dépôt.
 
 Préférence de livraison du client : après validation, committer et pousser chaque intervention sur `origin/main`, sans inclure de secret.
 
 ## Changements principaux
 
-- Hero de l'accueil entièrement reconstruit autour d'une photographie métier réelle : composition éditoriale en deux colonnes, titre court, CTA distincts et preuves réglementaires factuelles.
+- Hero de l'accueil entièrement reconstruit autour d'une photographie métier réelle : composition éditoriale en deux colonnes, titre « Compagnon de la route, plus qu'un métier, une mission », CTA distincts et preuves réglementaires factuelles.
 - Système visuel global nettoyé : Archivo et IBM Plex Mono remplacent Geist, fond quadrillé supprimé, halos et verre retirés, ombres et mouvements décoratifs supprimés, rayons réduits et hiérarchie portée par les bordures et l'espace.
 - Seul le reveal narratif de la déclaration d'accueil est conservé. Le menu, le poids variable de la navigation et les accordéons ne bougent que pour signaler un état ou une action.
 - Grille Bento conservée à la demande du client, mais reconstruite en composition plate et asymétrique, sans cartes flottantes ni promesse non vérifiée.
