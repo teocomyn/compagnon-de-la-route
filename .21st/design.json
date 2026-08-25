@@ -207,6 +207,7 @@
         "AnimatedNumber",
         "Badge",
         "Button",
+        "BorderBeamPanel",
         "Card",
         "Eyebrow",
         "Input",
@@ -260,6 +261,11 @@
       "id": "anti-slop-editorial-transport-system",
       "decision": "Adopter une direction éditoriale transport fondée sur Archivo, IBM Plex Mono, des aplats vert nuit et orange, des bordures franches, une numérotation fonctionnelle et les photographies métier réelles fournies.",
       "rationale": "Audit global demandé le 25 août 2026. Le système retire la grille de fond, les halos, le verre, les ombres, les cartes génériques et les animations décoratives. Un seul reveal narratif subsiste sur l'accueil ; les autres mouvements servent le menu, les accordéons ou le retour d'état."
+    },
+    {
+      "id": "selective-brand-border-beam",
+      "decision": "Réserver la bordure orbitale orange et crème au Bento central de l'accueil et au formulaire de contact.",
+      "rationale": "Direction explicitement demandée le 25 août 2026. Le faisceau lent accélère au survol, se met en pause hors écran et devient statique avec prefers-reduced-motion. L'usage reste limité à deux surfaces prioritaires afin de conserver la hiérarchie éditoriale."
     }
   ],
   "evidence": [

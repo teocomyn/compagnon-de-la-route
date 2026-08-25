@@ -20,7 +20,7 @@ Generated from project sources at 2026-08-25T07:24:08.795Z.
 
 ## Components
 
-- Installed: AnimatedNumber, Badge, Button, Card, Eyebrow, Input, SectionHeader, Textarea, VariableFontHover
+- Installed: AnimatedNumber, Badge, BorderBeamPanel, Button, Card, Eyebrow, Input, SectionHeader, Textarea, VariableFontHover
 - Preferred primitives: None detected
 
 ## Tokens
@@ -101,3 +101,4 @@ Generated from project sources at 2026-08-25T07:24:08.795Z.
 - Footer global : arche de marque avec signal orange, CTA monumental, ligne de parcours, navigation vérifiée, repères réglementaires et signature COMPAGNON / DE LA ROUTE sur deux niveaux.
 - Journal : cluster de six dossiers SEO longs et vérifiés, grille éditoriale en deux colonnes, photographies métier du client et couverture du parcours complet de l’orientation à la prise de service.
 - Système anti-slop : Archivo et IBM Plex Mono, aplats vert nuit et orange, bordures franches, photographies réelles, aucune grille de fond, aucun halo, aucun verre, aucune animation décorative répétée.
+- Bordure de marque : faisceau orbital orange et crème réservé au Bento central et au formulaire de contact, lent au repos, accéléré au survol, suspendu hors écran et statique avec `prefers-reduced-motion`.

@@ -1,7 +1,21 @@
 "use client";
 
-import type { ReactNode } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { type ReactNode, useSyncExternalStore } from "react";
+import { motion } from "framer-motion";
+
+function subscribeReducedMotion(callback: () => void) {
+  const query = window.matchMedia("(prefers-reduced-motion: reduce)");
+  query.addEventListener("change", callback);
+  return () => query.removeEventListener("change", callback);
+}
+
+function getReducedMotionSnapshot() {
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+function useReducedMotionPreference() {
+  return useSyncExternalStore(subscribeReducedMotion, getReducedMotionSnapshot, () => false);
+}
 
 type RevealLineProps = {
   children: ReactNode;
@@ -14,7 +28,8 @@ function RevealLine({ children, className, delay, reducedMotion }: RevealLinePro
   return (
     <motion.span
       className="block overflow-hidden pb-[0.08em]"
-      initial={reducedMotion ? false : "hidden"}
+      initial="hidden"
+      animate={reducedMotion ? "visible" : undefined}
       whileInView={reducedMotion ? undefined : "visible"}
       viewport={{ once: true, amount: 0.75 }}
     >
@@ -24,7 +39,11 @@ function RevealLine({ children, className, delay, reducedMotion }: RevealLinePro
           hidden: { opacity: 0, y: "105%" },
           visible: { opacity: 1, y: 0 },
         }}
-        transition={{ duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] }}
+        transition={{
+          duration: reducedMotion ? 0 : 0.8,
+          delay: reducedMotion ? 0 : delay,
+          ease: [0.22, 1, 0.36, 1],
+        }}
       >
         {children}
       </motion.span>
@@ -33,17 +52,18 @@ function RevealLine({ children, className, delay, reducedMotion }: RevealLinePro
 }
 
 export function Statement() {
-  const reducedMotion = Boolean(useReducedMotion());
+  const reducedMotion = useReducedMotionPreference();
 
   return (
     <section className="bg-night pb-12 pt-20 md:pb-16 md:pt-28">
       <div className="section-shell">
         <motion.div
           className="grid gap-8 lg:grid-cols-12 lg:gap-10"
-          initial={reducedMotion ? false : { opacity: 0 }}
+          initial={{ opacity: 0 }}
+          animate={reducedMotion ? { opacity: 1 } : undefined}
           whileInView={reducedMotion ? undefined : { opacity: 1 }}
           viewport={{ once: true, amount: 0.55 }}
-          transition={{ duration: 0.45 }}
+          transition={{ duration: reducedMotion ? 0 : 0.45 }}
         >
           <p className="font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-orange-300 lg:col-span-3 lg:pt-3">
             La responsabilité avant le départ

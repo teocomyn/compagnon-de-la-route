@@ -1,5 +1,6 @@
 import { ArrowRight, BusFront, FileText, Route } from "lucide-react";
 import Link from "next/link";
+import { BorderBeamPanel } from "@/components/ui/border-beam-panel";
 
 const routeSteps = ["Situation", "Cadre écrit", "Évaluation", "Candidature"];
 const trainingTopics = ["Sécurité", "Conduite", "Voyageurs"];
@@ -68,7 +69,18 @@ export function CdrBentoSection() {
             </div>
           </article>
 
-          <article className="overflow-hidden rounded-2xl border border-orange-500 bg-orange-500 text-night-deep lg:-translate-y-5">
+          <BorderBeamPanel
+            role="article"
+            aria-labelledby="bento-poste-title"
+            beams={2}
+            colors={["var(--color-orange-100)", "var(--color-orange-300)"]}
+            thickness={2}
+            idleSpeed={18}
+            hoverSpeed={90}
+            radius={32}
+            seed={2}
+            className="overflow-hidden border-orange-500 bg-orange-500 text-night-deep lg:-translate-y-5"
+          >
             <div className="m-3 mb-0 min-h-80 rounded-xl border border-white/15 bg-night-deep p-6 text-white-90 md:min-h-96 md:p-8">
               <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.14em] text-orange-300">
                 <span>Au poste</span>
@@ -101,7 +113,10 @@ export function CdrBentoSection() {
             </div>
 
             <div className="relative min-h-48 p-7 pr-20 md:p-8 md:pr-24">
-              <h3 className="text-[clamp(1.65rem,2.4vw,2.35rem)] font-semibold leading-[1.02] tracking-[-0.04em]">
+              <h3
+                id="bento-poste-title"
+                className="text-[clamp(1.65rem,2.4vw,2.35rem)] font-semibold leading-[1.02] tracking-[-0.04em]"
+              >
                 Le métier s&apos;entraîne avant le premier service.
               </h3>
               <p className="mt-4 text-sm leading-6 text-night-deep/70">
@@ -111,7 +126,7 @@ export function CdrBentoSection() {
                 <BusFront className="h-5 w-5" aria-hidden="true" />
               </span>
             </div>
-          </article>
+          </BorderBeamPanel>
 
           <article className="overflow-hidden rounded-2xl border border-orange-100/40 bg-orange-100 text-night-deep">
             <div className="m-3 mb-0 min-h-80 rounded-xl border border-orange-900/10 bg-white/55 p-6 md:min-h-96 md:p-8">

@@ -15,6 +15,7 @@ Préférence de livraison du client : après validation, committer et pousser ch
 - Transition d'accueil resserrée : titre en grille éditoriale correctement contenu par `section-shell`, texte toujours visible et nouveau triptyque Bento placé directement sous la déclaration. Les panneaux représentent le parcours, l'entraînement au poste et les informations à confirmer avant inscription.
 - Header reconstruit en surface pleine largeur et footer sans verre, halo ni animation d'apparition.
 - Footer final renforcé en arche de marque : CTA monumental, trois repères de parcours, navigation complète et signature typographique sur deux niveaux. Le grand arrondi est limité à la silhouette extérieure et le composant reste rendu côté serveur.
+- Composant `BorderBeamPanel` ajouté dans `src/components/ui` et appliqué uniquement au Bento central et au formulaire de contact. Deux faisceaux orange et crème orbitent lentement, accélèrent au survol, se suspendent hors écran et restent statiques sous `prefers-reduced-motion`.
 - Pages formation, à propos, contact, formations, guides, journal, témoignages, articles et pages légales harmonisées avec la direction éditoriale.
 - Ancienne page SEO générique refondue avec les mêmes primitives plates, même si sa publication reste suspendue par le garde-fou éditorial.
 - Anciens composants visuels inutilisés `GridBackground`, `OrangeGlow`, `GlassCard`, `FooterReveal` et `PrereqImmersive` supprimés pour éviter leur réintroduction.

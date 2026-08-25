@@ -1,6 +1,7 @@
 import { ContactForm } from "@/components/contact/ContactForm";
 import { BreadcrumbBar } from "@/components/layout/BreadcrumbBar";
 import { PageBreadcrumbs } from "@/components/seo/PageBreadcrumbs";
+import { BorderBeamPanel } from "@/components/ui/border-beam-panel";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { contactInfo, organizationInfo, siteName } from "@/lib/constants";
 import type { Metadata } from "next";
@@ -69,9 +70,18 @@ export default function ContactPage() {
           </div>
         </div>
 
-        <div className="border border-white/15 border-t-orange-400 bg-night-deep p-6 md:p-10">
+        <BorderBeamPanel
+          beams={2}
+          colors={["var(--color-orange-500)", "var(--color-orange-100)"]}
+          thickness={2}
+          idleSpeed={16}
+          hoverSpeed={72}
+          radius={16}
+          seed={3}
+          className="border-white/15 bg-night-deep p-6 md:p-10"
+        >
           <ContactForm />
-        </div>
+        </BorderBeamPanel>
         </div>
       </div>
 

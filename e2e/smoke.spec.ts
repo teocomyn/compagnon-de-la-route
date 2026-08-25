@@ -13,6 +13,7 @@ test.describe("Parcours critiques", () => {
       page.getByRole("img", { name: /Conductrice de bus installée à son poste/i }),
     ).toBeVisible();
     await expect(page.getByText("L'exigence", { exact: true })).toHaveCount(0);
+    await expect(page.locator('[data-cdr-border-beam="true"]')).toHaveCount(1);
 
     const statement = page.getByRole("heading", {
       level: 2,
@@ -122,6 +123,7 @@ test.describe("Parcours critiques", () => {
 
   test("contact : formulaire accessible", async ({ page }) => {
     await page.goto("/contact");
+    await expect(page.locator('[data-cdr-border-beam="true"]')).toBeVisible();
     await expect(
       page.getByRole("heading", { level: 1, name: /Parlez-nous de votre projet/i }),
     ).toBeVisible();
