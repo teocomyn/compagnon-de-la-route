@@ -2,7 +2,7 @@
 
 ## État
 
-La refonte éditoriale anti-slop, le triptyque Bento, le footer en arche, les bordures orbitales sélectives, le titre de marque, la ligne de réseau et le slider photographique de l'accueil sont poussés sur `main`, dernière livraison fonctionnelle `904e162`. Le déploiement de production n’a pas été vérifié dans ce dépôt.
+La refonte éditoriale anti-slop, le triptyque Bento, le footer en arche, les bordures orbitales sélectives, le titre de marque, la ligne de réseau, le slider photographique et le panneau d'activité de l'accueil sont poussés sur `main`, dernière livraison fonctionnelle `2ba1e4d`. Le déploiement de production n’a pas été vérifié dans ce dépôt.
 
 Préférence de livraison du client : après validation, committer et pousser chaque intervention sur `origin/main`, sans inclure de secret.
 
@@ -16,7 +16,8 @@ Préférence de livraison du client : après validation, committer et pousser ch
 - Transition d'accueil resserrée : titre en grille éditoriale correctement contenu par `section-shell`, texte toujours visible et nouveau triptyque Bento placé directement sous la déclaration. Les panneaux représentent le parcours, l'entraînement au poste et les informations à confirmer avant inscription.
 - Header reconstruit en surface pleine largeur et footer sans verre, halo ni animation d'apparition.
 - Footer final renforcé en arche de marque : CTA monumental, trois repères de parcours, navigation complète et signature typographique sur deux niveaux. Le grand arrondi est limité à la silhouette extérieure et le composant reste rendu côté serveur.
-- Composant `BorderBeamPanel` ajouté dans `src/components/ui` et appliqué uniquement au Bento central et au formulaire de contact. Deux faisceaux orange et crème orbitent lentement, accélèrent au survol, se suspendent hors écran et restent statiques sous `prefers-reduced-motion`.
+- Composant `BorderBeamPanel` ajouté dans `src/components/ui` et appliqué uniquement au Bento central, au panneau des données d'activité et au formulaire de contact. Deux faisceaux orange et crème orbitent lentement, accélèrent au survol, se suspendent hors écran et restent statiques sous `prefers-reduced-motion`.
+- Bloc des données d'activité reconstruit comme une fiche de preuve : en-tête de registre, trois colonnes numérotées avec pictogrammes, source intégrée et bordure orbitale commune. Les valeurs et précautions éditoriales restent inchangées.
 - Pages formation, à propos, contact, formations, guides, journal, témoignages, articles et pages légales harmonisées avec la direction éditoriale.
 - Ancienne page SEO générique refondue avec les mêmes primitives plates, même si sa publication reste suspendue par le garde-fou éditorial.
 - Anciens composants visuels inutilisés `GridBackground`, `OrangeGlow`, `GlassCard`, `FooterReveal` et `PrereqImmersive` supprimés pour éviter leur réintroduction.
@@ -89,6 +90,7 @@ Préférence de livraison du client : après validation, committer et pousser ch
 - Inspection visuelle complète de la page formation à 1440 px et 390 px ; aucun débordement horizontal, hero et sections photographiques validés.
 - Inspection visuelle de la ligne de réseau à 1440 px et 390 px, avec mouvement normal et réduit ; trois logos lisibles, pause au survol et aucun débordement horizontal.
 - Inspection visuelle du slider hero à 1440 px et 390 px sur les deux premières images ; autoplay, pause au survol, boutons, clavier et réduction des animations vérifiés, sans débordement horizontal ni erreur d'hydratation.
+- Inspection visuelle du panneau d'activité à 1440 px et 390 px ; trois données, source et bordure orbitale lisibles sans débordement horizontal.
 - Revue UI 21st de la page formation, de l'accordéon et de la timeline — 0 finding après correction.
 - Inspection visuelle du header en haut de page, après scroll, au survol et avec le menu mobile ouvert ; axe `wght` vérifié de 430 à 720 et aucun débordement à 390 px.
 - Revue UI 21st du header, du menu mobile et des composants VariableFontHover — 0 finding après correction.
