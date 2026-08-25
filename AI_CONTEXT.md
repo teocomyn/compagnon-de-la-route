@@ -48,6 +48,11 @@ Les chiffres de réussite, d'insertion, de satisfaction, de durée ou de finance
 
 Copier `.env.example` vers un fichier d'environnement local et renseigner les valeurs nécessaires. Ne jamais committer de clé API.
 
+## Livraison
+
+- Après validation d’une livraison demandée, committer puis pousser les changements sur `origin/main` du dépôt `teocomyn/compagnon-de-la-route`.
+- Ne jamais inclure de secret ou de fichier d’environnement dans un commit.
+
 ## Vérifications
 
 ```bash

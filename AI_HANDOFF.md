@@ -2,7 +2,9 @@
 
 ## État
 
-Vagues P0/P1/P2 poussées sur `main` au commit `db63e12`. Les améliorations visuelles de l'accueil, de la page formation, du header, du footer et le cluster de six articles du Journal sont implémentés localement, non déployés et non poussés.
+Les améliorations visuelles de l'accueil, de la page formation, du header, du footer et le cluster de six articles du Journal sont poussés sur `main` au commit `8c5af8f`. Le déploiement de production n’a pas été vérifié dans ce dépôt.
+
+Préférence de livraison du client : après validation, committer et pousser chaque intervention sur `origin/main`, sans inclure de secret.
 
 ## Changements principaux
 
