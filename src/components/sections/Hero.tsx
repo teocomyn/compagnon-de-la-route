@@ -14,7 +14,7 @@ export function Hero() {
               Formation conducteur de voyageurs
             </p>
 
-            <h1 className="mt-7 text-balance text-[clamp(3.4rem,7.2vw,7.8rem)] font-extrabold leading-[0.86] tracking-[-0.065em] text-white-90">
+            <h1 className="mt-7 text-balance text-[clamp(3rem,5.6vw,6.1rem)] font-extrabold leading-[0.9] tracking-[-0.055em] text-white-90">
               Conduire des voyageurs,
               <span className="mt-2 block text-orange-400">ça se prépare.</span>
             </h1>
