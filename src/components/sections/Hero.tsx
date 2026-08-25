@@ -8,7 +8,7 @@ export function Hero() {
   return (
     <section className="relative min-h-[760px] overflow-hidden border-b border-white/10 bg-night-deep pt-24 md:min-h-[820px] md:pt-20">
       <div className="mx-auto grid min-h-[680px] max-w-screen-2xl md:min-h-[740px] md:grid-cols-12">
-        <div className="relative z-10 flex items-center px-6 py-16 md:col-span-7 md:px-10 lg:px-16 xl:px-20">
+        <div className="relative z-10 order-2 flex items-center px-6 py-16 md:order-1 md:col-span-7 md:px-10 lg:px-16 xl:px-20">
           <div className="max-w-4xl">
             <p className="font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-orange-300">
               Formation conducteur de voyageurs
@@ -67,21 +67,66 @@ export function Hero() {
           </div>
         </div>
 
-        <figure className="relative min-h-[520px] border-t border-white/10 md:col-span-5 md:min-h-full md:border-l md:border-t-0">
-          <Image
-            src="/images/journal/conductrice-bus-poste.jpg"
-            alt="Conductrice de bus installée à son poste de conduite"
-            fill
-            loading="eager"
-            sizes="(max-width: 768px) 100vw, 42vw"
-            className="object-cover object-[52%_center]"
-          />
-          <div className="absolute inset-x-0 bottom-0 border-t border-white/20 bg-night-deep px-6 py-5 md:px-8">
-            <figcaption className="flex items-center justify-between gap-4 font-mono text-[10px] uppercase tracking-[0.16em] text-white-60">
-              <span>Au poste</span>
-              <span className="text-orange-300">Transport de voyageurs</span>
-            </figcaption>
+        <figure className="relative order-1 min-h-[480px] border-t border-white/10 md:order-2 md:col-span-5 md:min-h-full md:border-l md:border-t-0">
+          <div className="grid h-full min-h-[480px] grid-cols-2 grid-rows-[1fr_1fr_0.72fr] md:min-h-[740px] md:grid-cols-[34%_33%_33%] md:grid-rows-[60%_40%]">
+            <div className="relative col-start-1 row-span-2 row-start-1 overflow-hidden border-r border-white/15 md:col-start-1 md:row-span-2">
+              <Image
+                src="/images/hero/route-nuit.jpg"
+                alt="Route de montagne de nuit dessinée par les feux des véhicules"
+                fill
+                loading="eager"
+                sizes="(max-width: 768px) 50vw, 15vw"
+                className="object-cover object-center"
+              />
+              <span className="absolute inset-x-0 bottom-0 border-t border-white/15 bg-night-deep/90 px-4 py-3 font-mono text-[9px] uppercase tracking-[0.16em] text-orange-300">
+                01 · La route
+              </span>
+            </div>
+
+            <div className="relative col-start-2 row-span-2 row-start-1 overflow-hidden md:col-span-2 md:col-start-2 md:row-span-1 md:border-b md:border-white/15">
+              <Image
+                src="/images/hero/autocar-montagne.jpeg"
+                alt="Autocar stationné au pied de montagnes enneigées"
+                fill
+                loading="eager"
+                sizes="(max-width: 768px) 50vw, 28vw"
+                className="object-cover object-[42%_center]"
+              />
+              <span className="absolute inset-x-0 bottom-0 border-t border-white/15 bg-night-deep/90 px-4 py-3 font-mono text-[9px] uppercase tracking-[0.16em] text-orange-300">
+                02 · Voyager
+              </span>
+            </div>
+
+            <div className="relative col-start-1 row-start-3 overflow-hidden border-r border-t border-white/15 md:col-start-2 md:row-start-2 md:border-t-0">
+              <Image
+                src="/images/hero/conducteur-bus.jpg"
+                alt="Conducteur de bus souriant au poste de conduite"
+                fill
+                sizes="(max-width: 768px) 50vw, 14vw"
+                className="object-cover object-center"
+              />
+              <span className="absolute inset-x-0 bottom-0 border-t border-white/15 bg-night-deep/90 px-4 py-3 font-mono text-[9px] uppercase tracking-[0.16em] text-orange-300">
+                03 · Le poste
+              </span>
+            </div>
+
+            <div className="relative col-start-2 row-start-3 overflow-hidden border-t border-white/15 md:col-start-3 md:row-start-2 md:border-t-0">
+              <Image
+                src="/images/hero/bus-mouvement.jpeg"
+                alt="Bus urbain bleu photographié en mouvement"
+                fill
+                sizes="(max-width: 768px) 50vw, 14vw"
+                className="object-cover object-[55%_center]"
+              />
+              <span className="absolute inset-x-0 bottom-0 border-t border-white/15 bg-night-deep/90 px-4 py-3 font-mono text-[9px] uppercase tracking-[0.16em] text-orange-300">
+                04 · Le mouvement
+              </span>
+            </div>
           </div>
+
+          <figcaption className="sr-only">
+            La route, le voyage, le poste de conduite et le mouvement au cœur du métier.
+          </figcaption>
           <div
             className="absolute left-0 top-0 hidden h-32 w-2 bg-orange-500 md:block"
             aria-hidden="true"

@@ -13,7 +13,16 @@ test.describe("Parcours critiques", () => {
       page.getByRole("link", { name: /Voir la formation/i }).first(),
     ).toBeVisible();
     await expect(
-      page.getByRole("img", { name: /Conductrice de bus installée à son poste/i }),
+      page.getByRole("img", { name: /Route de montagne de nuit/i }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("img", { name: /Autocar stationné au pied de montagnes/i }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("img", { name: /Conducteur de bus souriant au poste/i }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("img", { name: /Bus urbain bleu photographié en mouvement/i }),
     ).toBeVisible();
 
     const partnerMarquee = page.getByTestId("partner-marquee");

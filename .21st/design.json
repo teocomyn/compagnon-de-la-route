@@ -271,6 +271,11 @@
       "id": "homepage-network-logo-line",
       "decision": "Placer immédiatement sous le hero une ligne de réseau éditoriale avec les logos Geiq, BPV Objectifs et Geiq Mobilité fournis par le client, dans un défilement horizontal continu.",
       "rationale": "Direction explicitement demandée le 25 août 2026. Le bandeau prolonge les bordures et les aplats du hero, se suspend au survol et devient une grille statique avec prefers-reduced-motion."
+    },
+    {
+      "id": "homepage-cinematic-photo-contact-sheet",
+      "decision": "Composer le hero avec les quatre photographies fournies par le client dans un contact-sheet asymétrique : route verticale, autocar en montagne dominant, conducteur au poste et bus urbain en mouvement.",
+      "rationale": "Direction explicitement demandée le 25 août 2026. Les formats natifs des images déterminent la grille et les séparateurs éditoriaux ; sur mobile, la composition précède le texte afin d'être visible dès le premier écran."
     }
   ],
   "evidence": [
