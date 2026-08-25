@@ -1,61 +1,98 @@
 "use client";
 
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-import { AnimatePresence, motion } from "framer-motion";
 import { useId, useState } from "react";
 import { cn } from "@/lib/utils";
 
 const modules = [
-  { title: "Connaissance du véhicule", text: "Prise en main, contrôles, sécurité mécanique et ergonomie de conduite selon le parcours retenu." },
-  { title: "Sécurité et prévention", text: "Anticipation, gestion des risques, procédures et culture de la sécurité." },
-  { title: "Relation voyageurs et inclusion", text: "Accueil, posture professionnelle, situations sensibles et qualité de service." },
-  { title: "Réglementation du transport", text: "Cadre applicable, documents, responsabilités, exploitation et contrôles." },
-  { title: "Mises en situation", text: "Exercices pratiques, situations professionnelles et évaluations prévus par la fiche programme contractuelle." },
+  {
+    tag: "Véhicule",
+    title: "Prendre en main son outil de travail",
+    text: "Contrôles, sécurité mécanique, ergonomie et conduite sont abordés selon le parcours retenu et la fiche programme remise avant l’inscription.",
+  },
+  {
+    tag: "Sécurité",
+    title: "Anticiper, prévenir et agir",
+    text: "Le parcours développe la gestion des risques, l’application des procédures et la culture de la sécurité attendue dans le transport de voyageurs.",
+  },
+  {
+    tag: "Voyageurs",
+    title: "Accueillir tous les publics",
+    text: "Posture professionnelle, inclusion, information des voyageurs, qualité de service et gestion des situations sensibles structurent ce module.",
+  },
+  {
+    tag: "Cadre métier",
+    title: "Comprendre ses responsabilités",
+    text: "Réglementation applicable, documents, organisation de l’exploitation et contrôles sont précisés en fonction de la formation effectivement proposée.",
+  },
+  {
+    tag: "Pratique",
+    title: "Se confronter aux situations professionnelles",
+    text: "Les exercices pratiques, mises en situation et évaluations sont détaillés dans la fiche programme contractuelle communiquée avant tout engagement.",
+  },
 ];
 
 export function ProgramAccordion() {
   const baseId = useId();
+  const reducedMotion = Boolean(useReducedMotion());
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <div className="space-y-3">
-      {modules.map((m, idx) => {
-        const isOpen = open === idx;
-        const id = `${baseId}-mod-${idx}`;
+    <div className="border-t border-white/10">
+      {modules.map((module, index) => {
+        const isOpen = open === index;
+        const id = `${baseId}-module-${index}`;
+
         return (
-          <div key={m.title} className="overflow-hidden rounded-xl border border-white/10 bg-white/[0.02]">
+          <div key={module.title} className="border-b border-white/10">
             <button
               type="button"
-              className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
+              className="group grid min-h-24 w-full grid-cols-[2.75rem_1fr_auto] items-center gap-3 py-5 text-left sm:grid-cols-[3.5rem_7rem_1fr_auto] sm:gap-5"
               aria-expanded={isOpen}
               aria-controls={`${id}-panel`}
               id={`${id}-button`}
-              onClick={() => setOpen(isOpen ? null : idx)}
+              onClick={() => setOpen(isOpen ? null : index)}
             >
-              <span className="text-[16px] font-semibold text-white-90">{m.title}</span>
-              <span className="flex items-center gap-3">
+              <span className="font-mono text-xs font-semibold text-orange-300">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <span className="hidden text-xs font-semibold uppercase tracking-[0.16em] text-white-45 sm:block">
+                {module.tag}
+              </span>
+              <span className="text-base font-semibold leading-snug text-white-90 transition-colors group-hover:text-orange-200 sm:text-lg">
+                {module.title}
+              </span>
+              <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.035]">
                 <ChevronDown
                   className={cn(
-                    "h-5 w-5 text-white-45 transition-transform duration-300",
-                    isOpen && "rotate-180",
+                    "h-4 w-4 text-white-60 transition-transform duration-300",
+                    isOpen && "rotate-180 text-orange-300",
                   )}
-                  aria-hidden
+                  aria-hidden="true"
                 />
               </span>
             </button>
+
             <AnimatePresence initial={false}>
               {isOpen ? (
                 <motion.div
                   id={`${id}-panel`}
                   role="region"
                   aria-labelledby={`${id}-button`}
-                  initial={{ height: 0, opacity: 0 }}
+                  initial={reducedMotion ? false : { height: 0, opacity: 0 }}
                   animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                  className="px-6"
+                  exit={reducedMotion ? undefined : { height: 0, opacity: 0 }}
+                  transition={
+                    reducedMotion
+                      ? { duration: 0 }
+                      : { duration: 0.38, ease: [0.16, 1, 0.3, 1] }
+                  }
+                  className="overflow-hidden"
                 >
-                  <p className="pb-6 text-[15px] leading-relaxed text-white-60">{m.text}</p>
+                  <p className="max-w-3xl pb-7 pl-[3.5rem] pr-14 text-sm leading-7 text-white-60 sm:pl-[11.75rem] sm:text-[15px]">
+                    {module.text}
+                  </p>
                 </motion.div>
               ) : null}
             </AnimatePresence>

@@ -13,14 +13,14 @@ export function ArticleHeader({ meta }: ArticleHeaderProps) {
       <div className="relative h-[520px] md:h-auto md:min-h-[320px] md:aspect-[21/9]">
         <Image
           src={meta.thumbnail}
-          alt={`Visuel d’en-tête : ${meta.title}`}
-          priority
+          alt={meta.thumbnailAlt ?? `Visuel d’en-tête : ${meta.title}`}
+          loading="eager"
           fill
           className="object-cover"
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-night via-night/70 to-night/20" />
-        <div className="absolute inset-x-0 bottom-0 mx-auto max-w-[1100px] px-6 pb-12 md:px-8">
+        <div className="absolute inset-x-0 bottom-0 mx-auto max-w-6xl px-6 pb-12 md:px-8">
           <nav
             aria-label="Fil d’Ariane"
             className="mb-3 font-mono text-[10px] font-medium uppercase tracking-[0.14em] text-white/[0.18] sm:mb-4"

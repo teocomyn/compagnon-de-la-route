@@ -28,9 +28,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params;
   const article = getArticleBySlug(slug);
   if (!article) return {};
+  const imageUrl = article.meta.thumbnail.startsWith("http")
+    ? article.meta.thumbnail
+    : `${siteUrl.replace(/\/$/, "")}${article.meta.thumbnail}`;
   return {
     title: article.meta.title,
     description: article.meta.description,
+    keywords: article.meta.keywords,
     alternates: { canonical: `/journal/${slug}` },
     robots: { index: true, follow: true },
     openGraph: {
@@ -38,14 +42,23 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description: article.meta.description,
       type: "article",
       url: `/journal/${slug}`,
+      publishedTime: article.meta.date,
+      modifiedTime: article.meta.updated ?? article.meta.date,
+      authors: [siteName],
+      section: article.meta.category,
+      tags: article.meta.keywords,
       images: [
         {
-          url: article.meta.thumbnail.startsWith("http")
-            ? article.meta.thumbnail
-            : `${siteUrl.replace(/\/$/, "")}${article.meta.thumbnail}`,
-          alt: article.meta.title,
+          url: imageUrl,
+          alt: article.meta.thumbnailAlt ?? article.meta.title,
         },
       ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: article.meta.title,
+      description: article.meta.description,
+      images: [imageUrl],
     },
   };
 }
@@ -58,8 +71,12 @@ function ArticleJsonLd({ slug, meta }: { slug: string; meta: ArticleFrontmatter 
   const json = {
     "@context": "https://schema.org",
     "@type": "Article",
+    inLanguage: "fr-FR",
     headline: meta.title,
     description: meta.description,
+    articleSection: meta.category,
+    keywords: meta.keywords?.join(", "),
+    isAccessibleForFree: true,
     datePublished: meta.date,
     dateModified: meta.updated ?? meta.date,
     author: { "@type": "Organization", name: siteName, url: siteUrl },
@@ -90,7 +107,14 @@ export default async function ArticlePage({ params }: PageProps) {
   if (!article) notFound();
 
   const all = getAllArticlesMeta();
-  const related = all.filter((a) => a.slug !== slug).slice(0, 3);
+  const related = all
+    .filter((candidate) => candidate.slug !== slug)
+    .sort(
+      (a, b) =>
+        Number(b.category === article.meta.category) -
+        Number(a.category === article.meta.category),
+    )
+    .slice(0, 3);
 
   return (
     <article>
@@ -104,7 +128,7 @@ export default async function ArticlePage({ params }: PageProps) {
       />
       <ArticleHeader meta={article.meta} />
 
-      <div className="section-shell mx-auto grid max-w-[1200px] gap-10 py-14 md:grid-cols-[minmax(0,1fr)_320px] md:py-16">
+      <div className="section-shell mx-auto grid max-w-6xl gap-10 py-14 md:grid-cols-[minmax(0,2fr)_minmax(16rem,1fr)] md:py-16">
         <div className="min-w-0">
           <ArticleBody content={article.content} />
         </div>
@@ -113,7 +137,7 @@ export default async function ArticlePage({ params }: PageProps) {
 
       {related.length > 0 ? (
         <section className="border-t border-white/10 bg-white/[0.02] section-shell section-y">
-          <div className="mx-auto max-w-[1200px]">
+          <div className="mx-auto max-w-6xl">
             <h2 className="text-[22px] font-bold tracking-[-0.02em]">À lire ensuite</h2>
             <div className="mt-8 grid gap-8 md:grid-cols-2">
               {related.map((a) => (
@@ -125,7 +149,7 @@ export default async function ArticlePage({ params }: PageProps) {
       ) : null}
 
       <section className="section-shell section-y">
-        <div className="mx-auto max-w-[980px] rounded-2xl border border-white/10 bg-gradient-to-b from-orange-500/[0.08] to-transparent p-6 text-center sm:p-10">
+        <div className="mx-auto max-w-5xl rounded-2xl border border-white/10 bg-gradient-to-b from-orange-500/[0.08] to-transparent p-6 text-center sm:p-10">
           <h2 className="text-[clamp(1.5rem,3vw,2.25rem)] font-bold tracking-[-0.02em]">
             Besoin de vérifier le parcours proposé ?
           </h2>

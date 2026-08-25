@@ -10,6 +10,7 @@ export type ArticleFrontmatter = {
   date: string;
   readingTime: string;
   thumbnail: string;
+  thumbnailAlt?: string;
   /** Variante badge Journal : orange (défaut) ou mint */
   categoryColor?: "orange" | "mint";
   updated?: string;

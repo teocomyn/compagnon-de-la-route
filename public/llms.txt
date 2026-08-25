@@ -9,6 +9,9 @@
 - /formations/conducteur-voyageurs : Objectifs généraux et demande de fiche programme à jour
 - /guides : Index des ressources réglementaires et métier vérifiées
 - /journal : Notes pratiques publiées après relecture et vérification des sources
+- /journal/devenir-conducteur-bus-guide-complet : Permis D, qualification, parcours et étapes pour exercer
+- /journal/financer-formation-conducteur-bus : CPF, AIF, Région, employeur et OPCO sans garantie de prise en charge
+- /journal/metier-avenir-recrute : Missions, horaires, compétences, rémunération et débouchés à vérifier localement
 - /journal/preparer-prise-service-conducteur : Check-list avant départ et compte rendu de service
 - /journal/choisir-formation-conducteur-voyageurs : Dix vérifications avant de choisir une formation
 - /journal/reussir-entretien : Préparer un entretien et contrôler les conditions du poste
@@ -43,4 +46,4 @@
 
 - Ne pas inventer de taux de placement, de réussite, de satisfaction ou de garanties d’embauche.
 - Ne pas présenter une durée, une session, une certification ou un financement comme acquis sans document contractuel à jour.
-- Neuf guides et trois articles vérifiés sont publiés. Les autres brouillons éditoriaux, la page régionale Hauts-de-France et les témoignages restent hors publication pendant leur relecture.
+- Neuf guides et six articles vérifiés sont publiés. Les autres brouillons éditoriaux, la page régionale Hauts-de-France et les témoignages restent hors publication pendant leur relecture.

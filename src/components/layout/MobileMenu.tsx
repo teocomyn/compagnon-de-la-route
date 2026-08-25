@@ -1,59 +1,173 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { ArrowRight, BadgeCheck } from "lucide-react";
 import Link from "next/link";
-import { navLinks } from "@/lib/constants";
+import { useEffect, useRef } from "react";
 import { buttonVariants } from "@/components/ui/Button";
+import { navLinks } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 type MobileMenuProps = {
   open: boolean;
+  pathname: string;
   onClose: () => void;
 };
 
-export function MobileMenu({ open, onClose }: MobileMenuProps) {
+function isActiveRoute(pathname: string, href: string) {
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
+
+export function MobileMenu({ open, pathname, onClose }: MobileMenuProps) {
+  const reducedMotion = Boolean(useReducedMotion());
+  const panelRef = useRef<HTMLElement>(null);
+  const firstLinkRef = useRef<HTMLAnchorElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+
+    const focusTimer = window.setTimeout(() => firstLinkRef.current?.focus(), 80);
+
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        onClose();
+        return;
+      }
+
+      if (event.key !== "Tab") return;
+
+      const focusable = panelRef.current?.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      );
+
+      if (!focusable?.length) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
+
+    window.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      window.clearTimeout(focusTimer);
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [onClose, open]);
+
   return (
     <AnimatePresence>
       {open ? (
         <motion.div
-          className="fixed inset-0 z-40 md:hidden"
-          initial={{ opacity: 0 }}
+          className="fixed inset-0 z-40 lg:hidden"
+          initial={reducedMotion ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
+          exit={reducedMotion ? undefined : { opacity: 0 }}
+          transition={{ duration: reducedMotion ? 0 : 0.22 }}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Menu de navigation"
         >
           <button
             type="button"
-            className="absolute inset-0 bg-night-deep/90 backdrop-blur-xl"
+            className="absolute inset-0 bg-night-deep/88 backdrop-blur-xl"
             aria-label="Fermer le menu"
+            tabIndex={-1}
             onClick={onClose}
           />
+
           <motion.nav
-            className="relative z-50 mx-auto flex h-full max-w-lg flex-col gap-6 px-8 pt-28"
-            initial={{ x: 32, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: 32, opacity: 0 }}
-            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            ref={panelRef}
+            id="mobile-navigation"
+            className="absolute bottom-3 left-3 right-3 top-[4.5rem] flex flex-col overflow-y-auto rounded-[1.75rem] border border-white/10 bg-night-deep px-6 pb-6 pt-8 shadow-2xl sm:left-auto sm:w-[min(30rem,calc(100vw-1.5rem))] sm:px-8"
+            initial={reducedMotion ? false : { y: -12, opacity: 0, scale: 0.985 }}
+            animate={{ y: 0, opacity: 1, scale: 1 }}
+            exit={reducedMotion ? undefined : { y: -8, opacity: 0, scale: 0.99 }}
+            transition={{
+              duration: reducedMotion ? 0 : 0.4,
+              ease: [0.16, 1, 0.3, 1],
+            }}
             aria-label="Navigation mobile"
           >
-            {navLinks.map((link) => (
+            <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-orange-300">
+              Explorer le site
+            </p>
+
+            <ul className="mt-6 border-t border-white/10">
+              {navLinks.map((link, index) => {
+                const active = isActiveRoute(pathname, link.href);
+
+                return (
+                  <motion.li
+                    key={link.href}
+                    initial={reducedMotion ? false : { opacity: 0, x: 12 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{
+                      duration: reducedMotion ? 0 : 0.35,
+                      delay: reducedMotion ? 0 : 0.08 + index * 0.045,
+                      ease: [0.16, 1, 0.3, 1],
+                    }}
+                    className="border-b border-white/10"
+                  >
+                    <Link
+                      ref={index === 0 ? firstLinkRef : undefined}
+                      href={link.href}
+                      onClick={onClose}
+                      aria-current={active ? "page" : undefined}
+                      className="group flex min-h-16 items-center justify-between gap-5 rounded-lg py-3 focus-visible:outline-offset-4"
+                    >
+                      <span
+                        className={cn(
+                          "text-xl tracking-[-0.025em] transition-colors sm:text-2xl",
+                          active
+                            ? "font-semibold text-orange-300"
+                            : "font-medium text-white-90 group-hover:text-orange-200",
+                        )}
+                      >
+                        {link.label}
+                      </span>
+                      <span className="flex items-center gap-3">
+                        <span className="font-mono text-[10px] text-white-25">
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
+                        <ArrowRight
+                          className="h-4 w-4 text-white-45 transition-transform group-hover:translate-x-1 group-hover:text-orange-300"
+                          aria-hidden="true"
+                        />
+                      </span>
+                    </Link>
+                  </motion.li>
+                );
+              })}
+            </ul>
+
+            <div className="mt-auto pt-8">
               <Link
-                key={link.href}
-                href={link.href}
+                href="/formations/conducteur-voyageurs"
                 onClick={onClose}
-                className="text-2xl font-semibold tracking-tight text-white-90 transition-colors hover:text-orange-300"
+                className={cn(
+                  buttonVariants({ variant: "primary", size: "lg" }),
+                  "w-full justify-between pl-6 pr-2",
+                )}
               >
-                {link.label}
+                Découvrir la formation
+                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-night-deep text-orange-300">
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </span>
               </Link>
-            ))}
-            <Link
-              href="/formations"
-              className={cn(
-                buttonVariants({ variant: "primary", size: "lg" }),
-                "mt-4 w-full justify-center",
-              )}
-            >
-              Voir le parcours
-            </Link>
+
+              <div className="mt-5 flex items-center gap-2 text-xs text-white-45">
+                <BadgeCheck className="h-4 w-4 text-mint-400" aria-hidden="true" />
+                BOAZ · Qualiopi — actions de formation
+              </div>
+            </div>
           </motion.nav>
         </motion.div>
       ) : null}

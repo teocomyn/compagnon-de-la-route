@@ -6,6 +6,7 @@ import { Statement } from "@/components/sections/Statement";
 import { Stats } from "@/components/sections/Stats";
 import { TrustBuilding } from "@/components/sections/TrustBuilding";
 import { WhyBecome } from "@/components/sections/WhyBecome";
+import { CdrBentoSection } from "@/components/ui/cdr-bento-section";
 import { faqItems } from "@/lib/faq";
 import { siteName, siteUrl } from "@/lib/constants";
 import type { Metadata } from "next";
@@ -69,6 +70,7 @@ export default function HomePage() {
       <Statement />
       <WhyBecome />
       <Stats />
+      <CdrBentoSection />
       <TrustBuilding />
       <Pedagogy />
       <FAQ />

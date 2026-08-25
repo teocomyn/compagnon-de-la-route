@@ -9,6 +9,112 @@ test.describe("Parcours critiques", () => {
     await expect(
       page.getByRole("link", { name: /Découvrir le parcours/i }).first(),
     ).toBeVisible();
+
+    const statement = page.getByRole("heading", {
+      level: 2,
+      name: /bien plus qu’un examen/i,
+    });
+    await statement.scrollIntoViewIfNeeded();
+    await expect(statement).toContainText("Un métier. Une responsabilité. Un projet de vie.");
+    await expect(
+      page.getByText("Former un conducteur, c’est préparer bien plus qu’un examen.", {
+        exact: true,
+      }),
+    ).toHaveCSS("opacity", "1");
+    await expect(
+      page.getByText("Un métier. Une responsabilité. Un projet de vie.", { exact: true }),
+    ).toHaveCSS("opacity", "1");
+
+    const bentoHeading = page.getByRole("heading", {
+      level: 2,
+      name: /Un cadre clair pour avancer avec confiance/i,
+    });
+    await bentoHeading.scrollIntoViewIfNeeded();
+    await expect(bentoHeading).toBeVisible();
+    await expect(page.getByText(/BOAZ est certifié Qualiopi/i)).toBeVisible();
+  });
+
+  test("accueil : le Bento reste contenu sur mobile", async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto("/");
+    await page
+      .getByRole("heading", { level: 2, name: /Un cadre clair pour avancer avec confiance/i })
+      .scrollIntoViewIfNeeded();
+
+    const hasHorizontalOverflow = await page.evaluate(
+      () => document.documentElement.scrollWidth > window.innerWidth,
+    );
+    expect(hasHorizontalOverflow).toBe(false);
+  });
+
+  test("header : navigation active, fonte variable et menu mobile accessible", async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.goto("/formations/conducteur-voyageurs");
+
+    const desktopNavigation = page.getByRole("navigation", {
+      name: "Navigation principale",
+    });
+    await expect(
+      desktopNavigation.getByRole("link", { name: "Formations" }),
+    ).toHaveAttribute("aria-current", "page");
+
+    const guidesLink = desktopNavigation.getByRole("link", { name: "Guides" });
+    const firstAnimatedLetter = guidesLink.locator('[aria-hidden="true"]').first();
+    await guidesLink.hover();
+    await expect
+      .poll(() =>
+        firstAnimatedLetter.evaluate(
+          (element) => getComputedStyle(element).fontVariationSettings,
+        ),
+      )
+      .toContain("720");
+
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.getByRole("button", { name: "Ouvrir le menu" }).click();
+    await expect(page.getByRole("dialog", { name: "Menu de navigation" })).toBeVisible();
+    await expect(
+      page.getByRole("navigation", { name: "Navigation mobile" }).getByRole("link", {
+        name: "Formations",
+      }),
+    ).toBeFocused();
+
+    await page.keyboard.press("Escape");
+    await expect(page.getByRole("dialog", { name: "Menu de navigation" })).toBeHidden();
+    await expect(page.getByRole("button", { name: "Ouvrir le menu" })).toBeVisible();
+  });
+
+  test("footer : CTA, navigation réelle et mise en page mobile", async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto("/");
+
+    const footer = page.getByRole("contentinfo");
+    await footer.scrollIntoViewIfNeeded();
+    await expect(
+      footer.getByRole("heading", {
+        level: 2,
+        name: /prochaine étape commençait ici/i,
+      }),
+    ).toBeVisible();
+    await expect(
+      footer.getByRole("link", { name: /Parler de mon projet/i }),
+    ).toHaveAttribute("href", "/contact");
+    await expect(
+      footer.getByRole("navigation", { name: "Navigation de pied de page" }),
+    ).toContainText("Vérifier une certification");
+
+    const hasHorizontalOverflow = await page.evaluate(
+      () => document.documentElement.scrollWidth > window.innerWidth,
+    );
+    expect(hasHorizontalOverflow).toBe(false);
+  });
+
+  test("journal : les six dossiers vérifiés sont visibles", async ({ page }) => {
+    await page.goto("/journal");
+
+    await expect(page.getByText("6 dossiers vérifiés", { exact: true })).toBeVisible();
+    await expect(page.locator('main a[href^="/journal/"]:has(h2)')).toHaveCount(6);
   });
 
   test("contact : formulaire accessible", async ({ page }) => {
@@ -41,9 +147,25 @@ test.describe("Parcours critiques", () => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto("/formations/conducteur-voyageurs");
     await expect(
-      page.getByRole("heading", { level: 1, name: /Conducteur de voyageurs/i }),
+      page.getByRole("heading", { level: 1, name: /Conduire les voyageurs/i }),
     ).toBeVisible();
+    await expect(
+      page.getByRole("img", { name: /Conductrice de voyageurs devant un bus/i }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("img", { name: /poste de conduite d’un bus/i }),
+    ).toBeVisible();
+
+    await page
+      .getByRole("button", { name: /Anticiper, prévenir et agir/i })
+      .click();
+    await expect(page.getByText(/gestion des risques/i)).toBeVisible();
     await expect(page.getByText(/Calendrier communiqué avant inscription/i)).toBeVisible();
+
+    const hasHorizontalOverflow = await page.evaluate(
+      () => document.documentElement.scrollWidth > window.innerWidth,
+    );
+    expect(hasHorizontalOverflow).toBe(false);
   });
 
   test("sécurité : les en-têtes de production sont présents", async ({ request }) => {
@@ -73,6 +195,13 @@ test.describe("Parcours critiques", () => {
       "/formation-conducteur-voyageurs-hauts-de-france",
     );
     const journal = await request.get("/journal");
+    const careerArticle = await request.get(
+      "/journal/devenir-conducteur-bus-guide-complet",
+    );
+    const fundingArticle = await request.get(
+      "/journal/financer-formation-conducteur-bus",
+    );
+    const jobArticle = await request.get("/journal/metier-avenir-recrute");
     const serviceArticle = await request.get(
       "/journal/preparer-prise-service-conducteur",
     );
@@ -99,12 +228,18 @@ test.describe("Parcours critiques", () => {
     expect(await hiring.text()).toContain("code ROME N4103");
     expect(suspendedGuide.status()).toBe(404);
     expect(journal.ok()).toBe(true);
+    expect(careerArticle.ok()).toBe(true);
+    expect(fundingArticle.ok()).toBe(true);
+    expect(jobArticle.ok()).toBe(true);
     expect(serviceArticle.ok()).toBe(true);
     expect(trainingArticle.ok()).toBe(true);
     expect(interviewArticle.ok()).toBe(true);
     expect(await serviceArticle.text()).toContain("Sources vérifiées");
     expect(await trainingArticle.text()).toContain("RNCP37878");
     expect(await interviewArticle.text()).toContain("France Travail");
+    expect(await careerArticle.text()).toContain("RNCP37878");
+    expect(await fundingArticle.text()).toContain("150 euros");
+    expect(await jobArticle.text()).toContain("ROME N4103");
     expect(suspendedArticle.status()).toBe(404);
   });
 
@@ -115,6 +250,9 @@ test.describe("Parcours critiques", () => {
     expect(sitemap).toContain("/journal/preparer-prise-service-conducteur");
     expect(sitemap).toContain("/journal/choisir-formation-conducteur-voyageurs");
     expect(sitemap).toContain("/journal/reussir-entretien");
+    expect(sitemap).toContain("/journal/devenir-conducteur-bus-guide-complet");
+    expect(sitemap).toContain("/journal/financer-formation-conducteur-bus");
+    expect(sitemap).toContain("/journal/metier-avenir-recrute");
     expect(sitemap).not.toContain("/journal/devenir-conducteur-30-jours");
     expect(sitemap).not.toContain("/temoignages");
     expect(sitemap).toContain("/financement-formation-conducteur-voyageurs");

@@ -2,7 +2,7 @@
 
 ## État
 
-Vagues P0/P1/P2 implémentées localement sur `main`, non déployées et non poussées.
+Vagues P0/P1/P2 poussées sur `main` au commit `db63e12`. Les améliorations visuelles de l'accueil, de la page formation, du header, du footer et le cluster de six articles du Journal sont implémentés localement, non déployés et non poussés.
 
 ## Changements principaux
 
@@ -35,24 +35,51 @@ Vagues P0/P1/P2 implémentées localement sur `main`, non déployées et non pou
 - Index du journal rendu entièrement côté serveur ; ancien filtre client et ses catégories obsolètes supprimés.
 - En-tête d’article corrigé sous 768 px pour supprimer le débordement causé par le ratio panoramique.
 - Contraste et hiérarchie des titres des cartes corrigés ; première image préchargée sur l’index pour le LCP.
+- Déclaration de l'accueil raccourcie en deux phrases et animée par un reveal vertical ligne par ligne, avec désactivation automatique si l'utilisateur préfère réduire les mouvements.
+- Section Bento asymétrique restaurée après les chiffres d'activité : étapes du parcours, cadre écrit, compétences, financement, repères légaux et accompagnement vers l'emploi, sans réintroduire les anciens chiffres ou partenaires non sourcés.
+- Deux garde-fous Playwright ajoutés pour contrôler le contenu, l'affichage réel du reveal et l'absence de débordement horizontal du Bento sur mobile.
+- Contexte de design 21st initialisé et décision visuelle durable enregistrée dans `.21st/design.json`.
+- Page `/formations/conducteur-voyageurs` entièrement refondue en landing page éditoriale : hero asymétrique, sommaire d'ancrage, piliers métier, récit photographique, parcours, programme, modalités, financement, débouchés et CTA final.
+- Deux photographies fournies par le client intégrées via imports statiques `next/image`, avec dimensions intrinsèques, placeholder flouté, `sizes` responsive et priorité limitée à l'image du hero.
+- Programme accordéon et timeline redessinés ; animations adaptées à `prefers-reduced-motion` et page maintenue majoritairement côté serveur.
+- Anciennes promesses du contenu source non reprises : pas de parcours de 30 jours, d'emploi ou de débouchés garantis, de financement automatique, de taux terrain ni de distinctions non vérifiées.
+- Header global reconstruit en barre flottante : identité de marque enrichie, état actif par route, CTA direct vers le parcours et transition d'opacité au scroll.
+- Composants `VariableFontHover` et `m-variable-font-hover-1` ajoutés dans `src/components/ui` ; Geist Sans est désormais chargé dans sa version variable pour animer réellement l'axe `wght`.
+- Menu mobile reconstruit en panneau modal sous le header : focus initial, boucle de tabulation, fermeture par Échap, verrouillage du scroll, CTA et mention Qualiopi.
+- Footer global entièrement reconstruit en conclusion de marque premium : halo supérieur, CTA contact/parcours, navigation complète, repères BOAZ/Qualiopi vérifiés et signature typographique XXL.
+- Le footer principal reste un Server Component ; `FooterReveal` constitue la seule frontière client et utilise `motion-safe` pour éviter un écart d'hydratation avec `prefers-reduced-motion`.
+- Un garde-fou Playwright contrôle le CTA, la navigation et l'absence de débordement horizontal du footer à 390 px.
+- Journal porté à six dossiers longs et vérifiés, d’environ 1 700 à 2 100 mots chacun : orientation, financement, métier, choix de formation, entretien et prise de service.
+- Quatre photographies métier fournies par le client intégrées dans `public/images/journal`, avec textes alternatifs descriptifs et chargement prioritaire limité aux visuels visibles au-dessus de la ligne de flottaison.
+- SEO du Journal renforcé : mots-clés ciblés, métadonnées Open Graph/Twitter, schémas `Article` et `CollectionPage`/`ItemList`, sources officielles, FAQ éditoriales, maillage interne et sitemap dynamique limité aux articles vérifiés.
+- Promesses fragiles écartées des articles : aucune durée universelle de 30 jours, aucun financement automatique, aucun « zéro chômage » ni emploi garanti.
 
 ## Vérifications passées
 
 - `npm run lint`
 - `npm run build`
-- `npm run test:e2e` — 8 tests passés
+- `npm run test:e2e` — 12 tests passés
 - `npm audit --omit=dev` — 0 vulnérabilité
 - Lighthouse local production — performance 94, accessibilité 100, bonnes pratiques 100, SEO 100 ; LCP 3,1 s, TBT 20 ms, CLS 0
 - Lighthouse du guide certification — performance 96, accessibilité 100, bonnes pratiques 100, SEO 100 ; LCP 2,8 s, TBT 40 ms, CLS 0
 - Lighthouse du hub Guides avec neuf cartes — performance 96, accessibilité 100, bonnes pratiques 100, SEO 100 ; LCP 2,8 s, TBT 20 ms, CLS 0
 - Lighthouse du journal — performance 93, accessibilité 100, bonnes pratiques 100, SEO 100 ; LCP 3,2 s, TBT 10 ms, CLS 0
 - Inspection visuelle du journal desktop et d’un article mobile ; aucun débordement horizontal après correction.
+- Inspection visuelle de la déclaration et du Bento sur desktop et mobile ; reveal corrigé après détection d'un déclencheur masqué.
+- Revue UI 21st sur les trois fichiers de la home — 0 finding après correction.
+- Inspection visuelle complète de la page formation à 1440 px et 390 px ; aucun débordement horizontal, hero et sections photographiques validés.
+- Revue UI 21st de la page formation, de l'accordéon et de la timeline — 0 finding après correction.
+- Inspection visuelle du header en haut de page, après scroll, au survol et avec le menu mobile ouvert ; axe `wght` vérifié de 430 à 720 et aucun débordement à 390 px.
+- Revue UI 21st du header, du menu mobile et des composants VariableFontHover — 0 finding après correction.
+- Inspection visuelle du footer à 1440 px et 390 px, avec et sans animation ; quatre colonnes présentes, reveal 0→1 confirmé et aucun débordement horizontal.
+- Inspection visuelle du nouvel index Journal à 1440 px et de l’article pilier à 390 px ; six cartes présentes et aucun débordement horizontal.
+- Revue UI 21st du Journal : avertissement de zoom d’image corrigé ; les largeurs maximales signalées sont des conteneurs responsive déjà bornés par `section-shell` et non des débordements effectifs.
 
 ## Prochaines décisions métier
 
 1. Valider la fiche programme réelle et les prochaines sessions.
 2. Fournir les coordonnées publiques et les variables Resend.
 3. Compléter directeur de publication, hébergeur et médiateur.
-4. Relire individuellement les treize brouillons restants ; ne passer un fichier à `status: verified` qu’après suppression des promesses fragiles et ajout de sources officielles. Conserver la page Hauts-de-France en 404 tant qu’un lieu et des sessions locales ne sont pas confirmés.
+4. Relire individuellement les dix brouillons restants ; ne passer un fichier à `status: verified` qu’après suppression des promesses fragiles et ajout de sources officielles. Conserver la page Hauts-de-France en 404 tant qu’un lieu et des sessions locales ne sont pas confirmés.
 5. Recueillir des témoignages avec consentement avant de réindexer la page dédiée.
 6. Revalider les liens et références réglementaires des neuf guides lors de toute évolution du programme, et au plus tard avant le 7 juin 2028 pour RNCP37878.

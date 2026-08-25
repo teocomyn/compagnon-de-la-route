@@ -1,0 +1,288 @@
+{
+  "version": 1,
+  "project": {
+    "name": "compagnon-route",
+    "productType": "site vitrine et d'information pour organisme de formation",
+    "stack": [
+      "nextjs",
+      "react",
+      "tailwind-v4"
+    ]
+  },
+  "sources": {
+    "tokens": [
+      "src/app/globals.css"
+    ],
+    "components": [
+      "src/components/ui"
+    ],
+    "assets": [
+      "public/images"
+    ],
+    "instructions": [
+      "AGENTS.md",
+      "CLAUDE.md"
+    ]
+  },
+  "design": {
+    "colorMode": "dark",
+    "colors": {
+      "--color-night-deep": {
+        "value": "#061a16",
+        "source": "src/app/globals.css"
+      },
+      "--color-night": {
+        "value": "#0a2a24",
+        "source": "src/app/globals.css"
+      },
+      "--color-forest-surface": {
+        "value": "#0f342d",
+        "source": "src/app/globals.css"
+      },
+      "--color-forest-elevated": {
+        "value": "#143d35",
+        "source": "src/app/globals.css"
+      },
+      "--color-forest-border": {
+        "value": "#1d463f",
+        "source": "src/app/globals.css"
+      },
+      "--color-forest-border-strong": {
+        "value": "#2a5a50",
+        "source": "src/app/globals.css"
+      },
+      "--color-orange-900": {
+        "value": "#8a3510",
+        "source": "src/app/globals.css"
+      },
+      "--color-orange-700": {
+        "value": "#c75220",
+        "source": "src/app/globals.css"
+      },
+      "--color-orange-500": {
+        "value": "#f26b2a",
+        "source": "src/app/globals.css"
+      },
+      "--color-orange-400": {
+        "value": "#f68447",
+        "source": "src/app/globals.css"
+      },
+      "--color-orange-300": {
+        "value": "#fda172",
+        "source": "src/app/globals.css"
+      },
+      "--color-orange-100": {
+        "value": "#fde4d3",
+        "source": "src/app/globals.css"
+      },
+      "--color-mint-700": {
+        "value": "#16a34a",
+        "source": "src/app/globals.css"
+      },
+      "--color-mint-500": {
+        "value": "#22c55e",
+        "source": "src/app/globals.css"
+      },
+      "--color-mint-400": {
+        "value": "#4ade80",
+        "source": "src/app/globals.css"
+      },
+      "--color-mint-300": {
+        "value": "#86efac",
+        "source": "src/app/globals.css"
+      },
+      "--color-success": {
+        "value": "#4ade80",
+        "source": "src/app/globals.css"
+      },
+      "--color-warning": {
+        "value": "#f59e0b",
+        "source": "src/app/globals.css"
+      },
+      "--color-danger": {
+        "value": "#ef4444",
+        "source": "src/app/globals.css"
+      },
+      "--color-info": {
+        "value": "#60a5fa",
+        "source": "src/app/globals.css"
+      },
+      "--color-white-90": {
+        "value": "rgba(255, 255, 255, 0.9)",
+        "source": "src/app/globals.css"
+      },
+      "--color-white-75": {
+        "value": "rgba(255, 255, 255, 0.75)",
+        "source": "src/app/globals.css"
+      },
+      "--color-white-60": {
+        "value": "rgba(255, 255, 255, 0.6)",
+        "source": "src/app/globals.css"
+      },
+      "--color-white-45": {
+        "value": "rgba(255, 255, 255, 0.45)",
+        "source": "src/app/globals.css"
+      },
+      "--color-white-25": {
+        "value": "rgba(255, 255, 255, 0.25)",
+        "source": "src/app/globals.css"
+      },
+      "--color-white-10": {
+        "value": "rgba(255, 255, 255, 0.1)",
+        "source": "src/app/globals.css"
+      },
+      "--color-white-05": {
+        "value": "rgba(255, 255, 255, 0.05)",
+        "source": "src/app/globals.css"
+      }
+    },
+    "typography": {
+      "--font-sans": {
+        "value": "var(--font-geist-sans), system-ui, sans-serif",
+        "source": "src/app/globals.css"
+      },
+      "--font-mono": {
+        "value": "var(--font-geist-mono), monospace",
+        "source": "src/app/globals.css"
+      }
+    },
+    "spacing": {},
+    "radius": {
+      "--radius-sm": {
+        "value": "8px",
+        "source": "src/app/globals.css"
+      },
+      "--radius-md": {
+        "value": "12px",
+        "source": "src/app/globals.css"
+      },
+      "--radius-lg": {
+        "value": "16px",
+        "source": "src/app/globals.css"
+      },
+      "--radius-xl": {
+        "value": "24px",
+        "source": "src/app/globals.css"
+      },
+      "--radius-2xl": {
+        "value": "32px",
+        "source": "src/app/globals.css"
+      },
+      "--radius-pill": {
+        "value": "9999px",
+        "source": "src/app/globals.css"
+      }
+    },
+    "shadows": {},
+    "motion": {
+      "--ease-out": {
+        "value": "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+        "source": "src/app/globals.css"
+      },
+      "--ease-standard": {
+        "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "source": "src/app/globals.css"
+      },
+      "--ease-expo": {
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "source": "src/app/globals.css"
+      },
+      "--duration-fast": {
+        "value": "150ms",
+        "source": "src/app/globals.css"
+      },
+      "--duration-base": {
+        "value": "300ms",
+        "source": "src/app/globals.css"
+      },
+      "--duration-slow": {
+        "value": "600ms",
+        "source": "src/app/globals.css"
+      }
+    },
+    "density": "unknown"
+  },
+  "components": {
+      "installed": [
+        "AnimatedNumber",
+        "Badge",
+        "Button",
+        "Card",
+        "Eyebrow",
+        "GlassCard",
+        "Input",
+        "SectionHeader",
+        "Textarea",
+        "VariableFontHover",
+        "FooterReveal"
+    ],
+    "preferredPrimitives": [],
+    "patterns": []
+  },
+  "constraints": {
+    "must": [],
+    "avoid": []
+  },
+  "decisions": [
+    {
+      "id": "homepage-statement-reveal-bento",
+      "decision": "Conserver sur la page d'accueil une déclaration courte révélée ligne par ligne, suivie d'une grille Bento asymétrique fondée uniquement sur des informations vérifiables.",
+      "rationale": "Direction explicitement choisie par le client le 25 août 2026 ; elle renforce le rythme éditorial sans réintroduire de chiffres ou de promesses non sourcés."
+    },
+    {
+      "id": "training-page-editorial-photo-led",
+      "decision": "Traiter la page formation comme un récit éditorial premium : hero asymétrique, photographie métier structurante, sommaire d'ancrage, parcours linéaire et programme en accordéon, avec un contraste vert nuit, orange et crème.",
+      "rationale": "Direction demandée et validée implicitement par la fourniture des deux photographies le 25 août 2026. Les images restent dans des cadres 3:2 afin de préserver leur qualité source, et les contenus évitent toute garantie non vérifiée."
+    },
+    {
+      "id": "global-header-variable-font",
+      "decision": "Utiliser un header flottant compact avec navigation typographique à graisse variable, état actif orange, CTA direct vers le parcours et menu mobile plein écran accessible.",
+      "rationale": "Direction explicitement demandée le 25 août 2026. Geist Sans est chargé comme fonte variable pour rendre l'effet réel ; les animations respectent la préférence de réduction des mouvements."
+    },
+    {
+      "id": "global-footer-brand-finale",
+      "decision": "Conclure toutes les pages par un footer de marque immersif : CTA éditorial, navigation réelle, preuves réglementaires vérifiées et signature typographique surdimensionnée, dans un conteneur vert nuit à sommet arrondi.",
+      "rationale": "Direction explicitement demandée le 25 août 2026. Le contenu reste rendu côté serveur ; seule l'apparition progressive est hydratée et elle est neutralisée par la préférence de réduction des mouvements."
+    },
+    {
+      "id": "journal-six-article-seo-cluster",
+      "decision": "Structurer le Journal comme un cluster de six dossiers SEO longs et vérifiés, illustrés par les photographies métier du client et couvrant orientation, financement, métier, formation, recrutement et prise de service.",
+      "rationale": "Direction explicitement demandée le 25 août 2026. La grille éditoriale prolonge la DA vert nuit, orange et crème ; chaque publication doit rester sourcée et éviter toute promesse de durée, de financement ou d'emploi non démontrée."
+    }
+  ],
+  "evidence": [
+    {
+      "fact": "components.installed",
+      "source": "src/components/ui"
+    },
+    {
+      "fact": "design.colorMode:dark",
+      "source": "src/app/globals.css"
+    },
+    {
+      "fact": "design.tokens",
+      "source": "src/app/globals.css"
+    },
+    {
+      "fact": "project.instructions",
+      "source": "AGENTS.md"
+    },
+    {
+      "fact": "project.instructions",
+      "source": "CLAUDE.md"
+    },
+    {
+      "fact": "project.stack:nextjs",
+      "source": "package.json"
+    },
+    {
+      "fact": "project.stack:react",
+      "source": "package.json"
+    },
+    {
+      "fact": "project.stack:tailwind-v4",
+      "source": "package.json"
+    }
+  ],
+  "generatedAt": "2026-08-25T07:24:08.795Z"
+}

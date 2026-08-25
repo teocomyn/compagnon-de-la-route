@@ -198,6 +198,20 @@ body::before {
   letter-spacing: -0.02em;
 }
 
+.article-prose h3 {
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: var(--color-white-90);
+}
+
+.article-prose strong {
+  color: var(--color-white-90);
+}
+
 .article-prose blockquote {
   border-left: 3px solid var(--color-orange-500);
   padding-left: 1.25rem;
@@ -250,7 +264,42 @@ body::before {
   margin: 1rem 0;
 }
 
+.article-prose ol {
+  margin: 1rem 0;
+  list-style: decimal;
+  padding-left: 1.5rem;
+}
+
 .article-prose li {
   margin: 0.5rem 0;
   color: var(--color-white-75);
+}
+
+.article-prose table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-white-10);
+  font-size: 0.9rem;
+}
+
+.article-prose th,
+.article-prose td {
+  min-width: 10rem;
+  border-bottom: 1px solid var(--color-white-10);
+  padding: 0.8rem 1rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.article-prose th {
+  background: var(--color-white-05);
+  color: var(--color-white-90);
+  font-weight: 650;
+}
+
+.article-prose td {
+  color: var(--color-white-60);
 }

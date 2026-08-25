@@ -1,8 +1,10 @@
 import type { MetadataRoute } from "next";
+import { getArticleSlugs } from "@/lib/articles";
 import { siteUrl } from "@/lib/constants";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
+  const articleRoutes = getArticleSlugs().map((slug) => `/journal/${slug}`);
   const routes = [
     "",
     "/qui-sommes-nous",
@@ -10,9 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/formations/conducteur-voyageurs",
     "/guides",
     "/journal",
-    "/journal/preparer-prise-service-conducteur",
-    "/journal/choisir-formation-conducteur-voyageurs",
-    "/journal/reussir-entretien",
+    ...articleRoutes,
     "/financement-formation-conducteur-voyageurs",
     "/metier-conducteur-de-car-debouches",
     "/certification-formation-conducteur-voyageurs",

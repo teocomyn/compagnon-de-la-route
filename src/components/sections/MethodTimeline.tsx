@@ -3,35 +3,58 @@
 import { motion, useReducedMotion } from "framer-motion";
 
 const steps = [
-  "Positionnement et entretien",
-  "Formation théorique et pratique",
-  "Mises en situation prévues au programme",
-  "Bilan et préparation de la suite professionnelle",
+  {
+    title: "Faire le point",
+    text: "Un échange et un positionnement permettent de clarifier votre projet et le parcours adapté.",
+  },
+  {
+    title: "Apprendre le métier",
+    text: "Les apports théoriques et pratiques développent les compétences précisées au programme.",
+  },
+  {
+    title: "Se mettre en situation",
+    text: "Les exercices et évaluations vérifient la progression dans le cadre annoncé avant l’inscription.",
+  },
+  {
+    title: "Préparer la suite",
+    text: "Le bilan relie les acquis au projet professionnel, sans promettre une embauche automatique.",
+  },
 ];
 
 export function MethodTimeline() {
-  const reduce = useReducedMotion();
+  const reducedMotion = Boolean(useReducedMotion());
 
   return (
-    <div className="relative mx-auto max-w-[1100px]">
-      <div className="absolute left-[18px] top-2 bottom-2 w-px bg-gradient-to-b from-orange-500/40 via-white/10 to-transparent md:left-1/2 md:-translate-x-1/2" />
-      <div className="grid gap-10 md:grid-cols-4">
-        {steps.map((s, i) => (
-          <motion.div
-            key={s}
-            initial={reduce ? false : { opacity: 0, y: 16 }}
-            whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
+    <div className="relative">
+      <div
+        className="absolute bottom-5 left-[1.4rem] top-5 w-px bg-gradient-to-b from-orange-400 via-orange-400/35 to-white/10 md:bottom-auto md:left-[12.5%] md:right-[12.5%] md:top-[1.4rem] md:h-px md:w-auto"
+        aria-hidden="true"
+      />
+
+      <ol className="grid gap-9 md:grid-cols-4 md:gap-5">
+        {steps.map((step, index) => (
+          <motion.li
+            key={step.title}
+            className="relative grid grid-cols-[2.8rem_1fr] gap-4 md:block"
+            initial={reducedMotion ? false : { opacity: 0, y: 20 }}
+            whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.55, delay: i * 0.06, ease: [0.16, 1, 0.3, 1] }}
-            className="relative rounded-xl border border-white/10 bg-white/[0.02] p-6"
+            transition={{
+              duration: 0.55,
+              delay: index * 0.07,
+              ease: [0.16, 1, 0.3, 1],
+            }}
           >
-            <div className="mb-4 inline-flex h-9 w-9 items-center justify-center rounded-full border border-orange-500/30 bg-orange-500/10 font-mono text-[12px] font-semibold text-orange-200">
-              {i + 1}
+            <span className="relative z-10 flex h-11 w-11 items-center justify-center rounded-full border border-orange-300/45 bg-night-deep font-mono text-xs font-bold text-orange-300 md:mx-auto">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <div className="pt-1 md:pt-7 md:text-center">
+              <h3 className="text-lg font-semibold text-white-90">{step.title}</h3>
+              <p className="mt-3 text-sm leading-6 text-white-60">{step.text}</p>
             </div>
-            <p className="text-[15px] font-semibold leading-snug text-white-90">{s}</p>
-          </motion.div>
+          </motion.li>
         ))}
-      </div>
+      </ol>
     </div>
   );
 }

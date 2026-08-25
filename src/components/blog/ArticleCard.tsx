@@ -17,16 +17,16 @@ export function ArticleCard({
   return (
     <Link
       href={`/journal/${article.slug}`}
-      className="group block overflow-hidden rounded-xl border border-white/10 bg-white/[0.02] transition-all duration-300 hover:-translate-y-1 hover:border-orange-500/35"
+      className="group block overflow-hidden rounded-xl border border-white/10 bg-white/[0.02] transition-[border-color,transform] duration-300 hover:-translate-y-1 hover:border-orange-500/35"
     >
       <div className="relative aspect-video overflow-hidden">
         <Image
           src={article.thumbnail}
-          alt={`Illustration : ${article.title}`}
-          priority={priority}
+          alt={article.thumbnailAlt ?? `Illustration : ${article.title}`}
+          loading={priority ? "eager" : "lazy"}
           fill
           sizes="(max-width: 768px) calc(100vw - 2rem), 50vw"
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          className="object-cover transition-[filter] duration-500 group-hover:brightness-110"
         />
         <div className="absolute left-4 top-4">
           <Badge variant={article.categoryColor === "mint" ? "success" : "orange"}>
