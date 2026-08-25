@@ -2,25 +2,25 @@ import { FAQ } from "@/components/sections/FAQ";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { Hero } from "@/components/sections/Hero";
 import { PartnerMarquee } from "@/components/sections/PartnerMarquee";
+import { Pathways } from "@/components/sections/Pathways";
 import { Pedagogy } from "@/components/sections/Pedagogy";
 import { Statement } from "@/components/sections/Statement";
 import { Stats } from "@/components/sections/Stats";
 import { TrustBuilding } from "@/components/sections/TrustBuilding";
-import { WhyBecome } from "@/components/sections/WhyBecome";
 import { CdrBentoSection } from "@/components/ui/cdr-bento-section";
 import { faqItems } from "@/lib/faq";
 import { siteName, siteUrl } from "@/lib/constants";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Formation conducteur de voyageurs",
+  title: "Formations transport de voyageurs",
   description:
-    "Formation conducteur de voyageurs : vérifiez les prérequis, le programme, le calendrier et les possibilités de financement avec BOAZ.",
+    "Compagnon de la Route, label transport porté par BOAZ : découvrez les parcours conducteur de voyageurs et exploitant-régulateur.",
   alternates: { canonical: "/" },
   openGraph: {
-    title: `Formation Conducteur de voyageurs · ${siteName}`,
+    title: `Formations transport de voyageurs · ${siteName}`,
     description:
-      "Préparer le métier de conducteur de voyageurs avec des modalités confirmées avant l’inscription.",
+      "Deux métiers complémentaires, avec le statut et les modalités de chaque parcours présentés sans promesse non confirmée.",
     url: "/",
     type: "website",
   },
@@ -51,7 +51,7 @@ function WebPageJsonLd() {
   const json = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    name: `Formation Conducteur de voyageurs · ${siteName}`,
+    name: `Formations transport de voyageurs · ${siteName}`,
     url: `${siteUrl}/`,
   };
   return (
@@ -69,9 +69,9 @@ export default function HomePage() {
       <FaqJsonLd />
       <Hero />
       <PartnerMarquee />
+      <Pathways />
       <Statement />
       <CdrBentoSection />
-      <WhyBecome />
       <Stats />
       <TrustBuilding />
       <Pedagogy />

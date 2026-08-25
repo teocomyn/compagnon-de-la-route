@@ -291,6 +291,11 @@
       "id": "two-path-training-catalog",
       "decision": "Organiser le catalogue autour de deux panneaux métier complémentaires : conduite à bord et exploitation-régulation du service, avec un statut de publication visible pour chaque parcours.",
       "rationale": "Périmètre métier confirmé par le fondateur le 25 août 2026. Le parcours conducteur reste présenté avec ses réserves actuelles ; la page exploitant-régulateur documente le métier depuis les sources officielles mais indique que le programme BOAZ, la certification, la durée, le calendrier et le financement ne sont pas encore confirmés."
+    },
+    {
+      "id": "homepage-two-pathways-boaz-method",
+      "decision": "Conserver le hero photographique validé tout en le rendant transversal au label, puis placer immédiatement après le réseau un sélecteur éditorial entre conduite et exploitation-régulation. Présenter ensuite la méthode BOAZ comme l'articulation entre candidat, métier, entreprise et organisme.",
+      "rationale": "Réalignement demandé à partir de la vision du fondateur le 25 août 2026. La hiérarchie rend les deux métiers visibles tôt sans ajouter un second hero ni une nouvelle animation, et retire une section générique centrée uniquement sur les bénéfices du métier de conducteur."
     }
   ],
   "evidence": [

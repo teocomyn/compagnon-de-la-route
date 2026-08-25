@@ -10,7 +10,7 @@ test.describe("Parcours critiques", () => {
       }),
     ).toBeVisible();
     await expect(
-      page.getByRole("link", { name: /Découvrir le parcours/i }).first(),
+      page.getByRole("link", { name: /Voir les parcours/i }).first(),
     ).toBeVisible();
     const heroSlider = page.getByTestId("hero-slider");
     await expect(heroSlider).toBeVisible();
@@ -33,6 +33,13 @@ test.describe("Parcours critiques", () => {
     ).toBeVisible();
     await expect(partnerMarquee.getByRole("img", { name: /BPV Objectifs/i })).toBeVisible();
     await expect(partnerMarquee.getByRole("img", { name: /Geiq Mobilité/i })).toBeVisible();
+
+    await expect(
+      page.getByRole("heading", { level: 2, name: /Le voyage se joue à bord et en coulisses/i }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("link", { name: /Exploitant-régulateur/i }).first(),
+    ).toHaveAttribute("href", "/formations/exploitant-regulateur");
 
     await expect(page.getByText("L'exigence", { exact: true })).toHaveCount(0);
     await expect(page.locator('[data-cdr-border-beam="true"]')).toHaveCount(2);
@@ -94,12 +101,13 @@ test.describe("Parcours critiques", () => {
       name: /Compagnon de la route, plus qu'un métier, une mission/i,
     });
     const primaryAction = page.getByRole("link", {
-      name: /Découvrir le parcours/i,
+      name: /Voir les parcours/i,
     }).first();
     const heroSlider = page.getByTestId("hero-slider");
 
     await expect(heading).toBeVisible();
     await expect(primaryAction).toBeVisible();
+    await expect(primaryAction).toHaveAttribute("href", "/formations");
     await expect(heroSlider).toBeVisible();
 
     const [headingBox, actionBox, sliderBox] = await Promise.all([

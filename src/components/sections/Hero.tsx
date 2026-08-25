@@ -11,7 +11,7 @@ export function Hero() {
         <div className="relative z-20 flex items-end px-5 pb-24 pt-10 [@media(max-height:720px)]:pb-20 [@media(max-height:720px)]:pt-6 md:order-1 md:col-span-7 md:items-center md:px-10 md:py-16 lg:px-16 xl:px-20">
           <div className="w-full max-w-4xl">
             <p className="font-mono text-[10px] font-medium uppercase tracking-[0.16em] text-orange-300 md:text-[11px] md:tracking-[0.18em]">
-              Formation conducteur de voyageurs
+              Label transport porté par BOAZ
             </p>
 
             <h1
@@ -30,24 +30,24 @@ export function Hero() {
             </h1>
 
             <p className="mt-5 max-w-[34rem] text-sm leading-[1.55] text-white-75 [@media(max-height:720px)]:mt-4 md:hidden">
-              Un parcours cadré selon votre situation, avec les modalités confirmées
-              avant l&apos;inscription.
+              Deux métiers, un même cap : préparer les responsabilités du service avant
+              la prise de poste.
             </p>
             <p className="mt-8 hidden max-w-2xl text-[clamp(1.05rem,1.5vw,1.3rem)] leading-[1.65] text-white-60 md:block">
-              Permis, sécurité, relation avec les passagers, prise de service : le
-              parcours part de votre situation. La durée, le calendrier, le prix et le
-              financement sont confirmés par écrit avant l&apos;inscription.
+              À bord ou à l&apos;exploitation, chaque décision compte. Découvrez les
+              parcours du label, leur statut et les modalités que BOAZ confirme avant
+              toute inscription.
             </p>
 
             <div className="mt-7 flex flex-col gap-2.5 [@media(max-height:720px)]:mt-5 sm:flex-row sm:items-center md:mt-9 md:gap-3">
               <Link
-                href="/formations/conducteur-voyageurs"
+                href="/formations"
                 className={cn(
                   buttonVariants({ variant: "primary", size: "lg" }),
                   "group w-full justify-between sm:w-auto sm:justify-center",
                 )}
               >
-                Découvrir le parcours
+                Voir les parcours
                 <ArrowRight
                   className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1"
                   aria-hidden="true"
@@ -87,8 +87,8 @@ export function Hero() {
 
       <div className="border-t border-white/10 bg-orange-500 text-night-deep">
         <div className="mx-auto flex max-w-screen-2xl items-center justify-between gap-6 overflow-hidden px-6 py-3 font-mono text-[10px] font-semibold uppercase tracking-[0.16em] md:px-10">
-          <span>Sécurité à bord</span>
-          <span className="hidden sm:inline">Maîtrise du véhicule</span>
+          <span>Conduite à bord</span>
+          <span className="hidden sm:inline">Exploitation &amp; régulation</span>
           <span>Service aux voyageurs</span>
         </div>
       </div>

@@ -1,10 +1,10 @@
 import Image from "next/image";
 
 const commitments = [
-  ["01", "Vérifier les prérequis", "Votre situation est examinée avant de définir le parcours."],
-  ["02", "Écrire les conditions", "Objectifs, durée, calendrier, évaluations et prix sont formalisés."],
-  ["03", "Étudier le financement", "Chaque piste dépend de votre profil et de la décision du financeur."],
-  ["04", "Préparer la suite", "La candidature se travaille sans présenter l’embauche comme acquise."],
+  ["01", "Le candidat", "Son expérience, ses contraintes et son projet donnent le point de départ."],
+  ["02", "Le métier", "Les gestes, les décisions et la posture attendue structurent l’apprentissage."],
+  ["03", "L’entreprise", "Lorsque l’employeur est associé, ses réalités opérationnelles précisent les situations à travailler."],
+  ["04", "BOAZ", "L’organisme relie ces informations, formalise le parcours et distingue ce qui reste à confirmer."],
 ] as const;
 
 export function TrustBuilding() {
@@ -20,20 +20,21 @@ export function TrustBuilding() {
             className="object-cover"
           />
           <figcaption className="absolute inset-x-0 bottom-0 border-t border-white/20 bg-night-deep/90 px-6 py-4 font-mono text-[10px] uppercase tracking-[0.16em] text-white-60">
-            La responsabilité commence avant le départ
+            Candidat / métier / entreprise / BOAZ
           </figcaption>
         </figure>
 
         <div className="px-6 py-16 md:px-10 md:py-24 lg:px-16">
           <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-orange-300">
-            Avant l&apos;inscription
+            La méthode BOAZ
           </p>
           <h2 className="mt-5 max-w-xl text-balance text-[clamp(2.35rem,4.6vw,4.75rem)] font-semibold leading-[0.98] tracking-[-0.045em] text-white-90">
-            Vous devez savoir où vous allez.
+            Le parcours se construit à partir du réel.
           </h2>
           <p className="mt-6 max-w-xl text-lg leading-8 text-white-60">
-            Un projet de formation engage du temps et souvent un financement. Les
-            réponses importantes doivent être précises avant toute décision.
+            BOAZ ne part pas d’un programme abstrait. L’organisme croise la situation
+            du candidat, les responsabilités du métier et, lorsqu’elle est connue, la
+            réalité de l’entreprise d’accueil.
           </p>
 
           <ol className="mt-10 border-t border-white/15">
