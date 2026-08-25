@@ -1,10 +1,10 @@
-import { SeoLandingPage } from "@/components/seo/SeoLandingPage";
-import { seoLandingMetadata, seoLandingPages } from "@/lib/seo-landings";
+import { VerifiedGuidePage } from "@/components/guides/VerifiedGuidePage";
+import { verifiedGuideMetadata, verifiedGuides } from "@/lib/verified-guides";
 
-const data = seoLandingPages["certification-formation-conducteur-voyageurs"];
+const guide = verifiedGuides.certification;
 
-export const metadata = seoLandingMetadata(data);
+export const metadata = verifiedGuideMetadata(guide);
 
 export default function CertificationFormationConducteurVoyageursPage() {
-  return <SeoLandingPage data={data} />;
+  return <VerifiedGuidePage guide={guide} />;
 }

@@ -1,9 +1,12 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
-import { orgPostalAddress, siteName, siteUrl } from "@/lib/constants";
+import {
+  organizationInfo,
+  orgPostalAddress,
+  siteName,
+  siteUrl,
+} from "@/lib/constants";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,12 +29,12 @@ export const metadata: Metadata = {
     template: `%s · ${siteName}`,
   },
   description:
-    "Organisme de formation certifiant pour conducteurs de voyageurs : bus, cars scolaires, tourisme. Parcours humains, exigence terrain, insertion professionnelle.",
+    "Organisme de formation pour les métiers du transport de voyageurs : parcours humains, exigence terrain et accompagnement professionnel.",
   openGraph: {
     type: "website",
     locale: "fr_FR",
     siteName,
-    images: [{ url: "/images/og/default.jpg", width: 1920, height: 1069, alt: siteName }],
+    images: [{ url: "/images/og/default.jpg", width: 1920, height: 1282, alt: siteName }],
   },
   twitter: {
     card: "summary_large_image",
@@ -50,14 +53,26 @@ function EducationalOrganizationJsonLd() {
     "@context": "https://schema.org",
     "@type": "EducationalOrganization",
     name: siteName,
+    legalName: organizationInfo.legalName,
     url: siteUrl,
     description:
-      "Formation certifiante pour conducteurs de voyageurs : sécurité, relation client, insertion professionnelle.",
+      "Formation aux métiers du transport de voyageurs : sécurité, relation client et accompagnement professionnel.",
     address: {
       "@type": "PostalAddress",
+      streetAddress: orgPostalAddress.streetAddress,
+      postalCode: orgPostalAddress.postalCode,
+      addressLocality: orgPostalAddress.addressLocality,
       addressRegion: orgPostalAddress.addressRegion,
       addressCountry: orgPostalAddress.addressCountry,
     },
+    identifier: [
+      { "@type": "PropertyValue", name: "SIREN", value: organizationInfo.siren },
+      {
+        "@type": "PropertyValue",
+        name: "Numéro de déclaration d’activité",
+        value: organizationInfo.trainingDeclarationNumber,
+      },
+    ],
     areaServed: {
       "@type": "AdministrativeArea",
       name: "France",
@@ -79,13 +94,11 @@ export default function RootLayout({
   return (
     <html
       lang="fr"
-      className={`${geistSans.variable} ${geistMono.variable} h-full scroll-smooth`}
+      className={`${geistSans.variable} ${geistMono.variable} relative h-full scroll-smooth`}
     >
       <body className="relative min-h-full overflow-x-clip font-sans text-white antialiased pb-[env(safe-area-inset-bottom)]">
         <EducationalOrganizationJsonLd />
         {children}
-        <Analytics />
-        <SpeedInsights />
       </body>
     </html>
   );

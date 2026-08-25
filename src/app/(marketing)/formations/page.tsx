@@ -6,12 +6,13 @@ import { Badge } from "@/components/ui/Badge";
 import { Card } from "@/components/ui/Card";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { FinalCTA } from "@/components/sections/FinalCTA";
+import { programmeInfo } from "@/lib/constants";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Formations",
   description:
-    "Parcours certifiants pour conducteurs de voyageurs : titre professionnel, accompagnement terrain, insertion.",
+    "Parcours de préparation aux métiers du transport de voyageurs : positionnement, apprentissages et accompagnement professionnel.",
   alternates: { canonical: "/formations" },
 };
 
@@ -47,15 +48,15 @@ export default function FormationsPage() {
             <div className="space-y-3">
               <div className="flex flex-wrap gap-2">
                 <Badge variant="orange">Programme phare</Badge>
-                <Badge variant="neutral">210h</Badge>
-                <Badge variant="neutral">30 jours</Badge>
+                <Badge variant="neutral">{programmeInfo.duration}</Badge>
               </div>
               <h2 className="text-[26px] font-bold tracking-[-0.02em]">
                 Conducteur de voyageurs
               </h2>
               <p className="max-w-2xl text-[15px] leading-relaxed text-white-60">
-                Titre professionnel, pratique majoritaire, accompagnement jusqu&apos;à
-                l&apos;embauche.
+                Positionnement, apprentissages métier et accompagnement vers
+                l&apos;emploi. La certification éventuellement visée est précisée avant
+                inscription.
               </p>
             </div>
             <Link

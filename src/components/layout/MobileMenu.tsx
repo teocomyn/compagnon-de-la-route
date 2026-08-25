@@ -52,7 +52,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
                 "mt-4 w-full justify-center",
               )}
             >
-              Nos promos en cours
+              Voir le parcours
             </Link>
           </motion.nav>
         </motion.div>

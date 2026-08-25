@@ -3,7 +3,7 @@ import { BreadcrumbBar } from "@/components/layout/BreadcrumbBar";
 import { PageBreadcrumbs } from "@/components/seo/PageBreadcrumbs";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import { contactInfo, siteName } from "@/lib/constants";
+import { contactInfo, organizationInfo, siteName } from "@/lib/constants";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -37,30 +37,34 @@ export default function ContactPage() {
             revenons vers vous avec des réponses actionnables.
           </p>
           <div className="space-y-3 text-[15px] text-white-75">
+            {contactInfo.phone ? (
+              <p>
+                <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-orange-300">
+                  Téléphone
+                </span>
+                <br />
+                <a className="hover:text-orange-300" href={`tel:${contactInfo.phone.replace(/\s/g, "")}`}>
+                  {contactInfo.phone}
+                </a>
+              </p>
+            ) : null}
+            {contactInfo.email ? (
+              <p>
+                <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-orange-300">
+                  E-mail
+                </span>
+                <br />
+                <a className="hover:text-orange-300" href={`mailto:${contactInfo.email}`}>
+                  {contactInfo.email}
+                </a>
+              </p>
+            ) : null}
             <p>
               <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-orange-300">
-                Téléphone
+                Zone d&apos;accompagnement
               </span>
               <br />
-              <a className="hover:text-orange-300" href={`tel:${contactInfo.phone.replace(/\s/g, "")}`}>
-                {contactInfo.phone}
-              </a>
-            </p>
-            <p>
-              <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-orange-300">
-                E-mail
-              </span>
-              <br />
-              <a className="hover:text-orange-300" href={`mailto:${contactInfo.email}`}>
-                {contactInfo.email}
-              </a>
-            </p>
-            <p>
-              <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-orange-300">
-                Adresse
-              </span>
-              <br />
-              {contactInfo.address}
+              {contactInfo.serviceArea}
             </p>
           </div>
         </div>
@@ -70,18 +74,15 @@ export default function ContactPage() {
         </GlassCard>
       </div>
 
-      <div className="section-shell mx-auto mt-16 max-w-[1200px] overflow-hidden rounded-xl border border-white/10">
-        <iframe
-          title="Carte, zone d’intervention"
-          src={contactInfo.mapsEmbedUrl}
-          className="h-[360px] w-full"
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-        />
-        <div className="border-t border-white/10 bg-white/[0.02] p-6 text-sm text-white-45">
-          Les informations légales de l’organisme sont disponibles sur demande et dans
-          nos documents contractuels.
-        </div>
+      <div className="section-shell mx-auto mt-16 max-w-[1200px] rounded-xl border border-white/10 bg-white/[0.02] p-6 md:p-8">
+        <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-orange-300">
+          Organisme de formation déclaré
+        </p>
+        <p className="mt-3 text-sm leading-relaxed text-white-60">
+          {organizationInfo.legalName} · SIRET {organizationInfo.siret} · NDA{" "}
+          {organizationInfo.trainingDeclarationNumber} · {organizationInfo.address},{" "}
+          {organizationInfo.postalCode} {organizationInfo.city}, {organizationInfo.country}.
+        </p>
       </div>
     </div>
   );

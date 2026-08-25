@@ -1,17 +1,10 @@
-import { ComparisonTable } from "@/components/sections/ComparisonTable";
-import { Distinctions } from "@/components/sections/Distinctions";
 import { FAQ } from "@/components/sections/FAQ";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { Hero } from "@/components/sections/Hero";
-import { MarqueePartners } from "@/components/magicui/MarqueePartners";
 import { Pedagogy } from "@/components/sections/Pedagogy";
-import { PrereqImmersive } from "@/components/sections/PrereqImmersive";
 import { Statement } from "@/components/sections/Statement";
 import { Stats } from "@/components/sections/Stats";
-import CdrTestimonials from "@/components/ui/cdr-testimonials-columns";
 import { TrustBuilding } from "@/components/sections/TrustBuilding";
-import CompagnonBentoSection from "@/components/ui/cdr-bento-section";
-import { ParcoursOrbitalSection } from "@/components/sections/ParcoursOrbitalSection";
 import { WhyBecome } from "@/components/sections/WhyBecome";
 import { faqItems } from "@/lib/faq";
 import { siteName, siteUrl } from "@/lib/constants";
@@ -20,12 +13,12 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: `Formation Conducteur de voyageurs · ${siteName}`,
   description:
-    "Formation certifiante de 30 jours (210h) pour devenir conducteur de bus et cars. Financée OPCO, CPF, France Travail. 98% de réussite, 2000+ stagiaires formés.",
+    "Construisez votre projet de conducteur de voyageurs avec un positionnement, un parcours formalisé et un accompagnement vers l’emploi.",
   alternates: { canonical: "/" },
   openGraph: {
     title: `Formation Conducteur de voyageurs · ${siteName}`,
     description:
-      "Formation certifiante de 30 jours (210h) pour devenir conducteur de bus et cars.",
+      "Un parcours exigeant et humain pour préparer le métier de conducteur de voyageurs.",
     url: "/",
     type: "website",
   },
@@ -73,18 +66,11 @@ export default function HomePage() {
       <WebPageJsonLd />
       <FaqJsonLd />
       <Hero />
-      <MarqueePartners />
       <Statement />
       <WhyBecome />
-      <PrereqImmersive />
       <Stats />
       <TrustBuilding />
       <Pedagogy />
-      <ComparisonTable />
-      <Distinctions />
-      <CompagnonBentoSection />
-      <ParcoursOrbitalSection />
-      <CdrTestimonials />
       <FAQ />
       <FinalCTA />
     </>

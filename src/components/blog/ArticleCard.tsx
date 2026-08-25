@@ -1,9 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Badge } from "@/components/ui/Badge";
-import type { ArticleListItem } from "@/lib/articles";
+import { formatArticleDate, type ArticleListItem } from "@/lib/articles";
 
-export function ArticleCard({ article }: { article: ArticleListItem }) {
+export function ArticleCard({
+  article,
+  headingLevel = 3,
+  priority = false,
+}: {
+  article: ArticleListItem;
+  headingLevel?: 2 | 3;
+  priority?: boolean;
+}) {
+  const Heading = headingLevel === 2 ? "h2" : "h3";
+
   return (
     <Link
       href={`/journal/${article.slug}`}
@@ -13,25 +23,28 @@ export function ArticleCard({ article }: { article: ArticleListItem }) {
         <Image
           src={article.thumbnail}
           alt={`Illustration : ${article.title}`}
+          priority={priority}
           fill
-          sizes="(max-width: 768px) 100vw, 50vw"
+          sizes="(max-width: 768px) calc(100vw - 2rem), 50vw"
           className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
         <div className="absolute left-4 top-4">
-          <Badge variant="orange">{article.category}</Badge>
+          <Badge variant={article.categoryColor === "mint" ? "success" : "orange"}>
+            {article.category}
+          </Badge>
         </div>
       </div>
       <div className="space-y-3 p-6">
-        <h3 className="text-[22px] font-bold leading-snug tracking-[-0.02em] transition-colors group-hover:text-orange-300">
+        <Heading className="text-[22px] font-bold leading-snug tracking-[-0.02em] transition-colors group-hover:text-orange-300">
           {article.title}
-        </h3>
+        </Heading>
         <p className="line-clamp-3 text-[15px] leading-relaxed text-white-60">
           {article.description}
         </p>
-        <div className="flex flex-wrap gap-3 font-mono text-[12px] text-white-45">
+        <div className="flex flex-wrap gap-3 font-mono text-[12px] text-white-60">
           <span>{article.author}</span>
           <span aria-hidden>·</span>
-          <time dateTime={article.date}>{article.date}</time>
+          <time dateTime={article.date}>{formatArticleDate(article.date)}</time>
           <span aria-hidden>·</span>
           <span>{article.readingTime}</span>
         </div>

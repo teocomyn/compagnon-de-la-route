@@ -1,21 +1,19 @@
 import { Check } from "lucide-react";
 import Image from "next/image";
-import { ScrollReveal } from "@/components/magicui/ScrollReveal";
 import { siteName } from "@/lib/constants";
 
 const points = [
-  "Parcours co-construits avec les entreprises et les GEIQ Transport & Mobilité",
-  "Méthodes actives et innovantes, ancrées dans la réalité opérationnelle",
-  "Programme reconnu et financé (France Travail, OPCO, branches professionnelles)",
-  "Accompagnement individualisé et suivi après la formation pour sécuriser l'intégration",
+  "Un positionnement pour vérifier les prérequis et définir le parcours adapté",
+  "Des objectifs, une durée, un calendrier et des évaluations formalisés avant l’inscription",
+  "Une étude individualisée des financements, sans promesse de prise en charge automatique",
+  "Une préparation à l’emploi qui n’est pas présentée comme une garantie d’embauche",
 ];
 
 export function TrustBuilding() {
   return (
     <section className="py-16 md:py-24">
       <div className="mx-auto grid max-w-[1440px] items-center gap-12 px-6 md:grid-cols-2 md:gap-16 md:px-8">
-        <ScrollReveal>
-          <div className="space-y-6">
+        <div className="space-y-6">
             <h2 className="text-[clamp(1.75rem,3.5vw,2.625rem)] font-bold leading-[1.1] tracking-[-0.025em] text-white-90">
               Exigence, excellence et engagement
             </h2>
@@ -23,8 +21,8 @@ export function TrustBuilding() {
               Le cabinet BOAZ et{" "}
               <span className="text-white-90">{siteName}</span> refusent la
               complaisance : nous formons des professionnels fiables pour les passagers,
-              les entreprises et les territoires. Chaque étape du parcours vous rend
-              autonome et crédible face aux recruteurs.
+              les entreprises et les territoires. La priorité est de vous donner une
+              information vérifiable et un cadre adapté à votre situation.
             </p>
             <ul className="space-y-4">
               {points.map((p) => (
@@ -36,10 +34,9 @@ export function TrustBuilding() {
                 </li>
               ))}
             </ul>
-          </div>
-        </ScrollReveal>
+        </div>
 
-        <ScrollReveal className="relative">
+        <div className="relative">
           <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-white/10">
             <Image
               src="/images/trust-formateur.jpg"
@@ -50,7 +47,7 @@ export function TrustBuilding() {
             />
             <div className="absolute inset-0 bg-gradient-to-tr from-night/40 via-transparent to-night/30" />
           </div>
-        </ScrollReveal>
+        </div>
       </div>
     </section>
   );

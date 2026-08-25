@@ -1,17 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Badge } from "@/components/ui/Badge";
-import type { ArticleFrontmatter } from "@/lib/articles";
+import { formatArticleDate, type ArticleFrontmatter } from "@/lib/articles";
 
 type ArticleHeaderProps = {
   meta: ArticleFrontmatter;
-  slug: string;
 };
 
-export function ArticleHeader({ meta, slug }: ArticleHeaderProps) {
+export function ArticleHeader({ meta }: ArticleHeaderProps) {
   return (
     <header className="relative overflow-hidden border-b border-white/10">
-      <div className="relative aspect-[21/9] min-h-[320px]">
+      <div className="relative h-[520px] md:h-auto md:min-h-[320px] md:aspect-[21/9]">
         <Image
           src={meta.thumbnail}
           alt={`Visuel d’en-tête : ${meta.title}`}
@@ -47,9 +46,12 @@ export function ArticleHeader({ meta, slug }: ArticleHeaderProps) {
               </li>
             </ol>
           </nav>
-          <div className="mb-4">
+          <div className="mb-4 flex flex-wrap gap-2">
             <Badge variant={meta.categoryColor === "mint" ? "success" : "orange"}>
               {meta.category}
+            </Badge>
+            <Badge variant="success" dot>
+              Sources vérifiées
             </Badge>
           </div>
           <h1 className="max-w-4xl text-[clamp(2rem,5vw,3.25rem)] font-bold leading-[1.05] tracking-[-0.03em]">
@@ -61,11 +63,15 @@ export function ArticleHeader({ meta, slug }: ArticleHeaderProps) {
           <div className="mt-6 flex flex-wrap gap-3 font-mono text-[12px] text-white-45">
             <span>{meta.author}</span>
             <span aria-hidden>·</span>
-            <time dateTime={meta.date}>{meta.date}</time>
+            <time dateTime={meta.date}>{formatArticleDate(meta.date)}</time>
             <span aria-hidden>·</span>
             <span>{meta.readingTime}</span>
-            <span aria-hidden>·</span>
-            <span className="text-white-25">/{slug}</span>
+            {meta.reviewedAt ? (
+              <>
+                <span aria-hidden>·</span>
+                <span>Relu le {formatArticleDate(meta.reviewedAt)}</span>
+              </>
+            ) : null}
           </div>
         </div>
       </div>

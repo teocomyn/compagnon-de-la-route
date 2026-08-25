@@ -18,6 +18,7 @@ import type { Metadata } from "next";
 type PageProps = { params: Promise<{ slug: string }> };
 
 export const revalidate = 3600;
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
   return getArticleSlugs().map((slug) => ({ slug }));
@@ -31,6 +32,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: article.meta.title,
     description: article.meta.description,
     alternates: { canonical: `/journal/${slug}` },
+    robots: { index: true, follow: true },
     openGraph: {
       title: `${article.meta.title} · ${siteName}`,
       description: article.meta.description,
@@ -49,9 +51,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 function ArticleJsonLd({ slug, meta }: { slug: string; meta: ArticleFrontmatter }) {
+  const baseUrl = siteUrl.replace(/\/$/, "");
   const thumb = meta.thumbnail.startsWith("http")
     ? meta.thumbnail
-    : `${siteUrl.replace(/\/$/, "")}${meta.thumbnail}`;
+    : `${baseUrl}${meta.thumbnail}`;
   const json = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -70,7 +73,8 @@ function ArticleJsonLd({ slug, meta }: { slug: string; meta: ArticleFrontmatter 
         url: `${siteUrl.replace(/\/$/, "")}/brand-logo-car.png`,
       },
     },
-    mainEntityOfPage: `${siteUrl}/journal/${slug}`,
+    mainEntityOfPage: `${baseUrl}/journal/${slug}`,
+    citation: meta.sources?.map((source) => source.url),
   };
   return (
     <script
@@ -98,7 +102,7 @@ export default async function ArticlePage({ params }: PageProps) {
           { label: article.meta.title, href: `/journal/${slug}` },
         ]}
       />
-      <ArticleHeader meta={article.meta} slug={slug} />
+      <ArticleHeader meta={article.meta} />
 
       <div className="section-shell mx-auto grid max-w-[1200px] gap-10 py-14 md:grid-cols-[minmax(0,1fr)_320px] md:py-16">
         <div className="min-w-0">
@@ -107,29 +111,33 @@ export default async function ArticlePage({ params }: PageProps) {
         <ArticleToc content={article.content} />
       </div>
 
-      <section className="border-t border-white/10 bg-white/[0.02] section-shell section-y">
-        <div className="mx-auto max-w-[1200px]">
-          <h2 className="text-[22px] font-bold tracking-[-0.02em]">Articles liés</h2>
-          <div className="mt-8 grid gap-8 md:grid-cols-3">
-            {related.map((a) => (
-              <ArticleCard key={a.slug} article={a} />
-            ))}
+      {related.length > 0 ? (
+        <section className="border-t border-white/10 bg-white/[0.02] section-shell section-y">
+          <div className="mx-auto max-w-[1200px]">
+            <h2 className="text-[22px] font-bold tracking-[-0.02em]">À lire ensuite</h2>
+            <div className="mt-8 grid gap-8 md:grid-cols-2">
+              {related.map((a) => (
+                <ArticleCard key={a.slug} article={a} />
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ) : null}
 
       <section className="section-shell section-y">
         <div className="mx-auto max-w-[980px] rounded-2xl border border-white/10 bg-gradient-to-b from-orange-500/[0.08] to-transparent p-6 text-center sm:p-10">
           <h2 className="text-[clamp(1.5rem,3vw,2.25rem)] font-bold tracking-[-0.02em]">
-            Envie de vous lancer ?
+            Besoin de vérifier le parcours proposé ?
           </h2>
-          <p className="mt-4 text-[15px] leading-relaxed text-white-60">Candidatez</p>
+          <p className="mt-4 text-[15px] leading-relaxed text-white-60">
+            Consultez les objectifs généraux, puis demandez la fiche programme à jour.
+          </p>
           <div className="mt-8 flex justify-center">
             <Link
               href="/formations/conducteur-voyageurs"
               className={buttonVariants({ variant: "primary", size: "lg" })}
             >
-              Candidater
+              Voir la formation
             </Link>
           </div>
         </div>

@@ -1,6 +1,3 @@
-"use client";
-
-import { motion, useReducedMotion } from "framer-motion";
 import {
   Compass,
   MapPin,
@@ -39,26 +36,7 @@ const features = [
   },
 ];
 
-const container = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.08, delayChildren: 0.1 },
-  },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 24 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const },
-  },
-};
-
 export function WhyBecome() {
-  const reduce = useReducedMotion();
-
   return (
     <section className="py-16 md:py-24">
       <div className="mx-auto max-w-[1440px] px-6 md:px-8">
@@ -67,17 +45,10 @@ export function WhyBecome() {
           title="Pourquoi devenir compagnon de la route ?"
         />
 
-        <motion.div
-          className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
-          variants={reduce ? undefined : container}
-          initial={reduce ? false : "hidden"}
-          whileInView={reduce ? undefined : "visible"}
-          viewport={{ once: true, margin: "-80px" }}
-        >
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {features.map((f) => (
-            <motion.div
+            <div
               key={f.title}
-              variants={reduce ? undefined : item}
               className={cn(
                 "group rounded-xl border border-white/10 bg-gradient-to-b from-white/[0.03] to-white/[0.01] p-8",
                 "transition-all duration-300 ease-out",
@@ -90,9 +61,9 @@ export function WhyBecome() {
               <h3 className="text-[20px] font-semibold leading-snug tracking-[-0.01em] text-white-90">
                 {f.title}
               </h3>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

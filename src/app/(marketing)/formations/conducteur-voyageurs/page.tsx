@@ -8,20 +8,20 @@ import { buttonVariants } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { ScrollReveal } from "@/components/magicui/ScrollReveal";
-import { siteName, siteUrl } from "@/lib/constants";
+import { programmeInfo, siteName, siteUrl } from "@/lib/constants";
 import type { Metadata } from "next";
 
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "Formation Conducteur de voyageurs · Titre Pro",
+  title: "Parcours conducteur de voyageurs",
   description:
-    "Formation certifiante de 30 jours (210h) pour devenir conducteur de bus et cars. Financée OPCO, CPF, France Travail. 98% de réussite, 2000+ stagiaires formés.",
+    "Objectifs, contenu, positionnement, financement et calendrier du parcours conducteur de voyageurs.",
   alternates: { canonical: "/formations/conducteur-voyageurs" },
   openGraph: {
     title: `Formation Conducteur de voyageurs · ${siteName}`,
     description:
-      "Formation certifiante de 30 jours (210h) pour devenir conducteur de bus et cars.",
+      "Découvrez le cadre du parcours et demandez les modalités à jour avant de vous inscrire.",
     url: "/formations/conducteur-voyageurs",
     type: "website",
   },
@@ -30,26 +30,20 @@ export const metadata: Metadata = {
 const finance = [
   {
     title: "CPF",
-    text: "Mobilisez votre Compte Personnel de Formation",
+    text: "Mobilisable si l’action proposée et votre situation sont éligibles",
   },
   {
     title: "France Travail",
-    text: "AIF (Aide Individuelle à la Formation)",
+    text: "Prise en charge éventuelle soumise à l’accord préalable de France Travail",
   },
   {
     title: "OPCO",
-    text: "Financement entreprise via les OPérateurs de COmpétences",
+    text: "Financement éventuel selon l’entreprise, la branche et l’accord de l’OPCO",
   },
 ];
 
-const sessions = [
-  { date: "12 mai 2026", place: "Lille", seats: 6 },
-  { date: "2 juin 2026", place: "Lens", seats: 8 },
-  { date: "23 juin 2026", place: "Amiens", seats: 5 },
-];
-
 const jobs = [
-  "Conducteur urbain (RATP, Transdev, Keolis)",
+  "Conducteur urbain",
   "Conducteur interurbain",
   "Conducteur car scolaire",
   "Conducteur tourisme",
@@ -59,13 +53,10 @@ function CourseJsonLd() {
   const json = {
     "@context": "https://schema.org",
     "@type": "Course",
-    name: "Conducteur de voyageurs · Titre professionnel",
+    name: programmeInfo.title,
     description:
-      "Formation certifiante (210h) pour conduire des véhicules de transport de voyageurs avec exigence sécurité et service.",
+      "Parcours de préparation au métier de conducteur de voyageurs. Les modalités exactes sont confirmées après positionnement et avant inscription.",
     provider: { "@type": "Organization", name: siteName, url: siteUrl },
-    educationalCredentialAwarded: "Titre professionnel",
-    timeRequired: "P30D",
-    numberOfCredits: { "@type": "StructuredValue", value: 210, unitText: "hours" },
   };
   return (
     <script
@@ -97,23 +88,22 @@ export default function FormationConducteurPage() {
         <div className="mx-auto max-w-[1100px]">
           <Eyebrow>Programme phare</Eyebrow>
           <h1 className="mt-4 text-[clamp(2.25rem,5vw,3.75rem)] font-extrabold leading-[0.95] tracking-[-0.04em]">
-            Conducteur de voyageurs · Titre Pro
+            Parcours conducteur de voyageurs
           </h1>
           <div className="mt-6 flex flex-wrap gap-2">
-            <Badge variant="orange">30 jours</Badge>
-            <Badge variant="neutral">210 heures</Badge>
-            <Badge variant="success">Certifié Qualiopi</Badge>
-            <Badge variant="neutral">Finançable</Badge>
+            <Badge variant="orange">{programmeInfo.duration}</Badge>
+            <Badge variant="success">Qualiopi · actions de formation</Badge>
+            <Badge variant="neutral">Financement étudié individuellement</Badge>
           </div>
           <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
             <Link
               href="/contact"
               className={buttonVariants({ variant: "primary", size: "lg" })}
             >
-              Candidater à la prochaine session
+              Demander la fiche programme à jour
             </Link>
-            <Link href="/journal" className={buttonVariants({ variant: "ghost", size: "lg" })}>
-              Lire le guide financement
+            <Link href="/contact" className={buttonVariants({ variant: "ghost", size: "lg" })}>
+              Vérifier mon éligibilité
             </Link>
           </div>
         </div>
@@ -146,6 +136,11 @@ export default function FormationConducteurPage() {
               </ScrollReveal>
             ))}
           </div>
+          <p className="mt-6 text-sm leading-relaxed text-white-45">
+            Aucun financement n&apos;est automatique. Le montant pris en charge, le
+            reste éventuel et les délais sont confirmés par le financeur avant votre
+            engagement.
+          </p>
         </div>
       </section>
 
@@ -154,34 +149,21 @@ export default function FormationConducteurPage() {
           <h2 className="mb-8 text-[clamp(1.75rem,3.5vw,2.25rem)] font-bold tracking-[-0.025em]">
             Calendrier des sessions
           </h2>
-          <div className="overflow-x-auto rounded-xl border border-white/10">
-            <table className="w-full min-w-[520px] text-left text-[15px]">
-              <thead className="bg-white/[0.03] font-mono text-[11px] uppercase tracking-[0.14em] text-white-45">
-                <tr>
-                  <th className="px-6 py-4">Date</th>
-                  <th className="px-6 py-4">Lieu</th>
-                  <th className="px-6 py-4">Places</th>
-                  <th className="px-6 py-4 text-right">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {sessions.map((s) => (
-                  <tr key={s.date} className="border-t border-white/5">
-                    <td className="px-6 py-5 text-white-90">{s.date}</td>
-                    <td className="px-6 py-5 text-white-75">{s.place}</td>
-                    <td className="px-6 py-5 text-white-60">{s.seats} restantes</td>
-                    <td className="px-6 py-5 text-right">
-                      <Link
-                        href="/contact"
-                        className="font-semibold text-orange-300 hover:text-orange-200"
-                      >
-                        Candidater
-                      </Link>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div className="rounded-xl border border-orange-500/25 bg-orange-500/10 p-6 md:p-8">
+            <p className="text-lg font-semibold text-white-90">
+              {programmeInfo.schedule}
+            </p>
+            <p className="mt-3 max-w-3xl text-[15px] leading-relaxed text-white-60">
+              Les dates, lieux, horaires, capacité d&apos;accueil et délai d&apos;accès sont
+              transmis dans la fiche programme à jour. Aucune place n&apos;est annoncée
+              sur le site sans calendrier confirmé.
+            </p>
+            <Link
+              href="/contact"
+              className="mt-5 inline-flex font-semibold text-orange-200 hover:text-orange-100"
+            >
+              Recevoir les prochaines dates
+            </Link>
           </div>
         </div>
       </section>

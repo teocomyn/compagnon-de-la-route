@@ -4,7 +4,6 @@ import { BreadcrumbBar } from "@/components/layout/BreadcrumbBar";
 import { PageBreadcrumbs } from "@/components/seo/PageBreadcrumbs";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { MethodTimeline } from "@/components/sections/MethodTimeline";
-import { Team } from "@/components/sections/Team";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Card } from "@/components/ui/Card";
 import { ScrollReveal } from "@/components/magicui/ScrollReveal";
@@ -15,7 +14,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Qui sommes-nous ?",
   description:
-    "Compagnon de la Route : formation artisanale et humaine portée par le cabinet BOAZ, partenaire des GEIQ Transport & Mobilité. Label d'exigence, double compétence technique et relationnelle.",
+    "Compagnon de la Route : une approche exigeante et humaine portée par BOAZ, organisme de formation certifié Qualiopi pour les actions de formation.",
   alternates: { canonical: "/qui-sommes-nous" },
 };
 
@@ -66,7 +65,7 @@ const concreteActions = [
   "Construire des parcours de formation et d'intégration sur mesure",
   "Accompagner les demandeurs d'emploi vers un métier stable et porteur de sens",
   "Co-animer nos parcours avec les entreprises de transport",
-  "Collaborer en proximité avec les GEIQ Mobilité, France Travail, OPCO et les branches professionnelles",
+  "Mobiliser, pour chaque action, les interlocuteurs précisés dans les documents du parcours",
   "Suivre nos apprenants après la formation pour sécuriser leurs intégrations",
 ] as const;
 
@@ -96,7 +95,7 @@ function AboutJsonLd() {
     name: `Qui sommes-nous · ${siteName}`,
     url: `${siteUrl}/qui-sommes-nous`,
     description:
-      "Compagnon de la Route, porté par le cabinet BOAZ : formation conducteur de voyageurs, partenariat GEIQ, label d'exigence.",
+      "Compagnon de la Route, porté par BOAZ : formation conducteur de voyageurs et démarche d’exigence.",
     mainEntity: {
       "@type": "Organization",
       name: siteName,
@@ -146,11 +145,10 @@ export default function AboutPage() {
             humaine.
           </p>
           <p className="mt-4 text-lg leading-relaxed text-white-60">
-            Depuis plusieurs années, nous travaillons main dans la main avec les{" "}
-            <strong className="text-white-90">GEIQ Transport &amp; Mobilité</strong> et les
-            entreprises du secteur pour imaginer des parcours qui répondent à une vraie
-            réalité de terrain : des besoins massifs de recrutement, des publics en
-            recherche de sens, et des territoires qui ont besoin de mobilité.
+            Notre approche cherche à rapprocher les apprentissages des réalités du
+            transport : sécurité, régularité, service aux voyageurs et posture
+            professionnelle. Les partenaires mobilisés pour une session sont précisés
+            dans les documents transmis avant l&apos;inscription.
           </p>
         </div>
       </section>
@@ -162,10 +160,10 @@ export default function AboutPage() {
             Une histoire construite sur le terrain
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-white-60">
-            Il y a huit ans, un partenariat fort s&apos;est noué avec les GEIQ Transport
-            &amp; Mobilité. Objectif : créer un programme d&apos;intégration sur mesure,
-            co-construit avec les entreprises, pour des demandeurs d&apos;emploi souhaitant
-            investir un nouvel avenir professionnel dans le transport.
+            Le projet s&apos;est développé à partir d&apos;expériences de formation et
+            d&apos;intégration professionnelle dans le transport. L&apos;objectif est de proposer
+            un cadre lisible aux personnes qui souhaitent construire un nouvel avenir
+            professionnel dans ce secteur.
           </p>
           <p className="mt-4 text-lg font-medium text-white-90">
             Année après année, ce parcours a été :
@@ -194,12 +192,13 @@ export default function AboutPage() {
               Résultat
             </p>
             <p className="mt-4 text-[clamp(1.75rem,3vw,2.25rem)] font-bold leading-tight text-white-90">
-              Plus de 85&nbsp;% de taux de CDIsation
+              Des résultats publiés avec leur source et leur période
             </p>
             <p className="mt-3 text-lg text-white-60">
-              pour les personnes accompagnées dans ce programme d&apos;intégration
-              professionnelle. C&apos;est sur cette base solide qu&apos;est né{" "}
-              {siteName}.
+              Les futurs taux de réussite, d&apos;abandon, de satisfaction et d&apos;insertion
+              seront affichés uniquement après consolidation, avec le périmètre et la
+              méthode de calcul. Les données d&apos;activité ne seront pas présentées comme
+              des résultats.
             </p>
           </div>
         </div>
@@ -226,7 +225,8 @@ export default function AboutPage() {
           <p className="mx-auto mt-6 max-w-[720px] text-center text-lg leading-relaxed text-white-60">
             Plus qu&apos;un logo ou une mention sur un CV, {siteName} est un véritable{" "}
             <span className="text-white-90">label d&apos;exigence et de confiance</span>,
-            reconnu par les entreprises partenaires.
+            utilisé comme une grille d&apos;exigence interne. Il ne remplace ni une
+            certification professionnelle ni un titre enregistré au RNCP.
           </p>
           <p className="mx-auto mt-6 max-w-[720px] text-center font-medium text-white-90">
             Être Compagnon de la Route, c&apos;est :
@@ -421,8 +421,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <Team />
-
       <section className="section-shell section-y">
         <div className="mx-auto max-w-[1200px]">
           <div className="mb-10 flex flex-col gap-4">
@@ -431,7 +429,8 @@ export default function AboutPage() {
               Notre méthode
             </h2>
             <p className="max-w-2xl text-lg text-white-60">
-              Quatre étapes pour transformer un projet en compétence, puis en emploi.
+              Quatre étapes pour transformer un projet en compétences et préparer la
+              suite professionnelle.
             </p>
           </div>
           <MethodTimeline />

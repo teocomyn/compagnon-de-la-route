@@ -23,13 +23,14 @@ export function seoLandingMetadata(data: SeoLandingPageData): Metadata {
     description: data.metaDescription,
     ...(data.keywords?.length ? { keywords: data.keywords } : {}),
     alternates: { canonical: `/${data.slug}` },
+    robots: { index: false, follow: true },
     openGraph: {
       title: data.metaTitle,
       description: data.metaDescription,
       url: `/${data.slug}`,
       type: "article",
       siteName,
-      images: [{ url: "/images/og/default.jpg", width: 1920, height: 1069, alt: data.h1 }],
+      images: [{ url: "/images/og/default.jpg", width: 1920, height: 1282, alt: data.h1 }],
     },
     twitter: {
       card: "summary_large_image",
@@ -66,7 +67,7 @@ export const seoLandingPages: Record<string, SeoLandingPageData> = {
     ),
     stats: [
       { value: "3", label: "Leviers fréquents : CPF, OPCO, accompagnement public" },
-      { value: "210h", label: "Parcours certifiant sur 30 jours ouvrés" },
+      { value: "Sur mesure", label: "Durée confirmée après positionnement" },
       { value: "1:1", label: "Point personnalisé sur votre éligibilité" },
     ],
     features: [
@@ -487,7 +488,7 @@ export const seoLandingPages: Record<string, SeoLandingPageData> = {
     ),
     stats: [
       { value: "HDF", label: "Ancrage régional & partenariats locaux" },
-      { value: "210h", label: "Formation certifiante intensive" },
+      { value: "Sur mesure", label: "Durée confirmée avant inscription" },
       { value: "Qualiopi", label: "Démarche qualité pour votre projet" },
     ],
     features: [
@@ -568,7 +569,7 @@ export const seoLandingPages: Record<string, SeoLandingPageData> = {
     faq: [
       {
         q: "Combien de temps dure la formation conducteur de voyageurs ?",
-        a: "Notre parcours certifiant s’étend sur 30 jours ouvrés pour 210 heures de formation, avec une forte part de pratique et d’accompagnement vers l’emploi.",
+        a: "La durée dépend du positionnement, des prérequis et de la certification visée. Elle est communiquée dans la fiche programme avant toute inscription.",
       },
       {
         q: "Puis-je financer la formation avec mon CPF ?",

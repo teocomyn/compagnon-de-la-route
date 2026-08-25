@@ -1,5 +1,6 @@
 import { BreadcrumbBar } from "@/components/layout/BreadcrumbBar";
 import { PageBreadcrumbs } from "@/components/seo/PageBreadcrumbs";
+import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -20,12 +21,18 @@ export default function RgpdPage() {
           />
         </BreadcrumbBar>
       </div>
-      <div className="section-shell mx-auto max-w-[900px] pt-3 pb-12 md:pt-5 md:pb-16">
-      <h1 className="text-4xl font-bold tracking-tight">RGPD</h1>
-      <p className="mt-6 text-white-60">
-        Vous pouvez exercer vos droits (accès, rectification, suppression) en nous
-        contactant à l&apos;adresse indiquée sur la page Contact.
-      </p>
+      <div className="section-shell mx-auto max-w-[900px] pb-16 pt-3 md:pt-5">
+        <h1 className="text-4xl font-bold tracking-tight">Vos droits RGPD</h1>
+        <p className="mt-6 leading-relaxed text-white-60">
+          La politique de confidentialité détaille les données collectées, leur usage,
+          leur durée de conservation et la manière d&apos;exercer vos droits.
+        </p>
+        <Link
+          href="/confidentialite"
+          className="mt-6 inline-flex font-semibold text-orange-300 hover:text-orange-200"
+        >
+          Consulter la politique de confidentialité
+        </Link>
       </div>
     </div>
   );

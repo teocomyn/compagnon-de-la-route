@@ -5,9 +5,9 @@ export const siteUrl =
 
 export const navLinks = [
   { href: "/formations", label: "Formations" },
-  { href: "/qui-sommes-nous", label: "Qui sommes-nous ?" },
-  { href: "/temoignages", label: "Témoignages" },
+  { href: "/guides", label: "Guides" },
   { href: "/journal", label: "Journal" },
+  { href: "/qui-sommes-nous", label: "Qui sommes-nous ?" },
   { href: "/contact", label: "Nous contacter" },
 ] as const;
 
@@ -19,7 +19,6 @@ export const footerFormations = [
 export const footerAbout = [
   { href: "/qui-sommes-nous", label: "Qui sommes-nous" },
   { href: "/journal", label: "Journal" },
-  { href: "/temoignages", label: "Témoignages" },
   { href: "/contact", label: "Contact" },
 ] as const;
 
@@ -32,32 +31,46 @@ export const footerLegal = [
 
 /** Guides SEO (pages piliers) */
 export const footerGuides = [
+  { href: "/guides", label: "Tous les guides" },
   { href: "/financement-formation-conducteur-voyageurs", label: "Financement formation" },
-  { href: "/faq-conducteur-de-voyageurs", label: "FAQ conducteur de voyageurs" },
   { href: "/metier-conducteur-de-car-debouches", label: "Métier & débouchés" },
-  { href: "/formation-conducteur-voyageurs-hauts-de-france", label: "Formation Hauts-de-France" },
-  { href: "/certification-formation-conducteur-voyageurs", label: "Certification" },
+  { href: "/certification-formation-conducteur-voyageurs", label: "Vérifier une certification" },
 ] as const;
 
 export const contactInfo = {
-  phone: "+33 3 20 00 00 00",
-  email: "contact@compagnon-de-la-route.fr",
-  address: "Hauts-de-France, France",
-  mapsEmbedUrl:
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d81398.4!2d3.0!3d50.6!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTDCsDM2JzAwLjAiTiAzwrAwMCcwMC4wIkU!5e0!3m2!1sfr!2sfr!4v1",
+  phone: process.env.NEXT_PUBLIC_CONTACT_PHONE ?? null,
+  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? null,
+  serviceArea: "France",
 };
 
-/** Adresse structurée (SEO / JSON-LD), à affiner avec l’adresse réelle du siège */
+/** Informations issues de la liste publique des organismes de formation. */
+export const organizationInfo = {
+  legalName: "BOAZ (LES COMPAGNONS DE LA ROUTE)",
+  siren: "929 379 758",
+  siret: "929 379 758 00022",
+  trainingDeclarationNumber: "94 20 21469 20",
+  trainingDeclarationRegion: "Corse",
+  qualiopiScope: "Actions de formation",
+  address: "Tiuccia, Strada di u Melu",
+  postalCode: "20111",
+  city: "Casaglione",
+  country: "France",
+} as const;
+
 export const orgPostalAddress = {
-  addressRegion: "Hauts-de-France",
+  streetAddress: organizationInfo.address,
+  postalCode: organizationInfo.postalCode,
+  addressLocality: organizationInfo.city,
+  addressRegion: "Corse",
   addressCountry: "FR",
-};
+} as const;
 
-export const partners = [
-  "GEIQ Transport & Mobilité",
-  "BPV",
-  "France Travail",
-  "OPCO",
-  "Qualiopi",
-  "Région Hauts-de-France",
-] as const;
+export const programmeInfo = {
+  title: "Parcours conducteur de voyageurs",
+  duration: "Définie après positionnement",
+  schedule: "Calendrier communiqué avant inscription",
+  financing:
+    "Les possibilités de financement sont étudiées au cas par cas et confirmées par écrit avant toute inscription.",
+  employment:
+    "L’accompagnement prépare l’accès à l’emploi, sans garantir une embauche ni un type de contrat.",
+} as const;

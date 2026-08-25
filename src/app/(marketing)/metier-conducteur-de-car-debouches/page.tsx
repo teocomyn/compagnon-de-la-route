@@ -1,10 +1,10 @@
-import { SeoLandingPage } from "@/components/seo/SeoLandingPage";
-import { seoLandingMetadata, seoLandingPages } from "@/lib/seo-landings";
+import { VerifiedGuidePage } from "@/components/guides/VerifiedGuidePage";
+import { verifiedGuideMetadata, verifiedGuides } from "@/lib/verified-guides";
 
-const data = seoLandingPages["metier-conducteur-de-car-debouches"];
+const guide = verifiedGuides.career;
 
-export const metadata = seoLandingMetadata(data);
+export const metadata = verifiedGuideMetadata(guide);
 
 export default function MetierConducteurDeCarDebouchesPage() {
-  return <SeoLandingPage data={data} />;
+  return <VerifiedGuidePage guide={guide} />;
 }

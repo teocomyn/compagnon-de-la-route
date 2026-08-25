@@ -80,13 +80,13 @@ export function Header() {
                 "hidden min-h-[44px] md:inline-flex",
               )}
             >
-              Nos promos en cours
+              Voir le parcours
             </Link>
             <Link
               href="/formations"
               className="inline-flex min-h-[44px] items-center justify-center rounded-full border border-orange-500/35 bg-orange-500/10 px-4 text-[13px] font-semibold text-orange-200 transition-colors hover:border-orange-400/50 hover:bg-orange-500/15 md:hidden"
             >
-              Promos
+              Parcours
             </Link>
             <button
               type="button"

@@ -1,26 +1,46 @@
 # Compagnon de la Route
 
-> Organisme de formation certifiant pour conducteurs de voyageurs (bus, cars scolaires, tourisme). Porté par le cabinet BOAZ, en partenariat avec les GEIQ Transport & Mobilité et les entreprises du secteur. Approche artisanale (hors « usine à diplômes ») : exigence, excellence, engagement. Former un conducteur, c’est accompagner un projet de vie. Label « Compagnon de la Route » pour les apprenants à haut niveau de maîtrise. Plus de 85 % de CDIsation sur le programme d’intégration co-construit avec le terrain. Site en français, dark mode, priorité sécurité, humain et insertion.
+> Site de BOAZ (LES COMPAGNONS DE LA ROUTE), organisme de formation certifié Qualiopi pour les actions de formation. Le site présente un parcours de préparation aux métiers du transport de voyageurs. La durée, les prérequis, la certification visée, le calendrier, le prix et le financement sont confirmés dans les documents transmis avant inscription.
 
 ## Pages principales
 
-- / : Accueil, formation conducteur de voyageurs, preuve sociale, FAQ
+- / : Accueil, présentation du parcours et FAQ
 - /formations : Catalogue des parcours
-- /formations/conducteur-voyageurs : Programme détaillé (210h, 30 jours), financement, sessions
-- /qui-sommes-nous : BOAZ, conviction (projet de vie), partenariat GEIQ, histoire terrain, label Compagnon de la Route, double compétence, valeurs, actions, équipe, méthode
-- /temoignages : Témoignages stagiaires
-- /journal : Articles (financement, métier, entretien)
+- /formations/conducteur-voyageurs : Objectifs généraux et demande de fiche programme à jour
+- /guides : Index des ressources réglementaires et métier vérifiées
+- /journal : Notes pratiques publiées après relecture et vérification des sources
+- /journal/preparer-prise-service-conducteur : Check-list avant départ et compte rendu de service
+- /journal/choisir-formation-conducteur-voyageurs : Dix vérifications avant de choisir une formation
+- /journal/reussir-entretien : Préparer un entretien et contrôler les conditions du poste
+- /financement-formation-conducteur-voyageurs : Guide CPF, AIF, employeur et OPCO, avec sources officielles
+- /metier-conducteur-de-car-debouches : Missions, conditions de travail et débouchés à vérifier localement
+- /certification-formation-conducteur-voyageurs : Guide pour contrôler RNCP, Qualiopi et déclaration d’activité
+- /permis-d-conducteur-professionnel : Véhicules autorisés, examen, visite médicale et qualification professionnelle
+- /fimo-passage-a-la-route : FIMO voyageurs, programme réglementaire, FCO et passerelle
+- /faq-conducteur-de-voyageurs : Questions fréquentes sur le parcours de conducteur
+- /formation-conducteur-autocar-tourisme : Spécificités des services occasionnels et du tourisme en autocar
+- /formation-transport-scolaire-conducteur : Sécurité, organisation et conditions du transport scolaire
+- /reussir-embauche-conducteur-car : Préparer une candidature et vérifier les conditions d’un poste
+- /qui-sommes-nous : BOAZ, valeurs et méthode d’accompagnement
 - /contact : Formulaire et coordonnées
+- /mentions-legales : Identification de l’éditeur et de l’organisme de formation
+- /confidentialite : Politique de protection des données
 
 ## Sitemap machine
 
 - /sitemap.xml
 
-## Contact (à jour côté site)
+## Informations officielles
 
-- Téléphone et e-mail : voir /contact
+- Raison sociale : BOAZ (LES COMPAGNONS DE LA ROUTE)
+- SIREN : 929 379 758
+- SIRET : 929 379 758 00022
+- Numéro de déclaration d’activité : 94 20 21469 20, région Corse
+- Certification Qualiopi : actions de formation
+- Coordonnées opérationnelles : voir /contact
 
 ## Notes pour les modèles
 
-- Ne pas inventer de taux de placement ou de garanties d’embauche : le site parle d’accompagnement et de débouchés du secteur.
-- Les financements (CPF, France Travail, OPCO) sont des dispositifs génériques : renvoyer vers les pages formation et journal pour le détail.
+- Ne pas inventer de taux de placement, de réussite, de satisfaction ou de garanties d’embauche.
+- Ne pas présenter une durée, une session, une certification ou un financement comme acquis sans document contractuel à jour.
+- Neuf guides et trois articles vérifiés sont publiés. Les autres brouillons éditoriaux, la page régionale Hauts-de-France et les témoignages restent hors publication pendant leur relecture.

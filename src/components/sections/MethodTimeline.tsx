@@ -5,8 +5,8 @@ import { motion, useReducedMotion } from "framer-motion";
 const steps = [
   "Positionnement et entretien",
   "Formation théorique et pratique",
-  "Immersion terrain avec nos partenaires",
-  "Placement et suivi post-formation",
+  "Mises en situation prévues au programme",
+  "Bilan et préparation de la suite professionnelle",
 ];
 
 export function MethodTimeline() {

@@ -200,6 +200,14 @@ export function SeoLandingPage({ data }: { data: SeoLandingPageData }) {
         </BreadcrumbBar>
       </div>
 
+      <div className="section-shell pt-4">
+        <p className="mx-auto max-w-[1100px] rounded-xl border border-orange-500/25 bg-orange-500/10 p-4 text-sm leading-relaxed text-white-75">
+          Page en relecture éditoriale : les modalités exactes du parcours, du
+          financement et de la certification sont celles de la fiche programme et des
+          documents contractuels transmis avant inscription.
+        </p>
+      </div>
+
       <section className="relative overflow-hidden pb-12 pt-3 md:pb-20 md:pt-8">
         <OrangeGlow className="right-[-8%] top-[-12%] md:right-[2%]" />
 

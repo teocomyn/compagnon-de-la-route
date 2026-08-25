@@ -6,11 +6,11 @@ import { useId, useState } from "react";
 import { cn } from "@/lib/utils";
 
 const modules = [
-  { title: "Module 1 : Connaissance du véhicule", hours: "40h", text: "Prise en main, contrôles, sécurité mécanique, ergonomie de conduite." },
-  { title: "Module 2 : Sécurité et prévention", hours: "40h", text: "Anticipation, gestion des risques, procédures, culture de la sécurité." },
-  { title: "Module 3 : Relation client et inclusion", hours: "30h", text: "Accueil, posture professionnelle, situations sensibles, qualité de service." },
-  { title: "Module 4 : Réglementation transport", hours: "30h", text: "Cadre légal, documents, responsabilités, exploitation et contrôles." },
-  { title: "Module 5 : Pratique sur route", hours: "70h", text: "Mise en situation réelle, itinéraires, conduite encadrée, évaluation continue." },
+  { title: "Connaissance du véhicule", text: "Prise en main, contrôles, sécurité mécanique et ergonomie de conduite selon le parcours retenu." },
+  { title: "Sécurité et prévention", text: "Anticipation, gestion des risques, procédures et culture de la sécurité." },
+  { title: "Relation voyageurs et inclusion", text: "Accueil, posture professionnelle, situations sensibles et qualité de service." },
+  { title: "Réglementation du transport", text: "Cadre applicable, documents, responsabilités, exploitation et contrôles." },
+  { title: "Mises en situation", text: "Exercices pratiques, situations professionnelles et évaluations prévus par la fiche programme contractuelle." },
 ];
 
 export function ProgramAccordion() {
@@ -34,7 +34,6 @@ export function ProgramAccordion() {
             >
               <span className="text-[16px] font-semibold text-white-90">{m.title}</span>
               <span className="flex items-center gap-3">
-                <span className="font-mono text-[12px] text-white-45">{m.hours}</span>
                 <ChevronDown
                   className={cn(
                     "h-5 w-5 text-white-45 transition-transform duration-300",
