@@ -2,12 +2,15 @@
 
 ## État
 
-La refonte éditoriale anti-slop, la clarification de l'architecture de marque et le second parcours métier sont poussés sur `main`, dernière livraison fonctionnelle `72f184e`. Compagnon de la Route est présenté comme le label transport porté par BOAZ ; le catalogue distingue désormais conduite et exploitation-régulation. Le déploiement de production n’a pas été vérifié dans ce dépôt.
+La refonte éditoriale anti-slop, l'architecture de marque, le second parcours métier et le réalignement transversal de l'accueil sont poussés sur `main`, dernière livraison fonctionnelle `83f348f`. Compagnon de la Route est présenté comme le label transport porté par BOAZ ; l'accueil et le catalogue distinguent conduite et exploitation-régulation. Le déploiement de production n’a pas été vérifié dans ce dépôt.
 
 Préférence de livraison du client : après validation, committer et pousser chaque intervention sur `origin/main`, sans inclure de secret.
 
 ## Changements principaux
 
+- Hero de l'accueil conservé dans sa direction photographique validée, mais élargi au label entier : eyebrow BOAZ, proposition de valeur commune aux deux métiers, CTA vers `/formations` et ruban conduite / exploitation-régulation / service.
+- Nouvelle section `Pathways` immédiatement après la ligne de réseau : deux grandes lignes éditoriales « à bord » et « à l'exploitation », chacune avec verbes métier, statut public et lien direct. L'ancienne section `WhyBecome`, générique et exclusivement centrée sur le conducteur, n'est plus rendue sur l'accueil.
+- Section méthode réécrite autour de quatre réalités : candidat, métier, entreprise lorsqu'elle est associée, et BOAZ. Le wording ne suppose pas qu'un employeur est déjà engagé sur chaque parcours.
 - Catalogue `/formations` reconstruit autour de deux panneaux métier complémentaires : conducteur de voyageurs « à bord » et exploitant-régulateur « à l'exploitation ». Chaque panneau affiche son statut réel ; le second reste explicitement en préparation.
 - Nouvelle route `/formations/exploitant-regulateur` : missions de planification, affectation, régulation et analyse, réalités du poste, six modalités à confirmer et liens directs vers France Compétences RNCP39792, France Travail et Onisep. Aucun schéma `Course` n'est publié tant que la formation BOAZ et la certification effectivement préparée ne sont pas confirmées.
 - Garde-fou durable ajouté : ne pas publier les 400 heures, la session du 1er novembre 2026, le financement à 100 %, les 600 postes non pourvus ou le calendrier de validation évoqués oralement sans fiche programme et preuves écrites.
@@ -79,6 +82,8 @@ Préférence de livraison du client : après validation, committer et pousser ch
 
 ## Vérifications passées
 
+- Accueil réaligné inspecté à 1440 × 1000 et 390 × 844 : hero, premier viewport mobile, ligne de réseau et sélecteur des deux métiers lisibles sans débordement horizontal.
+- Revue UI 21st de `Hero`, `Pathways`, `TrustBuilding` et de la page d'accueil — 0 finding.
 - Catalogue et page Exploitant-régulateur inspectés à 1440 × 1000 et 390 × 844 : statuts, appels à l'action, sources et réserves lisibles sans débordement horizontal.
 - Revue UI 21st du catalogue et de la page Exploitant-régulateur — 0 finding.
 - `npm run test:e2e` — 15 tests passés, dont le garde-fou mobile Exploitant-régulateur et la publication de la route dans le sitemap.
