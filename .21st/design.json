@@ -266,6 +266,11 @@
       "id": "selective-brand-border-beam",
       "decision": "Réserver la bordure orbitale orange et crème au Bento central de l'accueil et au formulaire de contact.",
       "rationale": "Direction explicitement demandée le 25 août 2026. Le faisceau lent accélère au survol, se met en pause hors écran et devient statique avec prefers-reduced-motion. L'usage reste limité à deux surfaces prioritaires afin de conserver la hiérarchie éditoriale."
+    },
+    {
+      "id": "homepage-network-logo-line",
+      "decision": "Placer immédiatement sous le hero une ligne de réseau éditoriale avec les logos Geiq, BPV Objectifs et Geiq Mobilité fournis par le client, dans un défilement horizontal continu.",
+      "rationale": "Direction explicitement demandée le 25 août 2026. Le bandeau prolonge les bordures et les aplats du hero, se suspend au survol et devient une grille statique avec prefers-reduced-motion."
     }
   ],
   "evidence": [

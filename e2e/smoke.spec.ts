@@ -15,6 +15,15 @@ test.describe("Parcours critiques", () => {
     await expect(
       page.getByRole("img", { name: /Conductrice de bus installée à son poste/i }),
     ).toBeVisible();
+
+    const partnerMarquee = page.getByTestId("partner-marquee");
+    await expect(partnerMarquee).toBeVisible();
+    await expect(
+      partnerMarquee.getByRole("img", { name: /Fédération Française des Geiq/i }),
+    ).toBeVisible();
+    await expect(partnerMarquee.getByRole("img", { name: /BPV Objectifs/i })).toBeVisible();
+    await expect(partnerMarquee.getByRole("img", { name: /Geiq Mobilité/i })).toBeVisible();
+
     await expect(page.getByText("L'exigence", { exact: true })).toHaveCount(0);
     await expect(page.locator('[data-cdr-border-beam="true"]')).toHaveCount(1);
 

@@ -1,6 +1,7 @@
 import { FAQ } from "@/components/sections/FAQ";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { Hero } from "@/components/sections/Hero";
+import { PartnerMarquee } from "@/components/sections/PartnerMarquee";
 import { Pedagogy } from "@/components/sections/Pedagogy";
 import { Statement } from "@/components/sections/Statement";
 import { Stats } from "@/components/sections/Stats";
@@ -67,6 +68,7 @@ export default function HomePage() {
       <WebPageJsonLd />
       <FaqJsonLd />
       <Hero />
+      <PartnerMarquee />
       <Statement />
       <CdrBentoSection />
       <WhyBecome />
