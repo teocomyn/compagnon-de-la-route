@@ -2,7 +2,7 @@
 
 ## État
 
-La refonte éditoriale anti-slop de l'ensemble du site public est poussée sur `main` au commit `4e9286a`. Le déploiement de production n’a pas été vérifié dans ce dépôt.
+La refonte éditoriale anti-slop et le nouveau triptyque Bento de l'accueil sont poussés sur `main`, dernière livraison fonctionnelle `ce11677`. Le déploiement de production n’a pas été vérifié dans ce dépôt.
 
 Préférence de livraison du client : après validation, committer et pousser chaque intervention sur `origin/main`, sans inclure de secret.
 
