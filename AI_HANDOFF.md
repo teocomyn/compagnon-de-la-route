@@ -2,12 +2,15 @@
 
 ## État
 
-La refonte éditoriale anti-slop, les composants majeurs de l'accueil et la clarification de l'architecture de marque sont poussés sur `main`, dernière livraison fonctionnelle `155772d`. Compagnon de la Route est désormais présenté comme le label transport porté par BOAZ. Le déploiement de production n’a pas été vérifié dans ce dépôt.
+La refonte éditoriale anti-slop, la clarification de l'architecture de marque et le second parcours métier sont poussés sur `main`, dernière livraison fonctionnelle `72f184e`. Compagnon de la Route est présenté comme le label transport porté par BOAZ ; le catalogue distingue désormais conduite et exploitation-régulation. Le déploiement de production n’a pas été vérifié dans ce dépôt.
 
 Préférence de livraison du client : après validation, committer et pousser chaque intervention sur `origin/main`, sans inclure de secret.
 
 ## Changements principaux
 
+- Catalogue `/formations` reconstruit autour de deux panneaux métier complémentaires : conducteur de voyageurs « à bord » et exploitant-régulateur « à l'exploitation ». Chaque panneau affiche son statut réel ; le second reste explicitement en préparation.
+- Nouvelle route `/formations/exploitant-regulateur` : missions de planification, affectation, régulation et analyse, réalités du poste, six modalités à confirmer et liens directs vers France Compétences RNCP39792, France Travail et Onisep. Aucun schéma `Course` n'est publié tant que la formation BOAZ et la certification effectivement préparée ne sont pas confirmées.
+- Garde-fou durable ajouté : ne pas publier les 400 heures, la session du 1er novembre 2026, le financement à 100 %, les 600 postes non pourvus ou le calendrier de validation évoqués oralement sans fiche programme et preuves écrites.
 - Architecture de marque corrigée dans les contenus et le SEO : BOAZ est l'organisme de formation et Compagnon de la Route son label transport. Le schéma racine expose un `EducationalOrganization` BOAZ relié à une `Brand` Compagnon de la Route ; les schémas `Course`, `Article` et `AboutPage` réutilisent la même identité.
 - Nouvelle page `/le-label` en composition éditoriale plate : articulation visuelle label → organisme, socle de responsabilité, photographie métier et distinction explicite entre Compagnon de la Route, BOAZ et Qualiopi. La page ne présente ni le label comme une certification, ni Qualiopi comme une garantie de financement, de diplôme ou d'emploi.
 - Navigation desktop et mobile enrichie avec « Le label » et « BOAZ » ; footer, README, `llms.txt`, sitemap et page organisme alignés sur la même architecture.
@@ -76,6 +79,9 @@ Préférence de livraison du client : après validation, committer et pousser ch
 
 ## Vérifications passées
 
+- Catalogue et page Exploitant-régulateur inspectés à 1440 × 1000 et 390 × 844 : statuts, appels à l'action, sources et réserves lisibles sans débordement horizontal.
+- Revue UI 21st du catalogue et de la page Exploitant-régulateur — 0 finding.
+- `npm run test:e2e` — 15 tests passés, dont le garde-fou mobile Exploitant-régulateur et la publication de la route dans le sitemap.
 - Page `/le-label` inspectée à 1440 × 1100, 1280 × 900 et 390 × 844 : hiérarchie, navigation, schéma label → BOAZ et footer lisibles sans débordement horizontal.
 - Revue UI 21st de la page label, du header, du menu mobile et du footer — 0 finding.
 - `npm run test:e2e` — 14 tests passés, dont le garde-fou d'architecture de marque et la présence de `/le-label` dans le sitemap.
