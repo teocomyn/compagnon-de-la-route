@@ -14,9 +14,19 @@ export function Hero() {
               Formation conducteur de voyageurs
             </p>
 
-            <h1 className="mt-7 text-balance text-[clamp(3rem,5.6vw,6.1rem)] font-extrabold leading-[0.9] tracking-[-0.055em] text-white-90">
-              Conduire des voyageurs,
-              <span className="mt-2 block text-orange-400">ça se prépare.</span>
+            <h1
+              aria-label="Compagnon de la route, plus qu'un métier, une mission"
+              className="mt-7 text-balance text-[clamp(2.8rem,4.8vw,5.25rem)] font-extrabold leading-[0.92] tracking-[-0.05em] text-white-90"
+            >
+              <span aria-hidden="true" className="block">
+                Compagnon de la route,
+              </span>
+              <span aria-hidden="true" className="mt-2 block text-orange-400">
+                plus qu&apos;un métier,
+              </span>
+              <span aria-hidden="true" className="block text-orange-400">
+                une mission
+              </span>
             </h1>
 
             <p className="mt-8 max-w-2xl text-[clamp(1.05rem,1.5vw,1.3rem)] leading-[1.65] text-white-60">

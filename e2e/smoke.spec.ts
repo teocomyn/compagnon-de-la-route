@@ -4,7 +4,10 @@ test.describe("Parcours critiques", () => {
   test("accueil : titre principal et lien formation", async ({ page }) => {
     await page.goto("/");
     await expect(
-      page.getByRole("heading", { level: 1, name: /Conduire des voyageurs/i }),
+      page.getByRole("heading", {
+        level: 1,
+        name: /Compagnon de la route, plus qu'un métier, une mission/i,
+      }),
     ).toBeVisible();
     await expect(
       page.getByRole("link", { name: /Voir la formation/i }).first(),
