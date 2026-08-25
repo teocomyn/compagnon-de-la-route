@@ -264,8 +264,8 @@
     },
     {
       "id": "selective-brand-border-beam",
-      "decision": "Réserver la bordure orbitale orange et crème au Bento central de l'accueil et au formulaire de contact.",
-      "rationale": "Direction explicitement demandée le 25 août 2026. Le faisceau lent accélère au survol, se met en pause hors écran et devient statique avec prefers-reduced-motion. L'usage reste limité à deux surfaces prioritaires afin de conserver la hiérarchie éditoriale."
+      "decision": "Réserver la bordure orbitale orange et crème au Bento central de l'accueil, au panneau des données d'activité et au formulaire de contact.",
+      "rationale": "Direction étendue explicitement par le client le 25 août 2026. Le faisceau lent accélère au survol, se met en pause hors écran et devient statique avec prefers-reduced-motion. L'usage reste limité à trois surfaces prioritaires afin de conserver la hiérarchie éditoriale."
     },
     {
       "id": "homepage-network-logo-line",

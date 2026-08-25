@@ -35,7 +35,7 @@ test.describe("Parcours critiques", () => {
     await expect(partnerMarquee.getByRole("img", { name: /Geiq Mobilité/i })).toBeVisible();
 
     await expect(page.getByText("L'exigence", { exact: true })).toHaveCount(0);
-    await expect(page.locator('[data-cdr-border-beam="true"]')).toHaveCount(1);
+    await expect(page.locator('[data-cdr-border-beam="true"]')).toHaveCount(2);
 
     const statement = page.getByRole("heading", {
       level: 2,
