@@ -2,13 +2,13 @@
 
 ## État
 
-La refonte éditoriale anti-slop, le triptyque Bento, le footer en arche, les bordures orbitales sélectives, le titre de marque, la ligne de réseau, le slider photographique et le panneau d'activité de l'accueil sont poussés sur `main`, dernière livraison fonctionnelle `2ba1e4d`. Le déploiement de production n’a pas été vérifié dans ce dépôt.
+La refonte éditoriale anti-slop, le triptyque Bento, le footer en arche, les bordures orbitales sélectives, le titre de marque, la ligne de réseau, le slider photographique, la section pédagogique et la nouvelle hero mobile de l'accueil sont poussés sur `main`, dernière livraison fonctionnelle `385fa7d`. Le déploiement de production n’a pas été vérifié dans ce dépôt.
 
 Préférence de livraison du client : après validation, committer et pousser chaque intervention sur `origin/main`, sans inclure de secret.
 
 ## Changements principaux
 
-- Hero de l'accueil reconstruit avec un slider plein cadre des quatre photographies fournies par le client : route nocturne, autocar en montagne, conducteur au poste et bus urbain en mouvement. Le contact-sheet initial a été retiré à la demande du client. Le slider accepte autoplay, pause, survol, focus, flèches, clavier et swipe ; il devient manuel avec `prefers-reduced-motion` et ne produit aucun écart d'hydratation.
+- Hero de l'accueil reconstruit avec un slider plein cadre des quatre photographies fournies par le client : route nocturne, autocar en montagne, conducteur au poste et bus urbain en mouvement. Le contact-sheet initial a été retiré à la demande du client. Sur mobile, le slider devient l'arrière-plan d'un écran unique : titre, bénéfice, CTA principal et preuves apparaissent immédiatement, avec des commandes compactes ancrées en bas. Les petits écrans conservent prioritairement le CTA de parcours ; la composition desktop reste en deux colonnes. Le slider accepte autoplay, pause, survol, focus, flèches, clavier et swipe ; il devient manuel avec `prefers-reduced-motion` et ne produit aucun écart d'hydratation.
 - Ligne de réseau ajoutée immédiatement sous le hero avec les logos fournis de la Fédération Française des Geiq, BPV Objectifs et Geiq Mobilité. Le défilement CSS continu se suspend au survol et devient une grille statique sous `prefers-reduced-motion`, sans ajouter de JavaScript client.
 - Système visuel global nettoyé : Archivo et IBM Plex Mono remplacent Geist, fond quadrillé supprimé, halos et verre retirés, ombres et mouvements décoratifs supprimés, rayons réduits et hiérarchie portée par les bordures et l'espace.
 - Seul le reveal narratif de la déclaration d'accueil est conservé. Le menu, le poids variable de la navigation et les accordéons ne bougent que pour signaler un état ou une action.
@@ -18,6 +18,7 @@ Préférence de livraison du client : après validation, committer et pousser ch
 - Footer final renforcé en arche de marque : CTA monumental, trois repères de parcours, navigation complète et signature typographique sur deux niveaux. Le grand arrondi est limité à la silhouette extérieure et le composant reste rendu côté serveur.
 - Composant `BorderBeamPanel` ajouté dans `src/components/ui` et appliqué uniquement au Bento central, au panneau des données d'activité et au formulaire de contact. Deux faisceaux orange et crème orbitent lentement, accélèrent au survol, se suspendent hors écran et restent statiques sous `prefers-reduced-motion`.
 - Bloc des données d'activité reconstruit comme une fiche de preuve : en-tête de registre, trois colonnes numérotées avec pictogrammes, source intégrée et bordure orbitale commune. Les valeurs et précautions éditoriales restent inchangées.
+- Section pédagogique de l'accueil reconstruite autour de « Faire, observer, recommencer » : photographie métier fournie, légende de mise en situation et quatre temps numérotés disposés comme une progression éditoriale, sans carte décorative ni nouvelle animation.
 - Pages formation, à propos, contact, formations, guides, journal, témoignages, articles et pages légales harmonisées avec la direction éditoriale.
 - Ancienne page SEO générique refondue avec les mêmes primitives plates, même si sa publication reste suspendue par le garde-fou éditorial.
 - Anciens composants visuels inutilisés `GridBackground`, `OrangeGlow`, `GlassCard`, `FooterReveal` et `PrereqImmersive` supprimés pour éviter leur réintroduction.
@@ -90,6 +91,10 @@ Préférence de livraison du client : après validation, committer et pousser ch
 - Inspection visuelle complète de la page formation à 1440 px et 390 px ; aucun débordement horizontal, hero et sections photographiques validés.
 - Inspection visuelle de la ligne de réseau à 1440 px et 390 px, avec mouvement normal et réduit ; trois logos lisibles, pause au survol et aucun débordement horizontal.
 - Inspection visuelle du slider hero à 1440 px et 390 px sur les deux premières images ; autoplay, pause au survol, boutons, clavier et réduction des animations vérifiés, sans débordement horizontal ni erreur d'hydratation.
+- Inspection visuelle de la hero mobile à 375 × 667, 390 × 844 et 430 × 932 sur les quatre photographies ; message et CTA principal visibles dans le premier viewport, contraste lisible, commandes accessibles et aucun débordement horizontal.
+- Inspection visuelle de la section pédagogique à 1440 px et 390 px ; photographie, progression numérotée et raccord avec la section suivante validés sans débordement horizontal.
+- Revue UI 21st de `Hero` et `HeroSlider` — 0 finding.
+- `npm run test:e2e` — 13 tests passés après ajout du garde-fou mobile sur le premier viewport.
 - Inspection visuelle du panneau d'activité à 1440 px et 390 px ; trois données, source et bordure orbitale lisibles sans débordement horizontal.
 - Revue UI 21st de la page formation, de l'accordéon et de la timeline — 0 finding après correction.
 - Inspection visuelle du header en haut de page, après scroll, au survol et avec le menu mobile ouvert ; axe `wght` vérifié de 430 à 720 et aucun débordement à 390 px.
