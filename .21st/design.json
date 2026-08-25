@@ -276,6 +276,11 @@
       "id": "homepage-cinematic-photo-slider",
       "decision": "Présenter les quatre photographies fournies par le client dans un slider plein cadre : route nocturne, autocar en montagne, conducteur au poste et bus urbain en mouvement.",
       "rationale": "Le contact-sheet initial a été refusé par le client le 25 août 2026 au profit d'une image forte à la fois. Le slider se contrôle au toucher, au clavier et avec des boutons, se met en pause sur demande, au survol et au focus, et devient manuel avec prefers-reduced-motion."
+    },
+    {
+      "id": "homepage-pedagogy-photo-sequence",
+      "decision": "Structurer la méthode pédagogique autour d'un grand titre, d'une photographie réelle au poste de conduite et de quatre temps numérotés avec pictogrammes.",
+      "rationale": "Direction explicitement demandée le 25 août 2026. La photographie fournie est traitée comme un document de mise en situation ; les étapes restent statiques et factuelles afin de distinguer cette section des interactions du hero et des bordures prioritaires."
     }
   ],
   "evidence": [

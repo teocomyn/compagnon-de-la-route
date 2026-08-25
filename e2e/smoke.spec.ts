@@ -59,6 +59,15 @@ test.describe("Parcours critiques", () => {
     await bentoHeading.scrollIntoViewIfNeeded();
     await expect(bentoHeading).toBeVisible();
     await expect(page.getByText(/Les conditions sont écrites avant l'inscription/i)).toBeVisible();
+
+    const pedagogyHeading = page.getByRole("heading", {
+      level: 2,
+      name: /Faire, observer, recommencer/i,
+    });
+    await pedagogyHeading.scrollIntoViewIfNeeded();
+    await expect(
+      page.getByRole("img", { name: /Conductrice installée au poste de conduite/i }),
+    ).toBeVisible();
   });
 
   test("accueil : le Bento reste contenu sur mobile", async ({ page }) => {
