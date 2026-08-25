@@ -12,17 +12,18 @@ test.describe("Parcours critiques", () => {
     await expect(
       page.getByRole("link", { name: /Voir la formation/i }).first(),
     ).toBeVisible();
+    const heroSlider = page.getByTestId("hero-slider");
+    await expect(heroSlider).toBeVisible();
+    await expect(heroSlider.getByRole("img", { name: /Route de montagne de nuit/i })).toBeVisible();
+    await heroSlider.getByRole("button", { name: /Mettre le diaporama en pause/i }).click();
+    await heroSlider.getByRole("button", { name: /Photographie suivante/i }).click();
     await expect(
-      page.getByRole("img", { name: /Route de montagne de nuit/i }),
+      heroSlider.getByRole("img", { name: /Autocar stationné au pied de montagnes/i }),
     ).toBeVisible();
+    await heroSlider.focus();
+    await page.keyboard.press("ArrowRight");
     await expect(
-      page.getByRole("img", { name: /Autocar stationné au pied de montagnes/i }),
-    ).toBeVisible();
-    await expect(
-      page.getByRole("img", { name: /Conducteur de bus souriant au poste/i }),
-    ).toBeVisible();
-    await expect(
-      page.getByRole("img", { name: /Bus urbain bleu photographié en mouvement/i }),
+      heroSlider.getByRole("img", { name: /Conducteur de bus souriant au poste/i }),
     ).toBeVisible();
 
     const partnerMarquee = page.getByTestId("partner-marquee");

@@ -273,9 +273,9 @@
       "rationale": "Direction explicitement demandée le 25 août 2026. Le bandeau prolonge les bordures et les aplats du hero, se suspend au survol et devient une grille statique avec prefers-reduced-motion."
     },
     {
-      "id": "homepage-cinematic-photo-contact-sheet",
-      "decision": "Composer le hero avec les quatre photographies fournies par le client dans un contact-sheet asymétrique : route verticale, autocar en montagne dominant, conducteur au poste et bus urbain en mouvement.",
-      "rationale": "Direction explicitement demandée le 25 août 2026. Les formats natifs des images déterminent la grille et les séparateurs éditoriaux ; sur mobile, la composition précède le texte afin d'être visible dès le premier écran."
+      "id": "homepage-cinematic-photo-slider",
+      "decision": "Présenter les quatre photographies fournies par le client dans un slider plein cadre : route nocturne, autocar en montagne, conducteur au poste et bus urbain en mouvement.",
+      "rationale": "Le contact-sheet initial a été refusé par le client le 25 août 2026 au profit d'une image forte à la fois. Le slider se contrôle au toucher, au clavier et avec des boutons, se met en pause sur demande, au survol et au focus, et devient manuel avec prefers-reduced-motion."
     }
   ],
   "evidence": [
