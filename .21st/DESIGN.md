@@ -98,6 +98,6 @@ Generated from project sources at 2026-08-25T07:24:08.795Z.
 - Accueil : déclaration courte révélée ligne par ligne, suivie sans rupture d'un triptyque Bento métier avec panneaux visuels dédiés à la trajectoire, à la mise en situation et aux conditions écrites.
 - Page formation : récit éditorial premium porté par les photographies métier, un hero asymétrique, un parcours linéaire et un programme en accordéon.
 - Header global : barre fixe et plate, graisse variable au survol, état actif orange et navigation mobile accessible.
-- Footer global : conclusion éditoriale pleine largeur avec CTA orange, navigation vérifiée, repères réglementaires et signature typographique statique.
+- Footer global : arche de marque avec signal orange, CTA monumental, ligne de parcours, navigation vérifiée, repères réglementaires et signature COMPAGNON / DE LA ROUTE sur deux niveaux.
 - Journal : cluster de six dossiers SEO longs et vérifiés, grille éditoriale en deux colonnes, photographies métier du client et couverture du parcours complet de l’orientation à la prise de service.
 - Système anti-slop : Archivo et IBM Plex Mono, aplats vert nuit et orange, bordures franches, photographies réelles, aucune grille de fond, aucun halo, aucun verre, aucune animation décorative répétée.

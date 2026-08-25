@@ -13,7 +13,8 @@ Préférence de livraison du client : après validation, committer et pousser ch
 - Seul le reveal narratif de la déclaration d'accueil est conservé. Le menu, le poids variable de la navigation et les accordéons ne bougent que pour signaler un état ou une action.
 - Grille Bento conservée à la demande du client, mais reconstruite en composition plate et asymétrique, sans cartes flottantes ni promesse non vérifiée.
 - Transition d'accueil resserrée : titre en grille éditoriale correctement contenu par `section-shell`, texte toujours visible et nouveau triptyque Bento placé directement sous la déclaration. Les panneaux représentent le parcours, l'entraînement au poste et les informations à confirmer avant inscription.
-- Header et footer reconstruits en surfaces pleines largeur, sans conteneur flottant, verre, halo ou animation d'apparition.
+- Header reconstruit en surface pleine largeur et footer sans verre, halo ni animation d'apparition.
+- Footer final renforcé en arche de marque : CTA monumental, trois repères de parcours, navigation complète et signature typographique sur deux niveaux. Le grand arrondi est limité à la silhouette extérieure et le composant reste rendu côté serveur.
 - Pages formation, à propos, contact, formations, guides, journal, témoignages, articles et pages légales harmonisées avec la direction éditoriale.
 - Ancienne page SEO générique refondue avec les mêmes primitives plates, même si sa publication reste suspendue par le garde-fou éditorial.
 - Anciens composants visuels inutilisés `GridBackground`, `OrangeGlow`, `GlassCard`, `FooterReveal` et `PrereqImmersive` supprimés pour éviter leur réintroduction.

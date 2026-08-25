@@ -97,6 +97,10 @@ test.describe("Parcours critiques", () => {
     await footer.scrollIntoViewIfNeeded();
     await expect(footer.getByText(/Un projet de formation à vérifier/i)).toBeVisible();
     await expect(
+      footer.getByRole("heading", { level: 2, name: /Passez du projet aux réponses concrètes/i }),
+    ).toBeVisible();
+    await expect(footer.getByText("Préparer le premier service", { exact: true })).toBeVisible();
+    await expect(
       footer.getByRole("link", { name: /Parler à l.?équipe/i }),
     ).toHaveAttribute("href", "/contact");
     await expect(
