@@ -10,7 +10,7 @@ export const brandInfo = {
 } as const;
 
 export const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://compagnon-de-la-route.fr";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://compagnondelaroute.com";
 
 export const navLinks = [
   { href: "/formations", label: "Formations" },

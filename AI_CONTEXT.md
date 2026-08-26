@@ -56,6 +56,7 @@ Les chiffres de réussite, d'insertion, de satisfaction, de durée ou de finance
 - Le sitemap ne simule plus une modification à chaque build : les routes éditoriales ont une fréquence explicite et les articles reprennent leur date de mise à jour ou de relecture. Les pages légales ne sont pas dans le sitemap.
 - Les Mentions légales et CGV utilisent les valeurs serveur centralisées dans `src/lib/legal.ts` et restent en `noindex` tant que leurs champs obligatoires ne sont pas complets. Ne jamais remplacer ces champs par une supposition.
 - `npm run check:launch` est le contrôle manuel obligatoire avant ouverture définitive : domaine HTTPS, coordonnées, Resend, directeur de publication, hébergeur et médiateur doivent tous être configurés.
+- Le domaine canonique est `https://compagnondelaroute.com`. La variante `www.compagnondelaroute.com` redirige en 308 vers le domaine nu afin d'éviter les doublons SEO. Le domaine est rattaché au projet Vercel `t4c2s-projects/compagnon-de-la-route` ; la zone DNS reste administrée chez Hostinger.
 - Les pages reçoivent une CSP et des en-têtes de sécurité depuis `next.config.ts` ; le formulaire est limité à 32 Ko.
 - Les profils d'équipe, partenaires et distinctions ne sont pas publiés sans éléments vérifiables et droits d'utilisation.
 

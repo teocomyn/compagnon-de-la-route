@@ -395,6 +395,8 @@ test.describe("Parcours critiques", () => {
     expect(sitemap).toContain("/journal/metier-avenir-recrute");
     expect(sitemap).toContain("/le-label");
     expect(sitemap).toContain("/formations/exploitant-regulateur");
+    expect(sitemap).toContain("https://compagnondelaroute.com/");
+    expect(sitemap).not.toContain("compagnon-de-la-route.fr");
     expect(sitemap).not.toContain("/journal/devenir-conducteur-30-jours");
     expect(sitemap).not.toContain("/temoignages");
     expect(sitemap).toContain("/financement-formation-conducteur-voyageurs");
