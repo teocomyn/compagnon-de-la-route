@@ -57,6 +57,7 @@ Les chiffres de réussite, d'insertion, de satisfaction, de durée ou de finance
 - Les Mentions légales et CGV utilisent les valeurs serveur centralisées dans `src/lib/legal.ts` et restent en `noindex` tant que leurs champs obligatoires ne sont pas complets. Ne jamais remplacer ces champs par une supposition.
 - `npm run check:launch` est le contrôle manuel obligatoire avant ouverture définitive : domaine HTTPS, coordonnées, Resend, directeur de publication, hébergeur et médiateur doivent tous être configurés.
 - Le domaine canonique est `https://compagnondelaroute.com`. La variante `www.compagnondelaroute.com` redirige en 308 vers le domaine nu afin d'éviter les doublons SEO. Le domaine est rattaché au projet Vercel `t4c2s-projects/compagnon-de-la-route` ; la zone DNS reste administrée chez Hostinger.
+- L'identité de partage est centralisée dans `socialShareImage` : la carte Open Graph 1200 × 630, le favicon multi-résolution, l'icône d'application et l'icône Apple sont dérivés du monogramme client par `npm run assets:brand`. Les pages qui redéfinissent `openGraph` doivent reprendre explicitement cette image afin d'éviter la perte de l'héritage des métadonnées racine.
 - Les pages reçoivent une CSP et des en-têtes de sécurité depuis `next.config.ts` ; le formulaire est limité à 32 Ko.
 - Les profils d'équipe, partenaires et distinctions ne sont pas publiés sans éléments vérifiables et droits d'utilisation.
 

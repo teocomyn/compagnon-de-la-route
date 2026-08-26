@@ -1,8 +1,8 @@
-# AI Handoff — 25 août 2026
+# AI Handoff — 26 août 2026
 
 ## État
 
-La refonte éditoriale anti-slop, l'architecture de marque, le second parcours métier et le réalignement transversal de l'accueil sont poussés sur `main`, dernière livraison fonctionnelle `83f348f`. Compagnon de la Route est présenté comme le label transport porté par BOAZ ; l'accueil et le catalogue distinguent conduite et exploitation-régulation. Le déploiement de production n’a pas été vérifié dans ce dépôt.
+La refonte éditoriale anti-slop, l'architecture de marque, le second parcours métier et l'identité de partage sont poussés sur `main`, dernière livraison fonctionnelle `87c6d35`. Compagnon de la Route est présenté comme le label transport porté par BOAZ ; l'accueil et le catalogue distinguent conduite et exploitation-régulation.
 
 Préférence de livraison du client : après validation, committer et pousser chaque intervention sur `origin/main`, sans inclure de secret.
 
@@ -88,6 +88,8 @@ Préférence de livraison du client : après validation, committer et pousser ch
 - Domaine de production connecté dans le commit `38eb7a9` : `compagnondelaroute.com` devient l'URL canonique du code et de l'environnement Vercel Production ; `www.compagnondelaroute.com` redirige définitivement vers le domaine nu.
 - Le domaine et sa variante `www` sont rattachés au projet Vercel `t4c2s-projects/compagnon-de-la-route`. La zone DNS Hostinger conserve ses serveurs de noms et l'enregistrement `A @` pointe vers `76.76.21.21`. Le jeton Hostinger utilisé ponctuellement n'a été écrit dans aucun fichier, variable Vercel ou commit.
 - Playwright utilise désormais le port local dédié 3101 afin de ne jamais réutiliser par erreur un autre projet présent sur le port 3000.
+- Identité de partage livrée dans `87c6d35` : favicon ICO multi-résolution, icône Next.js 512 × 512, icône Apple 180 × 180 et carte Open Graph 1200 × 630 composés à partir du monogramme client et d'une photographie métier existante.
+- Les métadonnées racine, accueil, label et deux pages métier pointent vers la même carte versionnée. Le script reproductible `npm run assets:brand` évite toute redessine approximative du logo ; un garde-fou Playwright contrôle dimensions déclarées, balises Open Graph/Twitter et disponibilité des quatre assets.
 
 ## Vérifications passées
 
@@ -97,6 +99,7 @@ Préférence de livraison du client : après validation, committer et pousser ch
 - `npm run lint`, `npm run build` et `npm audit --omit=dev` — passés, 0 vulnérabilité de production.
 - Passe de lancement : `npm run lint` et `npm run build` passés ; `npm run test:e2e` — 16 tests passés ; `npm audit --omit=dev` — 0 vulnérabilité. `npm run check:launch` refuse correctement le feu vert avec la configuration locale incomplète.
 - Domaine public vérifié après déploiement : HTTPS 200, HSTS et CSP présents, redirection `www` 308, canonical et Open Graph en `.com`, sitemap en `.com`, deux serveurs DNS autoritatifs sur `76.76.21.21` et 16 tests Playwright passés directement sur `https://compagnondelaroute.com`.
+- Passe locale de l'identité de partage : `npm run lint`, `npm run build` et 17 tests Playwright passés ; `npm audit --omit=dev` retourne 0 vulnérabilité de production.
 - Accueil réaligné inspecté à 1440 × 1000 et 390 × 844 : hero, premier viewport mobile, ligne de réseau et sélecteur des deux métiers lisibles sans débordement horizontal.
 - Revue UI 21st de `Hero`, `Pathways`, `TrustBuilding` et de la page d'accueil — 0 finding.
 - Catalogue et page Exploitant-régulateur inspectés à 1440 × 1000 et 390 × 844 : statuts, appels à l'action, sources et réserves lisibles sans débordement horizontal.
