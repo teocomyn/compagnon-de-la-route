@@ -85,6 +85,9 @@ Préférence de livraison du client : après validation, committer et pousser ch
 - Garde-fous de lancement livrés dans le commit `d338952` : manifeste web, titre global élargi aux formations transport, sitemap hiérarchisé sans date artificielle de build et dates d'articles issues de leurs métadonnées vérifiées.
 - Mentions légales et CGV débarrassées des consignes internes visibles. Les informations de publication, d'hébergement et de médiation proviennent désormais uniquement de variables serveur ; les deux pages restent accessibles mais en `noindex` et hors sitemap tant que ces données ne sont pas complètes.
 - Commande `npm run check:launch` ajoutée. Elle contrôle sans afficher les secrets : domaine HTTPS, coordonnées publiques, configuration Resend, directeur de publication, hébergeur et médiateur de la consommation.
+- Domaine de production connecté dans le commit `38eb7a9` : `compagnondelaroute.com` devient l'URL canonique du code et de l'environnement Vercel Production ; `www.compagnondelaroute.com` redirige définitivement vers le domaine nu.
+- Le domaine et sa variante `www` sont rattachés au projet Vercel `t4c2s-projects/compagnon-de-la-route`. La zone DNS Hostinger conserve ses serveurs de noms et l'enregistrement `A @` pointe vers `76.76.21.21`. Le jeton Hostinger utilisé ponctuellement n'a été écrit dans aucun fichier, variable Vercel ou commit.
+- Playwright utilise désormais le port local dédié 3101 afin de ne jamais réutiliser par erreur un autre projet présent sur le port 3000.
 
 ## Vérifications passées
 
@@ -93,6 +96,7 @@ Préférence de livraison du client : après validation, committer et pousser ch
 - `npm run test:e2e` — 15 tests passés sur le port 3101 ; le port 3000 était occupé par un autre projet local et n'a pas été interrompu.
 - `npm run lint`, `npm run build` et `npm audit --omit=dev` — passés, 0 vulnérabilité de production.
 - Passe de lancement : `npm run lint` et `npm run build` passés ; `npm run test:e2e` — 16 tests passés ; `npm audit --omit=dev` — 0 vulnérabilité. `npm run check:launch` refuse correctement le feu vert avec la configuration locale incomplète.
+- Domaine public vérifié après déploiement : HTTPS 200, HSTS et CSP présents, redirection `www` 308, canonical et Open Graph en `.com`, sitemap en `.com`, deux serveurs DNS autoritatifs sur `76.76.21.21` et 16 tests Playwright passés directement sur `https://compagnondelaroute.com`.
 - Accueil réaligné inspecté à 1440 × 1000 et 390 × 844 : hero, premier viewport mobile, ligne de réseau et sélecteur des deux métiers lisibles sans débordement horizontal.
 - Revue UI 21st de `Hero`, `Pathways`, `TrustBuilding` et de la page d'accueil — 0 finding.
 - Catalogue et page Exploitant-régulateur inspectés à 1440 × 1000 et 390 × 844 : statuts, appels à l'action, sources et réserves lisibles sans débordement horizontal.
