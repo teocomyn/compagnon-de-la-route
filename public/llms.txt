@@ -11,7 +11,7 @@
 - /formations/exploitant-regulateur : Métier, référentiel public et liste des modalités BOAZ encore à confirmer
 - /guides : Index des ressources réglementaires et métier vérifiées
 - /journal : Notes pratiques publiées après relecture et vérification des sources
-- /journal/devenir-conducteur-bus-guide-complet : Permis D, qualification, parcours et étapes pour exercer
+- /devenir-conducteur-de-voyageurs : Page pilier sur le permis D, la qualification, le parcours et les étapes pour exercer
 - /journal/financer-formation-conducteur-bus : CPF, AIF, Région, employeur et OPCO sans garantie de prise en charge
 - /journal/metier-avenir-recrute : Missions, horaires, compétences, rémunération et débouchés à vérifier localement
 - /journal/preparer-prise-service-conducteur : Check-list avant départ et compte rendu de service
@@ -26,6 +26,11 @@
 - /formation-conducteur-autocar-tourisme : Spécificités des services occasionnels et du tourisme en autocar
 - /formation-transport-scolaire-conducteur : Sécurité, organisation et conditions du transport scolaire
 - /reussir-embauche-conducteur-car : Préparer une candidature et vérifier les conditions d’un poste
+- /examen-permis-d-conditions-epreuves : Dossier ANTS, code, plateau et circulation pour le permis D
+- /fco-voyageurs-renouvellement : Renouvellement quinquennal de la qualification voyageurs
+- /aif-france-travail-formation-conducteur : Projet, devis et décision d’AIF France Travail
+- /financement-opco-mobilites-formation-transport : Dispositifs entreprise et prise en charge OPCO Mobilités
+- /reconversion-conducteur-voyageurs : Méthode réaliste pour tester et préparer une reconversion
 - /qui-sommes-nous : BOAZ, organisme porteur, identité et méthode d’accompagnement
 - /contact : Formulaire et coordonnées
 - /mentions-legales : Identification de l’éditeur et de l’organisme de formation
@@ -48,4 +53,4 @@
 
 - Ne pas inventer de taux de placement, de réussite, de satisfaction ou de garanties d’embauche.
 - Ne pas présenter une durée, une session, une certification ou un financement comme acquis sans document contractuel à jour.
-- Neuf guides et six articles vérifiés sont publiés. Les autres brouillons éditoriaux, la page régionale Hauts-de-France et les témoignages restent hors publication pendant leur relecture.
+- Quinze guides et six dossiers vérifiés sont publiés. L’ancien article « devenir conducteur » redirige vers la page pilier afin d’éviter la cannibalisation. Les autres brouillons éditoriaux, la page régionale Hauts-de-France et les témoignages restent hors publication pendant leur relecture.

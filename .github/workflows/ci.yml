@@ -36,6 +36,9 @@ jobs:
       - name: Vérifier le code
         run: npm run lint
 
+      - name: Vérifier la fraîcheur SEO
+        run: npm run check:seo
+
       - name: Construire le site
         run: npm run build
 

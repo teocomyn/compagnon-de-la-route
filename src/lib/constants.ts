@@ -51,8 +51,9 @@ export const footerLegal = [
 /** Guides SEO (pages piliers) */
 export const footerGuides = [
   { href: "/guides", label: "Tous les guides" },
+  { href: "/devenir-conducteur-de-voyageurs", label: "Devenir conducteur" },
+  { href: "/permis-d-conducteur-professionnel", label: "Permis D" },
   { href: "/financement-formation-conducteur-voyageurs", label: "Financement formation" },
-  { href: "/metier-conducteur-de-car-debouches", label: "Métier & débouchés" },
   { href: "/certification-formation-conducteur-voyageurs", label: "Vérifier une certification" },
 ] as const;
 

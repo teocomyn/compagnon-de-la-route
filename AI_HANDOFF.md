@@ -2,11 +2,18 @@
 
 ## État
 
-La refonte éditoriale anti-slop, l'architecture de marque, le second parcours métier et le durcissement de lancement sont poussés sur `main`, dernière livraison fonctionnelle `3e3bac2`. Compagnon de la Route est présenté comme le label transport porté par BOAZ ; l'accueil et le catalogue distinguent conduite et exploitation-régulation.
+La refonte éditoriale anti-slop, l'architecture de marque, le second parcours métier, le durcissement de lancement et le cluster SEO conducteur sont livrés sur `main`. Compagnon de la Route est présenté comme le label transport porté par BOAZ ; l'accueil et le catalogue distinguent conduite et exploitation-régulation.
 
 Préférence de livraison du client : après validation, committer et pousser chaque intervention sur `origin/main`, sans inclure de secret.
 
 ## Changements principaux
+
+- Cluster SEO porté à quinze guides vérifiés : page pilier `/devenir-conducteur-de-voyageurs`, examen du permis D, renouvellement FCO, AIF France Travail, financement OPCO Mobilités et reconversion, en complément des neuf guides initiaux.
+- L’ancien article `/journal/devenir-conducteur-bus-guide-complet` redirige définitivement vers l’URL pilier ; les cartes Journal pointent directement vers la nouvelle canonique et le sitemap ne publie plus l’ancienne URL.
+- Le recrutement reste traité par le guide et l’article existants ; l’exploitant-régulateur reste traité par sa page métier sourcée. Le maillage les intègre au cluster sans créer de pages concurrentes.
+- Chaque nouveau satellite expose ses sources officielles, une date de relecture, une échéance de contrôle, un schéma `Article`, un schéma `FAQPage` lorsque la FAQ est visible, un fil d’Ariane et trois liens contextuels. Les neuf guides initiaux reçoivent également des liens contextuels.
+- Le hub `/guides` expose une `CollectionPage`/`ItemList` de quinze ressources. Le sitemap est dérivé du répertoire central, `llms.txt` est aligné et la page Hauts-de-France reste en 404 et hors index tant qu’aucun lieu réel n’est confirmé.
+- `npm run check:seo` échoue après 190 jours sans relecture réglementaire. La CI l’exécute à chaque livraison et le workflow mensuel `seo-review.yml` surveille l’échéance.
 
 - Hero de l'accueil conservé dans sa direction photographique validée, mais élargi au label entier : eyebrow BOAZ, proposition de valeur commune aux deux métiers, CTA vers `/formations` et ruban conduite / exploitation-régulation / service.
 - Nouvelle section `Pathways` immédiatement après la ligne de réseau : deux grandes lignes éditoriales « à bord » et « à l'exploitation », chacune avec verbes métier, statut public et lien direct. L'ancienne section `WhyBecome`, générique et exclusivement centrée sur le conducteur, n'est plus rendue sur l'accueil.
@@ -95,6 +102,8 @@ Préférence de livraison du client : après validation, committer et pousser ch
 - Les coordonnées officielles de l'hébergeur Vercel Inc. sont configurées dans l'environnement Production. L'adresse professionnelle, le téléphone public, Resend, le directeur de publication et la situation B2C restent à confirmer.
 
 ## Vérifications passées
+
+- Passe cluster SEO : `npm run check:seo`, `npm run lint` et `npm run build` passés ; 18 tests Playwright passés, dont canoniques, schémas, quinze cartes du hub, absence de page locale artificielle dans le sitemap et réponse de toutes les routes publiées.
 
 - Contact qualifié inspecté à 1440 × 1100 et 390 × 844 avec le projet Exploitant-régulateur prérempli ; formulaire, consentement et footer lisibles sans débordement horizontal.
 - Revue UI 21st du formulaire et de la page contact — 0 finding.

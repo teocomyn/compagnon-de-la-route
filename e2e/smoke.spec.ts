@@ -257,7 +257,10 @@ test.describe("Parcours critiques", () => {
     await page.goto("/journal");
 
     await expect(page.getByText("6 dossiers vérifiés", { exact: true })).toBeVisible();
-    await expect(page.locator('main a[href^="/journal/"]:has(h2)')).toHaveCount(6);
+    await expect(page.locator('main a:has(h2)')).toHaveCount(6);
+    await expect(
+      page.getByRole("link", { name: /Comment devenir conducteur de bus ou de car/i }),
+    ).toHaveAttribute("href", "/devenir-conducteur-de-voyageurs");
   });
 
   test("contact : formulaire accessible", async ({ page }) => {
@@ -366,6 +369,12 @@ test.describe("Parcours critiques", () => {
     const tourism = await request.get("/formation-conducteur-autocar-tourisme");
     const school = await request.get("/formation-transport-scolaire-conducteur");
     const hiring = await request.get("/reussir-embauche-conducteur-car");
+    const pillar = await request.get("/devenir-conducteur-de-voyageurs");
+    const permitExam = await request.get("/examen-permis-d-conditions-epreuves");
+    const fcoRenewal = await request.get("/fco-voyageurs-renouvellement");
+    const franceTravail = await request.get("/aif-france-travail-formation-conducteur");
+    const opco = await request.get("/financement-opco-mobilites-formation-transport");
+    const careerChange = await request.get("/reconversion-conducteur-voyageurs");
     const guides = await request.get("/guides");
     const suspendedGuide = await request.get(
       "/formation-conducteur-voyageurs-hauts-de-france",
@@ -396,6 +405,12 @@ test.describe("Parcours critiques", () => {
     expect(tourism.ok()).toBe(true);
     expect(school.ok()).toBe(true);
     expect(hiring.ok()).toBe(true);
+    expect(pillar.ok()).toBe(true);
+    expect(permitExam.ok()).toBe(true);
+    expect(fcoRenewal.ok()).toBe(true);
+    expect(franceTravail.ok()).toBe(true);
+    expect(opco.ok()).toBe(true);
+    expect(careerChange.ok()).toBe(true);
     expect(guides.ok()).toBe(true);
     expect(await financing.text()).toContain("France Travail");
     expect(await certification.text()).toContain("RNCP37878");
@@ -426,7 +441,8 @@ test.describe("Parcours critiques", () => {
     expect(sitemap).toContain("/journal/preparer-prise-service-conducteur");
     expect(sitemap).toContain("/journal/choisir-formation-conducteur-voyageurs");
     expect(sitemap).toContain("/journal/reussir-entretien");
-    expect(sitemap).toContain("/journal/devenir-conducteur-bus-guide-complet");
+    expect(sitemap).toContain("/devenir-conducteur-de-voyageurs");
+    expect(sitemap).not.toContain("/journal/devenir-conducteur-bus-guide-complet");
     expect(sitemap).toContain("/journal/financer-formation-conducteur-bus");
     expect(sitemap).toContain("/journal/metier-avenir-recrute");
     expect(sitemap).toContain("/le-label");
@@ -444,12 +460,43 @@ test.describe("Parcours critiques", () => {
     expect(sitemap).toContain("/formation-conducteur-autocar-tourisme");
     expect(sitemap).toContain("/formation-transport-scolaire-conducteur");
     expect(sitemap).toContain("/reussir-embauche-conducteur-car");
+    expect(sitemap).toContain("/examen-permis-d-conditions-epreuves");
+    expect(sitemap).toContain("/fco-voyageurs-renouvellement");
+    expect(sitemap).toContain("/aif-france-travail-formation-conducteur");
+    expect(sitemap).toContain("/financement-opco-mobilites-formation-transport");
+    expect(sitemap).toContain("/reconversion-conducteur-voyageurs");
+    expect(sitemap).not.toContain("/formation-conducteur-voyageurs-hauts-de-france");
     expect(sitemap).not.toContain("/mentions-legales");
     expect(sitemap).not.toContain("/cgv");
     expect(sitemap).toContain("<changefreq>weekly</changefreq>");
     expect(sitemap).not.toMatch(/<lastmod>\d{4}-\d{2}-\d{2}T/);
     expect(llms).not.toMatch(/210h|30 jours|85 % de CDIsation/i);
     expect(llms).toContain("BOAZ (LES COMPAGNONS DE LA ROUTE)");
+  });
+
+  test("SEO : le cluster expose ses canoniques, schémas et liens internes", async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto("/fco-voyageurs-renouvellement");
+
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+      "href",
+      "https://compagnondelaroute.com/fco-voyageurs-renouvellement",
+    );
+    const schemas = await page.locator('script[type="application/ld+json"]').allTextContents();
+    expect(schemas.join(" ")).toContain('"@type":"Article"');
+    expect(schemas.join(" ")).toContain('"@type":"FAQPage"');
+    expect(schemas.join(" ")).toContain('"citation"');
+    await expect(page.getByRole("link", { name: /Renouveler sa FCO/i })).toHaveCount(0);
+    await expect(page.getByRole("link", { name: /Comprendre FIMO, FCO et passerelle/i })).toBeVisible();
+
+    const hasHorizontalOverflow = await page.evaluate(
+      () => document.documentElement.scrollWidth > window.innerWidth,
+    );
+    expect(hasHorizontalOverflow).toBe(false);
+
+    await page.goto("/guides");
+    await expect(page.getByText("15 ressources vérifiées", { exact: true })).toBeVisible();
+    await expect(page.locator('main a[href^="/"]:has(h2)')).toHaveCount(15);
   });
 
   test("lancement : les pages légales incomplètes restent hors index", async ({ request }) => {

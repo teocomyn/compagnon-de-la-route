@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 
+export const verifiedGuidesReviewedAtIso = "2026-08-25";
+
 export type VerifiedGuide = {
   slug: string;
   eyebrow: string;
@@ -18,6 +20,17 @@ export type VerifiedGuide = {
     detail: string;
   }[];
   reviewedAt: string;
+  reviewedAtIso?: string;
+  nextReviewAt?: string;
+  relatedLinks?: readonly {
+    href: string;
+    label: string;
+    description: string;
+  }[];
+  faqs?: readonly {
+    question: string;
+    answer: string;
+  }[];
 };
 
 export const verifiedGuides = {

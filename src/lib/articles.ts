@@ -22,6 +22,7 @@ export type ArticleFrontmatter = {
     label: string;
     url: string;
   }[];
+  canonicalPath?: string;
 };
 
 const articlesDir = path.join(process.cwd(), "content/articles");
@@ -71,6 +72,10 @@ export function getArticleBySlug(slug: string): {
 }
 
 export type ArticleListItem = ArticleFrontmatter & { slug: string };
+
+export function getArticleHref(article: Pick<ArticleListItem, "slug" | "canonicalPath">): string {
+  return article.canonicalPath ?? `/journal/${article.slug}`;
+}
 
 export function formatArticleDate(date: string): string {
   return new Intl.DateTimeFormat("fr-FR", {

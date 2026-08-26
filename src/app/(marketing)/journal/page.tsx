@@ -2,7 +2,7 @@ import { ArticleCard } from "@/components/blog/ArticleCard";
 import { BreadcrumbBar } from "@/components/layout/BreadcrumbBar";
 import { PageBreadcrumbs } from "@/components/seo/PageBreadcrumbs";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import { getAllArticlesMeta } from "@/lib/articles";
+import { getAllArticlesMeta, getArticleHref } from "@/lib/articles";
 import { siteName, siteUrl } from "@/lib/constants";
 import type { Metadata } from "next";
 
@@ -53,7 +53,7 @@ function JournalJsonLd({ articles }: { articles: ReturnType<typeof getAllArticle
       itemListElement: articles.map((article, index) => ({
         "@type": "ListItem",
         position: index + 1,
-        url: `${baseUrl}/journal/${article.slug}`,
+        url: `${baseUrl}${getArticleHref(article)}`,
         name: article.title,
       })),
     },

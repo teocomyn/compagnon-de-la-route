@@ -5,9 +5,13 @@ import { formatArticleDate, type ArticleFrontmatter } from "@/lib/articles";
 
 type ArticleHeaderProps = {
   meta: ArticleFrontmatter;
+  breadcrumb?: { label: string; href: string };
 };
 
-export function ArticleHeader({ meta }: ArticleHeaderProps) {
+export function ArticleHeader({
+  meta,
+  breadcrumb = { label: "Journal", href: "/journal" },
+}: ArticleHeaderProps) {
   return (
     <header className="relative overflow-hidden border-b border-white/10">
       <div className="relative h-[520px] md:h-auto md:min-h-[320px] md:aspect-[21/9]">
@@ -28,10 +32,10 @@ export function ArticleHeader({ meta }: ArticleHeaderProps) {
             <ol className="flex flex-wrap items-baseline gap-x-1.5 gap-y-0.5">
               <li>
                 <Link
-                  href="/journal"
+                  href={breadcrumb.href}
                   className="text-white/[0.22] no-underline transition-colors duration-200 hover:text-white/[0.35] focus-visible:rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500/80"
                 >
-                  Journal
+                  {breadcrumb.label}
                 </Link>
               </li>
               <li className="select-none text-white/[0.06]" aria-hidden>

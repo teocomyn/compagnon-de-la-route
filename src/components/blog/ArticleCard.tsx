@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Badge } from "@/components/ui/Badge";
-import { formatArticleDate, type ArticleListItem } from "@/lib/articles";
+import { formatArticleDate, getArticleHref, type ArticleListItem } from "@/lib/articles";
 
 export function ArticleCard({
   article,
@@ -16,7 +16,7 @@ export function ArticleCard({
 
   return (
     <Link
-      href={`/journal/${article.slug}`}
+      href={getArticleHref(article)}
       className="group block border-t border-white/15 pt-4 transition-colors duration-200 hover:border-orange-400"
     >
       <div className="relative aspect-[3/2] overflow-hidden">

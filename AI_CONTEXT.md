@@ -33,11 +33,12 @@ Les chiffres de réussite, d'insertion, de satisfaction, de durée ou de finance
 - La durée, le calendrier, les prérequis, la certification visée et le financement sont confirmés avant inscription.
 - Le site ne garantit ni financement, ni certification, ni emploi.
 - Le journal applique une publication sélective dans `src/lib/articles.ts` : seuls les fichiers portant `status: verified`, une date de relecture et au moins une source sont générés. Une variable d’environnement ne peut pas ouvrir tous les brouillons.
-- Six articles longs, sourcés et relus au 25 août 2026 sont publics : devenir conducteur, financement, métier et débouchés, choix d’une formation, entretien d’embauche et prise de service. Les dix autres fichiers MDX restent des brouillons fermés.
-- Neuf guides statiques, sourcés et relus au 25 août 2026 sont publiés hors de ce drapeau : financement, métier/débouchés, certifications, permis D, FIMO/FCO, FAQ, tourisme, transport scolaire et candidature.
+- Six dossiers longs et sourcés sont publics. Le dossier « devenir conducteur » est désormais consolidé sur l’URL pilier `/devenir-conducteur-de-voyageurs` ; son ancienne URL Journal redirige définitivement vers cette page et n’apparaît plus dans le sitemap. Les dix autres fichiers MDX restent des brouillons fermés.
+- Quinze guides sont publiés : les neuf guides initiaux, la page pilier et cinq satellites spécialisés sur l’examen du permis D, le renouvellement FCO, l’AIF France Travail, OPCO Mobilités et la reconversion. Les pages recrutement et exploitant-régulateur complètent le cluster sans créer de doublon éditorial.
 - Les guides publics sont rendus côté serveur depuis `src/lib/verified-guides.ts` et renvoient vers Service Public, France Travail, France Compétences, le ministère du Travail et l’Onisep selon le sujet.
 - Les routes `/guides` et `/journal` sont accessibles depuis la navigation principale et ne listent que les ressources publiques.
 - La page régionale Hauts-de-France reste suspendue tant qu’aucun lieu réel ni aucune session locale ne sont confirmés.
+- `npm run check:seo` impose une relecture des sources au plus tard 190 jours après le dernier contrôle. Le workflow mensuel `.github/workflows/seo-review.yml` remonte automatiquement une échéance dépassée.
 - Les témoignages génériques et les agrégats non documentés ne sont plus publiés.
 - La direction visuelle suit un système éditorial transport : Archivo, IBM Plex Mono, aplats vert nuit et orange, bordures franches, photographie métier réelle et très peu d'arrondis. Éviter les halos, fonds quadrillés, surfaces en verre, ombres décoratives, cartes interchangeables et animations de scroll répétées.
 - Le hero de l'accueil utilise un slider plein cadre avec les quatre photographies fournies par le client dans `public/images/hero` : route nocturne, autocar en montagne, conducteur au poste et bus urbain en mouvement. Sur mobile, ce slider devient l'arrière-plan d'un hero plein écran : le titre de marque, une proposition de valeur courte, le CTA principal et les preuves factuelles apparaissent dès le premier viewport ; les commandes restent ancrées en bas. Sur desktop, la composition demeure en deux colonnes. Le défilement est contrôlable, se suspend au survol et au focus, accepte le swipe et les flèches du clavier, et devient manuel avec `prefers-reduced-motion`, sans promesse d'emploi, de financement ou de délai.
@@ -75,6 +76,7 @@ Copier `.env.example` vers un fichier d'environnement local et renseigner les va
 
 ```bash
 npm run lint
+npm run check:seo
 npm run build
 npm run test:e2e
 npm audit --omit=dev

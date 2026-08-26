@@ -57,6 +57,11 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/journal/devenir-conducteur-bus-guide-complet",
+        destination: "/devenir-conducteur-de-voyageurs",
+        permanent: true,
+      },
+      {
         source: "/:path*",
         has: [{ type: "host", value: "www.compagnondelaroute.com" }],
         destination: "https://compagnondelaroute.com/:path*",
