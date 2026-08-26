@@ -100,6 +100,7 @@ Préférence de livraison du client : après validation, committer et pousser ch
 - Passe de lancement : `npm run lint` et `npm run build` passés ; `npm run test:e2e` — 16 tests passés ; `npm audit --omit=dev` — 0 vulnérabilité. `npm run check:launch` refuse correctement le feu vert avec la configuration locale incomplète.
 - Domaine public vérifié après déploiement : HTTPS 200, HSTS et CSP présents, redirection `www` 308, canonical et Open Graph en `.com`, sitemap en `.com`, deux serveurs DNS autoritatifs sur `76.76.21.21` et 16 tests Playwright passés directement sur `https://compagnondelaroute.com`.
 - Passe locale de l'identité de partage : `npm run lint`, `npm run build` et 17 tests Playwright passés ; `npm audit --omit=dev` retourne 0 vulnérabilité de production.
+- Identité de partage vérifiée en production sur `compagnondelaroute.com` après le déploiement `dpl_3qMgdgzLdUTdaDbo7AHd3b33mcoK` : `og:image` et `twitter:image` utilisent la carte 1200 × 630 ; favicon, icône 512 et icône Apple répondent en HTTP 200 ; le test Playwright dédié passe directement sur le domaine public.
 - Accueil réaligné inspecté à 1440 × 1000 et 390 × 844 : hero, premier viewport mobile, ligne de réseau et sélecteur des deux métiers lisibles sans débordement horizontal.
 - Revue UI 21st de `Hero`, `Pathways`, `TrustBuilding` et de la page d'accueil — 0 finding.
 - Catalogue et page Exploitant-régulateur inspectés à 1440 × 1000 et 390 × 844 : statuts, appels à l'action, sources et réserves lisibles sans débordement horizontal.
