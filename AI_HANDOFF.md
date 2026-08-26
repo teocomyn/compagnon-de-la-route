@@ -2,7 +2,7 @@
 
 ## État
 
-La refonte éditoriale anti-slop, l'architecture de marque, le second parcours métier et l'identité de partage sont poussés sur `main`, dernière livraison fonctionnelle `87c6d35`. Compagnon de la Route est présenté comme le label transport porté par BOAZ ; l'accueil et le catalogue distinguent conduite et exploitation-régulation.
+La refonte éditoriale anti-slop, l'architecture de marque, le second parcours métier et le durcissement de lancement sont poussés sur `main`, dernière livraison fonctionnelle `3e3bac2`. Compagnon de la Route est présenté comme le label transport porté par BOAZ ; l'accueil et le catalogue distinguent conduite et exploitation-régulation.
 
 Préférence de livraison du client : après validation, committer et pousser chaque intervention sur `origin/main`, sans inclure de secret.
 
@@ -90,6 +90,9 @@ Préférence de livraison du client : après validation, committer et pousser ch
 - Playwright utilise désormais le port local dédié 3101 afin de ne jamais réutiliser par erreur un autre projet présent sur le port 3000.
 - Identité de partage livrée dans `87c6d35` : favicon ICO multi-résolution, icône Next.js 512 × 512, icône Apple 180 × 180 et carte Open Graph 1200 × 630 composés à partir du monogramme client et d'une photographie métier existante.
 - Les métadonnées racine, accueil, label et deux pages métier pointent vers la même carte versionnée. Le script reproductible `npm run assets:brand` évite toute redessine approximative du logo ; un garde-fou Playwright contrôle dimensions déclarées, balises Open Graph/Twitter et disponibilité des quatre assets.
+- Durcissement opérationnel livré dans `3e3bac2` : coordonnées publiques rendues conditionnellement dans le header desktop, le menu mobile, le footer, la page contact et les mentions légales ; aucun numéro de titulaire de domaine n'est réutilisé comme contact public sans validation.
+- Le contrôle `check:launch` vérifie désormais HTTPS, MX de réception, SPF, DKIM, DMARC et le statut du domaine Resend. La médiation dépend explicitement de `CONSUMER_SALES_ENABLED`, afin de ne pas inventer un médiateur si BOAZ ne vend pas aux particuliers.
+- Les coordonnées officielles de l'hébergeur Vercel Inc. sont configurées dans l'environnement Production. L'adresse professionnelle, le téléphone public, Resend, le directeur de publication et la situation B2C restent à confirmer.
 
 ## Vérifications passées
 
@@ -101,6 +104,7 @@ Préférence de livraison du client : après validation, committer et pousser ch
 - Domaine public vérifié après déploiement : HTTPS 200, HSTS et CSP présents, redirection `www` 308, canonical et Open Graph en `.com`, sitemap en `.com`, deux serveurs DNS autoritatifs sur `76.76.21.21` et 16 tests Playwright passés directement sur `https://compagnondelaroute.com`.
 - Passe locale de l'identité de partage : `npm run lint`, `npm run build` et 17 tests Playwright passés ; `npm audit --omit=dev` retourne 0 vulnérabilité de production.
 - Identité de partage vérifiée en production sur `compagnondelaroute.com` après le déploiement `dpl_3qMgdgzLdUTdaDbo7AHd3b33mcoK` : `og:image` et `twitter:image` utilisent la carte 1200 × 630 ; favicon, icône 512 et icône Apple répondent en HTTP 200 ; le test Playwright dédié passe directement sur le domaine public.
+- Passe locale du durcissement de lancement : lint, build et 17 tests Playwright passés ; audit de production à 0 vulnérabilité. L'audit DNS constate qu'aucun MX, SPF, DKIM ou DMARC n'est encore publié pour `compagnondelaroute.com`.
 - Accueil réaligné inspecté à 1440 × 1000 et 390 × 844 : hero, premier viewport mobile, ligne de réseau et sélecteur des deux métiers lisibles sans débordement horizontal.
 - Revue UI 21st de `Hero`, `Pathways`, `TrustBuilding` et de la page d'accueil — 0 finding.
 - Catalogue et page Exploitant-régulateur inspectés à 1440 × 1000 et 390 × 844 : statuts, appels à l'action, sources et réserves lisibles sans débordement horizontal.
@@ -144,8 +148,8 @@ Préférence de livraison du client : après validation, committer et pousser ch
 
 1. Documenter puis publier le parcours Exploitant-régulateur sans reprendre les durées, financements, volumes d'emploi ou dates évoqués oralement tant qu'une fiche programme officielle n'est pas disponible.
 2. Valider la fiche programme réelle et les prochaines sessions du parcours conducteur.
-3. Fournir les coordonnées publiques et les variables Resend.
-4. Compléter directeur de publication, hébergeur et médiateur.
+3. Créer et valider `contact@compagnondelaroute.com`, choisir le téléphone public et configurer Resend.
+4. Confirmer Arnaud Jean Victor Docquois comme directeur de publication ou fournir le nom désigné ; confirmer si BOAZ vend aux particuliers et, si oui, le médiateur auquel BOAZ a adhéré.
 5. Relire individuellement les dix brouillons restants ; ne passer un fichier à `status: verified` qu’après suppression des promesses fragiles et ajout de sources officielles. Conserver la page Hauts-de-France en 404 tant qu’un lieu et des sessions locales ne sont pas confirmés.
 6. Recueillir des témoignages avec consentement avant de réindexer la page dédiée.
 7. Revalider les liens et références réglementaires des neuf guides lors de toute évolution du programme, et au plus tard avant le 7 juin 2028 pour RNCP37878.

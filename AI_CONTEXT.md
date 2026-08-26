@@ -56,6 +56,7 @@ Les chiffres de réussite, d'insertion, de satisfaction, de durée ou de finance
 - Le sitemap ne simule plus une modification à chaque build : les routes éditoriales ont une fréquence explicite et les articles reprennent leur date de mise à jour ou de relecture. Les pages légales ne sont pas dans le sitemap.
 - Les Mentions légales et CGV utilisent les valeurs serveur centralisées dans `src/lib/legal.ts` et restent en `noindex` tant que leurs champs obligatoires ne sont pas complets. Ne jamais remplacer ces champs par une supposition.
 - `npm run check:launch` est le contrôle manuel obligatoire avant ouverture définitive : domaine HTTPS, coordonnées, Resend, directeur de publication, hébergeur et médiateur doivent tous être configurés.
+- Le contrôle de lancement vérifie également les services externes : boîte MX pour l'adresse publique, SPF du Return-Path `send`, DKIM Resend, DMARC, domaine Resend vérifié et réponse HTTPS. `CONSUMER_SALES_ENABLED` doit être confirmé ; le médiateur n'est exigé que si BOAZ vend effectivement aux particuliers.
 - Le domaine canonique est `https://compagnondelaroute.com`. La variante `www.compagnondelaroute.com` redirige en 308 vers le domaine nu afin d'éviter les doublons SEO. Le domaine est rattaché au projet Vercel `t4c2s-projects/compagnon-de-la-route` ; la zone DNS reste administrée chez Hostinger.
 - L'identité de partage est centralisée dans `socialShareImage` : la carte Open Graph 1200 × 630, le favicon multi-résolution, l'icône d'application et l'icône Apple sont dérivés du monogramme client par `npm run assets:brand`. Les pages qui redéfinissent `openGraph` doivent reprendre explicitement cette image afin d'éviter la perte de l'héritage des métadonnées racine.
 - Les pages reçoivent une CSP et des en-têtes de sécurité depuis `next.config.ts` ; le formulaire est limité à 32 Ko.
@@ -82,7 +83,6 @@ npm audit --omit=dev
 ## Points à confirmer avant mise en production
 
 - Directeur de la publication nominatif
-- Hébergeur de production et ses coordonnées légales
 - E-mail, téléphone et domaine publics réellement opérationnels
 - Fiche programme contractuelle : durée, lieux, calendrier, prérequis, certification et prix
 - Médiateur de la consommation si vente à des particuliers
