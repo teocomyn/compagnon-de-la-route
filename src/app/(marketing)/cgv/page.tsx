@@ -27,12 +27,12 @@ export default function CgvPage() {
       </div>
       <div className="section-shell mx-auto max-w-4xl pb-16 pt-3 md:pt-5">
         <h1 className="text-4xl font-bold tracking-tight">Conditions générales de vente</h1>
-        <p className="mt-4 text-sm text-white-45">Dernière mise à jour : 25 août 2026</p>
+        <p className="mt-4 text-sm text-white-45">Dernière mise à jour : 26 août 2026</p>
 
-        {!legalReadiness.consumerTerms ? (
+        {legalInfo.consumerSalesEnabled === null ? (
           <div className="mt-8 border-l-2 border-orange-400 py-1 pl-5 text-[15px] leading-relaxed text-white-75">
-            Ces conditions restent à valider avec les documents contractuels de BOAZ avant
-            toute vente en ligne à un particulier.
+            Le statut de vente aux particuliers doit encore être confirmé par BOAZ. Cette
+            page reste hors index jusqu&apos;à cette validation.
           </div>
         ) : null}
 
@@ -92,7 +92,13 @@ export default function CgvPage() {
           </p>
 
           <h2>8. Médiation de la consommation</h2>
-          {legalInfo.mediatorName && legalInfo.mediatorUrl ? (
+          {legalInfo.consumerSalesEnabled === false ? (
+            <p>
+              BOAZ a déclaré ne pas conclure de contrat de consommation avec des
+              particuliers depuis ce site. Cette mention devra être réévaluée avant toute
+              évolution du mode de commercialisation.
+            </p>
+          ) : legalInfo.mediatorName && legalInfo.mediatorUrl ? (
             <p>
               Après réclamation écrite préalable restée sans solution, le consommateur peut
               saisir {legalInfo.mediatorName} :{" "}

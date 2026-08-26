@@ -1,11 +1,11 @@
 "use client";
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { ArrowRight, BadgeCheck } from "lucide-react";
+import { ArrowRight, BadgeCheck, Mail, Phone } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { buttonVariants } from "@/components/ui/Button";
-import { brandInfo, navLinks } from "@/lib/constants";
+import { brandInfo, contactInfo, navLinks } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 type MobileMenuProps = {
@@ -142,6 +142,29 @@ export function MobileMenu({ open, pathname, onClose }: MobileMenuProps) {
             </ul>
 
             <div className="mt-auto pt-8">
+              {contactInfo.email || contactInfo.phone ? (
+                <div className="mb-6 grid gap-3 border-t border-white/10 pt-6 text-sm text-white-60">
+                  {contactInfo.phone ? (
+                    <a
+                      href={`tel:${contactInfo.phone.replace(/\s/g, "")}`}
+                      className="inline-flex min-h-11 items-center gap-3 transition-colors hover:text-orange-200"
+                    >
+                      <Phone className="h-4 w-4 text-orange-300" aria-hidden="true" />
+                      {contactInfo.phone}
+                    </a>
+                  ) : null}
+                  {contactInfo.email ? (
+                    <a
+                      href={`mailto:${contactInfo.email}`}
+                      className="inline-flex min-h-11 items-center gap-3 break-all transition-colors hover:text-orange-200"
+                    >
+                      <Mail className="h-4 w-4 shrink-0 text-orange-300" aria-hidden="true" />
+                      {contactInfo.email}
+                    </a>
+                  ) : null}
+                </div>
+              ) : null}
+
               <Link
                 href="/formations/conducteur-voyageurs"
                 onClick={onClose}

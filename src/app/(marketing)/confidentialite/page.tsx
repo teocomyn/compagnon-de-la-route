@@ -23,7 +23,7 @@ export default function ConfidentialitePage() {
       </div>
       <div className="section-shell mx-auto max-w-4xl pb-16 pt-3 md:pt-5">
         <h1 className="text-4xl font-bold tracking-tight">Politique de confidentialité</h1>
-        <p className="mt-4 text-sm text-white-45">Dernière mise à jour : 25 août 2026</p>
+        <p className="mt-4 text-sm text-white-45">Dernière mise à jour : 26 août 2026</p>
 
         <div className="article-prose mt-10">
           <h2>Responsable du traitement</h2>

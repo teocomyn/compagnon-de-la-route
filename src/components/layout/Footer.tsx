@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Mail, Phone } from "lucide-react";
 import Link from "next/link";
 import { BrandLogo } from "@/components/brand/BrandLogo";
 import {
@@ -7,6 +7,7 @@ import {
   footerGuides,
   footerLegal,
   brandInfo,
+  contactInfo,
   organizationInfo,
   siteName,
 } from "@/lib/constants";
@@ -111,6 +112,29 @@ export function Footer() {
                 <dd>Qualiopi, actions de formation</dd>
               </div>
             </dl>
+
+            {contactInfo.email || contactInfo.phone ? (
+              <address className="mt-7 grid gap-2 border-t border-white/10 pt-6 text-sm not-italic text-white-60">
+                {contactInfo.phone ? (
+                  <a
+                    className="inline-flex items-center gap-2 transition-colors hover:text-orange-200"
+                    href={`tel:${contactInfo.phone.replace(/\s/g, "")}`}
+                  >
+                    <Phone className="h-4 w-4 text-orange-300" aria-hidden="true" />
+                    {contactInfo.phone}
+                  </a>
+                ) : null}
+                {contactInfo.email ? (
+                  <a
+                    className="inline-flex items-center gap-2 break-all transition-colors hover:text-orange-200"
+                    href={`mailto:${contactInfo.email}`}
+                  >
+                    <Mail className="h-4 w-4 shrink-0 text-orange-300" aria-hidden="true" />
+                    {contactInfo.email}
+                  </a>
+                ) : null}
+              </address>
+            ) : null}
           </div>
 
           <nav

@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Menu, X } from "lucide-react";
+import { ArrowRight, Mail, Menu, Phone, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -8,7 +8,7 @@ import { BrandLogo } from "@/components/brand/BrandLogo";
 import { MobileMenu } from "@/components/layout/MobileMenu";
 import { buttonVariants } from "@/components/ui/Button";
 import { VariableFontHover } from "@/components/ui/variable-font-hover";
-import { brandInfo, navLinks } from "@/lib/constants";
+import { brandInfo, contactInfo, navLinks } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 function isActiveRoute(pathname: string, href: string) {
@@ -109,6 +109,29 @@ export function Header() {
           </nav>
 
           <div className="ml-auto flex items-center gap-2">
+            {contactInfo.email || contactInfo.phone ? (
+              <div className="mr-1 hidden items-end gap-1 border-r border-white/10 pr-4 2xl:flex 2xl:flex-col">
+                {contactInfo.phone ? (
+                  <a
+                    href={`tel:${contactInfo.phone.replace(/\s/g, "")}`}
+                    className="inline-flex items-center gap-1.5 text-[11px] font-medium text-white-60 transition-colors hover:text-orange-200"
+                  >
+                    <Phone className="h-3 w-3 text-orange-300" aria-hidden="true" />
+                    {contactInfo.phone}
+                  </a>
+                ) : null}
+                {contactInfo.email ? (
+                  <a
+                    href={`mailto:${contactInfo.email}`}
+                    className="inline-flex items-center gap-1.5 text-[11px] font-medium text-white-60 transition-colors hover:text-orange-200"
+                  >
+                    <Mail className="h-3 w-3 text-orange-300" aria-hidden="true" />
+                    {contactInfo.email}
+                  </a>
+                ) : null}
+              </div>
+            ) : null}
+
             <Link
               href="/formations/conducteur-voyageurs"
               className={cn(

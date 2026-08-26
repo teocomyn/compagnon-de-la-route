@@ -27,7 +27,7 @@ export default function MentionsLegalesPage() {
       </div>
       <div className="section-shell mx-auto max-w-4xl pb-16 pt-3 md:pt-5">
         <h1 className="text-4xl font-bold tracking-tight">Mentions légales</h1>
-        <p className="mt-4 text-sm text-white-45">Dernière mise à jour : 25 août 2026</p>
+        <p className="mt-4 text-sm text-white-45">Dernière mise à jour : 26 août 2026</p>
 
         <div className="article-prose mt-10">
           <h2>Éditeur du site</h2>
@@ -39,7 +39,13 @@ export default function MentionsLegalesPage() {
             Siège déclaré : {organizationInfo.address}, {organizationInfo.postalCode}{" "}
             {organizationInfo.city}, {organizationInfo.country}.
           </p>
-          {contactInfo.email ? <p>Contact : {contactInfo.email}.</p> : null}
+          {contactInfo.email || contactInfo.phone ? (
+            <p>
+              Contact : {contactInfo.email ?? ""}
+              {contactInfo.email && contactInfo.phone ? " · " : ""}
+              {contactInfo.phone ?? ""}.
+            </p>
+          ) : null}
 
           <h2>Organisme de formation</h2>
           <p>
