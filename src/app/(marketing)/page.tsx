@@ -9,7 +9,7 @@ import { Stats } from "@/components/sections/Stats";
 import { TrustBuilding } from "@/components/sections/TrustBuilding";
 import { CdrBentoSection } from "@/components/ui/cdr-bento-section";
 import { faqItems } from "@/lib/faq";
-import { siteName, siteUrl } from "@/lib/constants";
+import { siteName, siteUrl, socialShareImage } from "@/lib/constants";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -23,6 +23,14 @@ export const metadata: Metadata = {
       "Deux métiers complémentaires, avec le statut et les modalités de chaque parcours présentés sans promesse non confirmée.",
     url: "/",
     type: "website",
+    images: [socialShareImage],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `Formations transport de voyageurs · ${siteName}`,
+    description:
+      "Deux métiers complémentaires, avec le statut et les modalités de chaque parcours présentés sans promesse non confirmée.",
+    images: [socialShareImage.url],
   },
 };
 

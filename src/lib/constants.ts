@@ -12,6 +12,13 @@ export const brandInfo = {
 export const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://compagnondelaroute.com";
 
+export const socialShareImage = {
+  url: "/images/og/compagnon-route-share-v1.jpg",
+  width: 1200,
+  height: 630,
+  alt: "Compagnon de la Route — plus qu’un métier, une mission",
+} as const;
+
 export const navLinks = [
   { href: "/formations", label: "Formations" },
   { href: "/le-label", label: "Le label" },

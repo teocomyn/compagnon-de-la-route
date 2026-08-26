@@ -130,6 +130,42 @@ test.describe("Parcours critiques", () => {
     expect(hasHorizontalOverflow).toBe(false);
   });
 
+  test("partage : favicon et carte sociale de marque sont publiés", async ({ page, request }) => {
+    await page.goto("/");
+
+    const socialImageUrl =
+      "https://compagnondelaroute.com/images/og/compagnon-route-share-v1.jpg";
+    await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
+      "content",
+      socialImageUrl,
+    );
+    await expect(page.locator('meta[property="og:image:width"]')).toHaveAttribute(
+      "content",
+      "1200",
+    );
+    await expect(page.locator('meta[property="og:image:height"]')).toHaveAttribute(
+      "content",
+      "630",
+    );
+    await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute(
+      "content",
+      "summary_large_image",
+    );
+    await expect(page.locator('link[rel="icon"][href*="icon.png"]')).toHaveCount(1);
+    await expect(page.locator('link[rel="apple-touch-icon"]')).toHaveCount(1);
+
+    for (const asset of [
+      "/images/og/compagnon-route-share-v1.jpg",
+      "/icon.png",
+      "/apple-icon.png",
+      "/favicon.ico",
+    ]) {
+      const response = await request.get(asset);
+      expect(response.ok(), `${asset} doit être accessible`).toBe(true);
+      expect(response.headers()["content-type"]).toMatch(/^image\//);
+    }
+  });
+
   test("header : navigation active, fonte variable et menu mobile accessible", async ({
     page,
   }) => {

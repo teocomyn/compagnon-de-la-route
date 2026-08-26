@@ -5,6 +5,7 @@ import {
   brandInfo,
   organizationInfo,
   orgPostalAddress,
+  socialShareImage,
   siteName,
   siteUrl,
 } from "@/lib/constants";
@@ -36,10 +37,11 @@ export const metadata: Metadata = {
     type: "website",
     locale: "fr_FR",
     siteName,
-    images: [{ url: "/images/og/default.jpg", width: 1920, height: 1282, alt: siteName }],
+    images: [socialShareImage],
   },
   twitter: {
     card: "summary_large_image",
+    images: [socialShareImage.url],
   },
 };
 

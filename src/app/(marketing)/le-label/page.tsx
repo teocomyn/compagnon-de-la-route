@@ -10,6 +10,7 @@ import { buttonVariants } from "@/components/ui/Button";
 import {
   brandInfo,
   organizationInfo,
+  socialShareImage,
   siteName,
   siteUrl,
 } from "@/lib/constants";
@@ -26,6 +27,7 @@ export const metadata: Metadata = {
       "Un repère commun pour préparer les responsabilités des métiers du transport de voyageurs.",
     url: "/le-label",
     type: "website",
+    images: [socialShareImage],
   },
 };
 

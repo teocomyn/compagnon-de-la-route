@@ -24,6 +24,7 @@ import {
   brandInfo,
   organizationInfo,
   programmeInfo,
+  socialShareImage,
   siteName,
   siteUrl,
 } from "@/lib/constants";
@@ -42,6 +43,7 @@ export const metadata: Metadata = {
       "Un parcours de préparation au métier, avec des modalités confirmées avant l’inscription.",
     url: "/formations/conducteur-voyageurs",
     type: "website",
+    images: [socialShareImage],
   },
 };
 
