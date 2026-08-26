@@ -76,7 +76,7 @@ export function Footer() {
           </ol>
         </div>
 
-        <div className="grid gap-14 px-6 py-14 sm:px-10 lg:grid-cols-12 lg:gap-12 lg:px-16 lg:py-20">
+        <div className="grid gap-10 px-6 py-10 sm:gap-14 sm:px-10 sm:py-14 lg:grid-cols-12 lg:gap-12 lg:px-16 lg:py-20">
           <div className="lg:col-span-4">
             <Link
               aria-label="Retour à l’accueil de Compagnon de la Route"
@@ -139,7 +139,7 @@ export function Footer() {
 
           <nav
             aria-label="Navigation de pied de page"
-            className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-4 lg:col-span-8"
+            className="grid grid-cols-2 gap-x-5 gap-y-9 sm:grid-cols-4 sm:gap-x-6 sm:gap-y-10 lg:col-span-8"
           >
             <FooterColumn title="Formations" links={footerFormations} />
             <FooterColumn title="Guides" links={footerGuides} />
@@ -148,23 +148,29 @@ export function Footer() {
           </nav>
         </div>
 
-        <div className="overflow-hidden border-y border-white/10 px-6 py-10 sm:px-10 sm:py-14 lg:px-16">
+        <div className="overflow-hidden border-y border-white/10 px-6 py-8 sm:px-10 sm:py-14 lg:px-16">
           <div aria-hidden="true" className="select-none">
-            <p className="whitespace-nowrap text-[clamp(4rem,11.6vw,11rem)] font-semibold leading-[0.72] tracking-[-0.075em] text-white/[0.055] [-webkit-text-stroke:1px_var(--color-white-10)]">
+            <p
+              data-testid="footer-signature-primary"
+              className="whitespace-nowrap text-[clamp(2.5rem,12.4vw,3.75rem)] font-semibold leading-[0.78] tracking-[-0.07em] text-white/[0.055] [-webkit-text-stroke:1px_var(--color-white-10)] sm:text-[clamp(4rem,11.6vw,11rem)] sm:leading-[0.72]"
+            >
               COMPAGNON
             </p>
-            <div className="mt-6 flex flex-col gap-5 sm:mt-8 sm:flex-row sm:items-end sm:justify-between">
-              <p className="whitespace-nowrap text-[clamp(3rem,7.4vw,7rem)] font-semibold leading-[0.76] tracking-[-0.065em] text-orange-500">
+            <div className="mt-5 flex flex-col gap-4 sm:mt-8 sm:flex-row sm:items-end sm:justify-between sm:gap-5">
+              <p
+                data-testid="footer-signature-secondary"
+                className="whitespace-nowrap text-[clamp(2.35rem,11.6vw,3.5rem)] font-semibold leading-[0.82] tracking-[-0.06em] text-orange-500 sm:text-[clamp(3rem,7.4vw,7rem)] sm:leading-[0.76]"
+              >
                 DE LA ROUTE
               </p>
-              <p className="max-w-56 border-l border-orange-400 pl-4 font-mono text-[9px] uppercase leading-5 tracking-[0.14em] text-white-45">
+              <p className="max-w-56 border-l border-orange-400 pl-4 font-mono text-[8px] uppercase leading-5 tracking-[0.13em] text-white-45 sm:text-[9px] sm:tracking-[0.14em]">
                 Préparer les métiers du transport de voyageurs
               </p>
             </div>
           </div>
         </div>
 
-        <div className="flex flex-col gap-3 px-6 py-6 text-xs text-white-45 sm:flex-row sm:items-center sm:justify-between sm:px-10 lg:px-16">
+        <div className="flex flex-col gap-2.5 px-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-5 text-[11px] leading-5 text-white-45 sm:flex-row sm:items-center sm:justify-between sm:gap-3 sm:px-10 sm:py-6 sm:text-xs lg:px-16">
           <p>
             © {new Date().getFullYear()} {siteName}. Tous droits réservés.
           </p>
@@ -187,7 +193,7 @@ function FooterColumn({
       <h3 className="font-mono text-[10px] uppercase tracking-[0.16em] text-orange-300">
         {title}
       </h3>
-      <ul className="mt-6 space-y-4">
+      <ul className="mt-5 space-y-3.5 sm:mt-6 sm:space-y-4">
         {links.map((link) => (
           <li key={link.href}>
             <Link

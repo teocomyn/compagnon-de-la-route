@@ -45,11 +45,12 @@ export function Header() {
     <>
       <header className="pointer-events-none fixed inset-x-0 top-0 z-50">
         <div
+          data-testid="site-header-surface"
           className={cn(
-            "pointer-events-auto relative mx-auto flex h-16 max-w-screen-2xl items-center border-b px-4 transition-[background-color,border-color] duration-200 md:h-[72px] md:px-6",
+            "pointer-events-auto relative isolate mx-auto flex h-16 max-w-screen-2xl items-center border-b bg-night-deep px-4 transition-[border-color] duration-200 md:h-[72px] md:px-6",
             scrolled
-              ? "border-white/15 bg-night-deep/95"
-              : "border-white/10 bg-night-deep/90",
+              ? "border-white/15"
+              : "border-white/10",
           )}
         >
           <Link

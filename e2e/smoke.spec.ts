@@ -247,6 +247,16 @@ test.describe("Parcours critiques", () => {
       footer.getByRole("navigation", { name: "Navigation de pied de page" }),
     ).toContainText("Vérifier une certification");
 
+    const headerSurface = page.getByTestId("site-header-surface");
+    await expect(headerSurface).toHaveCSS("background-color", "rgb(6, 26, 22)");
+
+    for (const testId of ["footer-signature-primary", "footer-signature-secondary"]) {
+      const signatureFits = await page.getByTestId(testId).evaluate(
+        (element) => element.scrollWidth <= element.clientWidth,
+      );
+      expect(signatureFits, `${testId} doit tenir dans la largeur mobile`).toBe(true);
+    }
+
     const hasHorizontalOverflow = await page.evaluate(
       () => document.documentElement.scrollWidth > window.innerWidth,
     );
