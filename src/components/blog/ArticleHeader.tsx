@@ -19,6 +19,7 @@ export function ArticleHeader({
           src={meta.thumbnail}
           alt={meta.thumbnailAlt ?? `Visuel d’en-tête : ${meta.title}`}
           loading="eager"
+          fetchPriority="high"
           fill
           className="object-cover"
           sizes="100vw"
