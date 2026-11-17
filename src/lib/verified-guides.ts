@@ -346,6 +346,38 @@ export const verifiedGuides = {
         ],
       },
       {
+        title: "Permis D, FIMO, FCO et passerelle en un coup d’œil",
+        paragraphs: [
+          "Ce tableau reprend les repères décrits ci-dessus : chaque élément répond à un besoin différent et suit son propre calendrier.",
+        ],
+        table: {
+          caption: "Rôle et durée du permis D, de la FIMO, de la FCO et de la passerelle voyageurs",
+          headers: ["Élément", "Ce que c’est", "Durée ou échéance"],
+          rows: [
+            [
+              "Permis D",
+              "Catégorie du permis de conduire, qui autorise la conduite du véhicule correspondant",
+              "Cinq ans avant 55 ans, puis durée adaptée et renouvellement annuel à partir de 60 ans",
+            ],
+            [
+              "FIMO voyageurs",
+              "Qualification initiale professionnelle, voie accélérée",
+              "140 heures",
+            ],
+            [
+              "FCO voyageurs",
+              "Formation continue obligatoire, qui maintient la qualification",
+              "35 heures, à renouveler tous les cinq ans",
+            ],
+            [
+              "Passerelle",
+              "Formation spécifique pour un conducteur déjà qualifié en marchandises qui passe aux voyageurs",
+              "35 heures, selon le ministère chargé des Transports",
+            ],
+          ],
+        },
+      },
+      {
         title: "Les documents à contrôler avant de prendre la route",
         bullets: [
           "Catégorie de permis adaptée et en cours de validité.",

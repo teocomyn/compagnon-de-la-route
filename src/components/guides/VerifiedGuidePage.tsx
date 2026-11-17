@@ -53,7 +53,7 @@ const guideRelations: Record<string, readonly RelatedLink[]> = {
   ],
   "reussir-embauche-conducteur-car": [
     { href: "/journal/reussir-entretien", label: "Réussir l’entretien", description: "Préparer des exemples concrets sur la sécurité et le service." },
-    { href: "/reconversion-conducteur-voyageurs", label: "Valoriser sa reconversion", description: "Transformer son expérience antérieure en compétences utiles." },
+    { href: "/journal/preparer-prise-service-conducteur", label: "Préparer la prise de service", description: "La check-list avant le départ : affectation, véhicule, documents et consignes." },
     { href: "/metier-conducteur-de-car-debouches", label: "Vérifier le poste", description: "Horaires, services et contraintes selon l’employeur." },
   ],
   "certification-formation-conducteur-voyageurs": [
@@ -125,7 +125,8 @@ export function VerifiedGuidePage({ guide }: { guide: VerifiedGuide }) {
             </p>
               <p className="mt-5 flex items-center gap-2 text-sm text-white-40">
                 <ShieldCheck className="h-4 w-4 text-orange-300" aria-hidden />
-                Sources officielles vérifiées le {guide.reviewedAt}
+                Sources officielles vérifiées le{" "}
+                <time dateTime={guide.reviewedAtIso ?? verifiedGuidesReviewedAtIso}>{guide.reviewedAt}</time>
               </p>
               {guide.nextReviewAt ? (
                 <p className="mt-2 text-xs text-white-35">

@@ -56,6 +56,28 @@ export const seoClusterGuides = {
         ],
       },
       {
+        title: "Les deux épreuves pratiques en un coup d’œil",
+        paragraphs: [
+          "Ce tableau reprend les critères décrits ci-dessus pour chacune des deux épreuves pratiques.",
+        ],
+        table: {
+          caption: "Contenu et seuil de réussite des épreuves hors circulation et en circulation",
+          headers: ["Épreuve", "Ce qui est contrôlé", "Pour réussir"],
+          rows: [
+            [
+              "Hors circulation",
+              "Réglementation des transports, sécurité et mécanique : interrogations, vérifications courantes de sécurité et exercice de maniabilité",
+              "Plus de seize points, aucune note éliminatoire et maniabilité réussie",
+            ],
+            [
+              "En circulation",
+              "Installation, sécurité à bord, prise d’information, allure, réglementation, communication et espaces de sécurité",
+              "Au moins dix-sept points et aucune erreur éliminatoire",
+            ],
+          ],
+        },
+      },
+      {
         title: "La check-list avant chaque étape",
         bullets: [
           "Contrôler la validité du code, du NEPH et de l’avis médical.",
