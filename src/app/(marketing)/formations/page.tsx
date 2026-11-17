@@ -6,13 +6,16 @@ import { BreadcrumbBar } from "@/components/layout/BreadcrumbBar";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { PageBreadcrumbs } from "@/components/seo/PageBreadcrumbs";
 import { Eyebrow } from "@/components/ui/Eyebrow";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Formations transport de voyageurs",
+export const metadata: Metadata = buildMetadata({
+  title: "Formations conducteur de voyageurs et exploitant-régulateur",
   description:
-    "Découvrez les parcours Compagnon de la Route pour la conduite et l’exploitation-régulation du transport de voyageurs.",
-  alternates: { canonical: "/formations" },
-};
+    "Les parcours Compagnon de la Route pour devenir conducteur de bus ou de car, ou exploitant-régulateur en transport de voyageurs, avec le statut de chacun.",
+  ogDescription:
+    "Deux métiers complémentaires, avec le statut et les modalités de chaque parcours présentés sans promesse non confirmée.",
+  path: "/formations",
+});
 
 const paths = [
   {

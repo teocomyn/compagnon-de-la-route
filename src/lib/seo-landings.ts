@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { siteName } from "@/lib/constants";
+import { buildMetadata } from "@/lib/seo";
 
 export type SeoLandingPageData = {
   slug: string;
@@ -18,26 +18,14 @@ export type SeoLandingPageData = {
 };
 
 export function seoLandingMetadata(data: SeoLandingPageData): Metadata {
-  return {
+  return buildMetadata({
     title: data.metaTitle,
     description: data.metaDescription,
-    ...(data.keywords?.length ? { keywords: data.keywords } : {}),
-    alternates: { canonical: `/${data.slug}` },
+    path: `/${data.slug}`,
+    keywords: data.keywords,
     robots: { index: false, follow: true },
-    openGraph: {
-      title: data.metaTitle,
-      description: data.metaDescription,
-      url: `/${data.slug}`,
-      type: "article",
-      siteName,
-      images: [{ url: "/images/og/default.jpg", width: 1920, height: 1282, alt: data.h1 }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: data.metaTitle,
-      description: data.metaDescription,
-    },
-  };
+    image: { url: "/images/og/default.jpg", width: 1920, height: 1282, alt: data.h1 },
+  });
 }
 
 const baseCrumbs = (slug: string, label: string) => [

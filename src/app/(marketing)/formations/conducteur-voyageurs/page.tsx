@@ -16,36 +16,26 @@ import { BreadcrumbBar } from "@/components/layout/BreadcrumbBar";
 import { ScrollReveal } from "@/components/magicui/ScrollReveal";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { MethodTimeline } from "@/components/sections/MethodTimeline";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { PageBreadcrumbs } from "@/components/seo/PageBreadcrumbs";
 import { Badge } from "@/components/ui/Badge";
 import { buttonVariants } from "@/components/ui/Button";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import {
-  brandInfo,
-  organizationInfo,
-  programmeInfo,
-  socialShareImage,
-  siteName,
-  siteUrl,
-} from "@/lib/constants";
+import { organizationInfo, programmeInfo } from "@/lib/constants";
+import { organizationRef, webPageNode } from "@/lib/schema";
+import { absoluteUrl, buildMetadata } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 
 export const revalidate = 3600;
 
-export const metadata: Metadata = {
-  title: "Formation conducteur de voyageurs",
+export const metadata: Metadata = buildMetadata({
+  title: "Formation conducteur de voyageurs (bus et car)",
   description:
-    "Découvrez le parcours conducteur de voyageurs : métier, programme, positionnement, financement et prochaines étapes.",
-  alternates: { canonical: "/formations/conducteur-voyageurs" },
-  openGraph: {
-    title: `Formation conducteur de voyageurs · ${siteName}`,
-    description:
-      "Un parcours de préparation au métier, avec des modalités confirmées avant l’inscription.",
-    url: "/formations/conducteur-voyageurs",
-    type: "website",
-    images: [socialShareImage],
-  },
-};
+    "Le parcours conducteur de voyageurs, bus et car : métier, programme, positionnement, financement et prochaines étapes, confirmés par écrit avant l’inscription.",
+  ogDescription:
+    "Un parcours de préparation au métier, avec des modalités confirmées avant l’inscription.",
+  path: "/formations/conducteur-voyageurs",
+});
 
 const anchorLinks = [
   { href: "#metier", label: "Le métier" },
@@ -118,33 +108,36 @@ const fundingOptions = [
   },
 ];
 
-const jobs = [
-  "Transport urbain",
-  "Lignes interurbaines",
-  "Transport scolaire",
-  "Autocar et tourisme",
+const jobs: readonly { label: string; href?: string }[] = [
+  { label: "Transport urbain" },
+  { label: "Lignes interurbaines" },
+  { label: "Transport scolaire", href: "/formation-transport-scolaire-conducteur" },
+  { label: "Autocar et tourisme", href: "/formation-conducteur-autocar-tourisme" },
 ];
 
 function CourseJsonLd() {
-  const json = {
-    "@context": "https://schema.org",
-    "@type": "Course",
-    name: programmeInfo.title,
-    description:
-      "Parcours de préparation au métier de conducteur de voyageurs. Les modalités exactes sont confirmées après positionnement et avant inscription.",
-    provider: {
-      "@type": "EducationalOrganization",
-      "@id": `${siteUrl}/#organization`,
-      name: brandInfo.ownerName,
-      legalName: organizationInfo.legalName,
-      url: siteUrl,
-    },
-  };
-
+  const description =
+    "Parcours de préparation au métier de conducteur de voyageurs. Les modalités exactes sont confirmées après positionnement et avant inscription.";
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(json) }}
+    <JsonLd
+      data={{
+        "@context": "https://schema.org",
+        "@graph": [
+          webPageNode({
+            path: "/formations/conducteur-voyageurs",
+            name: "Formation conducteur de voyageurs",
+            description,
+          }),
+          {
+            "@type": "Course",
+            "@id": `${absoluteUrl("/formations/conducteur-voyageurs")}#course`,
+            name: programmeInfo.title,
+            description,
+            inLanguage: "fr-FR",
+            provider: organizationRef(),
+          },
+        ],
+      }}
     />
   );
 }
@@ -485,15 +478,33 @@ export default function FormationConducteurPage() {
                 </h2>
                 <p className="mt-4 text-sm leading-7 text-white-60">
                   L’accompagnement prépare l’accès à l’emploi et la présentation du projet, sans
-                  garantir une embauche ni un type de contrat.
+                  garantir une embauche ni un type de contrat. Pour aller plus loin, consultez le{" "}
+                  <Link className="text-orange-300 underline-offset-4 hover:underline" href="/devenir-conducteur-de-voyageurs">
+                    guide pour devenir conducteur de bus ou de car
+                  </Link>{" "}
+                  et les{" "}
+                  <Link className="text-orange-300 underline-offset-4 hover:underline" href="/faq-conducteur-de-voyageurs">
+                    questions fréquentes
+                  </Link>
+                  .
                 </p>
               </div>
               <div className="flex flex-wrap gap-2 lg:max-w-md lg:justify-end">
-                {jobs.map((job) => (
-                  <span key={job} className="border-b border-white/20 py-2 text-sm text-white-75">
-                    {job}
-                  </span>
-                ))}
+                {jobs.map((job) =>
+                  job.href ? (
+                    <Link
+                      key={job.label}
+                      href={job.href}
+                      className="border-b border-orange-400/60 py-2 text-sm text-white-90 transition-colors hover:text-orange-200"
+                    >
+                      {job.label}
+                    </Link>
+                  ) : (
+                    <span key={job.label} className="border-b border-white/20 py-2 text-sm text-white-75">
+                      {job.label}
+                    </span>
+                  ),
+                )}
               </div>
             </div>
           </div>

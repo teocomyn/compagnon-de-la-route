@@ -10,7 +10,22 @@ import {
   contactInfo,
   organizationInfo,
   siteName,
+  socialProfiles,
 } from "@/lib/constants";
+
+const socialLabels: Record<string, string> = {
+  "linkedin.com": "LinkedIn",
+  "facebook.com": "Facebook",
+  "instagram.com": "Instagram",
+  "youtube.com": "YouTube",
+  "tiktok.com": "TikTok",
+  "x.com": "X",
+};
+
+function socialLabel(url: string): string {
+  const host = new URL(url).hostname.replace(/^www\./, "");
+  return socialLabels[host] ?? host;
+}
 
 const routeMarkers = [
   "Situer le projet",
@@ -37,10 +52,10 @@ export function Footer() {
               <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-orange-300">
                 Un projet de formation à vérifier ?
               </p>
-              <h2 className="mt-5 max-w-5xl text-balance text-[clamp(2.7rem,5.6vw,5.75rem)] font-semibold leading-[0.94] tracking-[-0.055em] text-white-90">
+              <p className="mt-5 max-w-5xl text-balance text-[clamp(2.7rem,5.6vw,5.75rem)] font-semibold leading-[0.94] tracking-[-0.055em] text-white-90">
                 Passez du projet aux
                 <span className="block text-orange-300">réponses concrètes.</span>
-              </h2>
+              </p>
             </div>
 
             <div className="lg:col-span-4 lg:flex lg:justify-end">
@@ -135,6 +150,26 @@ export function Footer() {
                 ) : null}
               </address>
             ) : null}
+
+            {socialProfiles.length ? (
+              <ul
+                aria-label="Profils officiels de la marque"
+                className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm text-white-60"
+              >
+                {socialProfiles.map((url) => (
+                  <li key={url}>
+                    <a
+                      className="transition-colors hover:text-orange-200"
+                      href={url}
+                      rel="me noreferrer"
+                      target="_blank"
+                    >
+                      {socialLabel(url)}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
           </div>
 
           <nav
@@ -190,10 +225,16 @@ function FooterColumn({
 }) {
   return (
     <div>
-      <h3 className="font-mono text-[10px] uppercase tracking-[0.16em] text-orange-300">
+      <p
+        id={`footer-${title.toLowerCase()}`}
+        className="font-mono text-[10px] uppercase tracking-[0.16em] text-orange-300"
+      >
         {title}
-      </h3>
-      <ul className="mt-5 space-y-3.5 sm:mt-6 sm:space-y-4">
+      </p>
+      <ul
+        aria-labelledby={`footer-${title.toLowerCase()}`}
+        className="mt-5 space-y-3.5 sm:mt-6 sm:space-y-4"
+      >
         {links.map((link) => (
           <li key={link.href}>
             <Link

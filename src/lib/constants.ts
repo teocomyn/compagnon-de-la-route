@@ -55,6 +55,7 @@ export const footerGuides = [
   { href: "/permis-d-conducteur-professionnel", label: "Permis D" },
   { href: "/financement-formation-conducteur-voyageurs", label: "Financement formation" },
   { href: "/certification-formation-conducteur-voyageurs", label: "Vérifier une certification" },
+  { href: "/faq-conducteur-de-voyageurs", label: "Questions fréquentes" },
 ] as const;
 
 export const contactInfo = {
@@ -62,6 +63,51 @@ export const contactInfo = {
   email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? null,
   serviceArea: "France",
 };
+
+function parseHttpsUrls(value: string | undefined): string[] {
+  return (value ?? "")
+    .split(",")
+    .map((entry) => entry.trim())
+    .filter((entry) => {
+      try {
+        return new URL(entry).protocol === "https:";
+      } catch {
+        return false;
+      }
+    });
+}
+
+/**
+ * Profils officiels de la marque (LinkedIn, Facebook, YouTube…), séparés par des
+ * virgules dans NEXT_PUBLIC_SAME_AS. Vide tant qu'aucun profil n'est créé : rien
+ * n'est publié par défaut, ni dans le pied de page ni dans les données structurées.
+ */
+export const socialProfiles = parseHttpsUrls(process.env.NEXT_PUBLIC_SAME_AS);
+
+/** Codes de vérification Search Console et Bing, publiés en balises meta si renseignés. */
+export const siteVerification = {
+  google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION?.trim() || undefined,
+  bing: process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION?.trim() || undefined,
+} as const;
+
+/** Registres publics permettant de vérifier l'organisme sans passer par ce site. */
+export const officialReferences = [
+  {
+    label: "Liste publique des organismes de formation",
+    url: "https://www.data.gouv.fr/datasets/liste-publique-des-organismes-de-formation-l-6351-7-1-du-code-du-travail/",
+    detail: "Source de la déclaration d’activité de BOAZ : rechercher le SIREN ou le numéro de déclaration.",
+  },
+  {
+    label: "Ministère du Travail : formalités des organismes de formation",
+    url: "https://travail-emploi.gouv.fr/les-organismes-de-formation-formalites-administratives",
+    detail: "Ce que recouvre la déclaration d’activité et ce qu’elle ne garantit pas.",
+  },
+  {
+    label: "Ministère du Travail : marque Qualiopi",
+    url: "https://travail-emploi.gouv.fr/qualiopi-marque-de-certification-qualite-des-prestataires-de-formation",
+    detail: "Portée de la certification qualité, limitée aux actions de formation.",
+  },
+] as const;
 
 /** Informations issues de la liste publique des organismes de formation. */
 export const organizationInfo = {

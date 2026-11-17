@@ -3,39 +3,50 @@ import { ArrowUpRight, BookOpenCheck } from "lucide-react";
 import type { Metadata } from "next";
 import { BreadcrumbBar } from "@/components/layout/BreadcrumbBar";
 import { FinalCTA } from "@/components/sections/FinalCTA";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { PageBreadcrumbs } from "@/components/seo/PageBreadcrumbs";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { guideDirectoryList } from "@/lib/guide-directory";
-import { siteUrl } from "@/lib/constants";
+import { webPageNode } from "@/lib/schema";
+import { absoluteUrl, buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+const guidesDescription =
+  "Guides vérifiés sur le métier, le permis D, la FIMO/FCO, la reconversion, le recrutement et le financement d’une formation de conducteur de voyageurs.";
+
+export const metadata: Metadata = buildMetadata({
   title: "Guides conducteur de voyageurs",
-  description:
-    "Guides vérifiés sur le métier, le permis D, la FIMO/FCO, la reconversion, le recrutement et le financement d’une formation de conducteur de voyageurs.",
-  alternates: { canonical: "/guides" },
-};
+  description: guidesDescription,
+  path: "/guides",
+});
 
 function GuidesJsonLd() {
-  const baseUrl = siteUrl.replace(/\/$/, "");
-  const json = {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    name: "Guides conducteur de voyageurs",
-    description: metadata.description,
-    url: `${baseUrl}/guides`,
-    inLanguage: "fr-FR",
-    mainEntity: {
-      "@type": "ItemList",
-      numberOfItems: guideDirectoryList.length,
-      itemListElement: guideDirectoryList.map((guide, index) => ({
-        "@type": "ListItem",
-        position: index + 1,
-        url: `${baseUrl}/${guide.slug}`,
-        name: guide.title,
-      })),
-    },
-  };
-  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(json) }} />;
+  return (
+    <JsonLd
+      data={{
+        "@context": "https://schema.org",
+        "@graph": [
+          webPageNode({
+            path: "/guides",
+            name: "Guides conducteur de voyageurs",
+            description: guidesDescription,
+            type: "CollectionPage",
+            extra: {
+              mainEntity: {
+                "@type": "ItemList",
+                numberOfItems: guideDirectoryList.length,
+                itemListElement: guideDirectoryList.map((guide, index) => ({
+                  "@type": "ListItem",
+                  position: index + 1,
+                  url: absoluteUrl(`/${guide.slug}`),
+                  name: guide.title,
+                })),
+              },
+            },
+          }),
+        ],
+      }}
+    />
+  );
 }
 
 export default function GuidesPage() {

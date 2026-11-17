@@ -1,16 +1,25 @@
+import { ExternalLink } from "lucide-react";
 import Image from "next/image";
 import { BreadcrumbBar } from "@/components/layout/BreadcrumbBar";
 import { FinalCTA } from "@/components/sections/FinalCTA";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { PageBreadcrumbs } from "@/components/seo/PageBreadcrumbs";
-import { brandInfo, organizationInfo, siteName, siteUrl } from "@/lib/constants";
+import {
+  brandInfo,
+  officialReferences,
+  organizationInfo,
+  siteName,
+} from "@/lib/constants";
+import { schemaIds, webPageNode } from "@/lib/schema";
+import { buildMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "BOAZ, organisme porteur",
   description:
     "BOAZ porte le label Compagnon de la Route. Consultez l’identité de l’organisme de formation, son rôle et sa méthode de travail.",
-  alternates: { canonical: "/qui-sommes-nous" },
-};
+  path: "/qui-sommes-nous",
+});
 
 const workingPrinciples = [
   {
@@ -32,25 +41,21 @@ const workingPrinciples = [
 ] as const;
 
 function AboutJsonLd() {
-  const json = {
-    "@context": "https://schema.org",
-    "@type": "AboutPage",
-    name: `BOAZ, organisme porteur de ${siteName}`,
-    url: `${siteUrl}/qui-sommes-nous`,
-    mainEntity: {
-      "@type": "EducationalOrganization",
-      "@id": `${siteUrl}/#organization`,
-      name: brandInfo.ownerName,
-      legalName: organizationInfo.legalName,
-      identifier: organizationInfo.siren,
-      brand: { "@id": `${siteUrl}/#brand` },
-    },
-  };
-
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(json) }}
+    <JsonLd
+      data={{
+        "@context": "https://schema.org",
+        "@graph": [
+          webPageNode({
+            path: "/qui-sommes-nous",
+            name: `BOAZ, organisme porteur de ${siteName}`,
+            description:
+              "Identité, rôle et méthode de BOAZ, organisme de formation qui porte le label Compagnon de la Route.",
+            type: "AboutPage",
+            extra: { mainEntity: { "@id": schemaIds.organization } },
+          }),
+        ],
+      }}
     />
   );
 }
@@ -153,6 +158,46 @@ export default function AboutPage() {
               </li>
             ))}
           </ol>
+        </div>
+      </section>
+
+      <section
+        className="section-shell border-t border-white/10 section-y"
+        aria-labelledby="verifier-references"
+      >
+        <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-[0.7fr_1.3fr] md:gap-16">
+          <div>
+            <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-orange-300">
+              Vérifier par vous-même
+            </p>
+            <h2
+              id="verifier-references"
+              className="mt-5 text-[clamp(2.2rem,4vw,4rem)] font-semibold leading-none tracking-[-0.045em] text-white-90"
+            >
+              Chaque référence se contrôle hors de ce site.
+            </h2>
+          </div>
+
+          <ul className="border-t border-white/15">
+            {officialReferences.map((reference) => (
+              <li key={reference.url} className="border-b border-white/15">
+                <a
+                  href={reference.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group block py-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-500"
+                >
+                  <span className="flex items-start justify-between gap-4 font-semibold text-white-90 transition-colors group-hover:text-orange-200">
+                    {reference.label}
+                    <ExternalLink className="mt-1 h-4 w-4 shrink-0" aria-hidden="true" />
+                  </span>
+                  <span className="mt-2 block text-sm leading-6 text-white-60">
+                    {reference.detail}
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 

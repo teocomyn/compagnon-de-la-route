@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { ArticleBody } from "@/components/blog/ArticleBody";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { ArticleCard } from "@/components/blog/ArticleCard";
 import { ArticleHeader } from "@/components/blog/ArticleHeader";
 import { ArticleToc } from "@/components/blog/ArticleToc";
@@ -11,7 +12,9 @@ import {
   getArticleSlugs,
   type ArticleFrontmatter,
 } from "@/lib/articles";
-import { brandInfo, organizationInfo, siteName, siteUrl } from "@/lib/constants";
+import { extractFaqEntries } from "@/lib/mdx-faq";
+import { articleGraph } from "@/lib/schema";
+import { buildMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 
 type PageProps = { params: Promise<{ slug: string }> };
@@ -27,83 +30,49 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params;
   const article = getArticleBySlug(slug);
   if (!article) return {};
-  const imageUrl = article.meta.thumbnail.startsWith("http")
-    ? article.meta.thumbnail
-    : `${siteUrl.replace(/\/$/, "")}${article.meta.thumbnail}`;
-  return {
-    title: article.meta.title,
-    description: article.meta.description,
-    keywords: article.meta.keywords,
-    alternates: { canonical: `/journal/${slug}` },
+  const { meta } = article;
+  return buildMetadata({
+    title: meta.metaTitle ?? meta.title,
+    description: meta.description,
+    path: `/journal/${slug}`,
+    keywords: meta.keywords,
     robots: { index: true, follow: true },
-    openGraph: {
-      title: `${article.meta.title} · ${siteName}`,
-      description: article.meta.description,
-      type: "article",
-      url: `/journal/${slug}`,
-      publishedTime: article.meta.date,
-      modifiedTime: article.meta.updated ?? article.meta.date,
-      authors: [siteName],
-      section: article.meta.category,
-      tags: article.meta.keywords,
-      images: [
-        {
-          url: imageUrl,
-          alt: article.meta.thumbnailAlt ?? article.meta.title,
-        },
-      ],
+    image: {
+      url: meta.thumbnail,
+      alt: meta.thumbnailAlt ?? meta.title,
     },
-    twitter: {
-      card: "summary_large_image",
-      title: article.meta.title,
-      description: article.meta.description,
-      images: [imageUrl],
+    article: {
+      publishedTime: meta.date,
+      modifiedTime: meta.updated ?? meta.date,
+      section: meta.category,
+      tags: meta.keywords,
     },
-  };
+  });
 }
 
-function ArticleJsonLd({ slug, meta }: { slug: string; meta: ArticleFrontmatter }) {
-  const baseUrl = siteUrl.replace(/\/$/, "");
-  const thumb = meta.thumbnail.startsWith("http")
-    ? meta.thumbnail
-    : `${baseUrl}${meta.thumbnail}`;
-  const json = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    inLanguage: "fr-FR",
-    headline: meta.title,
-    description: meta.description,
-    articleSection: meta.category,
-    keywords: meta.keywords?.join(", "),
-    isAccessibleForFree: true,
-    datePublished: meta.date,
-    dateModified: meta.updated ?? meta.date,
-    author: {
-      "@type": "EducationalOrganization",
-      "@id": `${baseUrl}/#organization`,
-      name: brandInfo.ownerName,
-      legalName: organizationInfo.legalName,
-      url: siteUrl,
-    },
-    image: thumb,
-    publisher: {
-      "@type": "Organization",
-      "@id": `${baseUrl}/#organization`,
-      name: brandInfo.ownerName,
-      legalName: organizationInfo.legalName,
-      url: siteUrl,
-      logo: {
-        "@type": "ImageObject",
-        url: `${siteUrl.replace(/\/$/, "")}/brand-logo-car.png`,
-      },
-    },
-    mainEntityOfPage: `${baseUrl}/journal/${slug}`,
-    citation: meta.sources?.map((source) => source.url),
-  };
+function ArticleJsonLd({
+  slug,
+  meta,
+  content,
+}: {
+  slug: string;
+  meta: ArticleFrontmatter;
+  content: string;
+}) {
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(json) }}
+    <JsonLd
+      data={articleGraph({
+        path: `/journal/${slug}`,
+        headline: meta.title,
+        description: meta.description,
+        datePublished: meta.date,
+        dateModified: meta.updated ?? meta.date,
+        image: meta.thumbnail,
+        section: meta.category,
+        keywords: meta.keywords,
+        citations: meta.sources?.map((source) => source.url),
+        faqs: extractFaqEntries(content),
+      })}
     />
   );
 }
@@ -125,7 +94,7 @@ export default async function ArticlePage({ params }: PageProps) {
 
   return (
     <article>
-      <ArticleJsonLd slug={slug} meta={article.meta} />
+      <ArticleJsonLd slug={slug} meta={article.meta} content={article.content} />
       <BreadcrumbJsonLd
         items={[
           { label: "Accueil", href: "/" },

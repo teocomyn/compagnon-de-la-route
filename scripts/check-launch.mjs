@@ -142,3 +142,14 @@ if (missing.length || invalid.length || externalFailures.length) {
 }
 
 console.log("Tous les paramètres critiques et les services externes de lancement sont vérifiés.");
+
+const recommended = [
+  ["NEXT_PUBLIC_SAME_AS", "profils officiels de la marque (LinkedIn…), publiés en pied de page et en sameAs"],
+  ["NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION", "vérification Google Search Console par balise meta (ou enregistrement DNS TXT)"],
+  ["NEXT_PUBLIC_BING_SITE_VERIFICATION", "vérification Bing Webmaster Tools"],
+].filter(([key]) => !process.env[key]?.trim());
+
+if (recommended.length) {
+  console.log("\nRecommandé pour le référencement (non bloquant) :");
+  for (const [key, label] of recommended) console.log(`- ${key} : ${label}`);
+}

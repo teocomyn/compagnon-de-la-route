@@ -1,4 +1,5 @@
-import { siteUrl } from "@/lib/constants";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { absoluteUrl } from "@/lib/seo";
 
 export type BreadcrumbPathItem = {
   label: string;
@@ -6,27 +7,19 @@ export type BreadcrumbPathItem = {
   href: string;
 };
 
-function toAbsolute(path: string) {
-  const p = path.startsWith("/") ? path : `/${path}`;
-  return `${siteUrl.replace(/\/$/, "")}${p}`;
-}
-
 export function BreadcrumbJsonLd({ items }: { items: BreadcrumbPathItem[] }) {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: items.map((crumb, i) => ({
-      "@type": "ListItem",
-      position: i + 1,
-      name: crumb.label,
-      item: toAbsolute(crumb.href),
-    })),
-  };
-
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    <JsonLd
+      data={{
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: items.map((crumb, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          name: crumb.label,
+          item: absoluteUrl(crumb.href),
+        })),
+      }}
     />
   );
 }

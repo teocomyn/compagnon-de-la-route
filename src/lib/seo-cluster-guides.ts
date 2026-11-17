@@ -125,7 +125,7 @@ export const seoClusterGuides = {
     eyebrow: "FCO voyageurs",
     title: "FCO voyageurs : renouveler sa qualification de conducteur",
     description:
-      "Échéance, durée, programme, carte de qualification et reprise après interruption : préparer le renouvellement FCO voyageurs sans confondre permis et qualification.",
+      "Échéance, durée, programme, carte de qualification et reprise après interruption : préparer son renouvellement FCO voyageurs sans confusion.",
     summary: [
       "La FCO voyageurs dure 35 heures et maintient la qualification professionnelle pour une nouvelle période de cinq ans.",
       "Elle actualise la conduite rationnelle, les réglementations, la santé-sécurité et la qualité de service.",

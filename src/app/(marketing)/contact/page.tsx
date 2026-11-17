@@ -1,16 +1,21 @@
 import { ContactForm } from "@/components/contact/ContactForm";
 import { BreadcrumbBar } from "@/components/layout/BreadcrumbBar";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { PageBreadcrumbs } from "@/components/seo/PageBreadcrumbs";
 import { BorderBeamPanel } from "@/components/ui/border-beam-panel";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { contactInfo, organizationInfo, siteName } from "@/lib/constants";
+import { schemaIds, webPageNode } from "@/lib/schema";
+import { buildMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
+const contactDescription = `Contactez ${siteName} pour un projet candidat, un besoin de recrutement ou un partenariat dans le transport de voyageurs.`;
+
+export const metadata: Metadata = buildMetadata({
   title: "Contact",
-  description: `Contactez ${siteName} pour un projet candidat, un besoin de recrutement ou un partenariat dans le transport de voyageurs.`,
-  alternates: { canonical: "/contact" },
-};
+  description: contactDescription,
+  path: "/contact",
+});
 
 export default async function ContactPage({
   searchParams,
@@ -25,6 +30,20 @@ export default async function ContactPage({
     : "";
   return (
     <div className="pb-20 md:pb-28">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@graph": [
+            webPageNode({
+              path: "/contact",
+              name: "Contact",
+              description: contactDescription,
+              type: "ContactPage",
+              extra: { about: { "@id": schemaIds.organization } },
+            }),
+          ],
+        }}
+      />
       <div className="pt-16 md:pt-[72px]">
         <BreadcrumbBar>
           <PageBreadcrumbs

@@ -11,9 +11,9 @@ export function FinalCTA() {
           <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.18em]">
             Prochaine étape
           </p>
-          <h2 className="mt-5 text-balance text-[clamp(2.5rem,5.5vw,6rem)] font-semibold leading-[0.92] tracking-[-0.055em]">
+          <p className="mt-5 text-balance text-[clamp(2.5rem,5.5vw,6rem)] font-semibold leading-[0.92] tracking-[-0.055em]">
             Obtenez des réponses adaptées à votre situation.
-          </h2>
+          </p>
         </div>
 
         <div className="flex flex-col gap-3 sm:flex-row md:flex-col lg:flex-row">

@@ -6,9 +6,12 @@ import { ArticleHeader } from "@/components/blog/ArticleHeader";
 import { ArticleToc } from "@/components/blog/ArticleToc";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { getArticleBySlug } from "@/lib/articles";
-import { brandInfo, organizationInfo, siteName, siteUrl } from "@/lib/constants";
+import { extractFaqEntries } from "@/lib/mdx-faq";
+import { articleGraph } from "@/lib/schema";
+import { buildMetadata } from "@/lib/seo";
 
 const sourceSlug = "devenir-conducteur-bus-guide-complet";
 const canonical = "/devenir-conducteur-de-voyageurs";
@@ -20,59 +23,53 @@ const clusterLinks = [
   { href: "/reconversion-conducteur-voyageurs", label: "Reconversion", description: "Tester le métier et sécuriser chaque étape." },
   { href: "/reussir-embauche-conducteur-car", label: "Recrutement", description: "Candidature, entretien et conditions du poste." },
   { href: "/formations/exploitant-regulateur", label: "Évoluer vers l’exploitation", description: "Découvrir le métier d’exploitant-régulateur." },
+  { href: "/faq-conducteur-de-voyageurs", label: "Questions fréquentes", description: "Permis D, FIMO, titre professionnel, financement et emploi." },
+  { href: "/formation-conducteur-autocar-tourisme", label: "Conduire en autocar de tourisme", description: "Services occasionnels, groupes et conditions de déplacement." },
+  { href: "/formation-transport-scolaire-conducteur", label: "Conduire en transport scolaire", description: "Sécurité, prise en charge des élèves et organisation du service." },
 ] as const;
 
 export function generateMetadata(): Metadata {
   const article = getArticleBySlug(sourceSlug);
   if (!article) return {};
-  const imageUrl = `${siteUrl.replace(/\/$/, "")}${article.meta.thumbnail}`;
-  return {
-    title: "Devenir conducteur de voyageurs",
-    description: article.meta.description,
-    keywords: article.meta.keywords,
-    alternates: { canonical },
-    openGraph: {
-      type: "article",
-      title: `Devenir conducteur de voyageurs · ${siteName}`,
-      description: article.meta.description,
-      url: canonical,
-      publishedTime: article.meta.date,
-      modifiedTime: article.meta.updated,
-      images: [{ url: imageUrl, alt: article.meta.thumbnailAlt ?? article.meta.title }],
+  const { meta } = article;
+  return buildMetadata({
+    title: "Devenir conducteur de bus ou de car : le guide complet",
+    description: meta.description,
+    path: canonical,
+    keywords: meta.keywords,
+    image: {
+      url: meta.thumbnail,
+      alt: meta.thumbnailAlt ?? meta.title,
     },
-    twitter: {
-      card: "summary_large_image",
-      title: "Devenir conducteur de voyageurs",
-      description: article.meta.description,
-      images: [imageUrl],
+    article: {
+      publishedTime: meta.date,
+      modifiedTime: meta.updated ?? meta.date,
+      section: "Guide pilier",
+      tags: meta.keywords,
     },
-  };
+  });
 }
 
 function PillarJsonLd() {
   const article = getArticleBySlug(sourceSlug);
   if (!article) return null;
-  const baseUrl = siteUrl.replace(/\/$/, "");
-  const json = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    inLanguage: "fr-FR",
-    headline: "Devenir conducteur de voyageurs : le guide complet",
-    description: article.meta.description,
-    datePublished: article.meta.date,
-    dateModified: article.meta.updated,
-    mainEntityOfPage: `${baseUrl}${canonical}`,
-    citation: article.meta.sources?.map((source) => source.url),
-    author: {
-      "@type": "EducationalOrganization",
-      "@id": `${baseUrl}/#organization`,
-      name: brandInfo.ownerName,
-      legalName: organizationInfo.legalName,
-    },
-    publisher: { "@id": `${baseUrl}/#organization` },
-    image: `${baseUrl}${article.meta.thumbnail}`,
-  };
-  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(json) }} />;
+  const { meta, content } = article;
+  return (
+    <JsonLd
+      data={articleGraph({
+        path: canonical,
+        headline: "Devenir conducteur de voyageurs : le guide complet",
+        description: meta.description,
+        datePublished: meta.date,
+        dateModified: meta.updated ?? meta.date,
+        image: meta.thumbnail,
+        section: "Guide pilier",
+        keywords: meta.keywords,
+        citations: meta.sources?.map((source) => source.url),
+        faqs: extractFaqEntries(content),
+      })}
+    />
+  );
 }
 
 export default function DevenirConducteurVoyageursPage() {

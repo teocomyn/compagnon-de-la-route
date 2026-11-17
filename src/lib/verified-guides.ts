@@ -1,17 +1,29 @@
 import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 
 export const verifiedGuidesReviewedAtIso = "2026-08-25";
+
+export type GuideTable = {
+  caption: string;
+  headers: readonly string[];
+  rows: readonly (readonly string[])[];
+};
 
 export type VerifiedGuide = {
   slug: string;
   eyebrow: string;
   title: string;
+  /** Titre affiché dans les résultats de recherche quand le H1 est trop long ou trop générique. */
+  metaTitle?: string;
   description: string;
+  /** Les sections sont des questions : elles alimentent aussi le schéma FAQPage. */
+  faqFromSections?: boolean;
   summary: readonly string[];
   sections: readonly {
     title: string;
     paragraphs?: readonly string[];
     bullets?: readonly string[];
+    table?: GuideTable;
   }[];
   notice: string;
   sources: readonly {
@@ -76,6 +88,33 @@ export const verifiedGuides = {
         paragraphs: [
           "Service Public cite notamment l’employeur et l’OPCO parmi les acteurs susceptibles de compléter un financement. Les règles varient selon l’entreprise, la branche, le dispositif et les budgets disponibles. L’organisme de formation peut fournir les pièces du dossier, mais seul le financeur confirme la prise en charge.",
         ],
+      },
+      {
+        title: "Les trois pistes en un coup d’œil",
+        paragraphs: [
+          "Ce tableau reprend les trois pistes décrites ci-dessus : qui décide de la prise en charge et ce qu’il faut vérifier avant de s’engager.",
+        ],
+        table: {
+          caption: "Qui décide du financement et que vérifier, selon la piste",
+          headers: ["Piste", "Qui décide", "À vérifier avant de s’engager"],
+          rows: [
+            [
+              "CPF",
+              "Le titulaire, depuis son espace Mon Compte Formation",
+              "Droits disponibles, éligibilité de l’action et éventuelles règles de participation",
+            ],
+            [
+              "AIF France Travail",
+              "Le conseiller France Travail, qui accepte ou refuse la demande",
+              "Cohérence avec le projet personnalisé d’accès à l’emploi et décision visible dans l’espace personnel",
+            ],
+            [
+              "Employeur et OPCO",
+              "Le financeur, qui seul confirme la prise en charge",
+              "Règles de l’entreprise, de la branche, du dispositif et budgets disponibles",
+            ],
+          ],
+        },
       },
       {
         title: "La vérification finale avant inscription",
@@ -345,6 +384,7 @@ export const verifiedGuides = {
   },
   faq: {
     slug: "faq-conducteur-de-voyageurs",
+    faqFromSections: true,
     eyebrow: "Questions fréquentes",
     title: "FAQ du futur conducteur de voyageurs",
     description:
@@ -765,17 +805,16 @@ export const verifiedGuides = {
 export const verifiedGuideList: readonly VerifiedGuide[] = Object.values(verifiedGuides);
 
 export function verifiedGuideMetadata(guide: VerifiedGuide): Metadata {
-  const canonical = `/${guide.slug}`;
+  const reviewedAtIso = guide.reviewedAtIso ?? verifiedGuidesReviewedAtIso;
 
-  return {
-    title: guide.title,
+  return buildMetadata({
+    title: guide.metaTitle ?? guide.title,
     description: guide.description,
-    alternates: { canonical },
-    openGraph: {
-      type: "website",
-      title: guide.title,
-      description: guide.description,
-      url: canonical,
+    path: `/${guide.slug}`,
+    article: {
+      publishedTime: reviewedAtIso,
+      modifiedTime: reviewedAtIso,
+      section: guide.eyebrow,
     },
-  };
+  });
 }

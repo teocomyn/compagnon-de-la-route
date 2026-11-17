@@ -5,31 +5,22 @@ import { ArrowRight } from "lucide-react";
 import { BrandLogo } from "@/components/brand/BrandLogo";
 import { BreadcrumbBar } from "@/components/layout/BreadcrumbBar";
 import { FinalCTA } from "@/components/sections/FinalCTA";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { PageBreadcrumbs } from "@/components/seo/PageBreadcrumbs";
 import { buttonVariants } from "@/components/ui/Button";
-import {
-  brandInfo,
-  organizationInfo,
-  socialShareImage,
-  siteName,
-  siteUrl,
-} from "@/lib/constants";
+import { brandInfo, organizationInfo, siteName } from "@/lib/constants";
+import { schemaIds, webPageNode } from "@/lib/schema";
+import { buildMetadata } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "Le label transport",
   description:
     "Compagnon de la Route est le label transport porté par BOAZ. Découvrez son rôle, son périmètre et les responsabilités de l’organisme de formation.",
-  alternates: { canonical: "/le-label" },
-  openGraph: {
-    title: `Le label ${siteName}`,
-    description:
-      "Un repère commun pour préparer les responsabilités des métiers du transport de voyageurs.",
-    url: "/le-label",
-    type: "website",
-    images: [socialShareImage],
-  },
-};
+  ogDescription:
+    "Un repère commun pour préparer les responsabilités des métiers du transport de voyageurs.",
+  path: "/le-label",
+});
 
 const commitments = [
   {
@@ -73,30 +64,20 @@ const definitions = [
 ] as const;
 
 function LabelJsonLd() {
-  const json = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "AboutPage",
-        "@id": `${siteUrl}/le-label/#page`,
-        name: `Le label ${siteName}`,
-        url: `${siteUrl}/le-label`,
-        mainEntity: { "@id": `${siteUrl}/#brand` },
-      },
-      {
-        "@type": "Brand",
-        "@id": `${siteUrl}/#brand`,
-        name: siteName,
-        description: brandInfo.description,
-        url: `${siteUrl}/le-label`,
-      },
-    ],
-  };
-
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(json) }}
+    <JsonLd
+      data={{
+        "@context": "https://schema.org",
+        "@graph": [
+          webPageNode({
+            path: "/le-label",
+            name: `Le label ${siteName}`,
+            description: brandInfo.description,
+            type: "AboutPage",
+            extra: { mainEntity: { "@id": schemaIds.brand } },
+          }),
+        ],
+      }}
     />
   );
 }

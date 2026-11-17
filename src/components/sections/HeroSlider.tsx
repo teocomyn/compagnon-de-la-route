@@ -166,6 +166,7 @@ export function HeroSlider() {
               alt={activeSlide.alt}
               fill
               loading={activeIndex === 0 ? "eager" : "lazy"}
+              fetchPriority={activeIndex === 0 ? "high" : "auto"}
               sizes="(max-width: 768px) 100vw, 42vw"
               className="pointer-events-none select-none object-cover brightness-[0.58] saturate-90 md:brightness-100 md:saturate-100"
               style={{ objectPosition: activeSlide.objectPosition }}

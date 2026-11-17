@@ -1,5 +1,6 @@
 import { FAQ } from "@/components/sections/FAQ";
 import { FinalCTA } from "@/components/sections/FinalCTA";
+import { GuidesShortcut } from "@/components/sections/GuidesShortcut";
 import { Hero } from "@/components/sections/Hero";
 import { PartnerMarquee } from "@/components/sections/PartnerMarquee";
 import { Pathways } from "@/components/sections/Pathways";
@@ -7,65 +8,44 @@ import { Pedagogy } from "@/components/sections/Pedagogy";
 import { Statement } from "@/components/sections/Statement";
 import { Stats } from "@/components/sections/Stats";
 import { TrustBuilding } from "@/components/sections/TrustBuilding";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { CdrBentoSection } from "@/components/ui/cdr-bento-section";
 import { faqItems } from "@/lib/faq";
-import { siteName, siteUrl, socialShareImage } from "@/lib/constants";
+import { faqNode, schemaIds, webPageNode } from "@/lib/schema";
+import { buildMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Formations transport de voyageurs",
-  description:
-    "Compagnon de la Route, label transport porté par BOAZ : découvrez les parcours conducteur de voyageurs et exploitant-régulateur.",
-  alternates: { canonical: "/" },
-  openGraph: {
-    title: `Formations transport de voyageurs · ${siteName}`,
-    description:
-      "Deux métiers complémentaires, avec le statut et les modalités de chaque parcours présentés sans promesse non confirmée.",
-    url: "/",
-    type: "website",
-    images: [socialShareImage],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: `Formations transport de voyageurs · ${siteName}`,
-    description:
-      "Deux métiers complémentaires, avec le statut et les modalités de chaque parcours présentés sans promesse non confirmée.",
-    images: [socialShareImage.url],
-  },
-};
+const homeTitle = "Compagnon de la Route, label transport porté par BOAZ";
+const homeDescription =
+  "Compagnon de la Route, label transport porté par BOAZ : les parcours de formation conducteur de voyageurs (bus et car) et exploitant-régulateur.";
 
-function FaqJsonLd() {
-  const json = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqItems.map((item) => ({
-      "@type": "Question",
-      name: item.q,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: item.a,
-      },
-    })),
-  };
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(json) }}
-    />
-  );
-}
+export const metadata: Metadata = buildMetadata({
+  title: homeTitle,
+  absoluteTitle: true,
+  description: homeDescription,
+  ogDescription:
+    "Deux métiers complémentaires, avec le statut et les modalités de chaque parcours présentés sans promesse non confirmée.",
+  path: "/",
+});
 
-function WebPageJsonLd() {
-  const json = {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    name: `Formations transport de voyageurs · ${siteName}`,
-    url: `${siteUrl}/`,
-  };
+function HomeJsonLd() {
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(json) }}
+    <JsonLd
+      data={{
+        "@context": "https://schema.org",
+        "@graph": [
+          webPageNode({
+            path: "/",
+            name: homeTitle,
+            description: homeDescription,
+            extra: { about: { "@id": schemaIds.organization } },
+          }),
+          faqNode(
+            "/",
+            faqItems.map((item) => ({ question: item.q, answer: item.a })),
+          ),
+        ],
+      }}
     />
   );
 }
@@ -73,8 +53,7 @@ function WebPageJsonLd() {
 export default function HomePage() {
   return (
     <>
-      <WebPageJsonLd />
-      <FaqJsonLd />
+      <HomeJsonLd />
       <Hero />
       <PartnerMarquee />
       <Pathways />
@@ -84,6 +63,7 @@ export default function HomePage() {
       <TrustBuilding />
       <Pedagogy />
       <FAQ />
+      <GuidesShortcut />
       <FinalCTA />
     </>
   );

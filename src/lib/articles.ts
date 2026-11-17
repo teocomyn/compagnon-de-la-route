@@ -4,6 +4,8 @@ import path from "path";
 
 export type ArticleFrontmatter = {
   title: string;
+  /** Titre de la balise <title> quand le H1 dépasse la longueur d'affichage des résultats. */
+  metaTitle?: string;
   description: string;
   category: string;
   author: string;

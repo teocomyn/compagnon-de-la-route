@@ -236,9 +236,8 @@ test.describe("Parcours critiques", () => {
     const footer = page.getByRole("contentinfo");
     await footer.scrollIntoViewIfNeeded();
     await expect(footer.getByText(/Un projet de formation à vérifier/i)).toBeVisible();
-    await expect(
-      footer.getByRole("heading", { level: 2, name: /Passez du projet aux réponses concrètes/i }),
-    ).toBeVisible();
+    await expect(footer.getByText(/Passez du projet aux\s*réponses concrètes/i)).toBeVisible();
+    await expect(footer.getByRole("heading")).toHaveCount(0);
     await expect(footer.getByText("Préparer le premier service", { exact: true })).toBeVisible();
     await expect(
       footer.getByRole("link", { name: /Parler à l.?équipe/i }),

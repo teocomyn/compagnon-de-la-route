@@ -6,6 +6,16 @@ La refonte éditoriale anti-slop, l'architecture de marque, le second parcours m
 
 Préférence de livraison du client : après validation, committer et pousser chaque intervention sur `origin/main`, sans inclure de secret.
 
+## Audit SEO/GEO du 17 novembre 2026 (non commité à la rédaction de cette note)
+
+Branche `main`, changements non commités. Audit réalisé sur les 29 pages en ligne, puis corrections appliquées dans le code.
+
+- Corrigé : Open Graph complet sur les 29 pages (image, `og:site_name`, `og:locale`, URL, type article pour guides et dossiers) ; titres uniques et tous ≤ 60 caractères ; descriptions ≤ 160 ; graphe JSON-LD unifié avec `WebSite`, logo et références par `@id` ; FAQPage sur le pilier, la FAQ et les dossiers du journal ; BreadcrumbList dupliqué supprimé sur les guides ; maillage (FAQ, tourisme et scolaire reliés depuis le pilier, le guide métier, le pied de page et la page formation ; bloc de guides sur l'accueil ; liens vers l'ancienne URL redirigée remplacés) ; `fetchPriority="high"` sur l'image du hero ; titres génériques des CTA et du pied de page rétrogradés de h2/h3 en paragraphes ; premier tableau comparatif (financement) ; `llms.txt` et `/feed.xml` générés ; sitemap sans `lastmod` inventé ; `robots.txt` sans directive `Host`.
+- Validation : `tsc`, `eslint`, `check:seo`, `next build` et les 18 tests Playwright passent (tests lancés avec le Google Chrome installé, car le navigateur Playwright 1217 n'est pas téléchargé). Crawl local des 29 pages : aucun titre dupliqué, aucun titre > 60, aucun JSON-LD invalide.
+- Reste à faire par BOAZ ou Teo (rien n'est inventé dans le code) : renseigner `NEXT_PUBLIC_CONTACT_EMAIL` et `NEXT_PUBLIC_CONTACT_PHONE` dans Vercel ; créer les profils officiels puis renseigner `NEXT_PUBLIC_SAME_AS` ; valider Search Console et Bing (variables ou DNS) ; décider d'un outil de mesure conforme RGPD ; fournir la fiche programme pour enrichir le schéma `Course` ; confirmer un relecteur nommé avec son accord ; relire et publier les brouillons (salaire, journée type, évolutions) avec sources ; demander des liens aux partenaires.
+- À mesurer après déploiement : LCP mobile de l'accueil (2,9 s avant correction en laboratoire, seuil « bon » à 2,5 s). La découverte tardive de l'image est corrigée, mais le chiffre réel n'est comparable qu'en production.
+- Non fait volontairement : AVIF (`images.formats`, coût de transformation Vercel non vérifié), page « Formation tuteur » (le prérequis du programme source est incohérent : « 2 ans dont 2 »), pages locales (aucun lieu confirmé).
+
 ## Changements principaux
 
 - Cluster SEO porté à quinze guides vérifiés : page pilier `/devenir-conducteur-de-voyageurs`, examen du permis D, renouvellement FCO, AIF France Travail, financement OPCO Mobilités et reconversion, en complément des neuf guides initiaux.

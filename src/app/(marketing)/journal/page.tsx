@@ -1,17 +1,21 @@
 import { ArticleCard } from "@/components/blog/ArticleCard";
 import { BreadcrumbBar } from "@/components/layout/BreadcrumbBar";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { PageBreadcrumbs } from "@/components/seo/PageBreadcrumbs";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { getAllArticlesMeta, getArticleHref } from "@/lib/articles";
-import { siteName, siteUrl } from "@/lib/constants";
+import { webPageNode } from "@/lib/schema";
+import { absoluteUrl, buildMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 
 export const revalidate = 3600;
 
-export const metadata: Metadata = {
-  title: "Journal",
+export const metadata: Metadata = buildMetadata({
+  title: "Journal conducteur de voyageurs",
   description:
-    "Notes pratiques relues et sourcées sur la formation, le métier et l'emploi de conducteur de voyageurs.",
+    "Notes pratiques relues et sourcées : financement, choix d’une formation, entretien et prise de service pour devenir conducteur de voyageurs.",
+  ogDescription:
+    "Six dossiers détaillés, relus et sourcés sur le métier, la formation, le financement et l'emploi de conducteur de voyageurs.",
   keywords: [
     "devenir conducteur de bus",
     "formation conducteur de voyageurs",
@@ -19,50 +23,41 @@ export const metadata: Metadata = {
     "financement permis D",
     "emploi conducteur de bus",
   ],
-  alternates: { canonical: "/journal" },
+  path: "/journal",
   robots: { index: true, follow: true },
-  openGraph: {
-    title: `Journal conducteur de voyageurs · ${siteName}`,
-    description:
-      "Six dossiers détaillés, relus et sourcés sur le métier, la formation, le financement et l'emploi de conducteur de voyageurs.",
-    type: "website",
-    url: "/journal",
-    images: [{ url: "/images/journal/conductrice-bus-poste.jpg" }],
+  image: {
+    url: "/images/journal/conductrice-bus-poste.jpg",
+    alt: "Conductrice de bus souriante à son poste de conduite",
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Le Journal Compagnon de la Route",
-    description: "Six dossiers pratiques et sourcés pour préparer un projet de conducteur de voyageurs.",
-    images: ["/images/journal/conductrice-bus-poste.jpg"],
-  },
-};
+});
 
 function JournalJsonLd({ articles }: { articles: ReturnType<typeof getAllArticlesMeta> }) {
-  const baseUrl = siteUrl.replace(/\/$/, "");
-  const json = {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    name: "Le Journal Compagnon de la Route",
-    description:
-      "Dossiers vérifiés sur la formation et le métier de conducteur de voyageurs.",
-    url: `${baseUrl}/journal`,
-    inLanguage: "fr-FR",
-    mainEntity: {
-      "@type": "ItemList",
-      numberOfItems: articles.length,
-      itemListElement: articles.map((article, index) => ({
-        "@type": "ListItem",
-        position: index + 1,
-        url: `${baseUrl}${getArticleHref(article)}`,
-        name: article.title,
-      })),
-    },
-  };
-
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(json) }}
+    <JsonLd
+      data={{
+        "@context": "https://schema.org",
+        "@graph": [
+          webPageNode({
+            path: "/journal",
+            name: "Le Journal Compagnon de la Route",
+            description:
+              "Dossiers vérifiés sur la formation et le métier de conducteur de voyageurs.",
+            type: "CollectionPage",
+            extra: {
+              mainEntity: {
+                "@type": "ItemList",
+                numberOfItems: articles.length,
+                itemListElement: articles.map((article, index) => ({
+                  "@type": "ListItem",
+                  position: index + 1,
+                  url: absoluteUrl(getArticleHref(article)),
+                  name: article.title,
+                })),
+              },
+            },
+          }),
+        ],
+      }}
     />
   );
 }

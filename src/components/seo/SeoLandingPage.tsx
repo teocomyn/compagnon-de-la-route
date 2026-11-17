@@ -3,45 +3,40 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { BreadcrumbBar } from "@/components/layout/BreadcrumbBar";
 import { FinalCTA } from "@/components/sections/FinalCTA";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { PageBreadcrumbs } from "@/components/seo/PageBreadcrumbs";
 import { buttonVariants } from "@/components/ui/Button";
 import { Eyebrow } from "@/components/ui/Eyebrow";
+import { faqNode, webPageNode } from "@/lib/schema";
 import type { SeoLandingPageData } from "@/lib/seo-landings";
-import { siteName, siteUrl } from "@/lib/constants";
 
 function WebPageJsonLd({ data }: { data: SeoLandingPageData }) {
-  const json = {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    name: data.metaTitle,
-    description: data.metaDescription,
-    url: `${siteUrl.replace(/\/$/, "")}/${data.slug}`,
-    isPartOf: { "@type": "WebSite", name: siteName, url: siteUrl },
-  };
-
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(json) }}
+    <JsonLd
+      data={{
+        "@context": "https://schema.org",
+        "@graph": [
+          webPageNode({
+            path: `/${data.slug}`,
+            name: data.metaTitle,
+            description: data.metaDescription,
+          }),
+        ],
+      }}
     />
   );
 }
 
-function FaqJsonLd({ items }: { items: { q: string; a: string }[] }) {
-  const json = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: items.map((item) => ({
-      "@type": "Question",
-      name: item.q,
-      acceptedAnswer: { "@type": "Answer", text: item.a },
-    })),
-  };
-
+function FaqJsonLd({ path, items }: { path: string; items: { q: string; a: string }[] }) {
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(json) }}
+    <JsonLd
+      data={{
+        "@context": "https://schema.org",
+        ...faqNode(
+          path,
+          items.map((item) => ({ question: item.q, answer: item.a })),
+        ),
+      }}
     />
   );
 }
@@ -83,7 +78,7 @@ export function SeoLandingPage({ data }: { data: SeoLandingPageData }) {
   return (
     <>
       <WebPageJsonLd data={data} />
-      {data.faq?.length ? <FaqJsonLd items={data.faq} /> : null}
+      {data.faq?.length ? <FaqJsonLd path={`/${data.slug}`} items={data.faq} /> : null}
 
       <div className="pt-16 md:pt-[72px]">
         <BreadcrumbBar>

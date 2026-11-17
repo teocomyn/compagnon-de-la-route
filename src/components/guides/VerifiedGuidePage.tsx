@@ -2,12 +2,12 @@ import Link from "next/link";
 import { ArrowRight, ExternalLink, ShieldCheck } from "lucide-react";
 import { BreadcrumbBar } from "@/components/layout/BreadcrumbBar";
 import { FinalCTA } from "@/components/sections/FinalCTA";
-import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { PageBreadcrumbs } from "@/components/seo/PageBreadcrumbs";
 import { buttonVariants } from "@/components/ui/Button";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import type { VerifiedGuide } from "@/lib/verified-guides";
-import { brandInfo, organizationInfo, siteUrl } from "@/lib/constants";
+import { articleGraph, type FaqEntry } from "@/lib/schema";
+import { verifiedGuidesReviewedAtIso, type VerifiedGuide } from "@/lib/verified-guides";
 import { cn } from "@/lib/utils";
 
 type RelatedLink = NonNullable<VerifiedGuide["relatedLinks"]>[number];
@@ -22,6 +22,9 @@ const guideRelations: Record<string, readonly RelatedLink[]> = {
     { href: "/devenir-conducteur-de-voyageurs", label: "Devenir conducteur", description: "Passer de la découverte du métier à un parcours vérifié." },
     { href: "/reconversion-conducteur-voyageurs", label: "Préparer une reconversion", description: "Tester les conditions réelles avant de choisir une formation." },
     { href: "/reussir-embauche-conducteur-car", label: "Préparer le recrutement", description: "Construire une candidature et vérifier le poste proposé." },
+    { href: "/formation-conducteur-autocar-tourisme", label: "Conduire en tourisme", description: "Services occasionnels, groupes et déplacements à l’extérieur." },
+    { href: "/formation-transport-scolaire-conducteur", label: "Conduire en transport scolaire", description: "Sécurité, prise en charge des élèves et rythme du service." },
+    { href: "/faq-conducteur-de-voyageurs", label: "Questions fréquentes", description: "Les réponses vérifiées avant de se lancer." },
   ],
   "permis-d-conducteur-professionnel": [
     { href: "/examen-permis-d-conditions-epreuves", label: "Préparer l’examen", description: "Dossier, code, plateau et circulation étape par étape." },
@@ -40,12 +43,12 @@ const guideRelations: Record<string, readonly RelatedLink[]> = {
   ],
   "formation-conducteur-autocar-tourisme": [
     { href: "/metier-conducteur-de-car-debouches", label: "Comparer les environnements", description: "Urbain, interurbain, scolaire, navette ou tourisme." },
-    { href: "/devenir-conducteur-de-voyageurs", label: "Vérifier le parcours", description: "Permis, qualification et aptitude médicale." },
-    { href: "/reussir-embauche-conducteur-car", label: "Préparer l’embauche", description: "Questions à poser sur les découchés et les services." },
+    { href: "/formation-transport-scolaire-conducteur", label: "Comparer avec le scolaire", description: "Un autre service, d’autres horaires et d’autres responsabilités." },
+    { href: "/reussir-embauche-conducteur-car", label: "Préparer l’embauche", description: "Questions à poser sur les débouchés et les services." },
   ],
   "formation-transport-scolaire-conducteur": [
     { href: "/metier-conducteur-de-car-debouches", label: "Comprendre le métier", description: "Comparer les services et leurs conditions d’exercice." },
-    { href: "/devenir-conducteur-de-voyageurs", label: "Vérifier le parcours", description: "Permis, qualification et aptitude médicale." },
+    { href: "/formation-conducteur-autocar-tourisme", label: "Comparer avec le tourisme", description: "Services occasionnels, groupes et déplacements." },
     { href: "/reussir-embauche-conducteur-car", label: "Préparer l’embauche", description: "Contrat, volume horaire et lieu de prise de service." },
   ],
   "reussir-embauche-conducteur-car": [
@@ -60,49 +63,35 @@ const guideRelations: Record<string, readonly RelatedLink[]> = {
   ],
 };
 
-function GuideJsonLd({ guide }: { guide: VerifiedGuide }) {
-  const baseUrl = siteUrl.replace(/\/$/, "");
-  const reviewedAt = guide.reviewedAtIso ?? "2026-08-25";
-  const graph: Record<string, unknown>[] = [
-    {
-      "@type": "Article",
-      "@id": `${baseUrl}/${guide.slug}#article`,
-      inLanguage: "fr-FR",
-      headline: guide.title,
-      description: guide.description,
-      datePublished: reviewedAt,
-      dateModified: reviewedAt,
-      mainEntityOfPage: `${baseUrl}/${guide.slug}`,
-      isAccessibleForFree: true,
-      citation: guide.sources.map((source) => source.url),
-      author: {
-        "@type": "EducationalOrganization",
-        "@id": `${baseUrl}/#organization`,
-        name: brandInfo.ownerName,
-        legalName: organizationInfo.legalName,
-      },
-      publisher: { "@id": `${baseUrl}/#organization` },
-    },
-  ];
-
+/** Questions visibles du guide : bloc FAQ dédié, ou sections formulées en questions. */
+function guideFaqEntries(guide: VerifiedGuide): FaqEntry[] {
   if (guide.faqs?.length) {
-    graph.push({
-      "@type": "FAQPage",
-      "@id": `${baseUrl}/${guide.slug}#faq`,
-      mainEntity: guide.faqs.map((faq) => ({
-        "@type": "Question",
-        name: faq.question,
-        acceptedAnswer: { "@type": "Answer", text: faq.answer },
-      })),
-    });
+    return guide.faqs.map((faq) => ({ question: faq.question, answer: faq.answer }));
   }
+  if (!guide.faqFromSections) return [];
+  return guide.sections
+    .filter((section) => section.title.trim().endsWith("?"))
+    .map((section) => ({
+      question: section.title,
+      answer: [...(section.paragraphs ?? []), ...(section.bullets ?? [])].join(" "),
+    }))
+    .filter((entry) => entry.answer.length > 0);
+}
 
+function GuideJsonLd({ guide }: { guide: VerifiedGuide }) {
+  const reviewedAt = guide.reviewedAtIso ?? verifiedGuidesReviewedAtIso;
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{
-        __html: JSON.stringify({ "@context": "https://schema.org", "@graph": graph }),
-      }}
+    <JsonLd
+      data={articleGraph({
+        path: `/${guide.slug}`,
+        headline: guide.title,
+        description: guide.description,
+        datePublished: reviewedAt,
+        dateModified: reviewedAt,
+        section: guide.eyebrow,
+        citations: guide.sources.map((source) => source.url),
+        faqs: guideFaqEntries(guide),
+      })}
     />
   );
 }
@@ -112,13 +101,6 @@ export function VerifiedGuidePage({ guide }: { guide: VerifiedGuide }) {
   return (
     <>
       <GuideJsonLd guide={guide} />
-      <BreadcrumbJsonLd
-        items={[
-          { label: "Accueil", href: "/" },
-          { label: "Guides", href: "/guides" },
-          { label: guide.title, href: `/${guide.slug}` },
-        ]}
-      />
       <div className="pt-16 md:pt-[72px]">
         <BreadcrumbBar>
           <PageBreadcrumbs
@@ -186,6 +168,37 @@ export function VerifiedGuidePage({ guide }: { guide: VerifiedGuide }) {
                         <li key={bullet}>{bullet}</li>
                       ))}
                     </ul>
+                  ) : null}
+                  {section.table ? (
+                    <div className="overflow-x-auto">
+                      <table>
+                        <caption className="sr-only">{section.table.caption}</caption>
+                        <thead>
+                          <tr>
+                            {section.table.headers.map((header) => (
+                              <th key={header} scope="col">
+                                {header}
+                              </th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {section.table.rows.map((row) => (
+                            <tr key={row[0]}>
+                              {row.map((cell, index) =>
+                                index === 0 ? (
+                                  <th key={cell} scope="row">
+                                    {cell}
+                                  </th>
+                                ) : (
+                                  <td key={cell}>{cell}</td>
+                                ),
+                              )}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
                   ) : null}
                 </section>
               ))}
