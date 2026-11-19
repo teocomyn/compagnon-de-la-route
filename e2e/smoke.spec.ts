@@ -238,6 +238,18 @@ test.describe("Parcours critiques", () => {
     await expect(footer.getByText(/Un projet de formation à vérifier/i)).toBeVisible();
     await expect(footer.getByText(/Passez du projet aux\s*réponses concrètes/i)).toBeVisible();
     await expect(footer.getByRole("heading")).toHaveCount(0);
+
+    const credit = footer.getByTestId("footer-credit");
+    await expect(credit).toContainText("Site réalisé par Teo Comyn – Experaise");
+    for (const [name, href] of [
+      ["Teo Comyn", "https://teocomyn.com/"],
+      ["Experaise", "https://experaise.com/"],
+    ]) {
+      const link = credit.getByRole("link", { name });
+      await expect(link).toHaveAttribute("href", href);
+      // Lien dofollow : aucune valeur nofollow, sponsored ou ugc.
+      expect(await link.getAttribute("rel")).not.toMatch(/nofollow|sponsored|ugc/);
+    }
     await expect(footer.getByText("Préparer le premier service", { exact: true })).toBeVisible();
     await expect(
       footer.getByRole("link", { name: /Parler à l.?équipe/i }),

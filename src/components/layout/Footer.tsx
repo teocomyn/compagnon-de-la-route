@@ -13,6 +13,15 @@ import {
   socialProfiles,
 } from "@/lib/constants";
 
+/** Crédit de réalisation : liens ordinaires (sans nofollow) vers le site du créateur et son agence. */
+const creditLinks = {
+  author: { label: "Teo Comyn", href: "https://teocomyn.com/" },
+  agency: { label: "Experaise", href: "https://experaise.com/" },
+} as const;
+
+const creditLinkClassName =
+  "font-medium text-white-60 underline-offset-4 transition-colors hover:text-orange-200 hover:underline focus-visible:rounded-sm";
+
 const socialLabels: Record<string, string> = {
   "linkedin.com": "LinkedIn",
   "facebook.com": "Facebook",
@@ -205,11 +214,31 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-2.5 px-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-5 text-[11px] leading-5 text-white-45 sm:flex-row sm:items-center sm:justify-between sm:gap-3 sm:px-10 sm:py-6 sm:text-xs lg:px-16">
+        <div className="flex flex-col gap-2.5 px-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-5 text-[11px] leading-5 text-white-45 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:gap-x-3 sm:gap-y-2 sm:px-10 sm:py-6 sm:text-xs lg:px-16">
           <p>
             © {new Date().getFullYear()} {siteName}. Tous droits réservés.
           </p>
           <p>{brandInfo.relationship} · organisme déclaré en région Corse</p>
+          <p data-testid="footer-credit" className="sm:basis-full">
+            Site réalisé par{" "}
+            <a
+              className={creditLinkClassName}
+              href={creditLinks.author.href}
+              rel="noopener"
+              target="_blank"
+            >
+              {creditLinks.author.label}
+            </a>{" "}
+            –{" "}
+            <a
+              className={creditLinkClassName}
+              href={creditLinks.agency.href}
+              rel="noopener"
+              target="_blank"
+            >
+              {creditLinks.agency.label}
+            </a>
+          </p>
         </div>
       </div>
     </footer>
